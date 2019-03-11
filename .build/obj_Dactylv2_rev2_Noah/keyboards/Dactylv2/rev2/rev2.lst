@@ -1,0 +1,284 @@
+   1               		.file	"rev2.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.rgblight_toggle,"ax",@progbits
+  11               		.weak	rgblight_toggle
+  13               	rgblight_toggle:
+  14               	.LFB10:
+  15               		.file 1 "./quantum/rgb.h"
+   1:./quantum/rgb.h **** /* Copyright 2017 Jack Humbert
+   2:./quantum/rgb.h ****  *
+   3:./quantum/rgb.h ****  * This program is free software: you can redistribute it and/or modify
+   4:./quantum/rgb.h ****  * it under the terms of the GNU General Public License as published by
+   5:./quantum/rgb.h ****  * the Free Software Foundation, either version 2 of the License, or
+   6:./quantum/rgb.h ****  * (at your option) any later version.
+   7:./quantum/rgb.h ****  *
+   8:./quantum/rgb.h ****  * This program is distributed in the hope that it will be useful,
+   9:./quantum/rgb.h ****  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  10:./quantum/rgb.h ****  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  11:./quantum/rgb.h ****  * GNU General Public License for more details.
+  12:./quantum/rgb.h ****  *
+  13:./quantum/rgb.h ****  * You should have received a copy of the GNU General Public License
+  14:./quantum/rgb.h ****  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  15:./quantum/rgb.h ****  */
+  16:./quantum/rgb.h **** 
+  17:./quantum/rgb.h **** #ifndef RGB_H
+  18:./quantum/rgb.h **** #define RGB_H
+  19:./quantum/rgb.h **** 
+  20:./quantum/rgb.h **** __attribute__((weak))
+  21:./quantum/rgb.h **** void rgblight_toggle(void) {};
+  16               		.loc 1 21 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  22               	/* epilogue start */
+  23               		.loc 1 21 0
+  24 0000 0895      		ret
+  25               		.cfi_endproc
+  26               	.LFE10:
+  28               		.section	.text.rgblight_step,"ax",@progbits
+  29               		.weak	rgblight_step
+  31               	rgblight_step:
+  32               	.LFB31:
+  33               		.cfi_startproc
+  34               	/* prologue: function */
+  35               	/* frame size = 0 */
+  36               	/* stack size = 0 */
+  37               	.L__stack_usage = 0
+  38               	/* epilogue start */
+  39 0000 0895      		ret
+  40               		.cfi_endproc
+  41               	.LFE31:
+  43               		.section	.text.rgblight_step_reverse,"ax",@progbits
+  44               		.weak	rgblight_step_reverse
+  46               	rgblight_step_reverse:
+  47               	.LFB33:
+  48               		.cfi_startproc
+  49               	/* prologue: function */
+  50               	/* frame size = 0 */
+  51               	/* stack size = 0 */
+  52               	.L__stack_usage = 0
+  53               	/* epilogue start */
+  54 0000 0895      		ret
+  55               		.cfi_endproc
+  56               	.LFE33:
+  58               		.section	.text.rgblight_increase_hue,"ax",@progbits
+  59               		.weak	rgblight_increase_hue
+  61               	rgblight_increase_hue:
+  62               	.LFB35:
+  63               		.cfi_startproc
+  64               	/* prologue: function */
+  65               	/* frame size = 0 */
+  66               	/* stack size = 0 */
+  67               	.L__stack_usage = 0
+  68               	/* epilogue start */
+  69 0000 0895      		ret
+  70               		.cfi_endproc
+  71               	.LFE35:
+  73               		.section	.text.rgblight_decrease_hue,"ax",@progbits
+  74               		.weak	rgblight_decrease_hue
+  76               	rgblight_decrease_hue:
+  77               	.LFB37:
+  78               		.cfi_startproc
+  79               	/* prologue: function */
+  80               	/* frame size = 0 */
+  81               	/* stack size = 0 */
+  82               	.L__stack_usage = 0
+  83               	/* epilogue start */
+  84 0000 0895      		ret
+  85               		.cfi_endproc
+  86               	.LFE37:
+  88               		.section	.text.rgblight_increase_sat,"ax",@progbits
+  89               		.weak	rgblight_increase_sat
+  91               	rgblight_increase_sat:
+  92               	.LFB39:
+  93               		.cfi_startproc
+  94               	/* prologue: function */
+  95               	/* frame size = 0 */
+  96               	/* stack size = 0 */
+  97               	.L__stack_usage = 0
+  98               	/* epilogue start */
+  99 0000 0895      		ret
+ 100               		.cfi_endproc
+ 101               	.LFE39:
+ 103               		.section	.text.rgblight_decrease_sat,"ax",@progbits
+ 104               		.weak	rgblight_decrease_sat
+ 106               	rgblight_decrease_sat:
+ 107               	.LFB41:
+ 108               		.cfi_startproc
+ 109               	/* prologue: function */
+ 110               	/* frame size = 0 */
+ 111               	/* stack size = 0 */
+ 112               	.L__stack_usage = 0
+ 113               	/* epilogue start */
+ 114 0000 0895      		ret
+ 115               		.cfi_endproc
+ 116               	.LFE41:
+ 118               		.section	.text.rgblight_increase_val,"ax",@progbits
+ 119               		.weak	rgblight_increase_val
+ 121               	rgblight_increase_val:
+ 122               	.LFB43:
+ 123               		.cfi_startproc
+ 124               	/* prologue: function */
+ 125               	/* frame size = 0 */
+ 126               	/* stack size = 0 */
+ 127               	.L__stack_usage = 0
+ 128               	/* epilogue start */
+ 129 0000 0895      		ret
+ 130               		.cfi_endproc
+ 131               	.LFE43:
+ 133               		.section	.text.rgblight_decrease_val,"ax",@progbits
+ 134               		.weak	rgblight_decrease_val
+ 136               	rgblight_decrease_val:
+ 137               	.LFB45:
+ 138               		.cfi_startproc
+ 139               	/* prologue: function */
+ 140               	/* frame size = 0 */
+ 141               	/* stack size = 0 */
+ 142               	.L__stack_usage = 0
+ 143               	/* epilogue start */
+ 144 0000 0895      		ret
+ 145               		.cfi_endproc
+ 146               	.LFE45:
+ 148               		.section	.text.rgblight_increase_speed,"ax",@progbits
+ 149               		.weak	rgblight_increase_speed
+ 151               	rgblight_increase_speed:
+ 152               	.LFB47:
+ 153               		.cfi_startproc
+ 154               	/* prologue: function */
+ 155               	/* frame size = 0 */
+ 156               	/* stack size = 0 */
+ 157               	.L__stack_usage = 0
+ 158               	/* epilogue start */
+ 159 0000 0895      		ret
+ 160               		.cfi_endproc
+ 161               	.LFE47:
+ 163               		.section	.text.rgblight_decrease_speed,"ax",@progbits
+ 164               		.weak	rgblight_decrease_speed
+ 166               	rgblight_decrease_speed:
+ 167               	.LFB49:
+ 168               		.cfi_startproc
+ 169               	/* prologue: function */
+ 170               	/* frame size = 0 */
+ 171               	/* stack size = 0 */
+ 172               	.L__stack_usage = 0
+ 173               	/* epilogue start */
+ 174 0000 0895      		ret
+ 175               		.cfi_endproc
+ 176               	.LFE49:
+ 178               		.section	.text.matrix_init_kb,"ax",@progbits
+ 179               	.global	matrix_init_kb
+ 181               	matrix_init_kb:
+ 182               	.LFB28:
+ 183               		.file 2 "keyboards/Dactylv2/rev2/rev2.c"
+   1:keyboards/Dactylv2/rev2/rev2.c **** #include "Dactyl.h"
+   2:keyboards/Dactylv2/rev2/rev2.c **** 
+   3:keyboards/Dactylv2/rev2/rev2.c **** #ifdef AUDIO_ENABLE
+   4:keyboards/Dactylv2/rev2/rev2.c ****     float tone_startup[][2] = SONG(STARTUP_SOUND);
+   5:keyboards/Dactylv2/rev2/rev2.c ****     float tone_goodbye[][2] = SONG(GOODBYE_SOUND);
+   6:keyboards/Dactylv2/rev2/rev2.c **** #endif
+   7:keyboards/Dactylv2/rev2/rev2.c **** 
+   8:keyboards/Dactylv2/rev2/rev2.c **** #ifdef SSD1306OLED
+   9:keyboards/Dactylv2/rev2/rev2.c **** void led_set_kb(uint8_t usb_led) {
+  10:keyboards/Dactylv2/rev2/rev2.c ****     // put your keyboard LED indicator (ex: Caps Lock LED) toggling code here
+  11:keyboards/Dactylv2/rev2/rev2.c ****     led_set_user(usb_led);
+  12:keyboards/Dactylv2/rev2/rev2.c **** }
+  13:keyboards/Dactylv2/rev2/rev2.c **** #endif
+  14:keyboards/Dactylv2/rev2/rev2.c **** 
+  15:keyboards/Dactylv2/rev2/rev2.c **** void matrix_init_kb(void) {
+ 184               		.loc 2 15 0
+ 185               		.cfi_startproc
+ 186               	/* prologue: function */
+ 187               	/* frame size = 0 */
+ 188               	/* stack size = 0 */
+ 189               	.L__stack_usage = 0
+  16:keyboards/Dactylv2/rev2/rev2.c **** 
+  17:keyboards/Dactylv2/rev2/rev2.c ****     #ifdef AUDIO_ENABLE
+  18:keyboards/Dactylv2/rev2/rev2.c ****         _delay_ms(20); // gets rid of tick
+  19:keyboards/Dactylv2/rev2/rev2.c ****         PLAY_SONG(tone_startup);
+  20:keyboards/Dactylv2/rev2/rev2.c ****     #endif
+  21:keyboards/Dactylv2/rev2/rev2.c **** 
+  22:keyboards/Dactylv2/rev2/rev2.c ****     // // green led on
+  23:keyboards/Dactylv2/rev2/rev2.c ****     // DDRD |= (1<<5);
+  24:keyboards/Dactylv2/rev2/rev2.c ****     // PORTD &= ~(1<<5);
+  25:keyboards/Dactylv2/rev2/rev2.c **** 
+  26:keyboards/Dactylv2/rev2/rev2.c ****     // // orange led on
+  27:keyboards/Dactylv2/rev2/rev2.c ****     // DDRB |= (1<<0);
+  28:keyboards/Dactylv2/rev2/rev2.c ****     // PORTB &= ~(1<<0);
+  29:keyboards/Dactylv2/rev2/rev2.c **** 
+  30:keyboards/Dactylv2/rev2/rev2.c **** 	matrix_init_user();
+ 190               		.loc 2 30 0
+ 191 0000 0C94 0000 		jmp matrix_init_user
+ 192               	.LVL0:
+ 193               		.cfi_endproc
+ 194               	.LFE28:
+ 196               		.section	.text.shutdown_user,"ax",@progbits
+ 197               	.global	shutdown_user
+ 199               	shutdown_user:
+ 200               	.LFB29:
+  31:keyboards/Dactylv2/rev2/rev2.c **** };
+  32:keyboards/Dactylv2/rev2/rev2.c **** 
+  33:keyboards/Dactylv2/rev2/rev2.c **** void shutdown_user(void) {
+ 201               		.loc 2 33 0
+ 202               		.cfi_startproc
+ 203               	/* prologue: function */
+ 204               	/* frame size = 0 */
+ 205               	/* stack size = 0 */
+ 206               	.L__stack_usage = 0
+ 207               	/* epilogue start */
+  34:keyboards/Dactylv2/rev2/rev2.c ****     #ifdef AUDIO_ENABLE
+  35:keyboards/Dactylv2/rev2/rev2.c ****         PLAY_SONG(tone_goodbye);
+  36:keyboards/Dactylv2/rev2/rev2.c **** 	_delay_ms(150);
+  37:keyboards/Dactylv2/rev2/rev2.c **** 	stop_all_notes();
+  38:keyboards/Dactylv2/rev2/rev2.c ****     #endif
+  39:keyboards/Dactylv2/rev2/rev2.c **** }
+ 208               		.loc 2 39 0
+ 209 0000 0895      		ret
+ 210               		.cfi_endproc
+ 211               	.LFE29:
+ 213               		.text
+ 214               	.Letext0:
+ 215               		.file 3 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdint.h"
+ 216               		.file 4 "/usr/local/Cellar/avr-gcc@7/7.3.0/lib/avr-gcc/7/gcc/avr/7.3.0/include/stddef.h"
+ 217               		.file 5 "./tmk_core/common/report.h"
+ 218               		.file 6 "./tmk_core/common/host.h"
+ 219               		.file 7 "./tmk_core/common/debug.h"
+ 220               		.file 8 "./quantum/keycode_config.h"
+ 221               		.file 9 "./quantum/keymap.h"
+ 222               		.file 10 "./tmk_core/common/action_layer.h"
+ 223               		.file 11 "./tmk_core/common/timer.h"
+ 224               		.file 12 "./tmk_core/common/action_util.h"
+ 225               		.file 13 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdlib.h"
+ 226               		.file 14 "./quantum/process_keycode/process_tap_dance.h"
+ 227               		.file 15 "./quantum/quantum.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 rev2.c
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:5      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:6      *ABS*:0000000000000001 __zero_reg__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:31     .text.rgblight_step:0000000000000000 rgblight_step
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:46     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:61     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:76     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:91     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:106    .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:121    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:136    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:151    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:166    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:181    .text.matrix_init_kb:0000000000000000 matrix_init_kb
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccexqs2S.s:199    .text.shutdown_user:0000000000000000 shutdown_user
+
+UNDEFINED SYMBOLS
+matrix_init_user

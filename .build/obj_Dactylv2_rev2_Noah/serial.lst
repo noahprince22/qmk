@@ -1,0 +1,1304 @@
+   1               		.file	"serial.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.serial_output,"ax",@progbits
+  12               	serial_output:
+  13               	.LFB7:
+  14               		.file 1 "keyboards/Dactylv2/serial.c"
+   1:keyboards/Dactylv2/serial.c **** /*
+   2:keyboards/Dactylv2/serial.c ****  * WARNING: be careful changing this code, it is very timing dependent
+   3:keyboards/Dactylv2/serial.c ****  */
+   4:keyboards/Dactylv2/serial.c **** 
+   5:keyboards/Dactylv2/serial.c **** #ifndef F_CPU
+   6:keyboards/Dactylv2/serial.c **** #define F_CPU 16000000
+   7:keyboards/Dactylv2/serial.c **** #endif
+   8:keyboards/Dactylv2/serial.c **** 
+   9:keyboards/Dactylv2/serial.c **** #include <avr/io.h>
+  10:keyboards/Dactylv2/serial.c **** #include <avr/interrupt.h>
+  11:keyboards/Dactylv2/serial.c **** #include <util/delay.h>
+  12:keyboards/Dactylv2/serial.c **** #include <stdbool.h>
+  13:keyboards/Dactylv2/serial.c **** #include "serial.h"
+  14:keyboards/Dactylv2/serial.c **** 
+  15:keyboards/Dactylv2/serial.c **** #ifndef USE_I2C
+  16:keyboards/Dactylv2/serial.c **** 
+  17:keyboards/Dactylv2/serial.c **** // Serial pulse period in microseconds. Its probably a bad idea to lower this
+  18:keyboards/Dactylv2/serial.c **** // value.
+  19:keyboards/Dactylv2/serial.c **** #define SERIAL_DELAY 24
+  20:keyboards/Dactylv2/serial.c **** 
+  21:keyboards/Dactylv2/serial.c **** uint8_t volatile serial_slave_buffer[SERIAL_SLAVE_BUFFER_LENGTH] = {0};
+  22:keyboards/Dactylv2/serial.c **** uint8_t volatile serial_master_buffer[SERIAL_MASTER_BUFFER_LENGTH] = {0};
+  23:keyboards/Dactylv2/serial.c **** 
+  24:keyboards/Dactylv2/serial.c **** #define SLAVE_DATA_CORRUPT (1<<0)
+  25:keyboards/Dactylv2/serial.c **** volatile uint8_t status = 0;
+  26:keyboards/Dactylv2/serial.c **** 
+  27:keyboards/Dactylv2/serial.c **** inline static
+  28:keyboards/Dactylv2/serial.c **** void serial_delay(void) {
+  29:keyboards/Dactylv2/serial.c ****   _delay_us(SERIAL_DELAY);
+  30:keyboards/Dactylv2/serial.c **** }
+  31:keyboards/Dactylv2/serial.c **** 
+  32:keyboards/Dactylv2/serial.c **** inline static
+  33:keyboards/Dactylv2/serial.c **** void serial_output(void) {
+  15               		.loc 1 33 0
+  16               		.cfi_startproc
+  17               	/* prologue: function */
+  18               	/* frame size = 0 */
+  19               	/* stack size = 0 */
+  20               	.L__stack_usage = 0
+  34:keyboards/Dactylv2/serial.c ****   SERIAL_PIN_DDR |= SERIAL_PIN_MASK;
+  21               		.loc 1 34 0
+  22 0000 509A      		sbi 0xa,0
+  23               	/* epilogue start */
+  35:keyboards/Dactylv2/serial.c **** }
+  24               		.loc 1 35 0
+  25 0002 0895      		ret
+  26               		.cfi_endproc
+  27               	.LFE7:
+  29               		.section	.text.serial_input,"ax",@progbits
+  31               	serial_input:
+  32               	.LFB8:
+  36:keyboards/Dactylv2/serial.c **** 
+  37:keyboards/Dactylv2/serial.c **** // make the serial pin an input with pull-up resistor
+  38:keyboards/Dactylv2/serial.c **** inline static
+  39:keyboards/Dactylv2/serial.c **** void serial_input(void) {
+  33               		.loc 1 39 0
+  34               		.cfi_startproc
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	/* stack size = 0 */
+  38               	.L__stack_usage = 0
+  40:keyboards/Dactylv2/serial.c ****   SERIAL_PIN_DDR  &= ~SERIAL_PIN_MASK;
+  39               		.loc 1 40 0
+  40 0000 5098      		cbi 0xa,0
+  41:keyboards/Dactylv2/serial.c ****   SERIAL_PIN_PORT |= SERIAL_PIN_MASK;
+  41               		.loc 1 41 0
+  42 0002 589A      		sbi 0xb,0
+  43               	/* epilogue start */
+  42:keyboards/Dactylv2/serial.c **** }
+  44               		.loc 1 42 0
+  45 0004 0895      		ret
+  46               		.cfi_endproc
+  47               	.LFE8:
+  49               		.section	.text.serial_high,"ax",@progbits
+  51               	serial_high:
+  52               	.LFB11:
+  43:keyboards/Dactylv2/serial.c **** 
+  44:keyboards/Dactylv2/serial.c **** inline static
+  45:keyboards/Dactylv2/serial.c **** uint8_t serial_read_pin(void) {
+  46:keyboards/Dactylv2/serial.c ****   return !!(SERIAL_PIN_INPUT & SERIAL_PIN_MASK);
+  47:keyboards/Dactylv2/serial.c **** }
+  48:keyboards/Dactylv2/serial.c **** 
+  49:keyboards/Dactylv2/serial.c **** inline static
+  50:keyboards/Dactylv2/serial.c **** void serial_low(void) {
+  51:keyboards/Dactylv2/serial.c ****   SERIAL_PIN_PORT &= ~SERIAL_PIN_MASK;
+  52:keyboards/Dactylv2/serial.c **** }
+  53:keyboards/Dactylv2/serial.c **** 
+  54:keyboards/Dactylv2/serial.c **** inline static
+  55:keyboards/Dactylv2/serial.c **** void serial_high(void) {
+  53               		.loc 1 55 0
+  54               		.cfi_startproc
+  55               	/* prologue: function */
+  56               	/* frame size = 0 */
+  57               	/* stack size = 0 */
+  58               	.L__stack_usage = 0
+  56:keyboards/Dactylv2/serial.c ****   SERIAL_PIN_PORT |= SERIAL_PIN_MASK;
+  59               		.loc 1 56 0
+  60 0000 589A      		sbi 0xb,0
+  61               	/* epilogue start */
+  57:keyboards/Dactylv2/serial.c **** }
+  62               		.loc 1 57 0
+  63 0002 0895      		ret
+  64               		.cfi_endproc
+  65               	.LFE11:
+  67               		.section	.text.sync_recv,"ax",@progbits
+  69               	sync_recv:
+  70               	.LFB14:
+  58:keyboards/Dactylv2/serial.c **** 
+  59:keyboards/Dactylv2/serial.c **** void serial_master_init(void) {
+  60:keyboards/Dactylv2/serial.c ****   serial_output();
+  61:keyboards/Dactylv2/serial.c ****   serial_high();
+  62:keyboards/Dactylv2/serial.c **** }
+  63:keyboards/Dactylv2/serial.c **** 
+  64:keyboards/Dactylv2/serial.c **** void serial_slave_init(void) {
+  65:keyboards/Dactylv2/serial.c ****   serial_input();
+  66:keyboards/Dactylv2/serial.c **** 
+  67:keyboards/Dactylv2/serial.c ****   // Enable INT0
+  68:keyboards/Dactylv2/serial.c ****   EIMSK |= _BV(INT0);
+  69:keyboards/Dactylv2/serial.c ****   // Trigger on falling edge of INT0
+  70:keyboards/Dactylv2/serial.c ****   EICRA &= ~(_BV(ISC00) | _BV(ISC01));
+  71:keyboards/Dactylv2/serial.c **** }
+  72:keyboards/Dactylv2/serial.c **** 
+  73:keyboards/Dactylv2/serial.c **** // Used by the master to synchronize timing with the slave.
+  74:keyboards/Dactylv2/serial.c **** static
+  75:keyboards/Dactylv2/serial.c **** void sync_recv(void) {
+  71               		.loc 1 75 0
+  72               		.cfi_startproc
+  73               	/* prologue: function */
+  74               	/* frame size = 0 */
+  75               	/* stack size = 0 */
+  76               	.L__stack_usage = 0
+  76:keyboards/Dactylv2/serial.c ****   serial_input();
+  77               		.loc 1 76 0
+  78 0000 0E94 0000 		call serial_input
+  79               	.LVL0:
+  80               	.L5:
+  77:keyboards/Dactylv2/serial.c ****   // This shouldn't hang if the slave disconnects because the
+  78:keyboards/Dactylv2/serial.c ****   // serial line will float to high if the slave does disconnect.
+  79:keyboards/Dactylv2/serial.c ****   while (!serial_read_pin());
+  81               		.loc 1 79 0 discriminator 1
+  82 0004 489B      		sbis 0x9,0
+  83 0006 00C0      		rjmp .L5
+  84               	.LVL1:
+  85               	.LBB49:
+  86               	.LBB50:
+  87               	.LBB51:
+  88               		.file 2 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h"
+   1:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
+   3:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
+   4:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    All rights reserved.
+   5:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+   6:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   7:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   8:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+   9:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+  10:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  11:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  12:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  13:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  14:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  15:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****      distribution.
+  16:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  17:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  18:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  19:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****      from this software without specific prior written permission.
+  20:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  21:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  25:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  32:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  33:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /* $Id: delay.h.in 2506 2016-02-08 10:05:45Z joerg_wunsch $ */
+  34:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  35:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  36:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  37:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  38:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #ifndef __DOXYGEN__
+  39:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #  ifndef __HAS_DELAY_CYCLES
+  40:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #    define __HAS_DELAY_CYCLES 1
+  41:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #  endif
+  42:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #endif  /* __DOXYGEN__ */
+  43:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  44:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #include <inttypes.h>
+  45:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #include <util/delay_basic.h>
+  46:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #include <math.h>
+  47:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  48:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /** \file */
+  49:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Convenience functions for busy-wait delay loops
+  50:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     \code
+  51:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  52:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+  53:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     #include <util/delay.h>
+  54:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     \endcode
+  55:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  56:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  57:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  58:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  59:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     used.
+  60:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  61:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     The functions in this header file are wrappers around the basic
+  62:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     busy-wait functions from <util/delay_basic.h>.  They are meant as
+  63:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     convenience functions where actual time values can be specified
+  64:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     rather than a number of cycles to wait for.  The idea behind is
+  65:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     that compile-time constant expressions will be eliminated by
+  66:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     compiler optimization so floating-point expressions can be used
+  67:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     to calculate the number of delay cycles needed based on the CPU
+  68:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     frequency passed by the macro F_CPU.
+  69:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  70:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     \note In order for these functions to work as intended, compiler
+  71:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     optimizations <em>must</em> be enabled, and the delay time
+  72:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     <em>must</em> be an expression that is a known constant at
+  73:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     compile-time.  If these requirements are not met, the resulting
+  74:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     delay will be much longer (and basically unpredictable), and
+  75:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     applications that otherwise do not use floating-point calculations
+  76:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     will experience severe code bloat by the floating-point library
+  77:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     routines linked into the application.
+  78:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  79:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     The functions available allow the specification of microsecond, and
+  80:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  81:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).
+  82:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  83:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** */
+  84:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  85:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  86:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** static __inline__ void _delay_us(double __us) __attribute__((__always_inline__));
+  87:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** static __inline__ void _delay_ms(double __ms) __attribute__((__always_inline__));
+  88:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #endif
+  89:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  90:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #ifndef F_CPU
+  91:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+  92:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+  93:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /** \ingroup util_delay
+  94:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     \def F_CPU
+  95:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     \brief CPU frequency in Hz
+  96:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+  97:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     The macro F_CPU specifies the CPU frequency to be considered by
+  98:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     the delay macros.  This macro is normally supplied by the
+  99:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     environment (e.g. from within a project header, or the project's
+ 100:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     Makefile).  The value 1 MHz here is only provided as a "vanilla"
+ 101:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     fallback if no such user-provided definition could be found.
+ 102:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 103:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     In terms of the delay functions, the CPU frequency can be given as
+ 104:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     a floating-point constant (e.g. 3.6864E6 for 3.6864 MHz).
+ 105:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     However, the macros in <util/setbaud.h> require it to be an
+ 106:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****     integer value.
+ 107:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****  */
+ 108:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** # define F_CPU 1000000UL
+ 109:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #endif
+ 110:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 111:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #ifndef __OPTIMIZE__
+ 112:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** # warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+ 113:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #endif
+ 114:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 115:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 116:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 117:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 118:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #  include <math.h>
+ 119:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #endif
+ 120:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 121:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /**
+ 122:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \ingroup util_delay
+ 123:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 124:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 125:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 126:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 127:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 128:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 129:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 130:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 131:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    When the user request delay which exceed the maximum possible one,
+ 132:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    _delay_ms() provides a decreased resolution functionality. In this
+ 133:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    mode _delay_ms() will work with a resolution of 1/10 ms, providing
+ 134:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    delays up to 6.5535 seconds (independent from CPU frequency).  The
+ 135:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    user will not be informed about decreased resolution.
+ 136:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 137:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    If the avr-gcc toolchain has __builtin_avr_delay_cycles()
+ 138:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    support, maximal possible delay is 4294967.295 ms/ F_CPU in MHz. For
+ 139:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    values greater than the maximal possible delay, overflows results in
+ 140:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    no delay i.e., 0ms.
+ 141:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 142:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Conversion of \c __ms into clock cycles may not always result in
+ 143:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    integer.  By default, the clock cycles rounded up to next
+ 144:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    integer. This ensures that the user gets at least \c __ms
+ 145:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    microseconds of delay.
+ 146:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 147:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Alternatively, by defining the macro \c __DELAY_ROUND_DOWN__, or
+ 148:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \c __DELAY_ROUND_CLOSEST__, before including this header file, the
+ 149:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    algorithm can be made to round down, or round to closest integer,
+ 150:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    respectively.
+ 151:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 152:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \note
+ 153:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 154:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    The implementation of _delay_ms() based on
+ 155:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    __builtin_avr_delay_cycles() is not backward compatible with older
+ 156:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    implementations.  In order to get functionality backward compatible
+ 157:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    with previous versions, the macro \c "__DELAY_BACKWARD_COMPATIBLE__"
+ 158:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    must be defined before including this header file. Also, the
+ 159:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    backward compatible algorithm will be chosen if the code is
+ 160:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    compiled in a <em>freestanding environment</em> (GCC option
+ 161:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \c -ffreestanding), as the math functions required for rounding are
+ 162:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    not available to the compiler then.
+ 163:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 164:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****  */
+ 165:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** void
+ 166:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** _delay_ms(double __ms)
+ 167:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** {
+ 168:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	double __tmp ;
+ 169:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 170:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 171:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 172:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	uint32_t __ticks_dc;
+ 173:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	extern void __builtin_avr_delay_cycles(unsigned long);
+ 174:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	__tmp = ((F_CPU) / 1e3) * __ms;
+ 175:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 176:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#if defined(__DELAY_ROUND_DOWN__)
+ 177:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)fabs(__tmp);
+ 178:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 179:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#elif defined(__DELAY_ROUND_CLOSEST__)
+ 180:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(fabs(__tmp)+0.5);
+ 181:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 182:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#else
+ 183:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		//round up by default
+ 184:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+ 185:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#endif
+ 186:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 187:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 188:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 189:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #else
+ 190:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	uint16_t __ticks;
+ 191:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	__tmp = ((F_CPU) / 4e3) * __ms;
+ 192:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	if (__tmp < 1.0)
+ 193:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks = 1;
+ 194:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	else if (__tmp > 65535)
+ 195:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	{
+ 196:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		//	__ticks = requested delay in 1/10 ms
+ 197:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks = (uint16_t) (__ms * 10.0);
+ 198:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		while(__ticks)
+ 199:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		{
+ 200:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 			// wait 1/10 ms
+ 201:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 			_delay_loop_2(((F_CPU) / 4e3) / 10);
+ 202:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 			__ticks --;
+ 203:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		}
+ 204:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		return;
+ 205:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	}
+ 206:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	else
+ 207:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks = (uint16_t)__tmp;
+ 208:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	_delay_loop_2(__ticks);
+ 209:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #endif
+ 210:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** }
+ 211:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 212:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** /**
+ 213:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \ingroup util_delay
+ 214:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 215:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Perform a delay of \c __us microseconds, using _delay_loop_1().
+ 216:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 217:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 218:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 219:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 220:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    The maximal possible delay is 768 us / F_CPU in MHz.
+ 221:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 222:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    If the user requests a delay greater than the maximal possible one,
+ 223:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    _delay_us() will automatically call _delay_ms() instead.  The user
+ 224:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    will not be informed about this case.
+ 225:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 226:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    If the avr-gcc toolchain has __builtin_avr_delay_cycles()
+ 227:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    support, maximal possible delay is 4294967.295 us/ F_CPU in MHz. For
+ 228:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    values greater than the maximal possible delay, overflow results in
+ 229:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    no delay i.e., 0us.
+ 230:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 231:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Conversion of \c __us into clock cycles may not always result in
+ 232:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    integer.  By default, the clock cycles rounded up to next
+ 233:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    integer. This ensures that the user gets at least \c __us
+ 234:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    microseconds of delay.
+ 235:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 236:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    Alternatively, by defining the macro \c __DELAY_ROUND_DOWN__, or
+ 237:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \c __DELAY_ROUND_CLOSEST__, before including this header file, the
+ 238:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    algorithm can be made to round down, or round to closest integer,
+ 239:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    respectively.
+ 240:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 241:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \note
+ 242:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 243:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    The implementation of _delay_ms() based on
+ 244:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    __builtin_avr_delay_cycles() is not backward compatible with older
+ 245:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    implementations.  In order to get functionality backward compatible
+ 246:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    with previous versions, the macro \c __DELAY_BACKWARD_COMPATIBLE__
+ 247:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    must be defined before including this header file. Also, the
+ 248:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    backward compatible algorithm will be chosen if the code is
+ 249:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    compiled in a <em>freestanding environment</em> (GCC option
+ 250:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    \c -ffreestanding), as the math functions required for rounding are
+ 251:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****    not available to the compiler then.
+ 252:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 253:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****  */
+ 254:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** void
+ 255:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** _delay_us(double __us)
+ 256:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** {
+ 257:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	double __tmp ;
+ 258:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 259:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 260:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 261:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	uint32_t __ticks_dc;
+ 262:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	extern void __builtin_avr_delay_cycles(unsigned long);
+ 263:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	__tmp = ((F_CPU) / 1e6) * __us;
+ 264:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 265:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#if defined(__DELAY_ROUND_DOWN__)
+ 266:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)fabs(__tmp);
+ 267:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 268:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#elif defined(__DELAY_ROUND_CLOSEST__)
+ 269:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(fabs(__tmp)+0.5);
+ 270:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 271:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#else
+ 272:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		//round up by default
+ 273:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+ 274:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	#endif
+ 275:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 
+ 276:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+  89               		.loc 2 276 0
+  90 0008 80E8      		ldi r24,lo8(-128)
+  91 000a 8A95      	1:	dec r24
+  92 000c 01F4      		brne 1b
+  93               	.LVL2:
+  94               	/* epilogue start */
+  95               	.LBE51:
+  96               	.LBE50:
+  97               	.LBE49:
+  80:keyboards/Dactylv2/serial.c ****   serial_delay();
+  81:keyboards/Dactylv2/serial.c **** }
+  98               		.loc 1 81 0
+  99 000e 0895      		ret
+ 100               		.cfi_endproc
+ 101               	.LFE14:
+ 103               		.section	.text.serial_read_byte,"ax",@progbits
+ 105               	serial_read_byte:
+ 106               	.LFB16:
+  82:keyboards/Dactylv2/serial.c **** 
+  83:keyboards/Dactylv2/serial.c **** // Used by the slave to send a synchronization signal to the master.
+  84:keyboards/Dactylv2/serial.c **** static
+  85:keyboards/Dactylv2/serial.c **** void sync_send(void) {
+  86:keyboards/Dactylv2/serial.c ****   serial_output();
+  87:keyboards/Dactylv2/serial.c **** 
+  88:keyboards/Dactylv2/serial.c ****   serial_low();
+  89:keyboards/Dactylv2/serial.c ****   serial_delay();
+  90:keyboards/Dactylv2/serial.c **** 
+  91:keyboards/Dactylv2/serial.c ****   serial_high();
+  92:keyboards/Dactylv2/serial.c **** }
+  93:keyboards/Dactylv2/serial.c **** 
+  94:keyboards/Dactylv2/serial.c **** // Reads a byte from the serial line
+  95:keyboards/Dactylv2/serial.c **** static
+  96:keyboards/Dactylv2/serial.c **** uint8_t serial_read_byte(void) {
+ 107               		.loc 1 96 0
+ 108               		.cfi_startproc
+ 109               	/* prologue: function */
+ 110               	/* frame size = 0 */
+ 111               	/* stack size = 0 */
+ 112               	.L__stack_usage = 0
+ 113               	.LVL3:
+  97:keyboards/Dactylv2/serial.c ****   uint8_t byte = 0;
+  98:keyboards/Dactylv2/serial.c ****   serial_input();
+ 114               		.loc 1 98 0
+ 115 0000 0E94 0000 		call serial_input
+ 116               	.LVL4:
+ 117 0004 98E0      		ldi r25,lo8(8)
+  97:keyboards/Dactylv2/serial.c ****   uint8_t byte = 0;
+ 118               		.loc 1 97 0
+ 119 0006 80E0      		ldi r24,0
+ 120               	.LVL5:
+ 121               	.L9:
+ 122               	.LBB60:
+ 123               	.LBB61:
+ 124               	.LBB62:
+  46:keyboards/Dactylv2/serial.c **** }
+ 125               		.loc 1 46 0 discriminator 3
+ 126 0008 29B1      		in r18,0x9
+ 127               	.LBE62:
+ 128               	.LBE61:
+  99:keyboards/Dactylv2/serial.c ****   for ( uint8_t i = 0; i < 8; ++i) {
+ 100:keyboards/Dactylv2/serial.c ****     byte = (byte << 1) | serial_read_pin();
+ 129               		.loc 1 100 0 discriminator 3
+ 130 000a 880F      		lsl r24
+ 131               	.LVL6:
+ 132 000c 2170      		andi r18,lo8(1)
+ 133 000e 822B      		or r24,r18
+ 134               	.LVL7:
+ 135               	.LBB63:
+ 136               	.LBB64:
+ 137               	.LBB65:
+ 138               		.loc 2 276 0 discriminator 3
+ 139 0010 20E8      		ldi r18,lo8(-128)
+ 140 0012 2A95      	1:	dec r18
+ 141 0014 01F4      		brne 1b
+ 142               	.LVL8:
+ 143               	.LBE65:
+ 144               	.LBE64:
+ 145               	.LBE63:
+ 146               	.LBB66:
+ 147               	.LBB67:
+ 148 0016 25E0      		ldi r18,lo8(5)
+ 149 0018 2A95      	1:	dec r18
+ 150 001a 01F4      		brne 1b
+ 151 001c 0000      		nop
+ 152               	.LVL9:
+ 153 001e 9150      		subi r25,lo8(-(-1))
+ 154               	.LVL10:
+ 155               	.LBE67:
+ 156               	.LBE66:
+  99:keyboards/Dactylv2/serial.c ****   for ( uint8_t i = 0; i < 8; ++i) {
+ 157               		.loc 1 99 0 discriminator 3
+ 158 0020 01F4      		brne .L9
+ 159               	/* epilogue start */
+ 160               	.LBE60:
+ 101:keyboards/Dactylv2/serial.c ****     serial_delay();
+ 102:keyboards/Dactylv2/serial.c ****     _delay_us(1);
+ 103:keyboards/Dactylv2/serial.c ****   }
+ 104:keyboards/Dactylv2/serial.c **** 
+ 105:keyboards/Dactylv2/serial.c ****   return byte;
+ 106:keyboards/Dactylv2/serial.c **** }
+ 161               		.loc 1 106 0
+ 162 0022 0895      		ret
+ 163               		.cfi_endproc
+ 164               	.LFE16:
+ 166               		.section	.text.serial_write_byte,"ax",@progbits
+ 168               	serial_write_byte:
+ 169               	.LFB17:
+ 107:keyboards/Dactylv2/serial.c **** 
+ 108:keyboards/Dactylv2/serial.c **** // Sends a byte with MSB ordering
+ 109:keyboards/Dactylv2/serial.c **** static
+ 110:keyboards/Dactylv2/serial.c **** void serial_write_byte(uint8_t data) {
+ 170               		.loc 1 110 0
+ 171               		.cfi_startproc
+ 172               	.LVL11:
+ 173 0000 0F93      		push r16
+ 174               	.LCFI0:
+ 175               		.cfi_def_cfa_offset 3
+ 176               		.cfi_offset 16, -2
+ 177 0002 1F93      		push r17
+ 178               	.LCFI1:
+ 179               		.cfi_def_cfa_offset 4
+ 180               		.cfi_offset 17, -3
+ 181 0004 CF93      		push r28
+ 182               	.LCFI2:
+ 183               		.cfi_def_cfa_offset 5
+ 184               		.cfi_offset 28, -4
+ 185               	/* prologue: function */
+ 186               	/* frame size = 0 */
+ 187               	/* stack size = 3 */
+ 188               	.L__stack_usage = 3
+ 189 0006 082F      		mov r16,r24
+ 190               	.LVL12:
+ 111:keyboards/Dactylv2/serial.c ****   uint8_t b = 8;
+ 112:keyboards/Dactylv2/serial.c ****   serial_output();
+ 191               		.loc 1 112 0
+ 192 0008 0E94 0000 		call serial_output
+ 193               	.LVL13:
+ 111:keyboards/Dactylv2/serial.c ****   uint8_t b = 8;
+ 194               		.loc 1 111 0
+ 195 000c C8E0      		ldi r28,lo8(8)
+ 113:keyboards/Dactylv2/serial.c ****   while( b-- ) {
+ 114:keyboards/Dactylv2/serial.c ****     if(data & (1 << b)) {
+ 196               		.loc 1 114 0
+ 197 000e 10E0      		ldi r17,0
+ 198               	.LVL14:
+ 199               	.L12:
+ 113:keyboards/Dactylv2/serial.c ****   while( b-- ) {
+ 200               		.loc 1 113 0
+ 201               	.LVL15:
+ 202 0010 C150      		subi r28,1
+ 203 0012 00F4      		brcc .L15
+ 204               	/* epilogue start */
+ 115:keyboards/Dactylv2/serial.c ****       serial_high();
+ 116:keyboards/Dactylv2/serial.c ****     } else {
+ 117:keyboards/Dactylv2/serial.c ****       serial_low();
+ 118:keyboards/Dactylv2/serial.c ****     }
+ 119:keyboards/Dactylv2/serial.c ****     serial_delay();
+ 120:keyboards/Dactylv2/serial.c ****   }
+ 121:keyboards/Dactylv2/serial.c **** }
+ 205               		.loc 1 121 0
+ 206 0014 CF91      		pop r28
+ 207               	.LVL16:
+ 208 0016 1F91      		pop r17
+ 209 0018 0F91      		pop r16
+ 210               	.LVL17:
+ 211 001a 0895      		ret
+ 212               	.LVL18:
+ 213               	.L15:
+ 114:keyboards/Dactylv2/serial.c ****       serial_high();
+ 214               		.loc 1 114 0
+ 215 001c C801      		movw r24,r16
+ 216 001e 0C2E      		mov r0,r28
+ 217 0020 00C0      		rjmp 2f
+ 218               		1:
+ 219 0022 9595      		asr r25
+ 220 0024 8795      		ror r24
+ 221               		2:
+ 222 0026 0A94      		dec r0
+ 223 0028 02F4      		brpl 1b
+ 224 002a 80FF      		sbrs r24,0
+ 225 002c 00C0      		rjmp .L13
+ 115:keyboards/Dactylv2/serial.c ****       serial_high();
+ 226               		.loc 1 115 0
+ 227 002e 0E94 0000 		call serial_high
+ 228               	.LVL19:
+ 229               	.L14:
+ 230               	.LBB73:
+ 231               	.LBB74:
+ 232               	.LBB75:
+ 233               		.loc 2 276 0
+ 234 0032 80E8      		ldi r24,lo8(-128)
+ 235 0034 8A95      	1:	dec r24
+ 236 0036 01F4      		brne 1b
+ 237               	.LVL20:
+ 238 0038 00C0      		rjmp .L12
+ 239               	.L13:
+ 240               	.LBE75:
+ 241               	.LBE74:
+ 242               	.LBE73:
+ 243               	.LBB76:
+ 244               	.LBB77:
+  51:keyboards/Dactylv2/serial.c **** }
+ 245               		.loc 1 51 0
+ 246 003a 5898      		cbi 0xb,0
+ 247 003c 00C0      		rjmp .L14
+ 248               	.LBE77:
+ 249               	.LBE76:
+ 250               		.cfi_endproc
+ 251               	.LFE17:
+ 253               		.section	.text.sync_send,"ax",@progbits
+ 255               	sync_send:
+ 256               	.LFB15:
+  85:keyboards/Dactylv2/serial.c ****   serial_output();
+ 257               		.loc 1 85 0
+ 258               		.cfi_startproc
+ 259               	/* prologue: function */
+ 260               	/* frame size = 0 */
+ 261               	/* stack size = 0 */
+ 262               	.L__stack_usage = 0
+  86:keyboards/Dactylv2/serial.c **** 
+ 263               		.loc 1 86 0
+ 264 0000 0E94 0000 		call serial_output
+ 265               	.LVL21:
+ 266               	.LBB83:
+ 267               	.LBB84:
+  51:keyboards/Dactylv2/serial.c **** }
+ 268               		.loc 1 51 0
+ 269 0004 5898      		cbi 0xb,0
+ 270               	.LVL22:
+ 271               	.LBE84:
+ 272               	.LBE83:
+ 273               	.LBB85:
+ 274               	.LBB86:
+ 275               	.LBB87:
+ 276               		.loc 2 276 0
+ 277 0006 80E8      		ldi r24,lo8(-128)
+ 278 0008 8A95      	1:	dec r24
+ 279 000a 01F4      		brne 1b
+ 280               	.LVL23:
+ 281               	.LBE87:
+ 282               	.LBE86:
+ 283               	.LBE85:
+  91:keyboards/Dactylv2/serial.c **** }
+ 284               		.loc 1 91 0
+ 285 000c 0C94 0000 		jmp serial_high
+ 286               	.LVL24:
+ 287               		.cfi_endproc
+ 288               	.LFE15:
+ 290               		.section	.text.serial_master_init,"ax",@progbits
+ 291               	.global	serial_master_init
+ 293               	serial_master_init:
+ 294               	.LFB12:
+  59:keyboards/Dactylv2/serial.c ****   serial_output();
+ 295               		.loc 1 59 0
+ 296               		.cfi_startproc
+ 297               	/* prologue: function */
+ 298               	/* frame size = 0 */
+ 299               	/* stack size = 0 */
+ 300               	.L__stack_usage = 0
+  60:keyboards/Dactylv2/serial.c ****   serial_high();
+ 301               		.loc 1 60 0
+ 302 0000 0E94 0000 		call serial_output
+ 303               	.LVL25:
+  61:keyboards/Dactylv2/serial.c **** }
+ 304               		.loc 1 61 0
+ 305 0004 0C94 0000 		jmp serial_high
+ 306               	.LVL26:
+ 307               		.cfi_endproc
+ 308               	.LFE12:
+ 310               		.section	.text.serial_slave_init,"ax",@progbits
+ 311               	.global	serial_slave_init
+ 313               	serial_slave_init:
+ 314               	.LFB13:
+  64:keyboards/Dactylv2/serial.c ****   serial_input();
+ 315               		.loc 1 64 0
+ 316               		.cfi_startproc
+ 317               	/* prologue: function */
+ 318               	/* frame size = 0 */
+ 319               	/* stack size = 0 */
+ 320               	.L__stack_usage = 0
+  65:keyboards/Dactylv2/serial.c **** 
+ 321               		.loc 1 65 0
+ 322 0000 0E94 0000 		call serial_input
+ 323               	.LVL27:
+  68:keyboards/Dactylv2/serial.c ****   // Trigger on falling edge of INT0
+ 324               		.loc 1 68 0
+ 325 0004 E89A      		sbi 0x1d,0
+  70:keyboards/Dactylv2/serial.c **** }
+ 326               		.loc 1 70 0
+ 327 0006 E9E6      		ldi r30,lo8(105)
+ 328 0008 F0E0      		ldi r31,0
+ 329 000a 8081      		ld r24,Z
+ 330 000c 8C7F      		andi r24,lo8(-4)
+ 331 000e 8083      		st Z,r24
+ 332               	/* epilogue start */
+  71:keyboards/Dactylv2/serial.c **** 
+ 333               		.loc 1 71 0
+ 334 0010 0895      		ret
+ 335               		.cfi_endproc
+ 336               	.LFE13:
+ 338               		.section	.text.__vector_1,"ax",@progbits
+ 339               	.global	__vector_1
+ 341               	__vector_1:
+ 342               	.LFB18:
+ 122:keyboards/Dactylv2/serial.c **** 
+ 123:keyboards/Dactylv2/serial.c **** // interrupt handle to be used by the slave device
+ 124:keyboards/Dactylv2/serial.c **** ISR(SERIAL_PIN_INTERRUPT) {
+ 343               		.loc 1 124 0
+ 344               		.cfi_startproc
+ 345 0000 1F92      		push r1
+ 346               	.LCFI3:
+ 347               		.cfi_def_cfa_offset 3
+ 348               		.cfi_offset 1, -2
+ 349 0002 0F92      		push r0
+ 350               	.LCFI4:
+ 351               		.cfi_def_cfa_offset 4
+ 352               		.cfi_offset 0, -3
+ 353 0004 0FB6      		in r0,__SREG__
+ 354 0006 0F92      		push r0
+ 355 0008 1124      		clr __zero_reg__
+ 356 000a EF92      		push r14
+ 357               	.LCFI5:
+ 358               		.cfi_def_cfa_offset 5
+ 359               		.cfi_offset 14, -4
+ 360 000c FF92      		push r15
+ 361               	.LCFI6:
+ 362               		.cfi_def_cfa_offset 6
+ 363               		.cfi_offset 15, -5
+ 364 000e 1F93      		push r17
+ 365               	.LCFI7:
+ 366               		.cfi_def_cfa_offset 7
+ 367               		.cfi_offset 17, -6
+ 368 0010 2F93      		push r18
+ 369               	.LCFI8:
+ 370               		.cfi_def_cfa_offset 8
+ 371               		.cfi_offset 18, -7
+ 372 0012 3F93      		push r19
+ 373               	.LCFI9:
+ 374               		.cfi_def_cfa_offset 9
+ 375               		.cfi_offset 19, -8
+ 376 0014 4F93      		push r20
+ 377               	.LCFI10:
+ 378               		.cfi_def_cfa_offset 10
+ 379               		.cfi_offset 20, -9
+ 380 0016 5F93      		push r21
+ 381               	.LCFI11:
+ 382               		.cfi_def_cfa_offset 11
+ 383               		.cfi_offset 21, -10
+ 384 0018 6F93      		push r22
+ 385               	.LCFI12:
+ 386               		.cfi_def_cfa_offset 12
+ 387               		.cfi_offset 22, -11
+ 388 001a 7F93      		push r23
+ 389               	.LCFI13:
+ 390               		.cfi_def_cfa_offset 13
+ 391               		.cfi_offset 23, -12
+ 392 001c 8F93      		push r24
+ 393               	.LCFI14:
+ 394               		.cfi_def_cfa_offset 14
+ 395               		.cfi_offset 24, -13
+ 396 001e 9F93      		push r25
+ 397               	.LCFI15:
+ 398               		.cfi_def_cfa_offset 15
+ 399               		.cfi_offset 25, -14
+ 400 0020 AF93      		push r26
+ 401               	.LCFI16:
+ 402               		.cfi_def_cfa_offset 16
+ 403               		.cfi_offset 26, -15
+ 404 0022 BF93      		push r27
+ 405               	.LCFI17:
+ 406               		.cfi_def_cfa_offset 17
+ 407               		.cfi_offset 27, -16
+ 408 0024 CF93      		push r28
+ 409               	.LCFI18:
+ 410               		.cfi_def_cfa_offset 18
+ 411               		.cfi_offset 28, -17
+ 412 0026 DF93      		push r29
+ 413               	.LCFI19:
+ 414               		.cfi_def_cfa_offset 19
+ 415               		.cfi_offset 29, -18
+ 416 0028 EF93      		push r30
+ 417               	.LCFI20:
+ 418               		.cfi_def_cfa_offset 20
+ 419               		.cfi_offset 30, -19
+ 420 002a FF93      		push r31
+ 421               	.LCFI21:
+ 422               		.cfi_def_cfa_offset 21
+ 423               		.cfi_offset 31, -20
+ 424               	/* prologue: Signal */
+ 425               	/* frame size = 0 */
+ 426               	/* stack size = 20 */
+ 427               	.L__stack_usage = 20
+ 125:keyboards/Dactylv2/serial.c ****   sync_send();
+ 428               		.loc 1 125 0
+ 429 002c 0E94 0000 		call sync_send
+ 430               	.LVL28:
+ 431               	.LBB88:
+ 126:keyboards/Dactylv2/serial.c **** 
+ 127:keyboards/Dactylv2/serial.c ****   uint8_t checksum = 0;
+ 128:keyboards/Dactylv2/serial.c ****   for (int i = 0; i < SERIAL_SLAVE_BUFFER_LENGTH; ++i) {
+ 432               		.loc 1 128 0
+ 433 0030 D0E0      		ldi r29,0
+ 434 0032 C0E0      		ldi r28,0
+ 435               	.LBE88:
+ 127:keyboards/Dactylv2/serial.c ****   for (int i = 0; i < SERIAL_SLAVE_BUFFER_LENGTH; ++i) {
+ 436               		.loc 1 127 0
+ 437 0034 10E0      		ldi r17,0
+ 438               	.LVL29:
+ 439               	.L20:
+ 440               	.LBB89:
+ 129:keyboards/Dactylv2/serial.c ****     serial_write_byte(serial_slave_buffer[i]);
+ 441               		.loc 1 129 0 discriminator 3
+ 442 0036 CE01      		movw r24,r28
+ 443 0038 8050      		subi r24,lo8(-(serial_slave_buffer))
+ 444 003a 9040      		sbci r25,hi8(-(serial_slave_buffer))
+ 445 003c 7C01      		movw r14,r24
+ 446 003e FC01      		movw r30,r24
+ 447 0040 8081      		ld r24,Z
+ 448 0042 0E94 0000 		call serial_write_byte
+ 449               	.LVL30:
+ 130:keyboards/Dactylv2/serial.c ****     sync_send();
+ 450               		.loc 1 130 0 discriminator 3
+ 451 0046 0E94 0000 		call sync_send
+ 452               	.LVL31:
+ 131:keyboards/Dactylv2/serial.c ****     checksum += serial_slave_buffer[i];
+ 453               		.loc 1 131 0 discriminator 3
+ 454 004a F701      		movw r30,r14
+ 455 004c 8081      		ld r24,Z
+ 456 004e 180F      		add r17,r24
+ 457               	.LVL32:
+ 128:keyboards/Dactylv2/serial.c ****     serial_write_byte(serial_slave_buffer[i]);
+ 458               		.loc 1 128 0 discriminator 3
+ 459 0050 2196      		adiw r28,1
+ 460               	.LVL33:
+ 461 0052 C730      		cpi r28,7
+ 462 0054 D105      		cpc r29,__zero_reg__
+ 463 0056 01F4      		brne .L20
+ 464               	.LBE89:
+ 132:keyboards/Dactylv2/serial.c ****   }
+ 133:keyboards/Dactylv2/serial.c ****   serial_write_byte(checksum);
+ 465               		.loc 1 133 0
+ 466 0058 812F      		mov r24,r17
+ 467 005a 0E94 0000 		call serial_write_byte
+ 468               	.LVL34:
+ 134:keyboards/Dactylv2/serial.c ****   sync_send();
+ 469               		.loc 1 134 0
+ 470 005e 0E94 0000 		call sync_send
+ 471               	.LVL35:
+ 472               	.LBB90:
+ 473               	.LBB91:
+ 474               	.LBB92:
+ 475               		.loc 2 276 0
+ 476 0062 F0E8      		ldi r31,lo8(-128)
+ 477 0064 FA95      	1:	dec r31
+ 478 0066 01F4      		brne 1b
+ 479               	.LVL36:
+ 480               	.LBE92:
+ 481               	.LBE91:
+ 482               	.LBE90:
+ 483               	.LBB93:
+ 484               	.LBB94:
+ 485 0068 80E4      		ldi r24,lo8(64)
+ 486 006a 8A95      	1:	dec r24
+ 487 006c 01F4      		brne 1b
+ 488               	.LVL37:
+ 489               	.LBE94:
+ 490               	.LBE93:
+ 491               	.LBB95:
+ 135:keyboards/Dactylv2/serial.c **** 
+ 136:keyboards/Dactylv2/serial.c ****   // wait for the sync to finish sending
+ 137:keyboards/Dactylv2/serial.c ****   serial_delay();
+ 138:keyboards/Dactylv2/serial.c **** 
+ 139:keyboards/Dactylv2/serial.c ****   // read the middle of pulses
+ 140:keyboards/Dactylv2/serial.c ****   _delay_us(SERIAL_DELAY/2);
+ 141:keyboards/Dactylv2/serial.c **** 
+ 142:keyboards/Dactylv2/serial.c ****   uint8_t checksum_computed = 0;
+ 143:keyboards/Dactylv2/serial.c ****   for (int i = 0; i < SERIAL_MASTER_BUFFER_LENGTH; ++i) {
+ 144:keyboards/Dactylv2/serial.c ****     serial_master_buffer[i] = serial_read_byte();
+ 492               		.loc 1 144 0
+ 493 006e 0E94 0000 		call serial_read_byte
+ 494               	.LVL38:
+ 495 0072 8093 0000 		sts serial_master_buffer,r24
+ 145:keyboards/Dactylv2/serial.c ****     sync_send();
+ 496               		.loc 1 145 0
+ 497 0076 0E94 0000 		call sync_send
+ 498               	.LVL39:
+ 146:keyboards/Dactylv2/serial.c ****     checksum_computed += serial_master_buffer[i];
+ 499               		.loc 1 146 0
+ 500 007a C091 0000 		lds r28,serial_master_buffer
+ 501               	.LVL40:
+ 502               	.LBE95:
+ 147:keyboards/Dactylv2/serial.c ****   }
+ 148:keyboards/Dactylv2/serial.c ****   uint8_t checksum_received = serial_read_byte();
+ 503               		.loc 1 148 0
+ 504 007e 0E94 0000 		call serial_read_byte
+ 505               	.LVL41:
+ 506 0082 D82F      		mov r29,r24
+ 507               	.LVL42:
+ 149:keyboards/Dactylv2/serial.c ****   sync_send();
+ 508               		.loc 1 149 0
+ 509 0084 0E94 0000 		call sync_send
+ 510               	.LVL43:
+ 150:keyboards/Dactylv2/serial.c **** 
+ 151:keyboards/Dactylv2/serial.c ****   serial_input(); // end transaction
+ 511               		.loc 1 151 0
+ 512 0088 0E94 0000 		call serial_input
+ 513               	.LVL44:
+ 152:keyboards/Dactylv2/serial.c **** 
+ 153:keyboards/Dactylv2/serial.c ****   if ( checksum_computed != checksum_received ) {
+ 154:keyboards/Dactylv2/serial.c ****     status |= SLAVE_DATA_CORRUPT;
+ 514               		.loc 1 154 0
+ 515 008c 8091 0000 		lds r24,status
+ 153:keyboards/Dactylv2/serial.c ****     status |= SLAVE_DATA_CORRUPT;
+ 516               		.loc 1 153 0
+ 517 0090 DC17      		cp r29,r28
+ 518 0092 01F0      		breq .L21
+ 519               		.loc 1 154 0
+ 520 0094 8160      		ori r24,lo8(1)
+ 521               	.L24:
+ 155:keyboards/Dactylv2/serial.c ****   } else {
+ 156:keyboards/Dactylv2/serial.c ****     status &= ~SLAVE_DATA_CORRUPT;
+ 522               		.loc 1 156 0
+ 523 0096 8093 0000 		sts status,r24
+ 524               	/* epilogue start */
+ 157:keyboards/Dactylv2/serial.c ****   }
+ 158:keyboards/Dactylv2/serial.c **** }
+ 525               		.loc 1 158 0
+ 526 009a FF91      		pop r31
+ 527 009c EF91      		pop r30
+ 528 009e DF91      		pop r29
+ 529               	.LVL45:
+ 530 00a0 CF91      		pop r28
+ 531               	.LVL46:
+ 532 00a2 BF91      		pop r27
+ 533 00a4 AF91      		pop r26
+ 534 00a6 9F91      		pop r25
+ 535 00a8 8F91      		pop r24
+ 536 00aa 7F91      		pop r23
+ 537 00ac 6F91      		pop r22
+ 538 00ae 5F91      		pop r21
+ 539 00b0 4F91      		pop r20
+ 540 00b2 3F91      		pop r19
+ 541 00b4 2F91      		pop r18
+ 542 00b6 1F91      		pop r17
+ 543               	.LVL47:
+ 544 00b8 FF90      		pop r15
+ 545 00ba EF90      		pop r14
+ 546               	.LVL48:
+ 547 00bc 0F90      		pop r0
+ 548 00be 0FBE      		out __SREG__,r0
+ 549 00c0 0F90      		pop r0
+ 550 00c2 1F90      		pop r1
+ 551 00c4 1895      		reti
+ 552               	.LVL49:
+ 553               	.L21:
+ 156:keyboards/Dactylv2/serial.c ****   }
+ 554               		.loc 1 156 0
+ 555 00c6 8E7F      		andi r24,lo8(-2)
+ 556 00c8 00C0      		rjmp .L24
+ 557               		.cfi_endproc
+ 558               	.LFE18:
+ 560               		.section	.text.serial_update_buffers,"ax",@progbits
+ 561               	.global	serial_update_buffers
+ 563               	serial_update_buffers:
+ 564               	.LFB20:
+ 159:keyboards/Dactylv2/serial.c **** 
+ 160:keyboards/Dactylv2/serial.c **** inline
+ 161:keyboards/Dactylv2/serial.c **** bool serial_slave_DATA_CORRUPT(void) {
+ 162:keyboards/Dactylv2/serial.c ****   return status & SLAVE_DATA_CORRUPT;
+ 163:keyboards/Dactylv2/serial.c **** }
+ 164:keyboards/Dactylv2/serial.c **** 
+ 165:keyboards/Dactylv2/serial.c **** // Copies the serial_slave_buffer to the master and sends the
+ 166:keyboards/Dactylv2/serial.c **** // serial_master_buffer to the slave.
+ 167:keyboards/Dactylv2/serial.c **** //
+ 168:keyboards/Dactylv2/serial.c **** // Returns:
+ 169:keyboards/Dactylv2/serial.c **** // 0 => no error
+ 170:keyboards/Dactylv2/serial.c **** // 1 => slave did not respond
+ 171:keyboards/Dactylv2/serial.c **** int serial_update_buffers(void) {
+ 565               		.loc 1 171 0
+ 566               		.cfi_startproc
+ 567 0000 EF92      		push r14
+ 568               	.LCFI22:
+ 569               		.cfi_def_cfa_offset 3
+ 570               		.cfi_offset 14, -2
+ 571 0002 FF92      		push r15
+ 572               	.LCFI23:
+ 573               		.cfi_def_cfa_offset 4
+ 574               		.cfi_offset 15, -3
+ 575 0004 1F93      		push r17
+ 576               	.LCFI24:
+ 577               		.cfi_def_cfa_offset 5
+ 578               		.cfi_offset 17, -4
+ 579 0006 CF93      		push r28
+ 580               	.LCFI25:
+ 581               		.cfi_def_cfa_offset 6
+ 582               		.cfi_offset 28, -5
+ 583 0008 DF93      		push r29
+ 584               	.LCFI26:
+ 585               		.cfi_def_cfa_offset 7
+ 586               		.cfi_offset 29, -6
+ 587               	/* prologue: function */
+ 588               	/* frame size = 0 */
+ 589               	/* stack size = 5 */
+ 590               	.L__stack_usage = 5
+ 172:keyboards/Dactylv2/serial.c ****   // this code is very time dependent, so we need to disable interrupts
+ 173:keyboards/Dactylv2/serial.c ****   cli();
+ 591               		.loc 1 173 0
+ 592               	/* #APP */
+ 593               	 ;  173 "keyboards/Dactylv2/serial.c" 1
+ 594 000a F894      		cli
+ 595               	 ;  0 "" 2
+ 174:keyboards/Dactylv2/serial.c **** 
+ 175:keyboards/Dactylv2/serial.c ****   // signal to the slave that we want to start a transaction
+ 176:keyboards/Dactylv2/serial.c ****   serial_output();
+ 596               		.loc 1 176 0
+ 597               	/* #NOAPP */
+ 598 000c 0E94 0000 		call serial_output
+ 599               	.LVL50:
+ 600               	.LBB106:
+ 601               	.LBB107:
+  51:keyboards/Dactylv2/serial.c **** }
+ 602               		.loc 1 51 0
+ 603 0010 5898      		cbi 0xb,0
+ 604               	.LVL51:
+ 605               	.LBE107:
+ 606               	.LBE106:
+ 607               	.LBB108:
+ 608               	.LBB109:
+ 609               		.loc 2 276 0
+ 610 0012 25E0      		ldi r18,lo8(5)
+ 611 0014 2A95      	1:	dec r18
+ 612 0016 01F4      		brne 1b
+ 613 0018 0000      		nop
+ 614               	.LVL52:
+ 615               	.LBE109:
+ 616               	.LBE108:
+ 177:keyboards/Dactylv2/serial.c ****   serial_low();
+ 178:keyboards/Dactylv2/serial.c ****   _delay_us(1);
+ 179:keyboards/Dactylv2/serial.c **** 
+ 180:keyboards/Dactylv2/serial.c ****   // wait for the slaves response
+ 181:keyboards/Dactylv2/serial.c ****   serial_input();
+ 617               		.loc 1 181 0
+ 618 001a 0E94 0000 		call serial_input
+ 619               	.LVL53:
+ 182:keyboards/Dactylv2/serial.c ****   serial_high();
+ 620               		.loc 1 182 0
+ 621 001e 0E94 0000 		call serial_high
+ 622               	.LVL54:
+ 623               	.LBB110:
+ 624               	.LBB111:
+ 625               		.loc 2 276 0
+ 626 0022 30E8      		ldi r19,lo8(-128)
+ 627 0024 3A95      	1:	dec r19
+ 628 0026 01F4      		brne 1b
+ 629               	.LVL55:
+ 630               	.LBE111:
+ 631               	.LBE110:
+ 183:keyboards/Dactylv2/serial.c ****   _delay_us(SERIAL_DELAY);
+ 184:keyboards/Dactylv2/serial.c **** 
+ 185:keyboards/Dactylv2/serial.c ****   // check if the slave is present
+ 186:keyboards/Dactylv2/serial.c ****   if (serial_read_pin()) {
+ 632               		.loc 1 186 0
+ 633 0028 489B      		sbis 0x9,0
+ 634 002a 00C0      		rjmp .L26
+ 635               	.L31:
+ 187:keyboards/Dactylv2/serial.c ****     // slave failed to pull the line low, assume not present
+ 188:keyboards/Dactylv2/serial.c ****     sei();
+ 189:keyboards/Dactylv2/serial.c ****     return 1;
+ 190:keyboards/Dactylv2/serial.c ****   }
+ 191:keyboards/Dactylv2/serial.c **** 
+ 192:keyboards/Dactylv2/serial.c ****   // if the slave is present syncronize with it
+ 193:keyboards/Dactylv2/serial.c ****   sync_recv();
+ 194:keyboards/Dactylv2/serial.c **** 
+ 195:keyboards/Dactylv2/serial.c ****   uint8_t checksum_computed = 0;
+ 196:keyboards/Dactylv2/serial.c ****   // receive data from the slave
+ 197:keyboards/Dactylv2/serial.c ****   for (int i = 0; i < SERIAL_SLAVE_BUFFER_LENGTH; ++i) {
+ 198:keyboards/Dactylv2/serial.c ****     serial_slave_buffer[i] = serial_read_byte();
+ 199:keyboards/Dactylv2/serial.c ****     sync_recv();
+ 200:keyboards/Dactylv2/serial.c ****     checksum_computed += serial_slave_buffer[i];
+ 201:keyboards/Dactylv2/serial.c ****   }
+ 202:keyboards/Dactylv2/serial.c ****   uint8_t checksum_received = serial_read_byte();
+ 203:keyboards/Dactylv2/serial.c ****   sync_recv();
+ 204:keyboards/Dactylv2/serial.c **** 
+ 205:keyboards/Dactylv2/serial.c ****   if (checksum_computed != checksum_received) {
+ 206:keyboards/Dactylv2/serial.c ****     sei();
+ 636               		.loc 1 206 0
+ 637               	/* #APP */
+ 638               	 ;  206 "keyboards/Dactylv2/serial.c" 1
+ 639 002c 7894      		sei
+ 640               	 ;  0 "" 2
+ 207:keyboards/Dactylv2/serial.c ****     return 1;
+ 641               		.loc 1 207 0
+ 642               	/* #NOAPP */
+ 643 002e 81E0      		ldi r24,lo8(1)
+ 644 0030 90E0      		ldi r25,0
+ 645               	.L25:
+ 646               	/* epilogue start */
+ 208:keyboards/Dactylv2/serial.c ****   }
+ 209:keyboards/Dactylv2/serial.c **** 
+ 210:keyboards/Dactylv2/serial.c ****   uint8_t checksum = 0;
+ 211:keyboards/Dactylv2/serial.c ****   // send data to the slave
+ 212:keyboards/Dactylv2/serial.c ****   for (int i = 0; i < SERIAL_MASTER_BUFFER_LENGTH; ++i) {
+ 213:keyboards/Dactylv2/serial.c ****     serial_write_byte(serial_master_buffer[i]);
+ 214:keyboards/Dactylv2/serial.c ****     sync_recv();
+ 215:keyboards/Dactylv2/serial.c ****     checksum += serial_master_buffer[i];
+ 216:keyboards/Dactylv2/serial.c ****   }
+ 217:keyboards/Dactylv2/serial.c ****   serial_write_byte(checksum);
+ 218:keyboards/Dactylv2/serial.c ****   sync_recv();
+ 219:keyboards/Dactylv2/serial.c **** 
+ 220:keyboards/Dactylv2/serial.c ****   // always, release the line when not in use
+ 221:keyboards/Dactylv2/serial.c ****   serial_output();
+ 222:keyboards/Dactylv2/serial.c ****   serial_high();
+ 223:keyboards/Dactylv2/serial.c **** 
+ 224:keyboards/Dactylv2/serial.c ****   sei();
+ 225:keyboards/Dactylv2/serial.c ****   return 0;
+ 226:keyboards/Dactylv2/serial.c **** }
+ 647               		.loc 1 226 0
+ 648 0032 DF91      		pop r29
+ 649 0034 CF91      		pop r28
+ 650 0036 1F91      		pop r17
+ 651 0038 FF90      		pop r15
+ 652 003a EF90      		pop r14
+ 653 003c 0895      		ret
+ 654               	.L26:
+ 193:keyboards/Dactylv2/serial.c **** 
+ 655               		.loc 1 193 0
+ 656 003e 0E94 0000 		call sync_recv
+ 657               	.LVL56:
+ 658               	.LBB112:
+ 197:keyboards/Dactylv2/serial.c ****     serial_slave_buffer[i] = serial_read_byte();
+ 659               		.loc 1 197 0
+ 660 0042 D0E0      		ldi r29,0
+ 661 0044 C0E0      		ldi r28,0
+ 662               	.LBE112:
+ 195:keyboards/Dactylv2/serial.c ****   // receive data from the slave
+ 663               		.loc 1 195 0
+ 664 0046 10E0      		ldi r17,0
+ 665               	.LVL57:
+ 666               	.L28:
+ 667               	.LBB113:
+ 198:keyboards/Dactylv2/serial.c ****     sync_recv();
+ 668               		.loc 1 198 0 discriminator 3
+ 669 0048 0E94 0000 		call serial_read_byte
+ 670               	.LVL58:
+ 671 004c FE01      		movw r30,r28
+ 672 004e E050      		subi r30,lo8(-(serial_slave_buffer))
+ 673 0050 F040      		sbci r31,hi8(-(serial_slave_buffer))
+ 674 0052 7F01      		movw r14,r30
+ 675 0054 8083      		st Z,r24
+ 199:keyboards/Dactylv2/serial.c ****     checksum_computed += serial_slave_buffer[i];
+ 676               		.loc 1 199 0 discriminator 3
+ 677 0056 0E94 0000 		call sync_recv
+ 678               	.LVL59:
+ 200:keyboards/Dactylv2/serial.c ****   }
+ 679               		.loc 1 200 0 discriminator 3
+ 680 005a F701      		movw r30,r14
+ 681 005c 8081      		ld r24,Z
+ 682 005e 180F      		add r17,r24
+ 683               	.LVL60:
+ 197:keyboards/Dactylv2/serial.c ****     serial_slave_buffer[i] = serial_read_byte();
+ 684               		.loc 1 197 0 discriminator 3
+ 685 0060 2196      		adiw r28,1
+ 686               	.LVL61:
+ 687 0062 C730      		cpi r28,7
+ 688 0064 D105      		cpc r29,__zero_reg__
+ 689 0066 01F4      		brne .L28
+ 690               	.LBE113:
+ 202:keyboards/Dactylv2/serial.c ****   sync_recv();
+ 691               		.loc 1 202 0
+ 692 0068 0E94 0000 		call serial_read_byte
+ 693               	.LVL62:
+ 694 006c C82F      		mov r28,r24
+ 695               	.LVL63:
+ 203:keyboards/Dactylv2/serial.c **** 
+ 696               		.loc 1 203 0
+ 697 006e 0E94 0000 		call sync_recv
+ 698               	.LVL64:
+ 205:keyboards/Dactylv2/serial.c ****     sei();
+ 699               		.loc 1 205 0
+ 700 0072 C113      		cpse r28,r17
+ 701 0074 00C0      		rjmp .L31
+ 702               	.LVL65:
+ 703               	.LBB114:
+ 213:keyboards/Dactylv2/serial.c ****     sync_recv();
+ 704               		.loc 1 213 0 discriminator 1
+ 705 0076 8091 0000 		lds r24,serial_master_buffer
+ 706 007a 0E94 0000 		call serial_write_byte
+ 707               	.LVL66:
+ 214:keyboards/Dactylv2/serial.c ****     checksum += serial_master_buffer[i];
+ 708               		.loc 1 214 0 discriminator 1
+ 709 007e 0E94 0000 		call sync_recv
+ 710               	.LVL67:
+ 215:keyboards/Dactylv2/serial.c ****   }
+ 711               		.loc 1 215 0 discriminator 1
+ 712 0082 8091 0000 		lds r24,serial_master_buffer
+ 713               	.LVL68:
+ 714               	.LBE114:
+ 217:keyboards/Dactylv2/serial.c ****   sync_recv();
+ 715               		.loc 1 217 0 discriminator 1
+ 716 0086 0E94 0000 		call serial_write_byte
+ 717               	.LVL69:
+ 218:keyboards/Dactylv2/serial.c **** 
+ 718               		.loc 1 218 0 discriminator 1
+ 719 008a 0E94 0000 		call sync_recv
+ 720               	.LVL70:
+ 221:keyboards/Dactylv2/serial.c ****   serial_high();
+ 721               		.loc 1 221 0 discriminator 1
+ 722 008e 0E94 0000 		call serial_output
+ 723               	.LVL71:
+ 222:keyboards/Dactylv2/serial.c **** 
+ 724               		.loc 1 222 0 discriminator 1
+ 725 0092 0E94 0000 		call serial_high
+ 726               	.LVL72:
+ 224:keyboards/Dactylv2/serial.c ****   return 0;
+ 727               		.loc 1 224 0 discriminator 1
+ 728               	/* #APP */
+ 729               	 ;  224 "keyboards/Dactylv2/serial.c" 1
+ 730 0096 7894      		sei
+ 731               	 ;  0 "" 2
+ 225:keyboards/Dactylv2/serial.c **** }
+ 732               		.loc 1 225 0 discriminator 1
+ 733               	/* #NOAPP */
+ 734 0098 90E0      		ldi r25,0
+ 735 009a 80E0      		ldi r24,0
+ 736 009c 00C0      		rjmp .L25
+ 737               		.cfi_endproc
+ 738               	.LFE20:
+ 740               	.global	status
+ 741               		.section	.bss.status,"aw",@nobits
+ 744               	status:
+ 745 0000 00        		.zero	1
+ 746               	.global	serial_master_buffer
+ 747               		.section	.bss.serial_master_buffer,"aw",@nobits
+ 750               	serial_master_buffer:
+ 751 0000 00        		.zero	1
+ 752               	.global	serial_slave_buffer
+ 753               		.section	.bss.serial_slave_buffer,"aw",@nobits
+ 756               	serial_slave_buffer:
+ 757 0000 0000 0000 		.zero	7
+ 757      0000 00
+ 758               		.text
+ 759               	.Letext0:
+ 760               		.file 3 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdint.h"
+ 761               		.file 4 "keyboards/Dactylv2/serial.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 serial.c
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:5      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:6      *ABS*:0000000000000001 __zero_reg__
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:12     .text.serial_output:0000000000000000 serial_output
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:31     .text.serial_input:0000000000000000 serial_input
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:51     .text.serial_high:0000000000000000 serial_high
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:69     .text.sync_recv:0000000000000000 sync_recv
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:105    .text.serial_read_byte:0000000000000000 serial_read_byte
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:168    .text.serial_write_byte:0000000000000000 serial_write_byte
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:255    .text.sync_send:0000000000000000 sync_send
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:293    .text.serial_master_init:0000000000000000 serial_master_init
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:313    .text.serial_slave_init:0000000000000000 serial_slave_init
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:341    .text.__vector_1:0000000000000000 __vector_1
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:756    .bss.serial_slave_buffer:0000000000000000 serial_slave_buffer
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:750    .bss.serial_master_buffer:0000000000000000 serial_master_buffer
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:744    .bss.status:0000000000000000 status
+/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccvegTZp.s:563    .text.serial_update_buffers:0000000000000000 serial_update_buffers
+
+UNDEFINED SYMBOLS
+__do_clear_bss
