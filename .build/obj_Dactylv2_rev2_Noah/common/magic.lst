@@ -80,8 +80,8 @@
   45               		.loc 1 36 0
   46 0026 682F      		mov r22,r24
   47 0028 70E0      		ldi r23,0
-  48 002a 90E0      		ldi r25,0
-  49 002c 80E0      		ldi r24,0
+  48 002a 80E0      		ldi r24,0
+  49 002c 90E0      		ldi r25,0
   50               	.LVL6:
   51 002e 0C94 0000 		jmp default_layer_set
   52               	.LVL7:
@@ -90,21 +90,19 @@
   56               		.comm	keymap_config,2,1
   57               		.text
   58               	.Letext0:
-  59               		.file 2 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdint.h"
+  59               		.file 2 "/usr/lib/avr/include/stdint.h"
   60               		.file 3 "./tmk_core/common/debug.h"
-  61               		.file 4 "./tmk_core/common/host.h"
-  62               		.file 5 "./quantum/keycode_config.h"
-  63               		.file 6 "./quantum/keymap.h"
-  64               		.file 7 "./tmk_core/common/action_layer.h"
-  65               		.file 8 "./tmk_core/common/eeconfig.h"
+  61               		.file 4 "./quantum/keycode_config.h"
+  62               		.file 5 "./tmk_core/common/eeconfig.h"
+  63               		.file 6 "./tmk_core/common/action_layer.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 magic.c
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccXl25Y0.s:2      *ABS*:000000000000003e __SP_H__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccXl25Y0.s:3      *ABS*:000000000000003d __SP_L__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccXl25Y0.s:4      *ABS*:000000000000003f __SREG__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccXl25Y0.s:5      *ABS*:0000000000000000 __tmp_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccXl25Y0.s:6      *ABS*:0000000000000001 __zero_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccXl25Y0.s:13     .text.magic:0000000000000000 magic
+     /tmp/cc3equq3.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc3equq3.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc3equq3.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc3equq3.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc3equq3.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc3equq3.s:13     .text.magic:0000000000000000 magic
                             *COM*:0000000000000002 keymap_config
 
 UNDEFINED SYMBOLS

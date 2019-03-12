@@ -172,440 +172,485 @@
   28               	.LVL1:
   29               	.LBB7:
   30               	.LBB8:
-  31               		.file 2 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h"
-   1:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /* Copyright (c) 2002, 2004 Marek Michalkiewicz
-   2:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    Copyright (c) 2005, 2006, 2007 Eric B. Weddington
-   3:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    All rights reserved.
-   4:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-   5:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    Redistribution and use in source and binary forms, with or without
-   6:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    modification, are permitted provided that the following conditions are met:
-   7:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-   8:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    * Redistributions of source code must retain the above copyright
-   9:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****      notice, this list of conditions and the following disclaimer.
-  10:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  11:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    * Redistributions in binary form must reproduce the above copyright
-  12:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****      notice, this list of conditions and the following disclaimer in
-  13:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****      the documentation and/or other materials provided with the
-  14:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****      distribution.
-  15:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  16:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    * Neither the name of the copyright holders nor the names of
-  17:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****      contributors may be used to endorse or promote products derived
-  18:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****      from this software without specific prior written permission.
-  19:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  20:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  21:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  22:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-  23:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-  24:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-  25:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-  26:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-  27:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-  28:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-  29:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-  30:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****   POSSIBILITY OF SUCH DAMAGE. */
-  31:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  32:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /* $Id: wdt.h 2503 2016-02-07 22:59:47Z joerg_wunsch $ */
-  33:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  34:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /*
-  35:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    avr/wdt.h - macros for AVR watchdog timer
-  36:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****  */
-  37:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  38:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #ifndef _AVR_WDT_H_
-  39:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define _AVR_WDT_H_
-  40:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  41:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #include <avr/io.h>
-  42:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #include <stdint.h>
-  43:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  44:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /** \file */
-  45:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /** \defgroup avr_watchdog <avr/wdt.h>: Watchdog timer handling
-  46:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     \code #include <avr/wdt.h> \endcode
-  47:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  48:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     This header file declares the interface to some inline macros
-  49:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     handling the watchdog timer present in many AVR devices.  In order
-  50:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     to prevent the watchdog timer configuration from being
-  51:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     accidentally altered by a crashing application, a special timed
-  52:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     sequence is required in order to change it.  The macros within
-  53:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     this header file handle the required sequence automatically
-  54:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     before changing any value.  Interrupts will be disabled during
-  55:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     the manipulation.
-  56:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  57:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     \note Depending on the fuse configuration of the particular
-  58:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     device, further restrictions might apply, in particular it might
-  59:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     be disallowed to turn off the watchdog timer.
-  60:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  61:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     Note that for newer devices (ATmega88 and newer, effectively any
-  62:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     AVR that has the option to also generate interrupts), the watchdog
-  63:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     timer remains active even after a system reset (except a power-on
-  64:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     condition), using the fastest prescaler value (approximately 15
-  65:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     ms).  It is therefore required to turn off the watchdog early
-  66:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     during program startup, the datasheet recommends a sequence like
-  67:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     the following:
-  68:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  69:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     \code
-  70:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     #include <stdint.h>
-  71:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     #include <avr/wdt.h>
-  72:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  73:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     uint8_t mcusr_mirror __attribute__ ((section (".noinit")));
-  74:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  75:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     void get_mcusr(void) \
-  76:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       __attribute__((naked)) \
-  77:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       __attribute__((section(".init3")));
-  78:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     void get_mcusr(void)
-  79:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     {
-  80:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       mcusr_mirror = MCUSR;
-  81:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       MCUSR = 0;
-  82:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       wdt_disable();
-  83:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     }
-  84:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     \endcode
-  85:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  86:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     Saving the value of MCUSR in \c mcusr_mirror is only needed if the
-  87:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     application later wants to examine the reset source, but in particular, 
-  88:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     clearing the watchdog reset flag before disabling the
-  89:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     watchdog is required, according to the datasheet.
-  90:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** */
-  91:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  92:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /**
-  93:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    \ingroup avr_watchdog
-  94:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    Reset the watchdog timer.  When the watchdog timer is enabled,
-  95:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    a call to this instruction is required before the timer expires,
-  96:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    otherwise a watchdog-initiated device reset will occur. 
-  97:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** */
-  98:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
-  99:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define wdt_reset() __asm__ __volatile__ ("wdr")
- 100:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 101:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #ifndef __DOXYGEN__
- 102:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 103:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #if defined(WDP3)
- 104:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** # define _WD_PS3_MASK       _BV(WDP3)
- 105:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #else
- 106:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** # define _WD_PS3_MASK       0x00
- 107:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #endif
- 108:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 109:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #if defined(WDTCSR)
- 110:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #  define _WD_CONTROL_REG     WDTCSR
- 111:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #elif defined(WDTCR)
- 112:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #  define _WD_CONTROL_REG     WDTCR
- 113:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #else
- 114:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #  define _WD_CONTROL_REG     WDT
- 115:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #endif
- 116:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 117:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #if defined(WDTOE)
- 118:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define _WD_CHANGE_BIT      WDTOE
- 119:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #else
- 120:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define _WD_CHANGE_BIT      WDCE
- 121:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #endif
- 122:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 123:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #endif	/* !__DOXYGEN__ */
- 124:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 125:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 126:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /**
- 127:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    \ingroup avr_watchdog
- 128:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    Enable the watchdog timer, configuring it for expiry after
- 129:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    \c timeout (which is a combination of the \c WDP0 through
- 130:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    \c WDP2 bits to write into the \c WDTCR register; For those devices 
- 131:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    that have a \c WDTCSR register, it uses the combination of the \c WDP0 
- 132:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    through \c WDP3 bits).
- 133:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 134:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    See also the symbolic constants \c WDTO_15MS et al.
- 135:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** */
- 136:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 137:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 138:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #if defined(__AVR_XMEGA__)
- 139:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 140:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** /*
- 141:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    wdt_enable(timeout) for xmega devices
- 142:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** ** write signature (CCP_IOREG_gc) that enables change of protected I/O
- 143:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    registers to the CCP register
- 144:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** ** At the same time,
- 145:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    1) set WDT change enable (WDT_CEN_bm)
- 146:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    2) enable WDT (WDT_ENABLE_bm)
- 147:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    3) set timeout (timeout)
- 148:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** ** Synchronization starts when ENABLE bit of WDT is set. So, wait till it
- 149:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    finishes (SYNCBUSY of STATUS register is automatically cleared after the
- 150:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****    sync is finished).
- 151:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** */
- 152:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define wdt_enable(timeout) \
- 153:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** do { \
- 154:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** uint8_t temp; \
- 155:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __asm__ __volatile__ (         \
- 156:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "in __tmp_reg__, %[rampd]"              "\n\t" \
- 157:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[rampd], __zero_reg__"            "\n\t" \
- 158:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[ccp_reg], %[ioreg_cen_mask]"     "\n\t" \
- 159:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "sts %[wdt_reg], %[wdt_enable_timeout]" "\n\t" \
- 160:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "1:lds %[tmp], %[wdt_status_reg]"       "\n\t" \
- 161:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "sbrc %[tmp], %[wdt_syncbusy_bit]"      "\n\t" \
- 162:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "rjmp 1b"                               "\n\t" \
- 163:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[rampd], __tmp_reg__"             "\n\t" \
- 164:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : [tmp]                "=r" (temp) \
- 165:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : [rampd]              "I" (_SFR_IO_ADDR(RAMPD)),      \
- 166:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [ccp_reg]            "I" (_SFR_IO_ADDR(CCP)),        \
- 167:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [ioreg_cen_mask]     "r" ((uint8_t)CCP_IOREG_gc),     \
- 168:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [wdt_reg]            "n" (_SFR_MEM_ADDR(WDT_CTRL)),   \
- 169:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [wdt_enable_timeout] "r" ((uint8_t)(WDT_CEN_bm | WDT_ENABLE_bm | timeout)), \
- 170:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [wdt_status_reg]     "n" (_SFR_MEM_ADDR(WDT_STATUS)), \
- 171:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [wdt_syncbusy_bit]   "I" (WDT_SYNCBUSY_bm)            \
- 172:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : "r0" \
- 173:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** ); \
- 174:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** } while(0)
- 175:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 176:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define wdt_disable() \
- 177:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __asm__ __volatile__ (  \
- 178:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "in __tmp_reg__, %[rampd]"          "\n\t" \
- 179:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[rampd], __zero_reg__"        "\n\t" \
- 180:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[ccp_reg], %[ioreg_cen_mask]" "\n\t" \
- 181:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "sts %[wdt_reg], %[disable_mask]"   "\n\t" \
- 182:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[rampd], __tmp_reg__"         "\n\t" \
- 183:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : \
- 184:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : [rampd]             "I" (_SFR_IO_ADDR(RAMPD)),    \
- 185:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [ccp_reg]           "I" (_SFR_IO_ADDR(CCP)),      \
- 186:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [ioreg_cen_mask]    "r" ((uint8_t)CCP_IOREG_gc),   \
- 187:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [wdt_reg]           "n" (_SFR_MEM_ADDR(WDT_CTRL)), \
- 188:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [disable_mask]      "r" ((uint8_t)((~WDT_ENABLE_bm) | WDT_CEN_bm)) \
- 189:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : "r0" \
- 190:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** );
- 191:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 192:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #elif defined(__AVR_TINY__)
- 193:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 194:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define wdt_enable(value) \
- 195:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __asm__ __volatile__ ( \
- 196:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "in __tmp_reg__,__SREG__" "\n\t"  \
- 197:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "cli" "\n\t"  \
- 198:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "wdr" "\n\t"  \
- 199:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[CCPADDRESS],%[SIGNATURE]" "\n\t"  \
- 200:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[WDTREG],%[WDVALUE]" "\n\t"  \
- 201:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out __SREG__,__tmp_reg__" "\n\t"  \
- 202:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : /* no outputs */  \
- 203:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),  \
- 204:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [SIGNATURE] "r" ((uint8_t)0xD8), \
- 205:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)), \
- 206:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00) \
- 207:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       | _BV(WDE) | (value & 0x07) )) \
- 208:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : "r16" \
- 209:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** )
- 210:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 211:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #define wdt_disable() \
- 212:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** do { \
- 213:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** uint8_t temp_wd; \
- 214:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __asm__ __volatile__ ( \
- 215:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "in __tmp_reg__,__SREG__" "\n\t"  \
- 216:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "cli" "\n\t"  \
- 217:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "wdr" "\n\t"  \
- 218:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[CCPADDRESS],%[SIGNATURE]" "\n\t"  \
- 219:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "in  %[TEMP_WD],%[WDTREG]" "\n\t" \
- 220:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "cbr %[TEMP_WD],%[WDVALUE]" "\n\t" \
- 221:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out %[WDTREG],%[TEMP_WD]" "\n\t" \
- 222:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     "out __SREG__,__tmp_reg__" "\n\t" \
- 223:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : /*no output */ \
- 224:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)), \
- 225:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [SIGNATURE] "r" ((uint8_t)0xD8), \
- 226:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)), \
- 227:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [TEMP_WD] "d" (temp_wd), \
- 228:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****       [WDVALUE] "n" (1 << WDE) \
- 229:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****     : "r16" \
- 230:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** ); \
- 231:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** }while(0)
- 232:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 233:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #elif defined(CCP)
- 234:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 235:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** static __inline__
- 236:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
- 237:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** void wdt_enable (const uint8_t value)
- 238:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** {
- 239:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	if (!_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P (_WD_CONTROL_REG))
- 240:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 241:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
- 242:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
- 243:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"cli" "\n\t"
- 244:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
- 245:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 246:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"sts %[WDTREG],%[WDVALUE]" "\n\t"
- 247:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
- 248:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: /* no outputs */
- 249:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
- 250:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
- 251:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
- 252:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
- 253:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
- 254:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: "r0"
- 255:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			);
- 256:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 257:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else if (!_SFR_IO_REG_P (CCP) && _SFR_IO_REG_P (_WD_CONTROL_REG))
- 258:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 259:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
- 260:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
- 261:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"cli" "\n\t"
- 262:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
- 263:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 264:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out %[WDTREG],%[WDVALUE]" "\n\t"
- 265:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
- 266:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: /* no outputs */
- 267:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
- 268:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
- 269:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
- 270:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
- 271:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
- 272:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: "r0"
- 273:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			);
- 274:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 275:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else if (_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P (_WD_CONTROL_REG))
- 276:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 277:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
- 278:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
- 279:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"cli" "\n\t"
- 280:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
- 281:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 282:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"sts %[WDTREG],%[WDVALUE]" "\n\t"
- 283:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
- 284:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: /* no outputs */
- 285:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
- 286:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
- 287:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
- 288:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
- 289:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
- 290:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: "r0"
- 291:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			);
- 292:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 293:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else
- 294:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****  	{
- 295:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
- 296:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
- 297:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"cli" "\n\t"
- 298:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
- 299:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 300:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out %[WDTREG],%[WDVALUE]" "\n\t"
- 301:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
- 302:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: /* no outputs */
- 303:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
- 304:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
- 305:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
- 306:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
- 307:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
- 308:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			: "r0"
- 309:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 			);
- 310:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 311:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** }
- 312:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 313:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** static __inline__
- 314:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
- 315:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** void wdt_disable (void)
- 316:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** {
- 317:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	if (!_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P(_WD_CONTROL_REG))
- 318:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 319:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         uint8_t temp_wd;
- 320:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
- 321:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
- 322:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cli" "\n\t"
- 323:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
- 324:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 325:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"lds %[TEMP_WD],%[WDTREG]" "\n\t"
- 326:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
- 327:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"sts %[WDTREG],%[TEMP_WD]" "\n\t"
- 328:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
- 329:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: /*no output */
- 330:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
- 331:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
- 332:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
- 333:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
- 334:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
- 335:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "r0"
- 336:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				);
- 337:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 338:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else if (!_SFR_IO_REG_P (CCP) && _SFR_IO_REG_P(_WD_CONTROL_REG))
- 339:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 340:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         uint8_t temp_wd;
- 341:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
- 342:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
- 343:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cli" "\n\t"
- 344:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
- 345:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 346:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in %[TEMP_WD],%[WDTREG]" "\n\t"
- 347:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
- 348:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %[WDTREG],%[TEMP_WD]" "\n\t"
- 349:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
- 350:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: /*no output */
- 351:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
- 352:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
- 353:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
- 354:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
- 355:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
- 356:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "r0"
- 357:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				);
- 358:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 359:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else if (_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P(_WD_CONTROL_REG))
- 360:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 361:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         uint8_t temp_wd;
- 362:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
- 363:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
- 364:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cli" "\n\t"
- 365:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
- 366:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 367:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"lds %[TEMP_WD],%[WDTREG]" "\n\t"
- 368:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
- 369:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"sts %[WDTREG],%[TEMP_WD]" "\n\t"
- 370:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
- 371:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: /*no output */
- 372:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
- 373:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
- 374:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
- 375:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
- 376:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
- 377:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "r0"
- 378:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				);
- 379:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 380:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else
- 381:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 382:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         uint8_t temp_wd;
- 383:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
- 384:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
- 385:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cli" "\n\t"
- 386:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
- 387:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
- 388:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in %[TEMP_WD],%[WDTREG]" "\n\t"
- 389:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
- 390:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %[WDTREG],%[TEMP_WD]" "\n\t"
- 391:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
- 392:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: /*no output */
- 393:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
- 394:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
- 395:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
- 396:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
- 397:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
- 398:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "r0"
- 399:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				);
- 400:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 401:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** }
- 402:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 403:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** #else
- 404:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 405:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** static __inline__
- 406:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
- 407:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** void wdt_enable (const uint8_t value)
- 408:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** {
- 409:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	if (_SFR_IO_REG_P (_WD_CONTROL_REG))
- 410:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 411:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
- 412:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
- 413:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cli" "\n\t"
- 414:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
- 415:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %0, %1" "\n\t"
- 416:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
- 417:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %0, %2" "\n \t"
- 418:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: /* no outputs */
- 419:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
- 420:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
- 421:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
- 422:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 						_BV(WDE) | (value & 0x07)) )
- 423:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "r0"
- 424:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		);
- 425:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 426:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else
- 427:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 428:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
-  32               		.loc 2 428 0
-  33 000c 88E1      		ldi r24,lo8(24)
-  34 000e 9AE0      		ldi r25,lo8(10)
+  31               		.file 2 "/usr/lib/avr/include/avr/wdt.h"
+   1:/usr/lib/avr/include/avr/wdt.h **** /* Copyright (c) 2002, 2004 Marek Michalkiewicz
+   2:/usr/lib/avr/include/avr/wdt.h ****    Copyright (c) 2005, 2006, 2007 Eric B. Weddington
+   3:/usr/lib/avr/include/avr/wdt.h ****    All rights reserved.
+   4:/usr/lib/avr/include/avr/wdt.h **** 
+   5:/usr/lib/avr/include/avr/wdt.h ****    Redistribution and use in source and binary forms, with or without
+   6:/usr/lib/avr/include/avr/wdt.h ****    modification, are permitted provided that the following conditions are met:
+   7:/usr/lib/avr/include/avr/wdt.h **** 
+   8:/usr/lib/avr/include/avr/wdt.h ****    * Redistributions of source code must retain the above copyright
+   9:/usr/lib/avr/include/avr/wdt.h ****      notice, this list of conditions and the following disclaimer.
+  10:/usr/lib/avr/include/avr/wdt.h **** 
+  11:/usr/lib/avr/include/avr/wdt.h ****    * Redistributions in binary form must reproduce the above copyright
+  12:/usr/lib/avr/include/avr/wdt.h ****      notice, this list of conditions and the following disclaimer in
+  13:/usr/lib/avr/include/avr/wdt.h ****      the documentation and/or other materials provided with the
+  14:/usr/lib/avr/include/avr/wdt.h ****      distribution.
+  15:/usr/lib/avr/include/avr/wdt.h **** 
+  16:/usr/lib/avr/include/avr/wdt.h ****    * Neither the name of the copyright holders nor the names of
+  17:/usr/lib/avr/include/avr/wdt.h ****      contributors may be used to endorse or promote products derived
+  18:/usr/lib/avr/include/avr/wdt.h ****      from this software without specific prior written permission.
+  19:/usr/lib/avr/include/avr/wdt.h **** 
+  20:/usr/lib/avr/include/avr/wdt.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:/usr/lib/avr/include/avr/wdt.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:/usr/lib/avr/include/avr/wdt.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  23:/usr/lib/avr/include/avr/wdt.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  24:/usr/lib/avr/include/avr/wdt.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  25:/usr/lib/avr/include/avr/wdt.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  26:/usr/lib/avr/include/avr/wdt.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  27:/usr/lib/avr/include/avr/wdt.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  28:/usr/lib/avr/include/avr/wdt.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  29:/usr/lib/avr/include/avr/wdt.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  30:/usr/lib/avr/include/avr/wdt.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  31:/usr/lib/avr/include/avr/wdt.h **** 
+  32:/usr/lib/avr/include/avr/wdt.h **** /* $Id$ */
+  33:/usr/lib/avr/include/avr/wdt.h **** 
+  34:/usr/lib/avr/include/avr/wdt.h **** /*
+  35:/usr/lib/avr/include/avr/wdt.h ****    avr/wdt.h - macros for AVR watchdog timer
+  36:/usr/lib/avr/include/avr/wdt.h ****  */
+  37:/usr/lib/avr/include/avr/wdt.h **** 
+  38:/usr/lib/avr/include/avr/wdt.h **** #ifndef _AVR_WDT_H_
+  39:/usr/lib/avr/include/avr/wdt.h **** #define _AVR_WDT_H_
+  40:/usr/lib/avr/include/avr/wdt.h **** 
+  41:/usr/lib/avr/include/avr/wdt.h **** #include <avr/io.h>
+  42:/usr/lib/avr/include/avr/wdt.h **** #include <stdint.h>
+  43:/usr/lib/avr/include/avr/wdt.h **** 
+  44:/usr/lib/avr/include/avr/wdt.h **** /** \file */
+  45:/usr/lib/avr/include/avr/wdt.h **** /** \defgroup avr_watchdog <avr/wdt.h>: Watchdog timer handling
+  46:/usr/lib/avr/include/avr/wdt.h ****     \code #include <avr/wdt.h> \endcode
+  47:/usr/lib/avr/include/avr/wdt.h **** 
+  48:/usr/lib/avr/include/avr/wdt.h ****     This header file declares the interface to some inline macros
+  49:/usr/lib/avr/include/avr/wdt.h ****     handling the watchdog timer present in many AVR devices.  In order
+  50:/usr/lib/avr/include/avr/wdt.h ****     to prevent the watchdog timer configuration from being
+  51:/usr/lib/avr/include/avr/wdt.h ****     accidentally altered by a crashing application, a special timed
+  52:/usr/lib/avr/include/avr/wdt.h ****     sequence is required in order to change it.  The macros within
+  53:/usr/lib/avr/include/avr/wdt.h ****     this header file handle the required sequence automatically
+  54:/usr/lib/avr/include/avr/wdt.h ****     before changing any value.  Interrupts will be disabled during
+  55:/usr/lib/avr/include/avr/wdt.h ****     the manipulation.
+  56:/usr/lib/avr/include/avr/wdt.h **** 
+  57:/usr/lib/avr/include/avr/wdt.h ****     \note Depending on the fuse configuration of the particular
+  58:/usr/lib/avr/include/avr/wdt.h ****     device, further restrictions might apply, in particular it might
+  59:/usr/lib/avr/include/avr/wdt.h ****     be disallowed to turn off the watchdog timer.
+  60:/usr/lib/avr/include/avr/wdt.h **** 
+  61:/usr/lib/avr/include/avr/wdt.h ****     Note that for newer devices (ATmega88 and newer, effectively any
+  62:/usr/lib/avr/include/avr/wdt.h ****     AVR that has the option to also generate interrupts), the watchdog
+  63:/usr/lib/avr/include/avr/wdt.h ****     timer remains active even after a system reset (except a power-on
+  64:/usr/lib/avr/include/avr/wdt.h ****     condition), using the fastest prescaler value (approximately 15
+  65:/usr/lib/avr/include/avr/wdt.h ****     ms).  It is therefore required to turn off the watchdog early
+  66:/usr/lib/avr/include/avr/wdt.h ****     during program startup, the datasheet recommends a sequence like
+  67:/usr/lib/avr/include/avr/wdt.h ****     the following:
+  68:/usr/lib/avr/include/avr/wdt.h **** 
+  69:/usr/lib/avr/include/avr/wdt.h ****     \code
+  70:/usr/lib/avr/include/avr/wdt.h ****     #include <stdint.h>
+  71:/usr/lib/avr/include/avr/wdt.h ****     #include <avr/wdt.h>
+  72:/usr/lib/avr/include/avr/wdt.h **** 
+  73:/usr/lib/avr/include/avr/wdt.h ****     uint8_t mcusr_mirror __attribute__ ((section (".noinit")));
+  74:/usr/lib/avr/include/avr/wdt.h **** 
+  75:/usr/lib/avr/include/avr/wdt.h ****     void get_mcusr(void) \
+  76:/usr/lib/avr/include/avr/wdt.h ****       __attribute__((naked)) \
+  77:/usr/lib/avr/include/avr/wdt.h ****       __attribute__((section(".init3")));
+  78:/usr/lib/avr/include/avr/wdt.h ****     void get_mcusr(void)
+  79:/usr/lib/avr/include/avr/wdt.h ****     {
+  80:/usr/lib/avr/include/avr/wdt.h ****       mcusr_mirror = MCUSR;
+  81:/usr/lib/avr/include/avr/wdt.h ****       MCUSR = 0;
+  82:/usr/lib/avr/include/avr/wdt.h ****       wdt_disable();
+  83:/usr/lib/avr/include/avr/wdt.h ****     }
+  84:/usr/lib/avr/include/avr/wdt.h ****     \endcode
+  85:/usr/lib/avr/include/avr/wdt.h **** 
+  86:/usr/lib/avr/include/avr/wdt.h ****     Saving the value of MCUSR in \c mcusr_mirror is only needed if the
+  87:/usr/lib/avr/include/avr/wdt.h ****     application later wants to examine the reset source, but in particular, 
+  88:/usr/lib/avr/include/avr/wdt.h ****     clearing the watchdog reset flag before disabling the
+  89:/usr/lib/avr/include/avr/wdt.h ****     watchdog is required, according to the datasheet.
+  90:/usr/lib/avr/include/avr/wdt.h **** */
+  91:/usr/lib/avr/include/avr/wdt.h **** 
+  92:/usr/lib/avr/include/avr/wdt.h **** /**
+  93:/usr/lib/avr/include/avr/wdt.h ****    \ingroup avr_watchdog
+  94:/usr/lib/avr/include/avr/wdt.h ****    Reset the watchdog timer.  When the watchdog timer is enabled,
+  95:/usr/lib/avr/include/avr/wdt.h ****    a call to this instruction is required before the timer expires,
+  96:/usr/lib/avr/include/avr/wdt.h ****    otherwise a watchdog-initiated device reset will occur. 
+  97:/usr/lib/avr/include/avr/wdt.h **** */
+  98:/usr/lib/avr/include/avr/wdt.h **** 
+  99:/usr/lib/avr/include/avr/wdt.h **** #define wdt_reset() __asm__ __volatile__ ("wdr")
+ 100:/usr/lib/avr/include/avr/wdt.h **** 
+ 101:/usr/lib/avr/include/avr/wdt.h **** #ifndef __DOXYGEN__
+ 102:/usr/lib/avr/include/avr/wdt.h **** 
+ 103:/usr/lib/avr/include/avr/wdt.h **** #if defined(WDP3)
+ 104:/usr/lib/avr/include/avr/wdt.h **** # define _WD_PS3_MASK       _BV(WDP3)
+ 105:/usr/lib/avr/include/avr/wdt.h **** #else
+ 106:/usr/lib/avr/include/avr/wdt.h **** # define _WD_PS3_MASK       0x00
+ 107:/usr/lib/avr/include/avr/wdt.h **** #endif
+ 108:/usr/lib/avr/include/avr/wdt.h **** 
+ 109:/usr/lib/avr/include/avr/wdt.h **** #if defined(WDTCSR)
+ 110:/usr/lib/avr/include/avr/wdt.h **** #  define _WD_CONTROL_REG     WDTCSR
+ 111:/usr/lib/avr/include/avr/wdt.h **** #elif defined(WDTCR)
+ 112:/usr/lib/avr/include/avr/wdt.h **** #  define _WD_CONTROL_REG     WDTCR
+ 113:/usr/lib/avr/include/avr/wdt.h **** #else
+ 114:/usr/lib/avr/include/avr/wdt.h **** #  define _WD_CONTROL_REG     WDT
+ 115:/usr/lib/avr/include/avr/wdt.h **** #endif
+ 116:/usr/lib/avr/include/avr/wdt.h **** 
+ 117:/usr/lib/avr/include/avr/wdt.h **** #if defined(WDTOE)
+ 118:/usr/lib/avr/include/avr/wdt.h **** #define _WD_CHANGE_BIT      WDTOE
+ 119:/usr/lib/avr/include/avr/wdt.h **** #else
+ 120:/usr/lib/avr/include/avr/wdt.h **** #define _WD_CHANGE_BIT      WDCE
+ 121:/usr/lib/avr/include/avr/wdt.h **** #endif
+ 122:/usr/lib/avr/include/avr/wdt.h **** 
+ 123:/usr/lib/avr/include/avr/wdt.h **** #endif	/* !__DOXYGEN__ */
+ 124:/usr/lib/avr/include/avr/wdt.h **** 
+ 125:/usr/lib/avr/include/avr/wdt.h **** 
+ 126:/usr/lib/avr/include/avr/wdt.h **** /**
+ 127:/usr/lib/avr/include/avr/wdt.h ****    \ingroup avr_watchdog
+ 128:/usr/lib/avr/include/avr/wdt.h ****    Enable the watchdog timer, configuring it for expiry after
+ 129:/usr/lib/avr/include/avr/wdt.h ****    \c timeout (which is a combination of the \c WDP0 through
+ 130:/usr/lib/avr/include/avr/wdt.h ****    \c WDP2 bits to write into the \c WDTCR register; For those devices 
+ 131:/usr/lib/avr/include/avr/wdt.h ****    that have a \c WDTCSR register, it uses the combination of the \c WDP0 
+ 132:/usr/lib/avr/include/avr/wdt.h ****    through \c WDP3 bits).
+ 133:/usr/lib/avr/include/avr/wdt.h **** 
+ 134:/usr/lib/avr/include/avr/wdt.h ****    See also the symbolic constants \c WDTO_15MS et al.
+ 135:/usr/lib/avr/include/avr/wdt.h **** */
+ 136:/usr/lib/avr/include/avr/wdt.h **** 
+ 137:/usr/lib/avr/include/avr/wdt.h **** 
+ 138:/usr/lib/avr/include/avr/wdt.h **** #if defined(__AVR_XMEGA__)
+ 139:/usr/lib/avr/include/avr/wdt.h **** 
+ 140:/usr/lib/avr/include/avr/wdt.h **** #if defined (WDT_CTRLA) && !defined(RAMPD)
+ 141:/usr/lib/avr/include/avr/wdt.h **** 
+ 142:/usr/lib/avr/include/avr/wdt.h **** #define wdt_enable(timeout) \
+ 143:/usr/lib/avr/include/avr/wdt.h **** do { \
+ 144:/usr/lib/avr/include/avr/wdt.h **** uint8_t temp; \
+ 145:/usr/lib/avr/include/avr/wdt.h **** __asm__ __volatile__ ( \
+ 146:/usr/lib/avr/include/avr/wdt.h **** 	"wdr"									"\n\t" \
+ 147:/usr/lib/avr/include/avr/wdt.h **** 	"out %[ccp_reg], %[ioreg_cen_mask]"		"\n\t" \
+ 148:/usr/lib/avr/include/avr/wdt.h **** 	"lds %[tmp], %[wdt_reg]"				"\n\t" \
+ 149:/usr/lib/avr/include/avr/wdt.h **** 	"sbr %[tmp], %[wdt_enable_timeout]"		"\n\t" \
+ 150:/usr/lib/avr/include/avr/wdt.h **** 	"sts %[wdt_reg], %[tmp]"				"\n\t" \
+ 151:/usr/lib/avr/include/avr/wdt.h **** 	"1:lds %[tmp], %[wdt_status_reg]"		"\n\t" \
+ 152:/usr/lib/avr/include/avr/wdt.h **** 	"sbrc %[tmp], %[wdt_syncbusy_bit]"		"\n\t" \
+ 153:/usr/lib/avr/include/avr/wdt.h **** 	"rjmp 1b"								"\n\t" \
+ 154:/usr/lib/avr/include/avr/wdt.h **** 	: [tmp]					"=r" (temp) \
+ 155:/usr/lib/avr/include/avr/wdt.h **** 	: [ccp_reg]				"I"  (_SFR_IO_ADDR(CCP)), \
+ 156:/usr/lib/avr/include/avr/wdt.h **** 	  [ioreg_cen_mask]		"r"  ((uint8_t)CCP_IOREG_gc), \
+ 157:/usr/lib/avr/include/avr/wdt.h **** 	  [wdt_reg]				"n"  (_SFR_MEM_ADDR(WDT_CTRLA)), \
+ 158:/usr/lib/avr/include/avr/wdt.h **** 	  [wdt_enable_timeout]	"M"  (timeout), \
+ 159:/usr/lib/avr/include/avr/wdt.h **** 	  [wdt_status_reg]		"n"  (_SFR_MEM_ADDR(WDT_STATUS)), \
+ 160:/usr/lib/avr/include/avr/wdt.h **** 	  [wdt_syncbusy_bit]	"I"  (WDT_SYNCBUSY_bm) \
+ 161:/usr/lib/avr/include/avr/wdt.h **** ); \
+ 162:/usr/lib/avr/include/avr/wdt.h **** } while(0)
+ 163:/usr/lib/avr/include/avr/wdt.h **** 
+ 164:/usr/lib/avr/include/avr/wdt.h **** #define wdt_disable() \
+ 165:/usr/lib/avr/include/avr/wdt.h **** do { \
+ 166:/usr/lib/avr/include/avr/wdt.h **** uint8_t temp; \
+ 167:/usr/lib/avr/include/avr/wdt.h **** __asm__ __volatile__ (  \
+ 168:/usr/lib/avr/include/avr/wdt.h **** 	"wdr"								"\n\t" \
+ 169:/usr/lib/avr/include/avr/wdt.h **** 	"out %[ccp_reg], %[ioreg_cen_mask]" "\n\t" \
+ 170:/usr/lib/avr/include/avr/wdt.h **** 	"lds %[tmp], %[wdt_reg]"			"\n\t" \
+ 171:/usr/lib/avr/include/avr/wdt.h **** 	"cbr %[tmp], %[timeout_mask]"       "\n\t" \
+ 172:/usr/lib/avr/include/avr/wdt.h **** 	"sts %[wdt_reg], %[tmp]"			"\n\t" \
+ 173:/usr/lib/avr/include/avr/wdt.h ****     : [tmp]            "=r" (temp) \
+ 174:/usr/lib/avr/include/avr/wdt.h ****     : [ccp_reg]        "I" (_SFR_IO_ADDR(CCP)),       \
+ 175:/usr/lib/avr/include/avr/wdt.h ****       [ioreg_cen_mask] "r" ((uint8_t)CCP_IOREG_gc),   \
+ 176:/usr/lib/avr/include/avr/wdt.h ****       [wdt_reg]        "n" (_SFR_MEM_ADDR(WDT_CTRLA)),\
+ 177:/usr/lib/avr/include/avr/wdt.h ****       [timeout_mask]   "I" (WDT_PERIOD_gm) \
+ 178:/usr/lib/avr/include/avr/wdt.h **** ); \
+ 179:/usr/lib/avr/include/avr/wdt.h **** } while(0)
+ 180:/usr/lib/avr/include/avr/wdt.h **** 
+ 181:/usr/lib/avr/include/avr/wdt.h **** #else // defined (WDT_CTRLA) && !defined(RAMPD)
+ 182:/usr/lib/avr/include/avr/wdt.h **** 
+ 183:/usr/lib/avr/include/avr/wdt.h **** /*
+ 184:/usr/lib/avr/include/avr/wdt.h ****    wdt_enable(timeout) for xmega devices
+ 185:/usr/lib/avr/include/avr/wdt.h **** ** write signature (CCP_IOREG_gc) that enables change of protected I/O
+ 186:/usr/lib/avr/include/avr/wdt.h ****    registers to the CCP register
+ 187:/usr/lib/avr/include/avr/wdt.h **** ** At the same time,
+ 188:/usr/lib/avr/include/avr/wdt.h ****    1) set WDT change enable (WDT_CEN_bm)
+ 189:/usr/lib/avr/include/avr/wdt.h ****    2) enable WDT (WDT_ENABLE_bm)
+ 190:/usr/lib/avr/include/avr/wdt.h ****    3) set timeout (timeout)
+ 191:/usr/lib/avr/include/avr/wdt.h **** ** Synchronization starts when ENABLE bit of WDT is set. So, wait till it
+ 192:/usr/lib/avr/include/avr/wdt.h ****    finishes (SYNCBUSY of STATUS register is automatically cleared after the
+ 193:/usr/lib/avr/include/avr/wdt.h ****    sync is finished).
+ 194:/usr/lib/avr/include/avr/wdt.h **** */
+ 195:/usr/lib/avr/include/avr/wdt.h **** #define wdt_enable(timeout) \
+ 196:/usr/lib/avr/include/avr/wdt.h **** do { \
+ 197:/usr/lib/avr/include/avr/wdt.h **** uint8_t temp; \
+ 198:/usr/lib/avr/include/avr/wdt.h **** __asm__ __volatile__ (         \
+ 199:/usr/lib/avr/include/avr/wdt.h ****     "in __tmp_reg__, %[rampd]"              "\n\t" \
+ 200:/usr/lib/avr/include/avr/wdt.h ****     "out %[rampd], __zero_reg__"            "\n\t" \
+ 201:/usr/lib/avr/include/avr/wdt.h ****     "out %[ccp_reg], %[ioreg_cen_mask]"     "\n\t" \
+ 202:/usr/lib/avr/include/avr/wdt.h ****     "sts %[wdt_reg], %[wdt_enable_timeout]" "\n\t" \
+ 203:/usr/lib/avr/include/avr/wdt.h ****     "1:lds %[tmp], %[wdt_status_reg]"       "\n\t" \
+ 204:/usr/lib/avr/include/avr/wdt.h ****     "sbrc %[tmp], %[wdt_syncbusy_bit]"      "\n\t" \
+ 205:/usr/lib/avr/include/avr/wdt.h ****     "rjmp 1b"                               "\n\t" \
+ 206:/usr/lib/avr/include/avr/wdt.h ****     "out %[rampd], __tmp_reg__"             "\n\t" \
+ 207:/usr/lib/avr/include/avr/wdt.h ****     : [tmp]                "=r" (temp) \
+ 208:/usr/lib/avr/include/avr/wdt.h ****     : [rampd]              "I" (_SFR_IO_ADDR(RAMPD)),      \
+ 209:/usr/lib/avr/include/avr/wdt.h ****       [ccp_reg]            "I" (_SFR_IO_ADDR(CCP)),        \
+ 210:/usr/lib/avr/include/avr/wdt.h ****       [ioreg_cen_mask]     "r" ((uint8_t)CCP_IOREG_gc),     \
+ 211:/usr/lib/avr/include/avr/wdt.h ****       [wdt_reg]            "n" (_SFR_MEM_ADDR(WDT_CTRL)),   \
+ 212:/usr/lib/avr/include/avr/wdt.h ****       [wdt_enable_timeout] "r" ((uint8_t)(WDT_CEN_bm | WDT_ENABLE_bm | timeout)), \
+ 213:/usr/lib/avr/include/avr/wdt.h ****       [wdt_status_reg]     "n" (_SFR_MEM_ADDR(WDT_STATUS)), \
+ 214:/usr/lib/avr/include/avr/wdt.h ****       [wdt_syncbusy_bit]   "I" (WDT_SYNCBUSY_bm)            \
+ 215:/usr/lib/avr/include/avr/wdt.h ****     : "r0" \
+ 216:/usr/lib/avr/include/avr/wdt.h **** ); \
+ 217:/usr/lib/avr/include/avr/wdt.h **** } while(0)
+ 218:/usr/lib/avr/include/avr/wdt.h **** 
+ 219:/usr/lib/avr/include/avr/wdt.h **** #define wdt_disable() \
+ 220:/usr/lib/avr/include/avr/wdt.h **** __asm__ __volatile__ (  \
+ 221:/usr/lib/avr/include/avr/wdt.h ****     "in __tmp_reg__, %[rampd]"          "\n\t" \
+ 222:/usr/lib/avr/include/avr/wdt.h ****     "out %[rampd], __zero_reg__"        "\n\t" \
+ 223:/usr/lib/avr/include/avr/wdt.h ****     "out %[ccp_reg], %[ioreg_cen_mask]" "\n\t" \
+ 224:/usr/lib/avr/include/avr/wdt.h ****     "sts %[wdt_reg], %[disable_mask]"   "\n\t" \
+ 225:/usr/lib/avr/include/avr/wdt.h ****     "out %[rampd], __tmp_reg__"         "\n\t" \
+ 226:/usr/lib/avr/include/avr/wdt.h ****     : \
+ 227:/usr/lib/avr/include/avr/wdt.h ****     : [rampd]             "I" (_SFR_IO_ADDR(RAMPD)),    \
+ 228:/usr/lib/avr/include/avr/wdt.h ****       [ccp_reg]           "I" (_SFR_IO_ADDR(CCP)),      \
+ 229:/usr/lib/avr/include/avr/wdt.h ****       [ioreg_cen_mask]    "r" ((uint8_t)CCP_IOREG_gc),   \
+ 230:/usr/lib/avr/include/avr/wdt.h ****       [wdt_reg]           "n" (_SFR_MEM_ADDR(WDT_CTRL)), \
+ 231:/usr/lib/avr/include/avr/wdt.h ****       [disable_mask]      "r" ((uint8_t)((~WDT_ENABLE_bm) | WDT_CEN_bm)) \
+ 232:/usr/lib/avr/include/avr/wdt.h ****     : "r0" \
+ 233:/usr/lib/avr/include/avr/wdt.h **** );
+ 234:/usr/lib/avr/include/avr/wdt.h **** 
+ 235:/usr/lib/avr/include/avr/wdt.h **** #endif // defined (WDT_CTRLA) && !defined(RAMPD)
+ 236:/usr/lib/avr/include/avr/wdt.h **** 
+ 237:/usr/lib/avr/include/avr/wdt.h **** #elif defined(__AVR_TINY__)
+ 238:/usr/lib/avr/include/avr/wdt.h **** 
+ 239:/usr/lib/avr/include/avr/wdt.h **** #define wdt_enable(value) \
+ 240:/usr/lib/avr/include/avr/wdt.h **** __asm__ __volatile__ ( \
+ 241:/usr/lib/avr/include/avr/wdt.h ****     "in __tmp_reg__,__SREG__" "\n\t"  \
+ 242:/usr/lib/avr/include/avr/wdt.h ****     "cli" "\n\t"  \
+ 243:/usr/lib/avr/include/avr/wdt.h ****     "wdr" "\n\t"  \
+ 244:/usr/lib/avr/include/avr/wdt.h ****     "out %[CCPADDRESS],%[SIGNATURE]" "\n\t"  \
+ 245:/usr/lib/avr/include/avr/wdt.h ****     "out %[WDTREG],%[WDVALUE]" "\n\t"  \
+ 246:/usr/lib/avr/include/avr/wdt.h ****     "out __SREG__,__tmp_reg__" "\n\t"  \
+ 247:/usr/lib/avr/include/avr/wdt.h ****     : /* no outputs */  \
+ 248:/usr/lib/avr/include/avr/wdt.h ****     : [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),  \
+ 249:/usr/lib/avr/include/avr/wdt.h ****       [SIGNATURE] "r" ((uint8_t)0xD8), \
+ 250:/usr/lib/avr/include/avr/wdt.h ****       [WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)), \
+ 251:/usr/lib/avr/include/avr/wdt.h ****       [WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00) \
+ 252:/usr/lib/avr/include/avr/wdt.h ****       | _BV(WDE) | (value & 0x07) )) \
+ 253:/usr/lib/avr/include/avr/wdt.h ****     : "r16" \
+ 254:/usr/lib/avr/include/avr/wdt.h **** )
+ 255:/usr/lib/avr/include/avr/wdt.h **** 
+ 256:/usr/lib/avr/include/avr/wdt.h **** #define wdt_disable() \
+ 257:/usr/lib/avr/include/avr/wdt.h **** do { \
+ 258:/usr/lib/avr/include/avr/wdt.h **** uint8_t temp_wd; \
+ 259:/usr/lib/avr/include/avr/wdt.h **** __asm__ __volatile__ ( \
+ 260:/usr/lib/avr/include/avr/wdt.h ****     "in __tmp_reg__,__SREG__" "\n\t"  \
+ 261:/usr/lib/avr/include/avr/wdt.h ****     "cli" "\n\t"  \
+ 262:/usr/lib/avr/include/avr/wdt.h ****     "wdr" "\n\t"  \
+ 263:/usr/lib/avr/include/avr/wdt.h ****     "out %[CCPADDRESS],%[SIGNATURE]" "\n\t"  \
+ 264:/usr/lib/avr/include/avr/wdt.h ****     "in  %[TEMP_WD],%[WDTREG]" "\n\t" \
+ 265:/usr/lib/avr/include/avr/wdt.h ****     "cbr %[TEMP_WD],%[WDVALUE]" "\n\t" \
+ 266:/usr/lib/avr/include/avr/wdt.h ****     "out %[WDTREG],%[TEMP_WD]" "\n\t" \
+ 267:/usr/lib/avr/include/avr/wdt.h ****     "out __SREG__,__tmp_reg__" "\n\t" \
+ 268:/usr/lib/avr/include/avr/wdt.h ****     : /*no output */ \
+ 269:/usr/lib/avr/include/avr/wdt.h ****     : [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)), \
+ 270:/usr/lib/avr/include/avr/wdt.h ****       [SIGNATURE] "r" ((uint8_t)0xD8), \
+ 271:/usr/lib/avr/include/avr/wdt.h ****       [WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)), \
+ 272:/usr/lib/avr/include/avr/wdt.h ****       [TEMP_WD] "d" (temp_wd), \
+ 273:/usr/lib/avr/include/avr/wdt.h ****       [WDVALUE] "n" (1 << WDE) \
+ 274:/usr/lib/avr/include/avr/wdt.h ****     : "r16" \
+ 275:/usr/lib/avr/include/avr/wdt.h **** ); \
+ 276:/usr/lib/avr/include/avr/wdt.h **** }while(0)
+ 277:/usr/lib/avr/include/avr/wdt.h **** 
+ 278:/usr/lib/avr/include/avr/wdt.h **** #elif defined(CCP)
+ 279:/usr/lib/avr/include/avr/wdt.h **** 
+ 280:/usr/lib/avr/include/avr/wdt.h **** static __inline__
+ 281:/usr/lib/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
+ 282:/usr/lib/avr/include/avr/wdt.h **** void wdt_enable (const uint8_t value)
+ 283:/usr/lib/avr/include/avr/wdt.h **** {
+ 284:/usr/lib/avr/include/avr/wdt.h **** 	if (!_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P (_WD_CONTROL_REG))
+ 285:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 286:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+ 287:/usr/lib/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
+ 288:/usr/lib/avr/include/avr/wdt.h **** 			"cli" "\n\t"
+ 289:/usr/lib/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
+ 290:/usr/lib/avr/include/avr/wdt.h **** 			"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 291:/usr/lib/avr/include/avr/wdt.h **** 			"sts %[WDTREG],%[WDVALUE]" "\n\t"
+ 292:/usr/lib/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
+ 293:/usr/lib/avr/include/avr/wdt.h **** 			: /* no outputs */
+ 294:/usr/lib/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
+ 295:/usr/lib/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
+ 296:/usr/lib/avr/include/avr/wdt.h **** 			[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+ 297:/usr/lib/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
+ 298:/usr/lib/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
+ 299:/usr/lib/avr/include/avr/wdt.h **** 			: "r0"
+ 300:/usr/lib/avr/include/avr/wdt.h **** 			);
+ 301:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 302:/usr/lib/avr/include/avr/wdt.h **** 	else if (!_SFR_IO_REG_P (CCP) && _SFR_IO_REG_P (_WD_CONTROL_REG))
+ 303:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 304:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+ 305:/usr/lib/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
+ 306:/usr/lib/avr/include/avr/wdt.h **** 			"cli" "\n\t"
+ 307:/usr/lib/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
+ 308:/usr/lib/avr/include/avr/wdt.h **** 			"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 309:/usr/lib/avr/include/avr/wdt.h **** 			"out %[WDTREG],%[WDVALUE]" "\n\t"
+ 310:/usr/lib/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
+ 311:/usr/lib/avr/include/avr/wdt.h **** 			: /* no outputs */
+ 312:/usr/lib/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
+ 313:/usr/lib/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
+ 314:/usr/lib/avr/include/avr/wdt.h **** 			[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+ 315:/usr/lib/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
+ 316:/usr/lib/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
+ 317:/usr/lib/avr/include/avr/wdt.h **** 			: "r0"
+ 318:/usr/lib/avr/include/avr/wdt.h **** 			);
+ 319:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 320:/usr/lib/avr/include/avr/wdt.h **** 	else if (_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P (_WD_CONTROL_REG))
+ 321:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 322:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+ 323:/usr/lib/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
+ 324:/usr/lib/avr/include/avr/wdt.h **** 			"cli" "\n\t"
+ 325:/usr/lib/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
+ 326:/usr/lib/avr/include/avr/wdt.h **** 			"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 327:/usr/lib/avr/include/avr/wdt.h **** 			"sts %[WDTREG],%[WDVALUE]" "\n\t"
+ 328:/usr/lib/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
+ 329:/usr/lib/avr/include/avr/wdt.h **** 			: /* no outputs */
+ 330:/usr/lib/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
+ 331:/usr/lib/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
+ 332:/usr/lib/avr/include/avr/wdt.h **** 			[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+ 333:/usr/lib/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
+ 334:/usr/lib/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
+ 335:/usr/lib/avr/include/avr/wdt.h **** 			: "r0"
+ 336:/usr/lib/avr/include/avr/wdt.h **** 			);
+ 337:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 338:/usr/lib/avr/include/avr/wdt.h **** 	else
+ 339:/usr/lib/avr/include/avr/wdt.h ****  	{
+ 340:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+ 341:/usr/lib/avr/include/avr/wdt.h **** 			"in __tmp_reg__,__SREG__" "\n\t"
+ 342:/usr/lib/avr/include/avr/wdt.h **** 			"cli" "\n\t"
+ 343:/usr/lib/avr/include/avr/wdt.h **** 			"wdr" "\n\t"
+ 344:/usr/lib/avr/include/avr/wdt.h **** 			"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 345:/usr/lib/avr/include/avr/wdt.h **** 			"out %[WDTREG],%[WDVALUE]" "\n\t"
+ 346:/usr/lib/avr/include/avr/wdt.h **** 			"out __SREG__,__tmp_reg__" "\n\t"
+ 347:/usr/lib/avr/include/avr/wdt.h **** 			: /* no outputs */
+ 348:/usr/lib/avr/include/avr/wdt.h **** 			: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
+ 349:/usr/lib/avr/include/avr/wdt.h **** 			[SIGNATURE] "r" ((uint8_t)0xD8),
+ 350:/usr/lib/avr/include/avr/wdt.h **** 			[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+ 351:/usr/lib/avr/include/avr/wdt.h **** 			[WDVALUE] "r" ((uint8_t)((value & 0x08 ? _WD_PS3_MASK : 0x00)
+ 352:/usr/lib/avr/include/avr/wdt.h **** 				| _BV(WDE) | (value & 0x07) ))
+ 353:/usr/lib/avr/include/avr/wdt.h **** 			: "r0"
+ 354:/usr/lib/avr/include/avr/wdt.h **** 			);
+ 355:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 356:/usr/lib/avr/include/avr/wdt.h **** }
+ 357:/usr/lib/avr/include/avr/wdt.h **** 
+ 358:/usr/lib/avr/include/avr/wdt.h **** static __inline__
+ 359:/usr/lib/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
+ 360:/usr/lib/avr/include/avr/wdt.h **** void wdt_disable (void)
+ 361:/usr/lib/avr/include/avr/wdt.h **** {
+ 362:/usr/lib/avr/include/avr/wdt.h **** 	if (!_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P(_WD_CONTROL_REG))
+ 363:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 364:/usr/lib/avr/include/avr/wdt.h ****         uint8_t temp_wd;
+ 365:/usr/lib/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
+ 366:/usr/lib/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
+ 367:/usr/lib/avr/include/avr/wdt.h **** 				"cli" "\n\t"
+ 368:/usr/lib/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
+ 369:/usr/lib/avr/include/avr/wdt.h **** 				"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 370:/usr/lib/avr/include/avr/wdt.h **** 				"lds %[TEMP_WD],%[WDTREG]" "\n\t"
+ 371:/usr/lib/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
+ 372:/usr/lib/avr/include/avr/wdt.h **** 				"sts %[WDTREG],%[TEMP_WD]" "\n\t"
+ 373:/usr/lib/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
+ 374:/usr/lib/avr/include/avr/wdt.h **** 				: /*no output */
+ 375:/usr/lib/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
+ 376:/usr/lib/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
+ 377:/usr/lib/avr/include/avr/wdt.h **** 				[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+ 378:/usr/lib/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
+ 379:/usr/lib/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
+ 380:/usr/lib/avr/include/avr/wdt.h **** 				: "r0"
+ 381:/usr/lib/avr/include/avr/wdt.h **** 				);
+ 382:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 383:/usr/lib/avr/include/avr/wdt.h **** 	else if (!_SFR_IO_REG_P (CCP) && _SFR_IO_REG_P(_WD_CONTROL_REG))
+ 384:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 385:/usr/lib/avr/include/avr/wdt.h ****         uint8_t temp_wd;
+ 386:/usr/lib/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
+ 387:/usr/lib/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
+ 388:/usr/lib/avr/include/avr/wdt.h **** 				"cli" "\n\t"
+ 389:/usr/lib/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
+ 390:/usr/lib/avr/include/avr/wdt.h **** 				"sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 391:/usr/lib/avr/include/avr/wdt.h **** 				"in %[TEMP_WD],%[WDTREG]" "\n\t"
+ 392:/usr/lib/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
+ 393:/usr/lib/avr/include/avr/wdt.h **** 				"out %[WDTREG],%[TEMP_WD]" "\n\t"
+ 394:/usr/lib/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
+ 395:/usr/lib/avr/include/avr/wdt.h **** 				: /*no output */
+ 396:/usr/lib/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "n" (_SFR_MEM_ADDR(CCP)),
+ 397:/usr/lib/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
+ 398:/usr/lib/avr/include/avr/wdt.h **** 				[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+ 399:/usr/lib/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
+ 400:/usr/lib/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
+ 401:/usr/lib/avr/include/avr/wdt.h **** 				: "r0"
+ 402:/usr/lib/avr/include/avr/wdt.h **** 				);
+ 403:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 404:/usr/lib/avr/include/avr/wdt.h **** 	else if (_SFR_IO_REG_P (CCP) && !_SFR_IO_REG_P(_WD_CONTROL_REG))
+ 405:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 406:/usr/lib/avr/include/avr/wdt.h ****         uint8_t temp_wd;
+ 407:/usr/lib/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
+ 408:/usr/lib/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
+ 409:/usr/lib/avr/include/avr/wdt.h **** 				"cli" "\n\t"
+ 410:/usr/lib/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
+ 411:/usr/lib/avr/include/avr/wdt.h **** 				"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 412:/usr/lib/avr/include/avr/wdt.h **** 				"lds %[TEMP_WD],%[WDTREG]" "\n\t"
+ 413:/usr/lib/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
+ 414:/usr/lib/avr/include/avr/wdt.h **** 				"sts %[WDTREG],%[TEMP_WD]" "\n\t"
+ 415:/usr/lib/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
+ 416:/usr/lib/avr/include/avr/wdt.h **** 				: /*no output */
+ 417:/usr/lib/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
+ 418:/usr/lib/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
+ 419:/usr/lib/avr/include/avr/wdt.h **** 				[WDTREG] "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+ 420:/usr/lib/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
+ 421:/usr/lib/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
+ 422:/usr/lib/avr/include/avr/wdt.h **** 				: "r0"
+ 423:/usr/lib/avr/include/avr/wdt.h **** 				);
+ 424:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 425:/usr/lib/avr/include/avr/wdt.h **** 	else
+ 426:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 427:/usr/lib/avr/include/avr/wdt.h ****         uint8_t temp_wd;
+ 428:/usr/lib/avr/include/avr/wdt.h ****         __asm__ __volatile__ (
+ 429:/usr/lib/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
+ 430:/usr/lib/avr/include/avr/wdt.h **** 				"cli" "\n\t"
+ 431:/usr/lib/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
+ 432:/usr/lib/avr/include/avr/wdt.h **** 				"out %[CCPADDRESS],%[SIGNATURE]" "\n\t"
+ 433:/usr/lib/avr/include/avr/wdt.h **** 				"in %[TEMP_WD],%[WDTREG]" "\n\t"
+ 434:/usr/lib/avr/include/avr/wdt.h **** 				"cbr %[TEMP_WD],%[WDVALUE]" "\n\t"
+ 435:/usr/lib/avr/include/avr/wdt.h **** 				"out %[WDTREG],%[TEMP_WD]" "\n\t"
+ 436:/usr/lib/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
+ 437:/usr/lib/avr/include/avr/wdt.h **** 				: /*no output */
+ 438:/usr/lib/avr/include/avr/wdt.h **** 				: [CCPADDRESS] "I" (_SFR_IO_ADDR(CCP)),
+ 439:/usr/lib/avr/include/avr/wdt.h **** 				[SIGNATURE] "r" ((uint8_t)0xD8),
+ 440:/usr/lib/avr/include/avr/wdt.h **** 				[WDTREG] "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+ 441:/usr/lib/avr/include/avr/wdt.h **** 				[TEMP_WD] "d" (temp_wd),
+ 442:/usr/lib/avr/include/avr/wdt.h **** 				[WDVALUE] "n" (1 << WDE)
+ 443:/usr/lib/avr/include/avr/wdt.h **** 				: "r0"
+ 444:/usr/lib/avr/include/avr/wdt.h **** 				);
+ 445:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 446:/usr/lib/avr/include/avr/wdt.h **** }
+ 447:/usr/lib/avr/include/avr/wdt.h **** 
+ 448:/usr/lib/avr/include/avr/wdt.h **** #else
+ 449:/usr/lib/avr/include/avr/wdt.h **** 
+ 450:/usr/lib/avr/include/avr/wdt.h **** static __inline__
+ 451:/usr/lib/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
+ 452:/usr/lib/avr/include/avr/wdt.h **** void wdt_enable (const uint8_t value)
+ 453:/usr/lib/avr/include/avr/wdt.h **** {
+ 454:/usr/lib/avr/include/avr/wdt.h **** 	if (_SFR_IO_REG_P (_WD_CONTROL_REG))
+ 455:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 456:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+ 457:/usr/lib/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
+ 458:/usr/lib/avr/include/avr/wdt.h **** 				"cli" "\n\t"
+ 459:/usr/lib/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
+ 460:/usr/lib/avr/include/avr/wdt.h **** 				"out %0, %1" "\n\t"
+ 461:/usr/lib/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
+ 462:/usr/lib/avr/include/avr/wdt.h **** 				"out %0, %2" "\n \t"
+ 463:/usr/lib/avr/include/avr/wdt.h **** 				: /* no outputs */
+ 464:/usr/lib/avr/include/avr/wdt.h **** 				: "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+ 465:/usr/lib/avr/include/avr/wdt.h **** 				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
+ 466:/usr/lib/avr/include/avr/wdt.h **** 				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
+ 467:/usr/lib/avr/include/avr/wdt.h **** 						_BV(WDE) | (value & 0x07)) )
+ 468:/usr/lib/avr/include/avr/wdt.h **** 				: "r0"
+ 469:/usr/lib/avr/include/avr/wdt.h **** 		);
+ 470:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 471:/usr/lib/avr/include/avr/wdt.h **** 	else
+ 472:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 473:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+  32               		.loc 2 473 0
+  33 000c 9AE0      		ldi r25,lo8(10)
+  34 000e 88E1      		ldi r24,lo8(24)
   35               	/* #APP */
-  36               	 ;  428 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h" 1
+  36               	 ;  473 "/usr/lib/avr/include/avr/wdt.h" 1
   37 0010 0FB6      		in __tmp_reg__,__SREG__
   38 0012 F894      		cli
   39 0014 A895      		wdr
@@ -674,7 +719,7 @@
   64               		.loc 1 185 0
   65 0000 04B6      		in __tmp_reg__,0x34
   66 0002 03FE      		sbrs __tmp_reg__,3
-  67 0004 00C0      		rjmp .L3
+  67 0004 00C0      		rjmp .L4
   68               		.loc 1 185 0 is_stmt 0 discriminator 1
   69 0006 8091 0000 		lds r24,reset_key
   70 000a 9091 0000 		lds r25,reset_key+1
@@ -684,7 +729,7 @@
   74 0018 904B      		sbci r25,-80
   75 001a A740      		sbci r26,7
   76 001c B04B      		sbci r27,-80
-  77 001e 01F4      		brne .L3
+  77 001e 01F4      		brne .L4
  186:./tmk_core/common/avr/bootloader.c ****             reset_key = 0;
   78               		.loc 1 186 0 is_stmt 1
   79 0020 1092 0000 		sts reset_key,__zero_reg__
@@ -705,51 +750,51 @@
   88 0036 84BF      		out 0x34,r24
   89               	.LBB9:
   90               	.LBB10:
- 429:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
- 430:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cli" "\n\t"
- 431:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
- 432:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"sts %0, %1" "\n\t"
- 433:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
- 434:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"sts %0, %2" "\n \t"
- 435:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: /* no outputs */
- 436:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
- 437:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
- 438:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
- 439:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 						_BV(WDE) | (value & 0x07)) )
- 440:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "r0"
- 441:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		);
- 442:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 443:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** }
- 444:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 
- 445:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** static __inline__
- 446:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
- 447:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** void wdt_disable (void)
- 448:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** {
- 449:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	if (_SFR_IO_REG_P (_WD_CONTROL_REG))
- 450:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 451:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         uint8_t register temp_reg;
- 452:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
- 453:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__"    "\n\t"
- 454:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"cli"                        "\n\t"
- 455:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"wdr"                        "\n\t"
- 456:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"in  %[TEMPREG],%[WDTREG]"   "\n\t"
- 457:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"ori %[TEMPREG],%[WDCE_WDE]" "\n\t"
- 458:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %[WDTREG],%[TEMPREG]"   "\n\t"
- 459:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out %[WDTREG],__zero_reg__" "\n\t"
- 460:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__"   "\n\t"
- 461:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: [TEMPREG] "=d" (temp_reg)
- 462:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: [WDTREG]  "I"  (_SFR_IO_ADDR(_WD_CONTROL_REG)),
- 463:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				[WDCE_WDE]  "n"  ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE)))
- 464:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 				: "r0"
- 465:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		);
- 466:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	}
- 467:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	else
- 468:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 	{
- 469:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h ****         uint8_t register temp_reg;
- 470:/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
-  91               		.loc 2 470 0
+ 474:/usr/lib/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__" "\n\t"
+ 475:/usr/lib/avr/include/avr/wdt.h **** 				"cli" "\n\t"
+ 476:/usr/lib/avr/include/avr/wdt.h **** 				"wdr" "\n\t"
+ 477:/usr/lib/avr/include/avr/wdt.h **** 				"sts %0, %1" "\n\t"
+ 478:/usr/lib/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__" "\n\t"
+ 479:/usr/lib/avr/include/avr/wdt.h **** 				"sts %0, %2" "\n \t"
+ 480:/usr/lib/avr/include/avr/wdt.h **** 				: /* no outputs */
+ 481:/usr/lib/avr/include/avr/wdt.h **** 				: "n" (_SFR_MEM_ADDR(_WD_CONTROL_REG)),
+ 482:/usr/lib/avr/include/avr/wdt.h **** 				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
+ 483:/usr/lib/avr/include/avr/wdt.h **** 				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
+ 484:/usr/lib/avr/include/avr/wdt.h **** 						_BV(WDE) | (value & 0x07)) )
+ 485:/usr/lib/avr/include/avr/wdt.h **** 				: "r0"
+ 486:/usr/lib/avr/include/avr/wdt.h **** 		);
+ 487:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 488:/usr/lib/avr/include/avr/wdt.h **** }
+ 489:/usr/lib/avr/include/avr/wdt.h **** 
+ 490:/usr/lib/avr/include/avr/wdt.h **** static __inline__
+ 491:/usr/lib/avr/include/avr/wdt.h **** __attribute__ ((__always_inline__))
+ 492:/usr/lib/avr/include/avr/wdt.h **** void wdt_disable (void)
+ 493:/usr/lib/avr/include/avr/wdt.h **** {
+ 494:/usr/lib/avr/include/avr/wdt.h **** 	if (_SFR_IO_REG_P (_WD_CONTROL_REG))
+ 495:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 496:/usr/lib/avr/include/avr/wdt.h ****         uint8_t register temp_reg;
+ 497:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+ 498:/usr/lib/avr/include/avr/wdt.h **** 				"in __tmp_reg__,__SREG__"    "\n\t"
+ 499:/usr/lib/avr/include/avr/wdt.h **** 				"cli"                        "\n\t"
+ 500:/usr/lib/avr/include/avr/wdt.h **** 				"wdr"                        "\n\t"
+ 501:/usr/lib/avr/include/avr/wdt.h **** 				"in  %[TEMPREG],%[WDTREG]"   "\n\t"
+ 502:/usr/lib/avr/include/avr/wdt.h **** 				"ori %[TEMPREG],%[WDCE_WDE]" "\n\t"
+ 503:/usr/lib/avr/include/avr/wdt.h **** 				"out %[WDTREG],%[TEMPREG]"   "\n\t"
+ 504:/usr/lib/avr/include/avr/wdt.h **** 				"out %[WDTREG],__zero_reg__" "\n\t"
+ 505:/usr/lib/avr/include/avr/wdt.h **** 				"out __SREG__,__tmp_reg__"   "\n\t"
+ 506:/usr/lib/avr/include/avr/wdt.h **** 				: [TEMPREG] "=d" (temp_reg)
+ 507:/usr/lib/avr/include/avr/wdt.h **** 				: [WDTREG]  "I"  (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+ 508:/usr/lib/avr/include/avr/wdt.h **** 				[WDCE_WDE]  "n"  ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE)))
+ 509:/usr/lib/avr/include/avr/wdt.h **** 				: "r0"
+ 510:/usr/lib/avr/include/avr/wdt.h **** 		);
+ 511:/usr/lib/avr/include/avr/wdt.h **** 	}
+ 512:/usr/lib/avr/include/avr/wdt.h **** 	else
+ 513:/usr/lib/avr/include/avr/wdt.h **** 	{
+ 514:/usr/lib/avr/include/avr/wdt.h ****         uint8_t register temp_reg;
+ 515:/usr/lib/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
+  91               		.loc 2 515 0
   92               	/* #APP */
-  93               	 ;  470 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/avr/wdt.h" 1
+  93               	 ;  515 "/usr/lib/avr/include/avr/wdt.h" 1
   94 0038 0FB6      		in __tmp_reg__,__SREG__
   95 003a F894      		cli
   96 003c A895      		wdr
@@ -774,7 +819,7 @@
  109 0050 F8E3      		ldi r31,lo8(56)
  110 0052 0995      		icall
  111               	.LVL2:
- 112               	.L3:
+ 112               	.L4:
  113               	/* epilogue start */
  199:./tmk_core/common/avr/bootloader.c ****             #else
  200:./tmk_core/common/avr/bootloader.c ****                 asm("ijmp" :: "z" (bootloader_start));
@@ -791,21 +836,17 @@
  123 0000 0000 0000 		.zero	4
  124               		.text
  125               	.Letext0:
- 126               		.file 3 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdint.h"
- 127               		.file 4 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
- 128               		.file 5 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
- 129               		.file 6 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
- 130               		.file 7 "./lib/lufa/LUFA/Drivers/USB/Core/HostStandardReq.h"
- 131               		.file 8 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdio.h"
+ 126               		.file 3 "/usr/lib/avr/include/stdint.h"
+ 127               		.file 4 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bootloader.c
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:2      *ABS*:000000000000003e __SP_H__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:3      *ABS*:000000000000003d __SP_L__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:4      *ABS*:000000000000003f __SREG__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:5      *ABS*:0000000000000000 __tmp_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:6      *ABS*:0000000000000001 __zero_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:56     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccVIXU2n.s:122    .noinit:0000000000000000 reset_key
+     /tmp/cceliFzU.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cceliFzU.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cceliFzU.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cceliFzU.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cceliFzU.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cceliFzU.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
+     /tmp/cceliFzU.s:56     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
+     /tmp/cceliFzU.s:122    .noinit:0000000000000000 reset_key
 
 NO UNDEFINED SYMBOLS

@@ -56,65 +56,65 @@
   20               	/* frame size = 0 */
   21               	/* stack size = 0 */
   22               	.L__stack_usage = 0
-  23               	/* epilogue start */
-  38:./tmk_core/protocol/lufa/outputselect.c **** }
-  24               		.loc 1 38 0
-  25 0000 0895      		ret
-  26               		.cfi_endproc
-  27               	.LFE106:
-  29               		.section	.text.set_output,"ax",@progbits
-  30               	.global	set_output
-  32               	set_output:
-  33               	.LFB105:
+  23 0000 0895      		ret
+  24               		.cfi_endproc
+  25               	.LFE106:
+  27               		.section	.text.set_output,"ax",@progbits
+  28               	.global	set_output
+  30               	set_output:
+  31               	.LFB105:
   27:./tmk_core/protocol/lufa/outputselect.c ****     set_output_user(output);
-  34               		.loc 1 27 0
-  35               		.cfi_startproc
-  36               	.LVL1:
-  37 0000 CF93      		push r28
-  38               	.LCFI0:
-  39               		.cfi_def_cfa_offset 3
-  40               		.cfi_offset 28, -2
-  41               	/* prologue: function */
-  42               	/* frame size = 0 */
-  43               	/* stack size = 1 */
-  44               	.L__stack_usage = 1
-  45 0002 C82F      		mov r28,r24
+  32               		.loc 1 27 0
+  33               		.cfi_startproc
+  34               	.LVL1:
+  27:./tmk_core/protocol/lufa/outputselect.c ****     set_output_user(output);
+  35               		.loc 1 27 0
+  36 0000 CF93      		push r28
+  37               	.LCFI0:
+  38               		.cfi_def_cfa_offset 3
+  39               		.cfi_offset 28, -2
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42               	/* stack size = 1 */
+  43               	.L__stack_usage = 1
+  44 0002 C82F      		mov r28,r24
   28:./tmk_core/protocol/lufa/outputselect.c ****     desired_output = output;
-  46               		.loc 1 28 0
-  47 0004 0E94 0000 		call set_output_user
-  48               	.LVL2:
+  45               		.loc 1 28 0
+  46 0004 0E94 0000 		call set_output_user
+  47               	.LVL2:
   29:./tmk_core/protocol/lufa/outputselect.c **** }
-  49               		.loc 1 29 0
-  50 0008 C093 0000 		sts desired_output,r28
-  51               	/* epilogue start */
+  48               		.loc 1 29 0
+  49 0008 C093 0000 		sts desired_output,r28
+  50               	/* epilogue start */
   30:./tmk_core/protocol/lufa/outputselect.c **** 
-  52               		.loc 1 30 0
-  53 000c CF91      		pop r28
-  54               	.LVL3:
-  55 000e 0895      		ret
-  56               		.cfi_endproc
-  57               	.LFE105:
-  59               		.section	.text.auto_detect_output,"ax",@progbits
-  60               	.global	auto_detect_output
-  62               	auto_detect_output:
-  63               	.LFB107:
+  51               		.loc 1 30 0
+  52 000c CF91      		pop r28
+  53               	.LVL3:
+  54 000e 0895      		ret
+  55               		.cfi_endproc
+  56               	.LFE105:
+  58               		.section	.text.auto_detect_output,"ax",@progbits
+  59               	.global	auto_detect_output
+  61               	auto_detect_output:
+  62               	.LFB107:
+  38:./tmk_core/protocol/lufa/outputselect.c **** }
   39:./tmk_core/protocol/lufa/outputselect.c **** 
   40:./tmk_core/protocol/lufa/outputselect.c **** /** \brief Auto Detect Output
   41:./tmk_core/protocol/lufa/outputselect.c ****  *
   42:./tmk_core/protocol/lufa/outputselect.c ****  * FIXME: Needs doc
   43:./tmk_core/protocol/lufa/outputselect.c ****  */
   44:./tmk_core/protocol/lufa/outputselect.c **** uint8_t auto_detect_output(void) {
-  64               		.loc 1 44 0
-  65               		.cfi_startproc
-  66               	/* prologue: function */
-  67               	/* frame size = 0 */
-  68               	/* stack size = 0 */
-  69               	.L__stack_usage = 0
+  63               		.loc 1 44 0
+  64               		.cfi_startproc
+  65               	/* prologue: function */
+  66               	/* frame size = 0 */
+  67               	/* stack size = 0 */
+  68               	.L__stack_usage = 0
   45:./tmk_core/protocol/lufa/outputselect.c ****     if (USB_DeviceState == DEVICE_STATE_Configured) {
-  70               		.loc 1 45 0
-  71 0000 8091 0000 		lds r24,USB_DeviceState
-  72 0004 8430      		cpi r24,lo8(4)
-  73 0006 01F0      		breq .L5
+  69               		.loc 1 45 0
+  70 0000 8091 0000 		lds r24,USB_DeviceState
+  71 0004 8430      		cpi r24,lo8(4)
+  72 0006 01F0      		breq .L5
   46:./tmk_core/protocol/lufa/outputselect.c ****         return OUTPUT_USB;
   47:./tmk_core/protocol/lufa/outputselect.c ****     }
   48:./tmk_core/protocol/lufa/outputselect.c **** 
@@ -129,83 +129,73 @@
   57:./tmk_core/protocol/lufa/outputselect.c **** #endif
   58:./tmk_core/protocol/lufa/outputselect.c **** 
   59:./tmk_core/protocol/lufa/outputselect.c ****     return OUTPUT_NONE;
-  74               		.loc 1 59 0
-  75 0008 81E0      		ldi r24,lo8(1)
-  76 000a 0895      		ret
-  77               	.L5:
+  73               		.loc 1 59 0
+  74 0008 81E0      		ldi r24,lo8(1)
+  75 000a 0895      		ret
+  76               	.L5:
   46:./tmk_core/protocol/lufa/outputselect.c ****         return OUTPUT_USB;
-  78               		.loc 1 46 0
-  79 000c 82E0      		ldi r24,lo8(2)
-  80               	/* epilogue start */
+  77               		.loc 1 46 0
+  78 000c 82E0      		ldi r24,lo8(2)
   60:./tmk_core/protocol/lufa/outputselect.c **** }
-  81               		.loc 1 60 0
-  82 000e 0895      		ret
-  83               		.cfi_endproc
-  84               	.LFE107:
-  86               		.section	.text.where_to_send,"ax",@progbits
-  87               	.global	where_to_send
-  89               	where_to_send:
-  90               	.LFB108:
+  79               		.loc 1 60 0
+  80 000e 0895      		ret
+  81               		.cfi_endproc
+  82               	.LFE107:
+  84               		.section	.text.where_to_send,"ax",@progbits
+  85               	.global	where_to_send
+  87               	where_to_send:
+  88               	.LFB108:
   61:./tmk_core/protocol/lufa/outputselect.c **** 
   62:./tmk_core/protocol/lufa/outputselect.c **** /** \brief Where To Send
   63:./tmk_core/protocol/lufa/outputselect.c ****  *
   64:./tmk_core/protocol/lufa/outputselect.c ****  * FIXME: Needs doc
   65:./tmk_core/protocol/lufa/outputselect.c ****  */
   66:./tmk_core/protocol/lufa/outputselect.c **** uint8_t where_to_send(void) {
-  91               		.loc 1 66 0
-  92               		.cfi_startproc
-  93               	/* prologue: function */
-  94               	/* frame size = 0 */
-  95               	/* stack size = 0 */
-  96               	.L__stack_usage = 0
+  89               		.loc 1 66 0
+  90               		.cfi_startproc
+  91               	/* prologue: function */
+  92               	/* frame size = 0 */
+  93               	/* stack size = 0 */
+  94               	.L__stack_usage = 0
   67:./tmk_core/protocol/lufa/outputselect.c ****     if (desired_output == OUTPUT_AUTO) {
-  97               		.loc 1 67 0
-  98 0000 8091 0000 		lds r24,desired_output
-  99 0004 8111      		cpse r24,__zero_reg__
- 100 0006 00C0      		rjmp .L6
+  95               		.loc 1 67 0
+  96 0000 8091 0000 		lds r24,desired_output
+  97 0004 8111      		cpse r24,__zero_reg__
+  98 0006 00C0      		rjmp .L8
   68:./tmk_core/protocol/lufa/outputselect.c ****         return auto_detect_output();
- 101               		.loc 1 68 0
- 102 0008 0C94 0000 		jmp auto_detect_output
- 103               	.LVL4:
- 104               	.L6:
- 105               	/* epilogue start */
+  99               		.loc 1 68 0
+ 100 0008 0C94 0000 		jmp auto_detect_output
+ 101               	.LVL4:
+ 102               	.L8:
   69:./tmk_core/protocol/lufa/outputselect.c ****     }
   70:./tmk_core/protocol/lufa/outputselect.c ****     return desired_output;
   71:./tmk_core/protocol/lufa/outputselect.c **** }
- 106               		.loc 1 71 0
- 107 000c 0895      		ret
- 108               		.cfi_endproc
- 109               	.LFE108:
- 111               	.global	desired_output
- 112               		.section	.bss.desired_output,"aw",@nobits
- 115               	desired_output:
- 116 0000 00        		.zero	1
- 117               		.text
- 118               	.Letext0:
- 119               		.file 2 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdint.h"
- 120               		.file 3 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
- 121               		.file 4 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
- 122               		.file 5 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
- 123               		.file 6 "./lib/lufa/LUFA/Drivers/USB/Core/HostStandardReq.h"
- 124               		.file 7 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdio.h"
- 125               		.file 8 "./tmk_core/common/report.h"
- 126               		.file 9 "./tmk_core/common/host_driver.h"
- 127               		.file 10 "./tmk_core/common/host.h"
- 128               		.file 11 "./tmk_core/protocol/lufa/lufa.h"
- 129               		.file 12 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../Device.h"
- 130               		.file 13 "./tmk_core/protocol/lufa/outputselect.h"
+ 103               		.loc 1 71 0
+ 104 000c 0895      		ret
+ 105               		.cfi_endproc
+ 106               	.LFE108:
+ 108               	.global	desired_output
+ 109               		.section	.bss.desired_output,"aw",@nobits
+ 112               	desired_output:
+ 113 0000 00        		.zero	1
+ 114               		.text
+ 115               	.Letext0:
+ 116               		.file 2 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../Device.h"
+ 117               		.file 3 "./tmk_core/protocol/lufa/outputselect.h"
+ 118               		.file 4 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+ 119               		.file 5 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 outputselect.c
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:2      *ABS*:000000000000003e __SP_H__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:3      *ABS*:000000000000003d __SP_L__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:4      *ABS*:000000000000003f __SREG__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:5      *ABS*:0000000000000000 __tmp_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:6      *ABS*:0000000000000001 __zero_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:13     .text.set_output_user:0000000000000000 set_output_user
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:32     .text.set_output:0000000000000000 set_output
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:115    .bss.desired_output:0000000000000000 desired_output
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:62     .text.auto_detect_output:0000000000000000 auto_detect_output
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccK2qEBD.s:89     .text.where_to_send:0000000000000000 where_to_send
+     /tmp/ccO4VBEw.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccO4VBEw.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccO4VBEw.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccO4VBEw.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccO4VBEw.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccO4VBEw.s:13     .text.set_output_user:0000000000000000 set_output_user
+     /tmp/ccO4VBEw.s:30     .text.set_output:0000000000000000 set_output
+     /tmp/ccO4VBEw.s:112    .bss.desired_output:0000000000000000 desired_output
+     /tmp/ccO4VBEw.s:61     .text.auto_detect_output:0000000000000000 auto_detect_output
+     /tmp/ccO4VBEw.s:87     .text.where_to_send:0000000000000000 where_to_send
 
 UNDEFINED SYMBOLS
 USB_DeviceState

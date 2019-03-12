@@ -301,52 +301,53 @@
   32 0006 EB01      		movw r28,r22
   33 0008 E881      		ld r30,Y
   34 000a F981      		ldd r31,Y+1
-  35 000c 4081      		ld r20,Z
-  36 000e 50E0      		ldi r21,0
-  37               	.LVL1:
-  38 0010 2D91      		ld r18,X+
-  39 0012 3C91      		ld r19,X
-  40 0014 1197      		sbiw r26,1
-  41 0016 4217      		cp r20,r18
-  42 0018 5307      		cpc r21,r19
-  43 001a 00F4      		brsh .L2
-  44 001c 9A01      		movw r18,r20
-  45               	.L2:
-  46               	.LVL2:
+  35 000c 2081      		ld r18,Z
+  36               	.LVL1:
  271:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.h **** 
  272:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.h **** 				if (*BytesRem < CurrDescriptorSize)
+  37               		.loc 1 272 0
+  38 000e 8D91      		ld r24,X+
+  39 0010 9C91      		ld r25,X
+  40 0012 1197      		sbiw r26,1
+  41               	.LVL2:
+  42 0014 30E0      		ldi r19,0
+  43 0016 8217      		cp r24,r18
+  44 0018 9307      		cpc r25,r19
+  45 001a 00F4      		brsh .L2
+  46 001c 9C01      		movw r18,r24
+  47               	.LVL3:
+  48               	.L2:
  273:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.h **** 				  CurrDescriptorSize = *BytesRem;
  274:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.h **** 
  275:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.h **** 				*CurrConfigLoc  = (void*)((uintptr_t)*CurrConfigLoc + CurrDescriptorSize);
-  47               		.loc 1 275 0
-  48 001e E20F      		add r30,r18
-  49 0020 F31F      		adc r31,r19
-  50 0022 EB01      		movw r28,r22
-  51 0024 F983      		std Y+1,r31
-  52 0026 E883      		st Y,r30
+  49               		.loc 1 275 0
+  50 001e E20F      		add r30,r18
+  51 0020 F31F      		adc r31,r19
+  52 0022 EB01      		movw r28,r22
+  53 0024 F983      		std Y+1,r31
+  54 0026 E883      		st Y,r30
  276:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.h **** 				*BytesRem      -= CurrDescriptorSize;
-  53               		.loc 1 276 0
-  54 0028 8D91      		ld r24,X+
-  55 002a 9C91      		ld r25,X
-  56 002c 1197      		sbiw r26,1
-  57               	.LVL3:
-  58 002e 821B      		sub r24,r18
-  59 0030 930B      		sbc r25,r19
-  60 0032 8D93      		st X+,r24
-  61 0034 9C93      		st X,r25
-  62               	/* epilogue start */
+  55               		.loc 1 276 0
+  56 0028 8D91      		ld r24,X+
+  57 002a 9C91      		ld r25,X
+  58 002c 1197      		sbiw r26,1
+  59 002e 821B      		sub r24,r18
+  60 0030 930B      		sbc r25,r19
+  61 0032 8D93      		st X+,r24
+  62 0034 9C93      		st X,r25
+  63               	/* epilogue start */
  277:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.h **** 			}
-  63               		.loc 1 277 0
-  64 0036 DF91      		pop r29
-  65 0038 CF91      		pop r28
-  66 003a 0895      		ret
-  67               		.cfi_endproc
-  68               	.LFE87:
-  70               		.section	.text.USB_GetNextDescriptorOfType,"ax",@progbits
-  71               	.global	USB_GetNextDescriptorOfType
-  73               	USB_GetNextDescriptorOfType:
-  74               	.LFB88:
-  75               		.file 2 "lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c"
+  64               		.loc 1 277 0
+  65 0036 DF91      		pop r29
+  66 0038 CF91      		pop r28
+  67 003a 0895      		ret
+  68               		.cfi_endproc
+  69               	.LFE87:
+  71               		.section	.text.USB_GetNextDescriptorOfType,"ax",@progbits
+  72               	.global	USB_GetNextDescriptorOfType
+  74               	USB_GetNextDescriptorOfType:
+  75               	.LFB88:
+  76               		.file 2 "lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c"
    1:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** /*
    2:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****              LUFA Library
    3:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****      Copyright (C) Dean Camera, 2017.
@@ -424,348 +425,380 @@
   75:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                  void** const CurrConfigLoc,
   76:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                  const uint8_t Type)
   77:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** {
-  76               		.loc 2 77 0
-  77               		.cfi_startproc
-  78               	.LVL4:
-  79 0000 FF92      		push r15
-  80               	.LCFI2:
-  81               		.cfi_def_cfa_offset 3
-  82               		.cfi_offset 15, -2
-  83 0002 0F93      		push r16
-  84               	.LCFI3:
-  85               		.cfi_def_cfa_offset 4
-  86               		.cfi_offset 16, -3
-  87 0004 1F93      		push r17
-  88               	.LCFI4:
-  89               		.cfi_def_cfa_offset 5
-  90               		.cfi_offset 17, -4
-  91 0006 CF93      		push r28
-  92               	.LCFI5:
-  93               		.cfi_def_cfa_offset 6
-  94               		.cfi_offset 28, -5
-  95 0008 DF93      		push r29
-  96               	.LCFI6:
-  97               		.cfi_def_cfa_offset 7
-  98               		.cfi_offset 29, -6
-  99               	/* prologue: function */
- 100               	/* frame size = 0 */
- 101               	/* stack size = 5 */
- 102               	.L__stack_usage = 5
- 103 000a EC01      		movw r28,r24
- 104 000c 8B01      		movw r16,r22
- 105 000e F42E      		mov r15,r20
- 106               	.LVL5:
- 107               	.L4:
+  77               		.loc 2 77 0
+  78               		.cfi_startproc
+  79               	.LVL4:
+  80 0000 FF92      		push r15
+  81               	.LCFI2:
+  82               		.cfi_def_cfa_offset 3
+  83               		.cfi_offset 15, -2
+  84 0002 0F93      		push r16
+  85               	.LCFI3:
+  86               		.cfi_def_cfa_offset 4
+  87               		.cfi_offset 16, -3
+  88 0004 1F93      		push r17
+  89               	.LCFI4:
+  90               		.cfi_def_cfa_offset 5
+  91               		.cfi_offset 17, -4
+  92 0006 CF93      		push r28
+  93               	.LCFI5:
+  94               		.cfi_def_cfa_offset 6
+  95               		.cfi_offset 28, -5
+  96 0008 DF93      		push r29
+  97               	.LCFI6:
+  98               		.cfi_def_cfa_offset 7
+  99               		.cfi_offset 29, -6
+ 100               	/* prologue: function */
+ 101               	/* frame size = 0 */
+ 102               	/* stack size = 5 */
+ 103               	.L__stack_usage = 5
+ 104 000a EC01      		movw r28,r24
+ 105 000c 8B01      		movw r16,r22
+ 106 000e F42E      		mov r15,r20
+ 107               	.LVL5:
+ 108               	.L5:
   78:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	while (*BytesRem)
- 108               		.loc 2 78 0
- 109 0010 8881      		ld r24,Y
- 110 0012 9981      		ldd r25,Y+1
- 111 0014 892B      		or r24,r25
- 112 0016 01F0      		breq .L3
+ 109               		.loc 2 78 0
+ 110 0010 8881      		ld r24,Y
+ 111 0012 9981      		ldd r25,Y+1
+ 112 0014 892B      		or r24,r25
+ 113 0016 01F0      		breq .L4
   79:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	{
   80:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		USB_GetNextDescriptor(BytesRem, CurrConfigLoc);
- 113               		.loc 2 80 0
- 114 0018 B801      		movw r22,r16
- 115 001a CE01      		movw r24,r28
- 116 001c 0E94 0000 		call USB_GetNextDescriptor
- 117               	.LVL6:
+ 114               		.loc 2 80 0
+ 115 0018 B801      		movw r22,r16
+ 116 001a CE01      		movw r24,r28
+ 117 001c 0E94 0000 		call USB_GetNextDescriptor
+ 118               	.LVL6:
   81:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
   82:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		if (DESCRIPTOR_TYPE(*CurrConfigLoc) == Type)
- 118               		.loc 2 82 0
- 119 0020 D801      		movw r26,r16
- 120 0022 ED91      		ld r30,X+
- 121 0024 FC91      		ld r31,X
- 122 0026 8181      		ldd r24,Z+1
- 123 0028 8F11      		cpse r24,r15
- 124 002a 00C0      		rjmp .L4
- 125               	.L3:
- 126               	/* epilogue start */
+ 119               		.loc 2 82 0
+ 120 0020 D801      		movw r26,r16
+ 121 0022 ED91      		ld r30,X+
+ 122 0024 FC91      		ld r31,X
+ 123 0026 8181      		ldd r24,Z+1
+ 124 0028 8F11      		cpse r24,r15
+ 125 002a 00C0      		rjmp .L5
+ 126               	.L4:
+ 127               	/* epilogue start */
   83:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		  return;
   84:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	}
   85:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** }
- 127               		.loc 2 85 0
- 128 002c DF91      		pop r29
- 129 002e CF91      		pop r28
- 130               	.LVL7:
- 131 0030 1F91      		pop r17
- 132 0032 0F91      		pop r16
- 133               	.LVL8:
- 134 0034 FF90      		pop r15
- 135               	.LVL9:
- 136 0036 0895      		ret
- 137               		.cfi_endproc
- 138               	.LFE88:
- 140               		.section	.text.USB_GetNextDescriptorOfTypeBefore,"ax",@progbits
- 141               	.global	USB_GetNextDescriptorOfTypeBefore
- 143               	USB_GetNextDescriptorOfTypeBefore:
- 144               	.LFB89:
+ 128               		.loc 2 85 0
+ 129 002c DF91      		pop r29
+ 130 002e CF91      		pop r28
+ 131               	.LVL7:
+ 132 0030 1F91      		pop r17
+ 133 0032 0F91      		pop r16
+ 134               	.LVL8:
+ 135 0034 FF90      		pop r15
+ 136               	.LVL9:
+ 137 0036 0895      		ret
+ 138               		.cfi_endproc
+ 139               	.LFE88:
+ 141               		.section	.text.USB_GetNextDescriptorOfTypeBefore,"ax",@progbits
+ 142               	.global	USB_GetNextDescriptorOfTypeBefore
+ 144               	USB_GetNextDescriptorOfTypeBefore:
+ 145               	.LFB89:
   86:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
   87:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** void USB_GetNextDescriptorOfTypeBefore(uint16_t* const BytesRem,
   88:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                        void** const CurrConfigLoc,
   89:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                        const uint8_t Type,
   90:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                        const uint8_t BeforeType)
   91:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** {
- 145               		.loc 2 91 0
- 146               		.cfi_startproc
- 147               	.LVL10:
- 148 0000 EF92      		push r14
- 149               	.LCFI7:
- 150               		.cfi_def_cfa_offset 3
- 151               		.cfi_offset 14, -2
- 152 0002 FF92      		push r15
- 153               	.LCFI8:
- 154               		.cfi_def_cfa_offset 4
- 155               		.cfi_offset 15, -3
- 156 0004 0F93      		push r16
- 157               	.LCFI9:
- 158               		.cfi_def_cfa_offset 5
- 159               		.cfi_offset 16, -4
- 160 0006 1F93      		push r17
- 161               	.LCFI10:
- 162               		.cfi_def_cfa_offset 6
- 163               		.cfi_offset 17, -5
- 164 0008 CF93      		push r28
- 165               	.LCFI11:
- 166               		.cfi_def_cfa_offset 7
- 167               		.cfi_offset 28, -6
- 168 000a DF93      		push r29
- 169               	.LCFI12:
- 170               		.cfi_def_cfa_offset 8
- 171               		.cfi_offset 29, -7
- 172               	/* prologue: function */
- 173               	/* frame size = 0 */
- 174               	/* stack size = 6 */
- 175               	.L__stack_usage = 6
- 176 000c EC01      		movw r28,r24
- 177 000e 8B01      		movw r16,r22
- 178 0010 F42E      		mov r15,r20
- 179 0012 E22E      		mov r14,r18
- 180               	.LVL11:
- 181               	.L9:
+ 146               		.loc 2 91 0
+ 147               		.cfi_startproc
+ 148               	.LVL10:
+ 149 0000 EF92      		push r14
+ 150               	.LCFI7:
+ 151               		.cfi_def_cfa_offset 3
+ 152               		.cfi_offset 14, -2
+ 153 0002 FF92      		push r15
+ 154               	.LCFI8:
+ 155               		.cfi_def_cfa_offset 4
+ 156               		.cfi_offset 15, -3
+ 157 0004 0F93      		push r16
+ 158               	.LCFI9:
+ 159               		.cfi_def_cfa_offset 5
+ 160               		.cfi_offset 16, -4
+ 161 0006 1F93      		push r17
+ 162               	.LCFI10:
+ 163               		.cfi_def_cfa_offset 6
+ 164               		.cfi_offset 17, -5
+ 165 0008 CF93      		push r28
+ 166               	.LCFI11:
+ 167               		.cfi_def_cfa_offset 7
+ 168               		.cfi_offset 28, -6
+ 169 000a DF93      		push r29
+ 170               	.LCFI12:
+ 171               		.cfi_def_cfa_offset 8
+ 172               		.cfi_offset 29, -7
+ 173               	/* prologue: function */
+ 174               	/* frame size = 0 */
+ 175               	/* stack size = 6 */
+ 176               	.L__stack_usage = 6
+ 177 000c EC01      		movw r28,r24
+ 178 000e 8B01      		movw r16,r22
+ 179 0010 F42E      		mov r15,r20
+ 180 0012 E22E      		mov r14,r18
+ 181               	.LVL11:
+ 182               	.L10:
   92:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	while (*BytesRem)
- 182               		.loc 2 92 0
- 183 0014 8881      		ld r24,Y
- 184 0016 9981      		ldd r25,Y+1
- 185 0018 892B      		or r24,r25
- 186 001a 01F0      		breq .L8
+ 183               		.loc 2 92 0
+ 184 0014 8881      		ld r24,Y
+ 185 0016 9981      		ldd r25,Y+1
+ 186 0018 892B      		or r24,r25
+ 187 001a 01F0      		breq .L9
   93:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	{
   94:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		USB_GetNextDescriptor(BytesRem, CurrConfigLoc);
- 187               		.loc 2 94 0
- 188 001c B801      		movw r22,r16
- 189 001e CE01      		movw r24,r28
- 190 0020 0E94 0000 		call USB_GetNextDescriptor
- 191               	.LVL12:
+ 188               		.loc 2 94 0
+ 189 001c B801      		movw r22,r16
+ 190 001e CE01      		movw r24,r28
+ 191 0020 0E94 0000 		call USB_GetNextDescriptor
+ 192               	.LVL12:
   95:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
   96:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		if (DESCRIPTOR_TYPE(*CurrConfigLoc) == Type)
- 192               		.loc 2 96 0
- 193 0024 D801      		movw r26,r16
- 194 0026 ED91      		ld r30,X+
- 195 0028 FC91      		ld r31,X
- 196 002a 8181      		ldd r24,Z+1
- 197 002c 8F15      		cp r24,r15
- 198 002e 01F0      		breq .L8
+ 193               		.loc 2 96 0
+ 194 0024 D801      		movw r26,r16
+ 195 0026 ED91      		ld r30,X+
+ 196 0028 FC91      		ld r31,X
+ 197 002a 8181      		ldd r24,Z+1
+ 198 002c 8F15      		cp r24,r15
+ 199 002e 01F0      		breq .L9
   97:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		{
   98:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			return;
   99:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		}
  100:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		else if (DESCRIPTOR_TYPE(*CurrConfigLoc) == BeforeType)
- 199               		.loc 2 100 0
- 200 0030 8E11      		cpse r24,r14
- 201 0032 00C0      		rjmp .L9
+ 200               		.loc 2 100 0
+ 201 0030 8E11      		cpse r24,r14
+ 202 0032 00C0      		rjmp .L10
  101:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		{
  102:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			*BytesRem = 0;
- 202               		.loc 2 102 0
- 203 0034 1982      		std Y+1,__zero_reg__
- 204 0036 1882      		st Y,__zero_reg__
- 205               	.L8:
- 206               	/* epilogue start */
+ 203               		.loc 2 102 0
+ 204 0034 1982      		std Y+1,__zero_reg__
+ 205 0036 1882      		st Y,__zero_reg__
+ 206               	.L9:
+ 207               	/* epilogue start */
  103:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			return;
  104:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		}
  105:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	}
  106:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** }
- 207               		.loc 2 106 0
- 208 0038 DF91      		pop r29
- 209 003a CF91      		pop r28
- 210               	.LVL13:
- 211 003c 1F91      		pop r17
- 212 003e 0F91      		pop r16
- 213               	.LVL14:
- 214 0040 FF90      		pop r15
- 215               	.LVL15:
- 216 0042 EF90      		pop r14
- 217               	.LVL16:
- 218 0044 0895      		ret
- 219               		.cfi_endproc
- 220               	.LFE89:
- 222               		.section	.text.USB_GetNextDescriptorOfTypeAfter,"ax",@progbits
- 223               	.global	USB_GetNextDescriptorOfTypeAfter
- 225               	USB_GetNextDescriptorOfTypeAfter:
- 226               	.LFB90:
+ 208               		.loc 2 106 0
+ 209 0038 DF91      		pop r29
+ 210 003a CF91      		pop r28
+ 211               	.LVL13:
+ 212 003c 1F91      		pop r17
+ 213 003e 0F91      		pop r16
+ 214               	.LVL14:
+ 215 0040 FF90      		pop r15
+ 216               	.LVL15:
+ 217 0042 EF90      		pop r14
+ 218               	.LVL16:
+ 219 0044 0895      		ret
+ 220               		.cfi_endproc
+ 221               	.LFE89:
+ 223               		.section	.text.USB_GetNextDescriptorOfTypeAfter,"ax",@progbits
+ 224               	.global	USB_GetNextDescriptorOfTypeAfter
+ 226               	USB_GetNextDescriptorOfTypeAfter:
+ 227               	.LFB90:
  107:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  108:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** void USB_GetNextDescriptorOfTypeAfter(uint16_t* const BytesRem,
  109:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                       void** const CurrConfigLoc,
  110:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                       const uint8_t Type,
  111:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                       const uint8_t AfterType)
  112:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** {
- 227               		.loc 2 112 0
- 228               		.cfi_startproc
- 229               	.LVL17:
- 230 0000 FF92      		push r15
- 231               	.LCFI13:
- 232               		.cfi_def_cfa_offset 3
- 233               		.cfi_offset 15, -2
- 234 0002 0F93      		push r16
- 235               	.LCFI14:
- 236               		.cfi_def_cfa_offset 4
- 237               		.cfi_offset 16, -3
- 238 0004 1F93      		push r17
- 239               	.LCFI15:
- 240               		.cfi_def_cfa_offset 5
- 241               		.cfi_offset 17, -4
- 242 0006 CF93      		push r28
- 243               	.LCFI16:
- 244               		.cfi_def_cfa_offset 6
- 245               		.cfi_offset 28, -5
- 246 0008 DF93      		push r29
- 247               	.LCFI17:
- 248               		.cfi_def_cfa_offset 7
- 249               		.cfi_offset 29, -6
- 250               	/* prologue: function */
- 251               	/* frame size = 0 */
- 252               	/* stack size = 5 */
- 253               	.L__stack_usage = 5
- 254 000a EC01      		movw r28,r24
- 255 000c 8B01      		movw r16,r22
- 256 000e F42E      		mov r15,r20
+ 228               		.loc 2 112 0
+ 229               		.cfi_startproc
+ 230               	.LVL17:
+ 231 0000 FF92      		push r15
+ 232               	.LCFI13:
+ 233               		.cfi_def_cfa_offset 3
+ 234               		.cfi_offset 15, -2
+ 235 0002 0F93      		push r16
+ 236               	.LCFI14:
+ 237               		.cfi_def_cfa_offset 4
+ 238               		.cfi_offset 16, -3
+ 239 0004 1F93      		push r17
+ 240               	.LCFI15:
+ 241               		.cfi_def_cfa_offset 5
+ 242               		.cfi_offset 17, -4
+ 243 0006 CF93      		push r28
+ 244               	.LCFI16:
+ 245               		.cfi_def_cfa_offset 6
+ 246               		.cfi_offset 28, -5
+ 247 0008 DF93      		push r29
+ 248               	.LCFI17:
+ 249               		.cfi_def_cfa_offset 7
+ 250               		.cfi_offset 29, -6
+ 251               	/* prologue: function */
+ 252               	/* frame size = 0 */
+ 253               	/* stack size = 5 */
+ 254               	.L__stack_usage = 5
+ 255 000a EC01      		movw r28,r24
+ 256 000c 8B01      		movw r16,r22
+ 257 000e F42E      		mov r15,r20
  113:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	USB_GetNextDescriptorOfType(BytesRem, CurrConfigLoc, AfterType);
- 257               		.loc 2 113 0
- 258 0010 422F      		mov r20,r18
- 259               	.LVL18:
- 260 0012 0E94 0000 		call USB_GetNextDescriptorOfType
- 261               	.LVL19:
+ 258               		.loc 2 113 0
+ 259 0010 422F      		mov r20,r18
+ 260               	.LVL18:
+ 261 0012 0E94 0000 		call USB_GetNextDescriptorOfType
+ 262               	.LVL19:
  114:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  115:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	if (*BytesRem)
- 262               		.loc 2 115 0
- 263 0016 8881      		ld r24,Y
- 264 0018 9981      		ldd r25,Y+1
- 265 001a 892B      		or r24,r25
- 266 001c 01F0      		breq .L15
+ 263               		.loc 2 115 0
+ 264 0016 8881      		ld r24,Y
+ 265 0018 9981      		ldd r25,Y+1
+ 266 001a 892B      		or r24,r25
+ 267 001c 01F0      		breq .L16
  116:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	  USB_GetNextDescriptorOfType(BytesRem, CurrConfigLoc, Type);
- 267               		.loc 2 116 0
- 268 001e 4F2D      		mov r20,r15
- 269 0020 B801      		movw r22,r16
- 270 0022 CE01      		movw r24,r28
- 271               	/* epilogue start */
+ 268               		.loc 2 116 0
+ 269 001e 4F2D      		mov r20,r15
+ 270 0020 B801      		movw r22,r16
+ 271 0022 CE01      		movw r24,r28
+ 272               	/* epilogue start */
  117:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** }
- 272               		.loc 2 117 0
- 273 0024 DF91      		pop r29
- 274 0026 CF91      		pop r28
- 275               	.LVL20:
- 276 0028 1F91      		pop r17
- 277 002a 0F91      		pop r16
- 278               	.LVL21:
- 279 002c FF90      		pop r15
- 280               	.LVL22:
+ 273               		.loc 2 117 0
+ 274 0024 DF91      		pop r29
+ 275 0026 CF91      		pop r28
+ 276               	.LVL20:
+ 277 0028 1F91      		pop r17
+ 278 002a 0F91      		pop r16
+ 279               	.LVL21:
+ 280 002c FF90      		pop r15
+ 281               	.LVL22:
  116:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	  USB_GetNextDescriptorOfType(BytesRem, CurrConfigLoc, Type);
- 281               		.loc 2 116 0
- 282 002e 0C94 0000 		jmp USB_GetNextDescriptorOfType
- 283               	.LVL23:
- 284               	.L15:
- 285               	/* epilogue start */
- 286               		.loc 2 117 0
- 287 0032 DF91      		pop r29
- 288 0034 CF91      		pop r28
- 289               	.LVL24:
- 290 0036 1F91      		pop r17
- 291 0038 0F91      		pop r16
- 292               	.LVL25:
- 293 003a FF90      		pop r15
- 294               	.LVL26:
- 295 003c 0895      		ret
- 296               		.cfi_endproc
- 297               	.LFE90:
- 299               		.section	.text.USB_GetNextDescriptorComp,"ax",@progbits
- 300               	.global	USB_GetNextDescriptorComp
- 302               	USB_GetNextDescriptorComp:
- 303               	.LFB91:
+ 282               		.loc 2 116 0
+ 283 002e 0C94 0000 		jmp USB_GetNextDescriptorOfType
+ 284               	.LVL23:
+ 285               	.L16:
+ 286               	/* epilogue start */
+ 287               		.loc 2 117 0
+ 288 0032 DF91      		pop r29
+ 289 0034 CF91      		pop r28
+ 290               	.LVL24:
+ 291 0036 1F91      		pop r17
+ 292 0038 0F91      		pop r16
+ 293               	.LVL25:
+ 294 003a FF90      		pop r15
+ 295               	.LVL26:
+ 296 003c 0895      		ret
+ 297               		.cfi_endproc
+ 298               	.LFE90:
+ 300               		.section	.text.USB_GetNextDescriptorComp,"ax",@progbits
+ 301               	.global	USB_GetNextDescriptorComp
+ 303               	USB_GetNextDescriptorComp:
+ 304               	.LFB91:
  118:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  119:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** uint8_t USB_GetNextDescriptorComp(uint16_t* const BytesRem,
  120:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                   void** const CurrConfigLoc,
  121:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c ****                                   ConfigComparatorPtr_t const ComparatorRoutine)
  122:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** {
- 304               		.loc 2 122 0
- 305               		.cfi_startproc
- 306               	.LVL27:
- 307 0000 AF92      		push r10
- 308               	.LCFI18:
- 309               		.cfi_def_cfa_offset 3
- 310               		.cfi_offset 10, -2
- 311 0002 BF92      		push r11
- 312               	.LCFI19:
- 313               		.cfi_def_cfa_offset 4
- 314               		.cfi_offset 11, -3
- 315 0004 CF92      		push r12
- 316               	.LCFI20:
- 317               		.cfi_def_cfa_offset 5
- 318               		.cfi_offset 12, -4
- 319 0006 DF92      		push r13
- 320               	.LCFI21:
- 321               		.cfi_def_cfa_offset 6
- 322               		.cfi_offset 13, -5
- 323 0008 EF92      		push r14
- 324               	.LCFI22:
- 325               		.cfi_def_cfa_offset 7
- 326               		.cfi_offset 14, -6
- 327 000a FF92      		push r15
- 328               	.LCFI23:
- 329               		.cfi_def_cfa_offset 8
- 330               		.cfi_offset 15, -7
- 331 000c 0F93      		push r16
- 332               	.LCFI24:
- 333               		.cfi_def_cfa_offset 9
- 334               		.cfi_offset 16, -8
- 335 000e 1F93      		push r17
- 336               	.LCFI25:
- 337               		.cfi_def_cfa_offset 10
- 338               		.cfi_offset 17, -9
- 339 0010 CF93      		push r28
- 340               	.LCFI26:
- 341               		.cfi_def_cfa_offset 11
- 342               		.cfi_offset 28, -10
- 343 0012 DF93      		push r29
- 344               	.LCFI27:
- 345               		.cfi_def_cfa_offset 12
- 346               		.cfi_offset 29, -11
- 347               	/* prologue: function */
- 348               	/* frame size = 0 */
- 349               	/* stack size = 10 */
- 350               	.L__stack_usage = 10
- 351 0014 8C01      		movw r16,r24
- 352 0016 EB01      		movw r28,r22
- 353 0018 6A01      		movw r12,r20
- 354               	.LVL28:
- 355               	.L18:
+ 305               		.loc 2 122 0
+ 306               		.cfi_startproc
+ 307               	.LVL27:
+ 308 0000 AF92      		push r10
+ 309               	.LCFI18:
+ 310               		.cfi_def_cfa_offset 3
+ 311               		.cfi_offset 10, -2
+ 312 0002 BF92      		push r11
+ 313               	.LCFI19:
+ 314               		.cfi_def_cfa_offset 4
+ 315               		.cfi_offset 11, -3
+ 316 0004 CF92      		push r12
+ 317               	.LCFI20:
+ 318               		.cfi_def_cfa_offset 5
+ 319               		.cfi_offset 12, -4
+ 320 0006 DF92      		push r13
+ 321               	.LCFI21:
+ 322               		.cfi_def_cfa_offset 6
+ 323               		.cfi_offset 13, -5
+ 324 0008 EF92      		push r14
+ 325               	.LCFI22:
+ 326               		.cfi_def_cfa_offset 7
+ 327               		.cfi_offset 14, -6
+ 328 000a FF92      		push r15
+ 329               	.LCFI23:
+ 330               		.cfi_def_cfa_offset 8
+ 331               		.cfi_offset 15, -7
+ 332 000c 0F93      		push r16
+ 333               	.LCFI24:
+ 334               		.cfi_def_cfa_offset 9
+ 335               		.cfi_offset 16, -8
+ 336 000e 1F93      		push r17
+ 337               	.LCFI25:
+ 338               		.cfi_def_cfa_offset 10
+ 339               		.cfi_offset 17, -9
+ 340 0010 CF93      		push r28
+ 341               	.LCFI26:
+ 342               		.cfi_def_cfa_offset 11
+ 343               		.cfi_offset 28, -10
+ 344 0012 DF93      		push r29
+ 345               	.LCFI27:
+ 346               		.cfi_def_cfa_offset 12
+ 347               		.cfi_offset 29, -11
+ 348               	/* prologue: function */
+ 349               	/* frame size = 0 */
+ 350               	/* stack size = 10 */
+ 351               	.L__stack_usage = 10
+ 352 0014 8C01      		movw r16,r24
+ 353 0016 EB01      		movw r28,r22
+ 354 0018 6A01      		movw r12,r20
+ 355               	.LVL28:
+ 356               	.L19:
  123:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	uint8_t ErrorCode;
  124:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  125:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	while (*BytesRem)
- 356               		.loc 2 125 0
- 357 001a F801      		movw r30,r16
- 358 001c E080      		ld r14,Z
- 359 001e F180      		ldd r15,Z+1
- 360 0020 E114      		cp r14,__zero_reg__
- 361 0022 F104      		cpc r15,__zero_reg__
- 362 0024 01F4      		brne .L20
+ 357               		.loc 2 125 0
+ 358 001a F801      		movw r30,r16
+ 359 001c E080      		ld r14,Z
+ 360 001e F180      		ldd r15,Z+1
+ 361 0020 E114      		cp r14,__zero_reg__
+ 362 0022 F104      		cpc r15,__zero_reg__
+ 363 0024 01F0      		breq .L25
+ 364               	.LBB2:
  126:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	{
  127:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		uint8_t* PrevDescLoc  = *CurrConfigLoc;
+ 365               		.loc 2 127 0
+ 366 0026 A880      		ld r10,Y
+ 367 0028 B980      		ldd r11,Y+1
+ 368               	.LVL29:
  128:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		uint16_t PrevBytesRem = *BytesRem;
  129:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  130:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		USB_GetNextDescriptor(BytesRem, CurrConfigLoc);
+ 369               		.loc 2 130 0
+ 370 002a BE01      		movw r22,r28
+ 371 002c C801      		movw r24,r16
+ 372 002e 0E94 0000 		call USB_GetNextDescriptor
+ 373               	.LVL30:
  131:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  132:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		if ((ErrorCode = ComparatorRoutine(*CurrConfigLoc)) != DESCRIPTOR_SEARCH_NotFound)
+ 374               		.loc 2 132 0
+ 375 0032 8881      		ld r24,Y
+ 376 0034 9981      		ldd r25,Y+1
+ 377 0036 F601      		movw r30,r12
+ 378 0038 0995      		icall
+ 379               	.LVL31:
+ 380 003a 8230      		cpi r24,lo8(2)
+ 381 003c 01F0      		breq .L19
  133:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		{
  134:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			if (ErrorCode == DESCRIPTOR_SEARCH_Fail)
+ 382               		.loc 2 134 0
+ 383 003e 8130      		cpi r24,lo8(1)
+ 384 0040 01F4      		brne .L20
  135:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			{
  136:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 				*CurrConfigLoc = PrevDescLoc;
+ 385               		.loc 2 136 0
+ 386 0042 B982      		std Y+1,r11
+ 387 0044 A882      		st Y,r10
  137:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 				*BytesRem      = PrevBytesRem;
+ 388               		.loc 2 137 0
+ 389 0046 F801      		movw r30,r16
+ 390 0048 F182      		std Z+1,r15
+ 391 004a E082      		st Z,r14
+ 392 004c 00C0      		rjmp .L20
+ 393               	.LVL32:
+ 394               	.L25:
+ 395               	.LBE2:
  138:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			}
  139:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  140:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			return ErrorCode;
@@ -773,85 +806,43 @@
  142:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	}
  143:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
  144:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 	return DESCRIPTOR_SEARCH_COMP_EndOfDescriptor;
- 363               		.loc 2 144 0
- 364 0026 82E0      		ldi r24,lo8(2)
- 365 0028 00C0      		rjmp .L17
- 366               	.L20:
- 367               	.LBB2:
- 127:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		uint16_t PrevBytesRem = *BytesRem;
- 368               		.loc 2 127 0
- 369 002a A880      		ld r10,Y
- 370 002c B980      		ldd r11,Y+1
- 371               	.LVL29:
- 130:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 
- 372               		.loc 2 130 0
- 373 002e BE01      		movw r22,r28
- 374 0030 C801      		movw r24,r16
- 375 0032 0E94 0000 		call USB_GetNextDescriptor
- 376               	.LVL30:
- 132:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 		{
- 377               		.loc 2 132 0
- 378 0036 8881      		ld r24,Y
- 379 0038 9981      		ldd r25,Y+1
- 380 003a F601      		movw r30,r12
- 381 003c 0995      		icall
- 382               	.LVL31:
- 383 003e 8230      		cpi r24,lo8(2)
- 384 0040 01F0      		breq .L18
- 134:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			{
- 385               		.loc 2 134 0
- 386 0042 8130      		cpi r24,lo8(1)
- 387 0044 01F4      		brne .L17
- 136:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 				*BytesRem      = PrevBytesRem;
- 388               		.loc 2 136 0
- 389 0046 B982      		std Y+1,r11
- 390 0048 A882      		st Y,r10
- 137:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** 			}
- 391               		.loc 2 137 0
- 392 004a F801      		movw r30,r16
- 393 004c F182      		std Z+1,r15
- 394 004e E082      		st Z,r14
- 395               	.LVL32:
- 396               	.L17:
- 397               	/* epilogue start */
- 398               	.LBE2:
+ 396               		.loc 2 144 0
+ 397 004e 82E0      		ldi r24,lo8(2)
+ 398               	.L20:
+ 399               	/* epilogue start */
  145:lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.c **** }
- 399               		.loc 2 145 0
- 400 0050 DF91      		pop r29
- 401 0052 CF91      		pop r28
- 402               	.LVL33:
- 403 0054 1F91      		pop r17
- 404 0056 0F91      		pop r16
- 405               	.LVL34:
- 406 0058 FF90      		pop r15
- 407 005a EF90      		pop r14
- 408 005c DF90      		pop r13
- 409 005e CF90      		pop r12
- 410               	.LVL35:
- 411 0060 BF90      		pop r11
- 412 0062 AF90      		pop r10
- 413 0064 0895      		ret
- 414               		.cfi_endproc
- 415               	.LFE91:
- 417               		.text
- 418               	.Letext0:
- 419               		.file 3 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdint.h"
- 420               		.file 4 "lib/lufa/LUFA/Drivers/USB/Core/StdRequestType.h"
- 421               		.file 5 "lib/lufa/LUFA/Drivers/USB/Core/AVR8/../StdDescriptors.h"
- 422               		.file 6 "lib/lufa/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
- 423               		.file 7 "lib/lufa/LUFA/Drivers/USB/Core/AVR8/../USBTask.h"
- 424               		.file 8 "lib/lufa/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 400               		.loc 2 145 0
+ 401 0050 DF91      		pop r29
+ 402 0052 CF91      		pop r28
+ 403               	.LVL33:
+ 404 0054 1F91      		pop r17
+ 405 0056 0F91      		pop r16
+ 406               	.LVL34:
+ 407 0058 FF90      		pop r15
+ 408 005a EF90      		pop r14
+ 409 005c DF90      		pop r13
+ 410 005e CF90      		pop r12
+ 411               	.LVL35:
+ 412 0060 BF90      		pop r11
+ 413 0062 AF90      		pop r10
+ 414 0064 0895      		ret
+ 415               		.cfi_endproc
+ 416               	.LFE91:
+ 418               		.text
+ 419               	.Letext0:
+ 420               		.file 3 "/usr/lib/avr/include/stdint.h"
+ 421               		.file 4 "lib/lufa/LUFA/Drivers/USB/Core/AVR8/../StdDescriptors.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ConfigDescriptors.c
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:2      *ABS*:000000000000003e __SP_H__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:3      *ABS*:000000000000003d __SP_L__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:4      *ABS*:000000000000003f __SREG__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:5      *ABS*:0000000000000000 __tmp_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:6      *ABS*:0000000000000001 __zero_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:12     .text.USB_GetNextDescriptor:0000000000000000 USB_GetNextDescriptor
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:73     .text.USB_GetNextDescriptorOfType:0000000000000000 USB_GetNextDescriptorOfType
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:143    .text.USB_GetNextDescriptorOfTypeBefore:0000000000000000 USB_GetNextDescriptorOfTypeBefore
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:225    .text.USB_GetNextDescriptorOfTypeAfter:0000000000000000 USB_GetNextDescriptorOfTypeAfter
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//cc1DnhGR.s:302    .text.USB_GetNextDescriptorComp:0000000000000000 USB_GetNextDescriptorComp
+     /tmp/cccrNEFh.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cccrNEFh.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cccrNEFh.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cccrNEFh.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cccrNEFh.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cccrNEFh.s:12     .text.USB_GetNextDescriptor:0000000000000000 USB_GetNextDescriptor
+     /tmp/cccrNEFh.s:74     .text.USB_GetNextDescriptorOfType:0000000000000000 USB_GetNextDescriptorOfType
+     /tmp/cccrNEFh.s:144    .text.USB_GetNextDescriptorOfTypeBefore:0000000000000000 USB_GetNextDescriptorOfTypeBefore
+     /tmp/cccrNEFh.s:226    .text.USB_GetNextDescriptorOfTypeAfter:0000000000000000 USB_GetNextDescriptorOfTypeAfter
+     /tmp/cccrNEFh.s:303    .text.USB_GetNextDescriptorComp:0000000000000000 USB_GetNextDescriptorComp
 
 NO UNDEFINED SYMBOLS

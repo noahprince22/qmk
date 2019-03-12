@@ -47,14 +47,31 @@ enum custom_keycodes {
 #define KC_SELALT LT(_SELECT_ALT, KC_LALT) // goes to the alt select layer, which can move around but keeps select layer active
 #define KC_SELALTSHIFT MO(_SELECT_ALT_SHIFT) // when shift + alt held down in select mode.
 #define KC_FN3_A MO(_FN3)
+#define KC_GUITAB RWIN_T(KC_TAB)
 
 #define KC_X9 RGUI(KC_TAB)	//gui tab to switch desktops
 #define KC_X10 TD(TD_VRDSK)
 
-#define KC_COPY LGUI(KC_C)
-#define KC_CUT LGUI(KC_X)
-#define KC_PASTE LGUI(KC_V)
-#define KC_UNDO LGUI(KC_Z)
+#define KC_COPY LCTL(KC_C)
+#define KC_S_COPY M(15)
+#define KC_S_CUT M(16)
+#define KC_CUT LCTL(KC_X)
+#define KC_PASTE LCTL(KC_V)
+#define KC_UNDO LCTL(KC_Z)
+#define KC_ALTENT LALT(KC_ENT)
+#define KC_REDO M(13)
+#define KC_FORMAT LALT(LSFT(KC_L))
+#define KC_DIR LALT(LSFT(KC_D))
+#define KC_OPEN LALT(LSFT(KC_O))
+#define KC_FINDA LALT(LSFT(KC_F))
+#define KC_SAVE LCTL(KC_S)
+#define KC_FIND LCTL(KC_F)
+#define KC_P_TAB LCTL(KC_PGUP)
+#define KC_N_TAB LCTL(KC_PGDN)
+#define KC_PTAB LALT(KC_LBRC)
+#define KC_NTAB LALT(KC_RBRC)
+
+#define KC_SELALL LCTL(KC_A)
 
 #define KC_SEL_L M(0)
 #define KC_SEL_R M(1)
@@ -74,9 +91,10 @@ enum custom_keycodes {
 
 #define KC_B_WRD M(12)
 
-#define MOVE X_LALT // mac
-// #define MOVE X_LCTRL // linux/windows
+// #define MOVE X_LALT // mac
+#define MOVE X_LCTRL // linux/windows
 
+#define KC_AG_NORM AG_NORM
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -117,14 +135,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
 		LSFT , Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
-	  FN3_A,LCTRL,LALT,LGUI,LALT,   ,										     ,LBRC,RBRC,CLCK,BSLS,   ,
+	  FN3_A,LCTRL,LWIN,LSFT,LALT,   ,										     ,LBRC,RBRC,CLCK,BSLS,   ,
 	//`----+----+----+----+----+----'   									 `----+----+----+----+----+----'
 	//							`----+----+----+'			`----+----+----'
-										ESC,F6,			 RSFT, DEL,
+										ESC,F6,			 FORMAT, DEL,
 	//							`----+----+----+'			`----+----+----'
 											HOME,			PGUP,
 	//							`----+----+----+'			`----+----+----'
-							    ALT_A,LGUI ,END,			    PGDN, BSPC, SPC
+							    ALT_A,GUITAB ,END,			    PGDN, BSPC, SPC
 	//							`----+----+----+'			`----+----+----'
 
 	),
@@ -135,18 +153,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,    ,B_WRD,    ,    ,   							      ,L_WRD,UP ,R_WRD,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		   ,    ,    ,    ,    ,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
+	   ,SELALL,SAVE,    ,FIND,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-  ALTSH , UNDO , CUT,COPY,PASTE,  ,							      ,    ,    ,    ,    ,   ,
+  ALTSH , UNDO , CUT,COPY,PASTE,  ,							      ,    ,    ,    ,    ,   ,ALTENT
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-      ,    ,    ,,   ,   ,    						       ,,   ,    ,    ,     ,
+      ,    ,    ,ALTSH,   ,   ,    						                  ,PTAB,NTAB,    ,    ,     ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 										  ,    ,			     ,    ,
 	//							`----+----+----+'			`----+----+----'
 											   ,			     ,
 	//							`----+----+----+'			`----+----+----'
-									,     ,    ,			     ,    ,
+									,     ,    ,			     ,P_TAB,N_TAB
 	//							`----+----+----+'			`----+----+----'
 	),
 
@@ -154,13 +172,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		   ,    ,    ,    ,    ,    ,   							      ,    ,PGUP,    ,    ,    ,
+		   ,    ,    ,    ,    ,    ,   							      ,    ,PGUP,OPEN,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		   ,    ,    ,    ,    ,    ,     							  HOME,    ,PGDN,    ,     ,   ,
+		   ,    ,    ,DIR,FINDA,    ,     							  HOME,    ,PGDN,    ,     ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		  ,  ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		    ,    ,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
+		    ,REDO,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 										  ,    ,			     ,    ,
@@ -202,7 +220,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
  SELALTSHIFT,   , ,  ,  ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 									    ,    ,			         ,    ,
@@ -221,9 +239,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 	       ,    ,    ,    ,    ,    ,     							  SEL_END,SEL_L,SEL_D,SEL_R,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	    SELALTSHIFT   ,UNDO ,CUT ,COPY ,PASTE ,    ,   							       ,    ,    ,    ,    ,    ,
+	    SELALTSHIFT   ,UNDO ,S_CUT ,S_COPY ,PASTE ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 									    ,    ,			         ,    ,
@@ -265,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
 			,    ,UP,    ,    ,    ,         ,    ,    ,    , UP ,    ,
 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
-		REST	,LEFT,DOWN,RIGHT,    ,    ,          ,    ,    ,LEFT,DOWN,RIGHT,
+		REST,AG_NORM,DOWN,RIGHT,    ,    ,          ,    ,    ,LEFT,DOWN,RIGHT,
 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
 		X0 ,LALT,LGUI, X10,  ,BSPC,     SPC, UP ,QUOT,LEFT, DOWN ,RGHT,
 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
@@ -366,15 +384,43 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 
     	case 10: // left word
     	    SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_LEFT) SS_UP(MOVE));
-    		return false;
+    		return MACRO_NONE;
 
     	case 11: // right word
             SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_RIGHT) SS_UP(MOVE));
-            return false;
+            return MACRO_NONE;
 
         case 12: // backspace left word
             SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_TAP(X_LEFT) SS_UP(X_LSHIFT) SS_UP(MOVE) SS_TAP(X_BSPACE));
+            return MACRO_NONE;
+
+        case 13:
+            SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_LCTRL) SS_TAP(X_Z) SS_UP(X_LSHIFT) SS_UP(X_LCTRL));
             return false;
+
+        case 14: //format
+            SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LCTRL) SS_TAP(X_L) SS_UP(X_LCTRL) SS_UP(X_LALT));
+            return false;
+
+        case 15: //scopy
+            SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_C) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+            return MACRO_NONE;
+
+        case 16: //scut
+            SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_X) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+            return MACRO_NONE;
+
+         case 17: // go to dir
+            SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_TAP(X_D) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+            return MACRO_NONE;
+
+         case 18: // open
+            SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_TAP(X_O) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+            return MACRO_NONE;
+
+         case 19: // find in all
+            SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSHIFT) SS_TAP(X_F) SS_UP(X_LCTRL) SS_UP(X_LSHIFT));
+            return MACRO_NONE;
 	}
 
 	}

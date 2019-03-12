@@ -500,17 +500,14 @@
   59               	.LFE85:
   61               		.text
   62               	.Letext0:
-  63               		.file 3 "/usr/local/Cellar/avr-gcc@7/7.3.0/avr/include/stdint.h"
-  64               		.file 4 "lib/lufa/LUFA/Drivers/USB/Core/AVR8/../AVR8/../AVR8/../StdRequestType.h"
-  65               		.file 5 "lib/lufa/LUFA/Drivers/USB/Core/AVR8/../AVR8/../AVR8/../DeviceStandardReq.h"
-  66               		.file 6 "lib/lufa/LUFA/Drivers/USB/Core/AVR8/../AVR8/../AVR8/../USBTask.h"
+  63               		.file 3 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Device_AVR8.c
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccNhPCi1.s:2      *ABS*:000000000000003e __SP_H__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccNhPCi1.s:3      *ABS*:000000000000003d __SP_L__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccNhPCi1.s:4      *ABS*:000000000000003f __SREG__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccNhPCi1.s:5      *ABS*:0000000000000000 __tmp_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccNhPCi1.s:6      *ABS*:0000000000000001 __zero_reg__
-/var/folders/x3/bbndryhj5bd9s7h49yn0kv480000gn/T//ccNhPCi1.s:13     .text.USB_Device_SendRemoteWakeup:0000000000000000 USB_Device_SendRemoteWakeup
+     /tmp/ccPy4tpI.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccPy4tpI.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccPy4tpI.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccPy4tpI.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccPy4tpI.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccPy4tpI.s:13     .text.USB_Device_SendRemoteWakeup:0000000000000000 USB_Device_SendRemoteWakeup
 
 NO UNDEFINED SYMBOLS
