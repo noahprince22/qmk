@@ -201,325 +201,332 @@
    2:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #include "action_layer.h"
    3:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #include "eeconfig.h"
    4:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-   5:keyboards/Dactylv2/keymaps/Noah/keymap.c **** extern keymap_config_t keymap_config;
-   6:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _QWERTY 0
-   7:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _ALT 1
-   8:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _ALTSH 2
-   9:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _CTR 3
-  10:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _SELECT 4
-  11:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _SELECT_ALT 5
-  12:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _SELECT_ALT_SHIFT 6
-  13:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _FN3 7
-  14:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  15:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //#define _FN4 6
-  16:keyboards/Dactylv2/keymaps/Noah/keymap.c **** enum {
-  17:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	TD_CPY_PST = 0,
-  18:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	TD_CMD,
-  19:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	TD_SLSH,
-  20:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  	TD_VRDSK
-  21:keyboards/Dactylv2/keymaps/Noah/keymap.c **** };
-  22:keyboards/Dactylv2/keymaps/Noah/keymap.c **** enum custom_keycodes {
-  23:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	ALT,
-  24:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	ALTSH,
-  25:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	CTR,
-  26:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	SELECT,
-  27:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	SELECT_ALT,
-  28:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	SELECT_ALT_SHIFT,
-  29:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	FN3,
-  30:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	ADJUST,
-  31:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	dance_cln_finished,
-  32:keyboards/Dactylv2/keymaps/Noah/keymap.c **** };
-  33:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  34:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_ KC_TRNS
-  35:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _______ KC_TRNS
-  36:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CAPW LGUI(X_LSHIFT(KC_3))        // Capture whole screen
-  37:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CPYW LGUI(X_LSHIFT(LCTL(KC_3)))  // Copy whole screen
-  38:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CAPP LGUI(X_LSHIFT(KC_4))       // Capture portion of screen
-  39:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CPYP LGUI(X_LSHIFT(LCTL(KC_4)))  // Copy portion of screen
-  40:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_X0 MT(MOD_LCTL, KC_ESC)
-  41:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_TOGUP TG(4)
-  42:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_REST RESET
-  43:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_ALT_A MO(_ALT) // goes to alt layer when held, maybe behaves like regular alt
-  44:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_ALTSH MO(_ALTSH)
-  45:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CTR_L LM(_CTR, MOD_LCTL) // goes to ctrl layer when held, maybe behaves like regular con
-  46:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_A OSL(_SELECT) // turns on the select oneshot, turns off when any key is pressed
-  47:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SELALT LT(_SELECT_ALT, KC_LALT) // goes to the alt select layer, which can move around b
-  48:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SELALTSHIFT MO(_SELECT_ALT_SHIFT) // when shift + alt held down in select mode.
-  49:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FN3_A MO(_FN3)
-  50:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_GUITAB RWIN_T(KC_TAB)
-  51:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  52:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_X9 RGUI(KC_TAB)	//gui tab to switch desktops
-  53:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_X10 TD(TD_VRDSK)
+   5:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define PREVENT_STUCK_MODIFIERS
+   6:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+   7:keyboards/Dactylv2/keymaps/Noah/keymap.c **** extern keymap_config_t keymap_config;
+   8:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _QWERTY 0
+   9:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _ALT 1
+  10:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _ALTSH 2
+  11:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _CTR 3
+  12:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _SELECT 4
+  13:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _SELECT_ALT 5
+  14:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _SELECT_ALT_SHIFT 6
+  15:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _FN3 7
+  16:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+  17:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //#define _FN4 6
+  18:keyboards/Dactylv2/keymaps/Noah/keymap.c **** enum {
+  19:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	TD_CPY_PST = 0,
+  20:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	TD_CMD,
+  21:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	TD_SLSH,
+  22:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  	TD_VRDSK
+  23:keyboards/Dactylv2/keymaps/Noah/keymap.c **** };
+  24:keyboards/Dactylv2/keymaps/Noah/keymap.c **** enum custom_keycodes {
+  25:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	ALT,
+  26:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	ALTSH,
+  27:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	CTR,
+  28:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	SELECT,
+  29:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	SELECT_ALT,
+  30:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	SELECT_ALT_SHIFT,
+  31:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	FN3,
+  32:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	ADJUST,
+  33:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	dance_cln_finished,
+  34:keyboards/Dactylv2/keymaps/Noah/keymap.c **** };
+  35:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+  36:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_ KC_TRNS
+  37:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define _______ KC_TRNS
+  38:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CAPW LGUI(X_LSHIFT(KC_3))        // Capture whole screen
+  39:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CPYW LGUI(X_LSHIFT(LCTL(KC_3)))  // Copy whole screen
+  40:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CAPP LGUI(X_LSHIFT(KC_4))       // Capture portion of screen
+  41:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CPYP LGUI(X_LSHIFT(LCTL(KC_4)))  // Copy portion of screen
+  42:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_X0 MT(MOD_LCTL, KC_ESC)
+  43:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_TOGUP TG(4)
+  44:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_REST RESET
+  45:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_MALT M(20) // MO(_ALT) // goes to alt layer when held, maybe behaves like regular alt
+  46:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_MSHIFT M(21) // MO(_ALTSH)
+  47:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CTR_L M(22) // LM(_CTR, MOD_LCTL) // goes to ctrl layer when held, maybe behaves like re
+  48:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_A M(23) // OSL(_SELECT) // turns on the select oneshot, turns off when any key is pr
+  49:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SELALT LT(_SELECT_ALT, KC_LALT) // goes to the alt select layer, which can move around b
+  50:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SELALTSHIFT MO(_SELECT_ALT_SHIFT) // when shift + alt held down in select mode.
+  51:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FN3_A MO(_FN3)
+  52:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_GUITAB RWIN_T(KC_TAB)
+  53:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_RESTL M(24)
   54:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  55:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_COPY LCTL(KC_C)
-  56:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_S_COPY M(15)
-  57:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_S_CUT M(16)
-  58:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CUT LCTL(KC_X)
-  59:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_PASTE LCTL(KC_V)
-  60:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_UNDO LCTL(KC_Z)
-  61:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_ALTENT LALT(KC_ENT)
-  62:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_REDO M(13)
-  63:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FORMAT LALT(LSFT(KC_L))
-  64:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_DIR LALT(LSFT(KC_D))
-  65:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_OPEN LALT(LSFT(KC_O))
-  66:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FINDA LALT(LSFT(KC_F))
-  67:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SAVE LCTL(KC_S)
-  68:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FIND LCTL(KC_F)
-  69:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_P_TAB LCTL(KC_PGUP)
-  70:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_N_TAB LCTL(KC_PGDN)
-  71:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_PTAB LALT(KC_LBRC)
-  72:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_NTAB LALT(KC_RBRC)
-  73:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  74:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SELALL LCTL(KC_A)
-  75:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  76:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_L M(0)
-  77:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_R M(1)
-  78:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_U M(2)
-  79:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_D M(3)
+  55:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_X9 RGUI(KC_TAB)	//gui tab to switch desktops
+  56:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_X10 TD(TD_VRDSK)
+  57:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+  58:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_COPY LCTL(KC_C)
+  59:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_S_COPY M(15)
+  60:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_S_CUT M(16)
+  61:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CUT LCTL(KC_X)
+  62:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_PASTE LCTL(KC_V)
+  63:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_UNDO LCTL(KC_Z)
+  64:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_ALTENT LALT(KC_ENT)
+  65:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_REDO LCTL(LSFT(KC_Z))
+  66:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FORMAT LALT(LSFT(KC_L))
+  67:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_DIR LALT(LSFT(KC_D))
+  68:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_OPEN LALT(LSFT(KC_O))
+  69:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FINDA LALT(LSFT(KC_F))
+  70:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_OOG LCTL(LSFT(KC_4)) // Open in oposite group intellij
+  71:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_CLOSE LCTL(KC_W)
+  72:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_REP LCTL(KC_R)
+  73:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_REPA LALT(LSFT(KC_R))
+  74:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_OPG LALT(KC_S) // Move to the opposite group intellij
+  75:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_FIND LCTL(KC_F)
+  76:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_P_TAB LCTL(KC_PGUP)
+  77:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_N_TAB LCTL(KC_PGDN)
+  78:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_PTAB LALT(KC_LBRC)
+  79:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_NTAB LALT(KC_RBRC)
   80:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  81:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_L_WRD M(4)
-  82:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_R_WRD M(5)
-  83:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_PG_UP M(6)
-  84:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_PG_D M(7)
-  85:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  86:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_HOME M(8)
-  87:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_END M(9)
-  88:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  89:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_L_WRD M(10)
-  90:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_R_WRD M(11)
-  91:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  92:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_B_WRD M(12)
-  93:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  94:keyboards/Dactylv2/keymaps/Noah/keymap.c **** // #define MOVE X_LALT // mac
-  95:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define MOVE X_LCTRL // linux/windows
-  96:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  97:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_AG_NORM AG_NORM
+  81:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SELALL LCTL(KC_A)
+  82:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+  83:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_L M(0)
+  84:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_R M(1)
+  85:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_U M(2)
+  86:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_D M(3)
+  87:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+  88:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_L_WRD M(4)
+  89:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_R_WRD M(5)
+  90:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_PG_UP M(6)
+  91:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_PG_D M(7)
+  92:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+  93:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_HOME M(8)
+  94:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_SEL_END M(9)
+  95:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+  96:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_L_WRD M(10)
+  97:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_R_WRD M(11)
   98:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
-  99:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 100:keyboards/Dactylv2/keymaps/Noah/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
- 101:keyboards/Dactylv2/keymaps/Noah/keymap.c **** /* Keymap 0: Basic layer
- 102:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *
- 103:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * ,-------------------------------------------.           ,----------------------------------_----
- 104:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |   =    |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |   -
- 105:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |--------+------+------+------+------+------|           |------+------+------+------+------|----
- 106:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |Tab\FN3 |   Q  |   W  |   F  |   P  |   G  |           |   J  |   L  |   U  |   Y  |   :  |   \
- 107:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |--------+------+------+------+------+----- |           |------+------+------+------+------|----
- 108:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * | ENT/ADJ|   A  |   R  |   S  |   T  |   D  |           |   H  |   N  |   E  |   I  |   O  | ENT
- 109:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |--------+------+------+------+------+------|           |------+------+------+------+------|----
- 110:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * | LShift |   Z  |   X  |   C  |   V  |   B  |           |   K  |   M  |   ,  |   .  |  /   |RShi
- 111:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * `--------+------+------+------+------+------'           `-------+------+------+------+------|---
- 112:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |CTR     |  ALT | GUI  | Left | Right|    1                1   | LEFT | RIGHT|  UP  | DOWN  | ~L
- 113:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * `----------------------------------'                          `---------------------------------
- 114:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *				6	5		4	   3		2				2		 3		4		5		6
- 115:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                                 ,-------------.       ,-------------.
- 116:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                                 |   6  |   5  |       | 5    |  6     |
- 117:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          ,------|------|------|       |------+--------+------.
- 118:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          |   1  |  2    |   4  |       | 4    |        |      |
- 119:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          |Backsp|GUI   |------|       |------|    1   |    2 |
- 120:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          |  acs |TAB   |   3  |       | 3    |        |      |
- 121:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                         `--------------------'       `----------------------'
- 122:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  
- 123:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  
- 124:keyboards/Dactylv2/keymaps/Noah/keymap.c ****   	
- 125:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  */
- 126:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  
- 127:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     //
- 128:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_QWERTY] = KC_KEYMAP(
- 129:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.										,----+----+----+----+----+----.
- 130:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	  GRV  , 1  , 2  , 3  , 4  , 5  ,     									 6  , 7  , 8  , 9   , 0  , EQL,
- 131:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.										,----+----+----+----+----+----.
- 132:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		TAB , Q  , W  , E  , R  , T  ,    									  Y  , U  , I  , O , P  , MINS,
- 133:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   									|----+----+----+----+----+----|
- 134:keyboards/Dactylv2/keymaps/Noah/keymap.c ****       CTR_L, A  , S  , D  , F  , G  ,								      H  , J  , K  , L  ,SCLN,QUOT,
- 135:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
- 136:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		LSFT , Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
- 137:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
- 138:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	  FN3_A,LCTRL,LWIN,LSFT,LALT,   ,										     ,LBRC,RBRC,CLCK,BSLS,   ,
- 139:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'   									 `----+----+----+----+----+----'
- 140:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 141:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										ESC,F6,			 FORMAT, DEL,
- 142:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 143:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											HOME,			PGUP,
- 144:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 145:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 							    ALT_A,GUITAB ,END,			    PGDN, BSPC, SPC
- 146:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 147:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 148:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 149:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 150:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_ALT] = KC_KEYMAP(
- 151:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
- 152:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
- 153:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 154:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,B_WRD,    ,    ,   							      ,L_WRD,UP ,R_WRD,    ,    ,
- 155:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 156:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	   ,SELALL,SAVE,    ,FIND,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
- 157:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 158:keyboards/Dactylv2/keymaps/Noah/keymap.c ****   ALTSH , UNDO , CUT,COPY,PASTE,  ,							      ,    ,    ,    ,    ,   ,ALTENT
- 159:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 160:keyboards/Dactylv2/keymaps/Noah/keymap.c ****       ,    ,    ,ALTSH,   ,   ,    						                  ,PTAB,NTAB,    ,    ,     ,
- 161:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
- 162:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 163:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										  ,    ,			     ,    ,
- 164:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 165:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											   ,			     ,
- 166:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 167:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									,     ,    ,			     ,P_TAB,N_TAB
- 168:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 169:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 170:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 171:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_ALTSH] = KC_KEYMAP(
- 172:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
- 173:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
- 174:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 175:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,PGUP,OPEN,    ,    ,
- 176:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 177:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,DIR,FINDA,    ,     							  HOME,    ,PGDN,    ,     ,   ,
- 178:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 179:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		  ,  ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
- 180:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 181:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		    ,REDO,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
- 182:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
- 183:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 184:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										  ,    ,			     ,    ,
- 185:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 186:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											   ,			     ,
- 187:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 188:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									ALT_A,     ,    ,			     ,    ,
- 189:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 190:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 191:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 192:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_CTR] = KC_KEYMAP(
- 193:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
- 194:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
- 195:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 196:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,    ,    ,    ,
- 197:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 198:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,     							      ,    ,    ,    ,    ,   ,
- 199:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 200:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		  ,  ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
- 201:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 202:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		    ,    ,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
- 203:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
- 204:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 205:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										  ,    ,			     ,    ,
- 206:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 207:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											   ,			     ,
- 208:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 209:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									,     ,    ,			     ,    , SEL_A
- 210:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 211:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 212:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 213:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     [_SELECT] = KC_KEYMAP(
- 214:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
- 215:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 216:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 217:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 218:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 219:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 220:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 221:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  SELALTSHIFT,   , ,  ,  ,    ,   							       ,    ,    ,    ,    ,    ,
- 222:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 223:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 224:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
- 225:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 226:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									    ,    ,			         ,    ,
- 227:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 228:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											    ,			     ,
- 229:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 230:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 							SELALT,     ,    ,			     ,    ,
- 231:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 232:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 233:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 234:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_SELECT_ALT] = KC_KEYMAP(
- 235:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
- 236:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 237:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 238:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							      ,SEL_L_WRD,SEL_U,SEL_R_WRD,    ,    ,
- 239:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 240:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,     							  SEL_END,SEL_L,SEL_D,SEL_R,    ,    ,
- 241:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 242:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	    SELALTSHIFT   ,UNDO ,S_CUT ,S_COPY ,PASTE ,    ,   							       ,    ,    ,    ,    ,    ,
- 243:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 244:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 245:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
- 246:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 247:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									    ,    ,			         ,    ,
- 248:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 249:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											    ,			     ,
- 250:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 251:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 								   SELALT ,     ,    ,			     ,    ,
- 252:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 253:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 254:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 255:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     [_SELECT_ALT_SHIFT] = KC_KEYMAP(
- 256:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
- 257:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 258:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 259:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,  SEL_PG_UP  , ,    ,    ,
- 260:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 261:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,     							  SEL_HOME,     ,  SEL_PG_D ,    ,    ,    ,
- 262:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 263:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
- 264:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- 265:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							      ,    ,    ,    ,    ,    ,
- 266:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
- 267:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 268:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									    ,    ,			         ,    ,
- 269:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 270:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											    ,			     ,
- 271:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 272:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 								  SELALT  ,     ,    ,			     ,    ,
- 273:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 274:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 275:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 276:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	
- 277:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	
- 278:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_FN3] = KC_KEYMAP(
- 279:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.    ,----+----+----+----+----+----.
- 280:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		F12 , F1 , F2 , F3 , F4 , F5 ,      F6 , F7 , F8 , F9 ,F10 ,F11 ,
- 281:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
- 282:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		, 3 , 3,  3, 3  , 3  ,         ,    ,    ,    ,    ,    ,
- 283:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
- 284:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 			,    ,UP,    ,    ,    ,         ,    ,    ,    , UP ,    ,
- 285:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
- 286:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		REST,AG_NORM,DOWN,RIGHT,    ,    ,          ,    ,    ,LEFT,DOWN,RIGHT,
- 287:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
- 288:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		X0 ,LALT,LGUI, X10,  ,BSPC,     SPC, UP ,QUOT,LEFT, DOWN ,RGHT,
- 289:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
- 290:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //		X3  , 1  , 2  , 3  , 4  , 5  ,      6  , 7  , 8  , 9 , 0  ,MINS,
- 291:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 292:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										PGUP,PGDN,			 END, HOME,
- 293:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 294:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											PSCR,			DEL,
- 295:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 296:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									BSPC, ,    ,			    , ENT, SPC
- 297:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
- 298:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 299:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
- 300:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
- 301:keyboards/Dactylv2/keymaps/Noah/keymap.c **** /*
- 302:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_FN4] = KEYMAP( \
- 303:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______, M(3)   , M(2)     , _______,  M(4)  ,		 _______, _______, _______, _______, ____
- 304:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, M(6)   , _______, _______  , _______, _______,		 _______, _______, _______, _______, ____
- 305:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______, M(1)   ,TD(TD_CMD), _______, _______,		 _______, _______, _______, _______, KC_U
- 306:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	M(7)   , M(8)   , M(9)   , _______  , _______, _______,		 _______, _______, _______, KC_LEFT, KC_D
- 307:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______, _______, _______  , _______, _______,		 _______, _______, _______, _______, ____
- 308:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______ , _______, _______  , _______, _______,	 _______, _______, _______, _______, ____
- 309:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),*/
- 310:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 311:keyboards/Dactylv2/keymaps/Noah/keymap.c **** };
- 312:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 313:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #ifdef AUDIO_ENABLE
- 314:keyboards/Dactylv2/keymaps/Noah/keymap.c **** float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
- 315:keyboards/Dactylv2/keymaps/Noah/keymap.c **** float tone_dvorak[][2]     = SONG(DVORAK_SOUND);
- 316:keyboards/Dactylv2/keymaps/Noah/keymap.c **** float tone_colemak[][2]    = SONG(COLEMAK_SOUND);
- 317:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #endif
- 318:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 319:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void persistent_default_layer_set(uint16_t default_layer) {
- 172               		.loc 2 319 0
+  99:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_B_WRD M(12)
+ 100:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 101:keyboards/Dactylv2/keymaps/Noah/keymap.c **** // #define MOVE X_LALT // mac
+ 102:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define MOVE X_LCTRL // linux/windows
+ 103:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 104:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #define KC_AG_NORM AG_NORM
+ 105:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 106:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 107:keyboards/Dactylv2/keymaps/Noah/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+ 108:keyboards/Dactylv2/keymaps/Noah/keymap.c **** /* Keymap 0: Basic layer
+ 109:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *
+ 110:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * ,-------------------------------------------.           ,----------------------------------_----
+ 111:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |   =    |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |   -
+ 112:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |--------+------+------+------+------+------|           |------+------+------+------+------|----
+ 113:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |Tab\FN3 |   Q  |   W  |   F  |   P  |   G  |           |   J  |   L  |   U  |   Y  |   :  |   \
+ 114:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |--------+------+------+------+------+----- |           |------+------+------+------+------|----
+ 115:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * | ENT/ADJ|   A  |   R  |   S  |   T  |   D  |           |   H  |   N  |   E  |   I  |   O  | ENT
+ 116:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |--------+------+------+------+------+------|           |------+------+------+------+------|----
+ 117:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * | LShift |   Z  |   X  |   C  |   V  |   B  |           |   K  |   M  |   ,  |   .  |  /   |RShi
+ 118:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * `--------+------+------+------+------+------'           `-------+------+------+------+------|---
+ 119:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * |CTR     |  ALT | GUI  | Left | Right|    1                1   | LEFT | RIGHT|  UP  | DOWN  | ~L
+ 120:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  * `----------------------------------'                          `---------------------------------
+ 121:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *				6	5		4	   3		2				2		 3		4		5		6
+ 122:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                                 ,-------------.       ,-------------.
+ 123:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                                 |   6  |   5  |       | 5    |  6     |
+ 124:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          ,------|------|------|       |------+--------+------.
+ 125:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          |   1  |  2    |   4  |       | 4    |        |      |
+ 126:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          |Backsp|GUI   |------|       |------|    1   |    2 |
+ 127:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                          |  acs |TAB   |   3  |       | 3    |        |      |
+ 128:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  *                         `--------------------'       `----------------------'
+ 129:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  
+ 130:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  
+ 131:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 132:keyboards/Dactylv2/keymaps/Noah/keymap.c ****  */
+ 133:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 134:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     //
+ 135:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_QWERTY] = KC_KEYMAP(
+ 136:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.										,----+----+----+----+----+----.
+ 137:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	  GRV  , 1  , 2  , 3  , 4  , 5  ,     									 6  , 7  , 8  , 9   , 0  , EQL,
+ 138:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.										,----+----+----+----+----+----.
+ 139:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		TAB , Q  , W  , E  , R  , T  ,    									  Y  , U  , I  , O , P  , MINS,
+ 140:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   									|----+----+----+----+----+----|
+ 141:keyboards/Dactylv2/keymaps/Noah/keymap.c ****       CTR_L, A  , S  , D  , F  , G  ,								      H  , J  , K  , L  ,SCLN,QUOT,
+ 142:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
+ 143:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		MSHIFT, Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
+ 144:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
+ 145:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	  FN3_A,LCTRL,LWIN,MSHIFT,LALT,   ,										     ,LBRC,RBRC,CLCK,BSLS,   ,
+ 146:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'   									 `----+----+----+----+----+----'
+ 147:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 148:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										ESC,F6,			 FORMAT, DEL,
+ 149:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 150:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											HOME,			PGUP,
+ 151:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 152:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 							    MALT,GUITAB ,END,			    PGDN, BSPC, SPC
+ 153:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 154:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 155:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 156:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 157:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_ALT] = KC_KEYMAP(
+ 158:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
+ 159:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
+ 160:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 161:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,CLOSE,B_WRD,REP,    ,   							      ,L_WRD,UP ,R_WRD,    ,    ,
+ 162:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 163:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	   ,SELALL,OPG,    ,FIND,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
+ 164:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 165:keyboards/Dactylv2/keymaps/Noah/keymap.c ****   MSHIFT , UNDO , CUT,COPY,PASTE,  ,							      ,    ,    ,    ,    ,  ALTENT,
+ 166:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 167:keyboards/Dactylv2/keymaps/Noah/keymap.c ****       ,    ,    ,MSHIFT,   ,   ,    						                  ,PTAB,NTAB,    ,    ,     ,
+ 168:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
+ 169:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 170:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										  ,    ,			     ,    ,
+ 171:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 172:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											   ,			     ,
+ 173:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 174:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									,     ,    ,			     ,P_TAB,N_TAB
+ 175:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 176:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 177:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 178:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_ALTSH] = KC_KEYMAP(
+ 179:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
+ 180:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,OOG ,    ,   							      ,    ,    ,     ,   ,    ,
+ 181:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 182:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,REPA,    ,   							      ,    ,PGUP,OPEN,    ,    ,
+ 183:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 184:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,DIR,FINDA,    ,     							  HOME,    ,PGDN,    ,     ,   ,
+ 185:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 186:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		  ,REDO ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
+ 187:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 188:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		    ,,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
+ 189:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
+ 190:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 191:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										  ,    ,			     ,    ,
+ 192:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 193:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											   ,			     ,
+ 194:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 195:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 							     MALT,     ,    ,			     ,    ,
+ 196:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 197:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 198:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 199:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_CTR] = KC_KEYMAP(
+ 200:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
+ 201:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
+ 202:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 203:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,    ,    ,    ,
+ 204:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 205:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		   ,    ,    ,    ,    ,    ,     							      ,    ,    ,    ,    ,   ,
+ 206:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 207:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		  ,  ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
+ 208:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 209:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		    ,    ,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
+ 210:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
+ 211:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 212:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										  ,    ,			     ,    ,
+ 213:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 214:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											   ,			     ,
+ 215:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 216:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									,     ,    ,			     ,    , SEL_A
+ 217:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 218:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 219:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 220:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     [_SELECT] = KC_KEYMAP(
+ 221:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
+ 222:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 223:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 224:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 225:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 226:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 227:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 228:keyboards/Dactylv2/keymaps/Noah/keymap.c ****      MSHIFT,   , ,  ,  ,    ,   							       ,    ,    ,    ,    ,    ,
+ 229:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 230:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,MSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 231:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
+ 232:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 233:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									    ,    ,			         ,    ,
+ 234:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 235:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											    ,			     ,
+ 236:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 237:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 							      MALT,    ,    ,			     ,    ,
+ 238:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 239:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 240:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 241:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_SELECT_ALT] = KC_KEYMAP(
+ 242:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
+ 243:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 244:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 245:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							      ,SEL_L_WRD,SEL_U,SEL_R_WRD,    ,    ,
+ 246:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 247:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,     							  SEL_END,SEL_L,SEL_D,SEL_R,    ,    ,
+ 248:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 249:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	 MSHIFT,UNDO ,S_CUT ,S_COPY ,PASTE ,    ,   							       ,    ,    ,    ,    ,    ,
+ 250:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 251:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 252:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
+ 253:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 254:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									    ,    ,			         ,    ,
+ 255:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 256:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											    ,			     ,
+ 257:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 258:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 								MALT,     ,    ,			     ,    ,
+ 259:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 260:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 261:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 262:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     [_SELECT_ALT_SHIFT] = KC_KEYMAP(
+ 263:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
+ 264:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 265:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 266:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,  SEL_PG_UP  , ,    ,    ,
+ 267:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 268:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,     							  SEL_HOME,     ,  SEL_PG_D ,    ,    ,    ,
+ 269:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 270:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
+ 271:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
+ 272:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	       ,    ,    ,    ,    ,    ,   							      ,    ,    ,    ,    ,    ,
+ 273:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
+ 274:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 275:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									    ,    ,			         ,    ,
+ 276:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 277:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											    ,			     ,
+ 278:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 279:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 								 MALT,     ,    ,			     ,    ,
+ 280:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 281:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 282:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 283:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	
+ 284:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	
+ 285:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_FN3] = KC_KEYMAP(
+ 286:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//,----+----+----+----+----+----.    ,----+----+----+----+----+----.
+ 287:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		F12 , F1 , F2 , F3 , F4 , F5 ,      F6 , F7 , F8 , F9 ,F10 ,F11 ,
+ 288:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
+ 289:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		, 3 , 3,  3, 3  , 3  ,         ,    ,    ,    ,    ,    ,
+ 290:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
+ 291:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 			,    ,UP,    ,    ,    ,         ,    ,    ,    , UP ,    ,
+ 292:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
+ 293:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		REST,AG_NORM,RESTL,RIGHT,    ,    ,          ,    ,    ,LEFT,DOWN,RIGHT,
+ 294:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
+ 295:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 		X0 ,LALT,LGUI, X10,  ,BSPC,     SPC, UP ,QUOT,LEFT, DOWN ,RGHT,
+ 296:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
+ 297:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //		X3  , 1  , 2  , 3  , 4  , 5  ,      6  , 7  , 8  , 9 , 0  ,MINS,
+ 298:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 299:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 										PGUP,PGDN,			 END, HOME,
+ 300:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 301:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 											PSCR,			DEL,
+ 302:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 303:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 									BSPC, ,    ,			    , ENT, SPC
+ 304:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//							`----+----+----+'			`----+----+----'
+ 305:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 306:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
+ 307:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),
+ 308:keyboards/Dactylv2/keymaps/Noah/keymap.c **** /*
+ 309:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	[_FN4] = KEYMAP( \
+ 310:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______, M(3)   , M(2)     , _______,  M(4)  ,		 _______, _______, _______, _______, ____
+ 311:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, M(6)   , _______, _______  , _______, _______,		 _______, _______, _______, _______, ____
+ 312:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______, M(1)   ,TD(TD_CMD), _______, _______,		 _______, _______, _______, _______, KC_U
+ 313:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	M(7)   , M(8)   , M(9)   , _______  , _______, _______,		 _______, _______, _______, KC_LEFT, KC_D
+ 314:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______, _______, _______  , _______, _______,		 _______, _______, _______, _______, ____
+ 315:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	_______, _______ , _______, _______  , _______, _______,	 _______, _______, _______, _______, ____
+ 316:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	),*/
+ 317:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 318:keyboards/Dactylv2/keymaps/Noah/keymap.c **** };
+ 319:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 320:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #ifdef AUDIO_ENABLE
+ 321:keyboards/Dactylv2/keymaps/Noah/keymap.c **** float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
+ 322:keyboards/Dactylv2/keymaps/Noah/keymap.c **** float tone_dvorak[][2]     = SONG(DVORAK_SOUND);
+ 323:keyboards/Dactylv2/keymaps/Noah/keymap.c **** float tone_colemak[][2]    = SONG(COLEMAK_SOUND);
+ 324:keyboards/Dactylv2/keymaps/Noah/keymap.c **** #endif
+ 325:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 326:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void persistent_default_layer_set(uint16_t default_layer) {
+ 172               		.loc 2 326 0
  173               		.cfi_startproc
  174               	.LVL0:
- 175               		.loc 2 319 0
+ 175               		.loc 2 326 0
  176 0000 CF93      		push r28
  177               	.LCFI0:
  178               		.cfi_def_cfa_offset 3
@@ -533,23 +540,23 @@
  186               	/* stack size = 2 */
  187               	.L__stack_usage = 2
  188 0004 EC01      		movw r28,r24
- 320:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	eeconfig_update_default_layer(default_layer);
- 189               		.loc 2 320 0
+ 327:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	eeconfig_update_default_layer(default_layer);
+ 189               		.loc 2 327 0
  190 0006 0E94 0000 		call eeconfig_update_default_layer
  191               	.LVL1:
- 321:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	default_layer_set(default_layer);
- 192               		.loc 2 321 0
+ 328:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	default_layer_set(default_layer);
+ 192               		.loc 2 328 0
  193 000a BE01      		movw r22,r28
  194 000c 80E0      		ldi r24,0
  195 000e 90E0      		ldi r25,0
  196               	/* epilogue start */
- 322:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }
- 197               		.loc 2 322 0
+ 329:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }
+ 197               		.loc 2 329 0
  198 0010 DF91      		pop r29
  199 0012 CF91      		pop r28
  200               	.LVL2:
- 321:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	default_layer_set(default_layer);
- 201               		.loc 2 321 0
+ 328:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	default_layer_set(default_layer);
+ 201               		.loc 2 328 0
  202 0014 0C94 0000 		jmp default_layer_set
  203               	.LVL3:
  204               		.cfi_endproc
@@ -558,1136 +565,1924 @@
  208               	.global	action_get_macro
  210               	action_get_macro:
  211               	.LFB29:
- 323:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 324:keyboards/Dactylv2/keymaps/Noah/keymap.c **** /*
- 325:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void dance_cln_finished(void){
- 326:keyboards/Dactylv2/keymaps/Noah/keymap.c **** register_code (KC_LGUI);
- 327:keyboards/Dactylv2/keymaps/Noah/keymap.c **** register_code(KC_TAB);
- 328:keyboards/Dactylv2/keymaps/Noah/keymap.c **** unregister_code(KC_TAB);
- 329:keyboards/Dactylv2/keymaps/Noah/keymap.c **** unregister_code(KC_LGUI); 
- 330:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }*/
- 331:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 332:keyboards/Dactylv2/keymaps/Noah/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
- 212               		.loc 2 332 0
+ 330:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 331:keyboards/Dactylv2/keymaps/Noah/keymap.c **** /*
+ 332:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void dance_cln_finished(void){
+ 333:keyboards/Dactylv2/keymaps/Noah/keymap.c **** register_code (KC_LGUI);
+ 334:keyboards/Dactylv2/keymaps/Noah/keymap.c **** register_code(KC_TAB);
+ 335:keyboards/Dactylv2/keymaps/Noah/keymap.c **** unregister_code(KC_TAB);
+ 336:keyboards/Dactylv2/keymaps/Noah/keymap.c **** unregister_code(KC_LGUI); 
+ 337:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }*/
+ 338:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 339:keyboards/Dactylv2/keymaps/Noah/keymap.c **** bool shift_down=false;
+ 340:keyboards/Dactylv2/keymaps/Noah/keymap.c **** bool alt_down=false;
+ 341:keyboards/Dactylv2/keymaps/Noah/keymap.c **** bool select_active=false;
+ 342:keyboards/Dactylv2/keymaps/Noah/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
+ 212               		.loc 2 342 0
  213               		.cfi_startproc
  214               	.LVL4:
  215               	/* prologue: function */
  216               	/* frame size = 0 */
  217               	/* stack size = 0 */
  218               	.L__stack_usage = 0
- 333:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	if (record->event.pressed) {
- 219               		.loc 2 333 0
+ 343:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     bool p = record->event.pressed;
+ 219               		.loc 2 343 0
  220 0000 FC01      		movw r30,r24
  221 0002 8281      		ldd r24,Z+2
  222               	.LVL5:
- 223 0004 8823      		tst r24
- 224 0006 01F4      		brne .+2
- 225 0008 00C0      		rjmp .L14
- 334:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	switch (id) {
- 226               		.loc 2 334 0
- 227 000a 862F      		mov r24,r22
- 228 000c 90E0      		ldi r25,0
- 229 000e 8431      		cpi r24,20
- 230 0010 9105      		cpc r25,__zero_reg__
- 231 0012 00F0      		brlo .+2
- 232 0014 00C0      		rjmp .L14
- 233 0016 FC01      		movw r30,r24
- 234               	.LVL6:
- 235 0018 E050      		subi r30,lo8(-(gs(.L16)))
- 236 001a F040      		sbci r31,hi8(-(gs(.L16)))
- 237 001c 0C94 0000 		jmp __tablejump2__
- 238               	.LVL7:
- 239               		.section	.progmem.gcc_sw_table.action_get_macro,"a",@progbits
- 240               		.p2align	1
- 241               	.L16:
- 242 0000 0000      		.word gs(.L15)
- 243 0002 0000      		.word gs(.L17)
- 244 0004 0000      		.word gs(.L18)
- 245 0006 0000      		.word gs(.L19)
- 246 0008 0000      		.word gs(.L20)
- 247 000a 0000      		.word gs(.L21)
- 248 000c 0000      		.word gs(.L22)
- 249 000e 0000      		.word gs(.L23)
- 250 0010 0000      		.word gs(.L24)
- 251 0012 0000      		.word gs(.L25)
- 252 0014 0000      		.word gs(.L26)
- 253 0016 0000      		.word gs(.L27)
- 254 0018 0000      		.word gs(.L28)
- 255 001a 0000      		.word gs(.L29)
- 256 001c 0000      		.word gs(.L30)
- 257 001e 0000      		.word gs(.L31)
- 258 0020 0000      		.word gs(.L32)
- 259 0022 0000      		.word gs(.L33)
- 260 0024 0000      		.word gs(.L34)
- 261 0026 0000      		.word gs(.L35)
- 262               		.section	.text.action_get_macro
- 263               	.L15:
- 335:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 0: // select left
- 336:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_LEFT) SS_UP(X_LSHIFT));
- 264               		.loc 2 336 0
- 265 0020 80E0      		ldi r24,lo8(__c.3333)
- 266 0022 90E0      		ldi r25,hi8(__c.3333)
- 267 0024 00C0      		rjmp .L39
- 268               	.L17:
- 337:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //    	    set_oneshot_layer(_SELECT, ONESHOT_START)
- 338:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    return false;
- 339:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 340:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 1: // select right
- 341:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_RIGHT) SS_UP(X_LSHIFT));
- 269               		.loc 2 341 0
- 270 0026 80E0      		ldi r24,lo8(__c.3336)
- 271 0028 90E0      		ldi r25,hi8(__c.3336)
- 272 002a 00C0      		rjmp .L39
- 273               	.L18:
- 342:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //    	    set_oneshot_layer(_SELECT, ONESHOT_START)
- 343:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
- 344:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 345:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 2: // select up
- 346:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_UP) SS_UP(X_LSHIFT));
- 274               		.loc 2 346 0
- 275 002c 80E0      		ldi r24,lo8(__c.3339)
- 276 002e 90E0      		ldi r25,hi8(__c.3339)
- 277 0030 00C0      		rjmp .L39
- 278               	.L19:
- 347:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
- 348:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
- 349:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 350:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 3: // select down
- 351:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_DOWN) SS_UP(X_LSHIFT));
- 279               		.loc 2 351 0
- 280 0032 80E0      		ldi r24,lo8(__c.3342)
- 281 0034 90E0      		ldi r25,hi8(__c.3342)
- 282 0036 00C0      		rjmp .L39
- 283               	.L20:
- 352:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
- 353:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 344:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	switch (id) {
+ 223               		.loc 2 344 0
+ 224 0004 462F      		mov r20,r22
+ 225               	.LVL6:
+ 226 0006 50E0      		ldi r21,0
+ 227 0008 4931      		cpi r20,25
+ 228 000a 5105      		cpc r21,__zero_reg__
+ 229 000c 00F0      		brlo .+2
+ 230 000e 00C0      		rjmp .L14
+ 231 0010 FA01      		movw r30,r20
+ 232               	.LVL7:
+ 233 0012 E050      		subi r30,lo8(-(gs(.L16)))
+ 234 0014 F040      		sbci r31,hi8(-(gs(.L16)))
+ 235 0016 0C94 0000 		jmp __tablejump2__
+ 236               	.LVL8:
+ 237               		.section	.progmem.gcc_sw_table.action_get_macro,"a",@progbits
+ 238               		.p2align	1
+ 239               	.L16:
+ 240 0000 0000      		.word gs(.L15)
+ 241 0002 0000      		.word gs(.L17)
+ 242 0004 0000      		.word gs(.L18)
+ 243 0006 0000      		.word gs(.L19)
+ 244 0008 0000      		.word gs(.L20)
+ 245 000a 0000      		.word gs(.L21)
+ 246 000c 0000      		.word gs(.L22)
+ 247 000e 0000      		.word gs(.L23)
+ 248 0010 0000      		.word gs(.L24)
+ 249 0012 0000      		.word gs(.L25)
+ 250 0014 0000      		.word gs(.L26)
+ 251 0016 0000      		.word gs(.L27)
+ 252 0018 0000      		.word gs(.L28)
+ 253 001a 0000      		.word gs(.L29)
+ 254 001c 0000      		.word gs(.L30)
+ 255 001e 0000      		.word gs(.L31)
+ 256 0020 0000      		.word gs(.L32)
+ 257 0022 0000      		.word gs(.L33)
+ 258 0024 0000      		.word gs(.L34)
+ 259 0026 0000      		.word gs(.L35)
+ 260 0028 0000      		.word gs(.L36)
+ 261 002a 0000      		.word gs(.L37)
+ 262 002c 0000      		.word gs(.L38)
+ 263 002e 0000      		.word gs(.L39)
+ 264 0030 0000      		.word gs(.L40)
+ 265               		.section	.text.action_get_macro
+ 266               	.L15:
+ 345:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 0: // select left
+ 346:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    if (p) {
+ 267               		.loc 2 346 0
+ 268 001a 8823      		tst r24
+ 269 001c 01F0      		breq .L41
+ 347:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	      SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_LEFT) SS_UP(X_LSHIFT));
+ 270               		.loc 2 347 0
+ 271 001e 80E0      		ldi r24,lo8(__c.3337)
+ 272 0020 90E0      		ldi r25,hi8(__c.3337)
+ 273               	.LVL9:
+ 274 0022 00C0      		rjmp .L78
+ 275               	.LVL10:
+ 276               	.L41:
+ 348:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 349:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    else {
+ 350:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	      SEND_STRING(SS_UP(X_LEFT) SS_UP(X_LSHIFT));
+ 277               		.loc 2 350 0
+ 278 0024 80E0      		ldi r24,lo8(__c.3339)
+ 279 0026 90E0      		ldi r25,hi8(__c.3339)
+ 280               	.LVL11:
+ 281 0028 00C0      		rjmp .L78
+ 282               	.LVL12:
+ 283               	.L17:
+ 351:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 352:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //    	    set_oneshot_layer(_SELECT, ONESHOT_START)
+ 353:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    return false;
  354:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 355:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 4: // select left word
- 356:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_TAP(X_LEFT) SS_UP(X_LSHIFT) SS_UP(MOVE))
+ 355:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 1: // select right
+ 356:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    if (p) {
  284               		.loc 2 356 0
- 285 0038 80E0      		ldi r24,lo8(__c.3345)
- 286 003a 90E0      		ldi r25,hi8(__c.3345)
- 287 003c 00C0      		rjmp .L39
- 288               	.L21:
- 357:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
- 358:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
- 359:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 360:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 5: // select right word
- 361:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_TAP(X_RIGHT) SS_UP(X_LSHIFT) SS_UP(MOVE)
- 289               		.loc 2 361 0
- 290 003e 80E0      		ldi r24,lo8(__c.3348)
- 291 0040 90E0      		ldi r25,hi8(__c.3348)
- 292 0042 00C0      		rjmp .L39
- 293               	.L22:
- 362:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
+ 285 002a 8823      		tst r24
+ 286 002c 01F0      		breq .L42
+ 357:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_RIGHT));
+ 287               		.loc 2 357 0
+ 288 002e 80E0      		ldi r24,lo8(__c.3342)
+ 289 0030 90E0      		ldi r25,hi8(__c.3342)
+ 290               	.LVL13:
+ 291 0032 00C0      		rjmp .L78
+ 292               	.LVL14:
+ 293               	.L42:
+ 358:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 359:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    else {
+ 360:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	      SEND_STRING(SS_UP(X_RIGHT) SS_UP(X_LSHIFT));
+ 294               		.loc 2 360 0
+ 295 0034 80E0      		ldi r24,lo8(__c.3344)
+ 296 0036 90E0      		ldi r25,hi8(__c.3344)
+ 297               	.LVL15:
+ 298 0038 00C0      		rjmp .L78
+ 299               	.LVL16:
+ 300               	.L18:
+ 361:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 362:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //    	    set_oneshot_layer(_SELECT, ONESHOT_START)
  363:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
  364:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 365:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 6: // select page up
- 366:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_PGUP) SS_UP(X_LSHIFT));
- 294               		.loc 2 366 0
- 295 0044 80E0      		ldi r24,lo8(__c.3351)
- 296 0046 90E0      		ldi r25,hi8(__c.3351)
- 297 0048 00C0      		rjmp .L39
- 298               	.L23:
- 367:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
- 368:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
- 369:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 370:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 7: // select page down
- 371:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_PGDOWN) SS_UP(X_LSHIFT));
- 299               		.loc 2 371 0
- 300 004a 80E0      		ldi r24,lo8(__c.3354)
- 301 004c 90E0      		ldi r25,hi8(__c.3354)
- 302 004e 00C0      		rjmp .L39
- 303               	.L24:
+ 365:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 2: // select up
+ 366:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 301               		.loc 2 366 0
+ 302 003a 8823      		tst r24
+ 303 003c 01F0      		breq .L43
+ 367:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_UP));
+ 304               		.loc 2 367 0
+ 305 003e 80E0      		ldi r24,lo8(__c.3347)
+ 306 0040 90E0      		ldi r25,hi8(__c.3347)
+ 307               	.LVL17:
+ 308 0042 00C0      		rjmp .L78
+ 309               	.LVL18:
+ 310               	.L43:
+ 368:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 369:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 370:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_UP) SS_UP(X_LSHIFT));
+ 311               		.loc 2 370 0
+ 312 0044 80E0      		ldi r24,lo8(__c.3349)
+ 313 0046 90E0      		ldi r25,hi8(__c.3349)
+ 314               	.LVL19:
+ 315 0048 00C0      		rjmp .L78
+ 316               	.LVL20:
+ 317               	.L19:
+ 371:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
  372:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
  373:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
  374:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 375:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 8: // select home
- 376:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_HOME) SS_UP(X_LSHIFT));
- 304               		.loc 2 376 0
- 305 0050 80E0      		ldi r24,lo8(__c.3357)
- 306 0052 90E0      		ldi r25,hi8(__c.3357)
- 307 0054 00C0      		rjmp .L39
- 308               	.L25:
- 377:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
- 378:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
- 379:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 380:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 9: // select end
- 381:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_END) SS_UP(X_LSHIFT));
- 309               		.loc 2 381 0
- 310 0056 80E0      		ldi r24,lo8(__c.3360)
- 311 0058 90E0      		ldi r25,hi8(__c.3360)
- 312 005a 00C0      		rjmp .L39
- 313               	.L26:
+ 375:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 3: // select down
+ 376:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 318               		.loc 2 376 0
+ 319 004a 8823      		tst r24
+ 320 004c 01F0      		breq .L44
+ 377:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_DOWN));
+ 321               		.loc 2 377 0
+ 322 004e 80E0      		ldi r24,lo8(__c.3352)
+ 323 0050 90E0      		ldi r25,hi8(__c.3352)
+ 324               	.LVL21:
+ 325 0052 00C0      		rjmp .L78
+ 326               	.LVL22:
+ 327               	.L44:
+ 378:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 379:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 380:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_DOWN) SS_UP(X_LSHIFT));
+ 328               		.loc 2 380 0
+ 329 0054 80E0      		ldi r24,lo8(__c.3354)
+ 330 0056 90E0      		ldi r25,hi8(__c.3354)
+ 331               	.LVL23:
+ 332 0058 00C0      		rjmp .L78
+ 333               	.LVL24:
+ 334               	.L20:
+ 381:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
  382:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
  383:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
  384:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 385:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 10: // left word
- 386:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_LEFT) SS_UP(MOVE));
- 314               		.loc 2 386 0
- 315 005c 80E0      		ldi r24,lo8(__c.3363)
- 316 005e 90E0      		ldi r25,hi8(__c.3363)
- 317 0060 00C0      		rjmp .L39
- 318               	.L27:
- 387:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     		return MACRO_NONE;
- 388:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 389:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 11: // right word
- 390:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_RIGHT) SS_UP(MOVE));
- 319               		.loc 2 390 0
- 320 0062 80E0      		ldi r24,lo8(__c.3366)
- 321 0064 90E0      		ldi r25,hi8(__c.3366)
- 322 0066 00C0      		rjmp .L39
- 323               	.L28:
- 391:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
- 392:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 393:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 12: // backspace left word
- 394:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_TAP(X_LEFT) SS_UP(X_LSHIFT) SS_UP(MOVE) 
- 324               		.loc 2 394 0
- 325 0068 80E0      		ldi r24,lo8(__c.3369)
- 326 006a 90E0      		ldi r25,hi8(__c.3369)
- 327 006c 00C0      		rjmp .L39
- 328               	.L29:
- 395:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
- 396:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 397:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 13:
- 398:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_LCTRL) SS_TAP(X_Z) SS_UP(X_LSHIFT) SS_UP(X_LCTR
- 329               		.loc 2 398 0
- 330 006e 80E0      		ldi r24,lo8(__c.3372)
- 331 0070 90E0      		ldi r25,hi8(__c.3372)
- 332 0072 00C0      		rjmp .L39
- 333               	.L30:
- 399:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
- 400:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 401:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 14: //format
- 402:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LCTRL) SS_TAP(X_L) SS_UP(X_LCTRL) SS_UP(X_LALT));
- 334               		.loc 2 402 0
- 335 0074 80E0      		ldi r24,lo8(__c.3375)
- 336 0076 90E0      		ldi r25,hi8(__c.3375)
- 337 0078 00C0      		rjmp .L39
- 338               	.L31:
+ 385:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 4: // select left word
+ 386:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 335               		.loc 2 386 0
+ 336 005a 8823      		tst r24
+ 337 005c 01F0      		breq .L45
+ 387:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_DOWN(X_LEFT));
+ 338               		.loc 2 387 0
+ 339 005e 80E0      		ldi r24,lo8(__c.3357)
+ 340 0060 90E0      		ldi r25,hi8(__c.3357)
+ 341               	.LVL25:
+ 342 0062 00C0      		rjmp .L78
+ 343               	.LVL26:
+ 344               	.L45:
+ 388:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 389:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 390:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_LEFT) SS_UP(X_LSHIFT) SS_UP(MOVE));
+ 345               		.loc 2 390 0
+ 346 0064 80E0      		ldi r24,lo8(__c.3359)
+ 347 0066 90E0      		ldi r25,hi8(__c.3359)
+ 348               	.LVL27:
+ 349 0068 00C0      		rjmp .L78
+ 350               	.LVL28:
+ 351               	.L21:
+ 391:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 392:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
+ 393:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 394:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 395:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 5: // select right word
+ 396:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 352               		.loc 2 396 0
+ 353 006a 8823      		tst r24
+ 354 006c 01F0      		breq .L46
+ 397:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_DOWN(X_RIGHT));
+ 355               		.loc 2 397 0
+ 356 006e 80E0      		ldi r24,lo8(__c.3362)
+ 357 0070 90E0      		ldi r25,hi8(__c.3362)
+ 358               	.LVL29:
+ 359 0072 00C0      		rjmp .L78
+ 360               	.LVL30:
+ 361               	.L46:
+ 398:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 399:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 400:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_RIGHT) SS_UP(X_LSHIFT) SS_UP(MOVE));
+ 362               		.loc 2 400 0
+ 363 0074 80E0      		ldi r24,lo8(__c.3364)
+ 364 0076 90E0      		ldi r25,hi8(__c.3364)
+ 365               	.LVL31:
+ 366 0078 00C0      		rjmp .L78
+ 367               	.LVL32:
+ 368               	.L22:
+ 401:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 402:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
  403:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
  404:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 405:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 15: //scopy
- 406:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_C) SS_UP(MOVE) SS_TAP(X_ESCAPE));
- 339               		.loc 2 406 0
- 340 007a 80E0      		ldi r24,lo8(__c.3378)
- 341 007c 90E0      		ldi r25,hi8(__c.3378)
- 342 007e 00C0      		rjmp .L39
- 343               	.L32:
- 407:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
- 408:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 409:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 16: //scut
- 410:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_X) SS_UP(MOVE) SS_TAP(X_ESCAPE));
- 344               		.loc 2 410 0
- 345 0080 80E0      		ldi r24,lo8(__c.3381)
- 346 0082 90E0      		ldi r25,hi8(__c.3381)
- 347 0084 00C0      		rjmp .L39
- 348               	.L33:
- 411:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
- 412:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 413:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 17: // go to dir
- 414:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_TAP(X_D) SS_UP(X_LALT) SS_UP(X_LSHIFT)
- 349               		.loc 2 414 0
- 350 0086 80E0      		ldi r24,lo8(__c.3384)
- 351 0088 90E0      		ldi r25,hi8(__c.3384)
- 352 008a 00C0      		rjmp .L39
- 353               	.L34:
- 415:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
- 416:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 417:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 18: // open
- 418:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_TAP(X_O) SS_UP(X_LALT) SS_UP(X_LSHIFT)
- 354               		.loc 2 418 0
- 355 008c 80E0      		ldi r24,lo8(__c.3387)
- 356 008e 90E0      		ldi r25,hi8(__c.3387)
- 357 0090 00C0      		rjmp .L39
- 358               	.L35:
- 419:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
- 420:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 421:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 19: // find in all
- 422:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSHIFT) SS_TAP(X_F) SS_UP(X_LCTRL) SS_UP(X_LSHIF
- 359               		.loc 2 422 0
- 360 0092 80E0      		ldi r24,lo8(__c.3390)
- 361 0094 90E0      		ldi r25,hi8(__c.3390)
- 362               	.L39:
- 363 0096 0E94 0000 		call send_string_P
- 364               	.LVL8:
- 365               	.L14:
- 423:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
- 424:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	}
- 425:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 426:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	}
- 427:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     return MACRO_NONE;
- 428:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }
- 366               		.loc 2 428 0
- 367 009a 80E0      		ldi r24,0
- 368 009c 90E0      		ldi r25,0
- 369 009e 0895      		ret
- 370               		.cfi_endproc
- 371               	.LFE29:
- 373               		.section	.text.cmd_commands,"ax",@progbits
- 374               	.global	cmd_commands
- 376               	cmd_commands:
- 377               	.LFB33:
- 378               		.cfi_startproc
- 379               	/* prologue: function */
- 380               	/* frame size = 0 */
- 381               	/* stack size = 0 */
- 382               	.L__stack_usage = 0
- 383 0000 0895      		ret
- 384               		.cfi_endproc
- 385               	.LFE33:
- 387               		.section	.text.cmd,"ax",@progbits
- 388               	.global	cmd
- 390               	cmd:
- 391               	.LFB31:
- 429:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 430:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void cmd_commands(qk_tap_dance_state_t *state, void *user_data) {
- 431:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }
- 432:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 433:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
- 434:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void cmd(qk_tap_dance_state_t *state, void *user_data) {
- 392               		.loc 2 434 0
- 393               		.cfi_startproc
- 394               	.LVL9:
- 395               	/* prologue: function */
- 396               	/* frame size = 0 */
- 397               	/* stack size = 0 */
- 398               	.L__stack_usage = 0
- 399 0000 0895      		ret
- 400               		.cfi_endproc
- 401               	.LFE31:
- 403               		.section	.progmem.data.__c.3390,"a",@progbits
- 406               	__c.3390:
- 407 0000 02E0 02E1 		.string	"\002\340\002\341\001\t\003\340\003\341"
- 407      0109 03E0 
- 407      03E1 00
- 408               		.section	.progmem.data.__c.3387,"a",@progbits
- 411               	__c.3387:
- 412 0000 02E2 02E1 		.string	"\002\342\002\341\001\022\003\342\003\341"
- 412      0112 03E2 
- 412      03E1 00
- 413               		.section	.progmem.data.__c.3384,"a",@progbits
- 416               	__c.3384:
- 417 0000 02E2 02E1 		.string	"\002\342\002\341\001\007\003\342\003\341"
- 417      0107 03E2 
- 417      03E1 00
- 418               		.section	.progmem.data.__c.3381,"a",@progbits
- 421               	__c.3381:
- 422 0000 02E0 011B 		.string	"\002\340\001\033\003\340\001)"
- 422      03E0 0129 
- 422      00
- 423               		.section	.progmem.data.__c.3378,"a",@progbits
- 426               	__c.3378:
- 427 0000 02E0 0106 		.string	"\002\340\001\006\003\340\001)"
- 427      03E0 0129 
- 427      00
- 428               		.section	.progmem.data.__c.3375,"a",@progbits
- 431               	__c.3375:
- 432 0000 02E2 02E0 		.string	"\002\342\002\340\001\017\003\340\003\342"
- 432      010F 03E0 
- 432      03E2 00
- 433               		.section	.progmem.data.__c.3372,"a",@progbits
- 436               	__c.3372:
- 437 0000 02E1 02E0 		.string	"\002\341\002\340\001\035\003\341\003\340"
- 437      011D 03E1 
- 437      03E0 00
- 438               		.section	.progmem.data.__c.3369,"a",@progbits
- 441               	__c.3369:
- 442 0000 02E0 02E1 		.string	"\002\340\002\341\001P\003\341\003\340\001*"
- 442      0150 03E1 
- 442      03E0 012A 
- 442      00
- 443               		.section	.progmem.data.__c.3366,"a",@progbits
- 446               	__c.3366:
- 447 0000 02E0 014F 		.string	"\002\340\001O\003\340"
- 447      03E0 00
- 448               		.section	.progmem.data.__c.3363,"a",@progbits
- 451               	__c.3363:
- 452 0000 02E0 0150 		.string	"\002\340\001P\003\340"
- 452      03E0 00
- 453               		.section	.progmem.data.__c.3360,"a",@progbits
- 456               	__c.3360:
- 457 0000 02E1 014D 		.string	"\002\341\001M\003\341"
- 457      03E1 00
- 458               		.section	.progmem.data.__c.3357,"a",@progbits
- 461               	__c.3357:
- 462 0000 02E1 014A 		.string	"\002\341\001J\003\341"
- 462      03E1 00
- 463               		.section	.progmem.data.__c.3354,"a",@progbits
- 466               	__c.3354:
- 467 0000 02E1 014E 		.string	"\002\341\001N\003\341"
- 467      03E1 00
- 468               		.section	.progmem.data.__c.3351,"a",@progbits
- 471               	__c.3351:
- 472 0000 02E1 014B 		.string	"\002\341\001K\003\341"
- 472      03E1 00
- 473               		.section	.progmem.data.__c.3348,"a",@progbits
- 476               	__c.3348:
- 477 0000 02E0 02E1 		.string	"\002\340\002\341\001O\003\341\003\340"
- 477      014F 03E1 
- 477      03E0 00
- 478               		.section	.progmem.data.__c.3345,"a",@progbits
- 481               	__c.3345:
- 482 0000 02E0 02E1 		.string	"\002\340\002\341\001P\003\341\003\340"
- 482      0150 03E1 
- 482      03E0 00
- 483               		.section	.progmem.data.__c.3342,"a",@progbits
- 486               	__c.3342:
- 487 0000 02E1 0151 		.string	"\002\341\001Q\003\341"
- 487      03E1 00
- 488               		.section	.progmem.data.__c.3339,"a",@progbits
- 491               	__c.3339:
- 492 0000 02E1 0152 		.string	"\002\341\001R\003\341"
- 492      03E1 00
- 493               		.section	.progmem.data.__c.3336,"a",@progbits
- 496               	__c.3336:
- 497 0000 02E1 014F 		.string	"\002\341\001O\003\341"
- 497      03E1 00
- 498               		.section	.progmem.data.__c.3333,"a",@progbits
- 501               	__c.3333:
- 502 0000 02E1 0150 		.string	"\002\341\001P\003\341"
- 502      03E1 00
- 503               	.global	tap_dance_actions
- 504               		.section	.bss.tap_dance_actions,"aw",@nobits
- 507               	tap_dance_actions:
- 508               	.global	keymaps
- 509               		.section	.progmem.data.keymaps,"a",@progbits
- 512               	keymaps:
- 513 0000 3500      		.word	53
- 514 0002 1E00      		.word	30
- 515 0004 1F00      		.word	31
- 516 0006 2000      		.word	32
- 517 0008 2100      		.word	33
- 518 000a 2200      		.word	34
- 519 000c 2B00      		.word	43
- 520 000e 1400      		.word	20
- 521 0010 1A00      		.word	26
- 522 0012 0800      		.word	8
- 523 0014 1500      		.word	21
- 524 0016 1700      		.word	23
- 525 0018 3159      		.word	22833
- 526 001a 0400      		.word	4
- 527 001c 1600      		.word	22
- 528 001e 0700      		.word	7
- 529 0020 0900      		.word	9
- 530 0022 0A00      		.word	10
- 531 0024 E100      		.word	225
- 532 0026 1D00      		.word	29
- 533 0028 1B00      		.word	27
- 534 002a 0600      		.word	6
- 535 002c 1900      		.word	25
- 536 002e 0500      		.word	5
- 537 0030 0751      		.word	20743
- 538 0032 E000      		.word	224
- 539 0034 E300      		.word	227
- 540 0036 E100      		.word	225
- 541 0038 E200      		.word	226
- 542 003a 0100      		.word	1
- 543 003c 4D00      		.word	77
- 544 003e 4A00      		.word	74
- 545 0040 3F00      		.word	63
- 546 0042 2900      		.word	41
- 547 0044 0000      		.word	0
- 548 0046 0000      		.word	0
- 549 0048 2B78      		.word	30763
- 550 004a 0151      		.word	20737
- 551 004c 0000      		.word	0
- 552 004e 0000      		.word	0
- 553 0050 0000      		.word	0
- 554 0052 0000      		.word	0
- 555 0054 2E00      		.word	46
- 556 0056 2700      		.word	39
- 557 0058 2600      		.word	38
- 558 005a 2500      		.word	37
- 559 005c 2400      		.word	36
- 560 005e 2300      		.word	35
- 561 0060 2D00      		.word	45
- 562 0062 1300      		.word	19
- 563 0064 1200      		.word	18
- 564 0066 0C00      		.word	12
- 565 0068 1800      		.word	24
- 566 006a 1C00      		.word	28
- 567 006c 3400      		.word	52
- 568 006e 3300      		.word	51
- 569 0070 0F00      		.word	15
- 570 0072 0E00      		.word	14
- 571 0074 0D00      		.word	13
- 572 0076 0B00      		.word	11
- 573 0078 2800      		.word	40
- 574 007a 3800      		.word	56
- 575 007c 3700      		.word	55
- 576 007e 3600      		.word	54
- 577 0080 1000      		.word	16
- 578 0082 1100      		.word	17
- 579 0084 0100      		.word	1
- 580 0086 3100      		.word	49
- 581 0088 3900      		.word	57
- 582 008a 3000      		.word	48
- 583 008c 2F00      		.word	47
- 584 008e 0100      		.word	1
- 585 0090 4E00      		.word	78
- 586 0092 4B00      		.word	75
- 587 0094 0F06      		.word	1551
- 588 0096 4C00      		.word	76
- 589 0098 0000      		.word	0
- 590 009a 0000      		.word	0
- 591 009c 2A00      		.word	42
- 592 009e 2C00      		.word	44
- 593 00a0 0000      		.word	0
- 594 00a2 0000      		.word	0
- 595 00a4 0000      		.word	0
- 596 00a6 0000      		.word	0
- 597 00a8 0100      		.word	1
- 598 00aa 0100      		.word	1
- 599 00ac 0100      		.word	1
- 600 00ae 0100      		.word	1
- 601 00b0 0100      		.word	1
- 602 00b2 0100      		.word	1
- 603 00b4 0100      		.word	1
- 604 00b6 0100      		.word	1
- 605 00b8 0100      		.word	1
- 606 00ba 0C30      		.word	12300
- 607 00bc 0100      		.word	1
- 608 00be 0100      		.word	1
- 609 00c0 0100      		.word	1
- 610 00c2 0401      		.word	260
- 611 00c4 1601      		.word	278
- 612 00c6 0100      		.word	1
- 613 00c8 0901      		.word	265
- 614 00ca 0100      		.word	1
- 615 00cc 0251      		.word	20738
- 616 00ce 1D01      		.word	285
- 617 00d0 1B01      		.word	283
- 618 00d2 0601      		.word	262
- 619 00d4 1901      		.word	281
- 620 00d6 0100      		.word	1
- 621 00d8 2804      		.word	1064
- 622 00da 0100      		.word	1
- 623 00dc 0100      		.word	1
- 624 00de 0251      		.word	20738
- 625 00e0 0100      		.word	1
- 626 00e2 0100      		.word	1
- 627 00e4 0100      		.word	1
- 628 00e6 0100      		.word	1
- 629 00e8 0100      		.word	1
- 630 00ea 0100      		.word	1
- 631 00ec 0000      		.word	0
- 632 00ee 0000      		.word	0
- 633 00f0 0100      		.word	1
- 634 00f2 0100      		.word	1
- 635 00f4 0000      		.word	0
- 636 00f6 0000      		.word	0
- 637 00f8 0000      		.word	0
- 638 00fa 0000      		.word	0
- 639 00fc 0100      		.word	1
- 640 00fe 0100      		.word	1
- 641 0100 0100      		.word	1
- 642 0102 0100      		.word	1
- 643 0104 0100      		.word	1
- 644 0106 0100      		.word	1
- 645 0108 0100      		.word	1
- 646 010a 0100      		.word	1
- 647 010c 0B30      		.word	12299
- 648 010e 5200      		.word	82
- 649 0110 0A30      		.word	12298
- 650 0112 0100      		.word	1
- 651 0114 0100      		.word	1
- 652 0116 0100      		.word	1
- 653 0118 4F00      		.word	79
- 654 011a 5100      		.word	81
- 655 011c 5000      		.word	80
- 656 011e 4D00      		.word	77
- 657 0120 0100      		.word	1
- 658 0122 0100      		.word	1
- 659 0124 0100      		.word	1
- 660 0126 0100      		.word	1
- 661 0128 0100      		.word	1
- 662 012a 0100      		.word	1
- 663 012c 0100      		.word	1
- 664 012e 0100      		.word	1
- 665 0130 0100      		.word	1
- 666 0132 3004      		.word	1072
- 667 0134 2F04      		.word	1071
- 668 0136 0100      		.word	1
- 669 0138 0100      		.word	1
- 670 013a 0100      		.word	1
- 671 013c 0100      		.word	1
- 672 013e 0100      		.word	1
- 673 0140 0000      		.word	0
- 674 0142 0000      		.word	0
- 675 0144 4B01      		.word	331
- 676 0146 4E01      		.word	334
- 677 0148 0000      		.word	0
- 678 014a 0000      		.word	0
- 679 014c 0000      		.word	0
- 680 014e 0000      		.word	0
- 681 0150 0100      		.word	1
- 682 0152 0100      		.word	1
- 683 0154 0100      		.word	1
- 684 0156 0100      		.word	1
- 685 0158 0100      		.word	1
- 686 015a 0100      		.word	1
- 687 015c 0100      		.word	1
- 688 015e 0100      		.word	1
- 689 0160 0100      		.word	1
- 690 0162 0100      		.word	1
- 691 0164 0100      		.word	1
- 692 0166 0100      		.word	1
- 693 0168 0100      		.word	1
- 694 016a 0100      		.word	1
- 695 016c 0100      		.word	1
- 696 016e 0706      		.word	1543
- 697 0170 0906      		.word	1545
- 698 0172 0100      		.word	1
- 699 0174 0100      		.word	1
- 700 0176 0100      		.word	1
- 701 0178 0100      		.word	1
- 702 017a 0100      		.word	1
- 703 017c 0100      		.word	1
- 704 017e 0100      		.word	1
- 705 0180 0100      		.word	1
- 706 0182 0D30      		.word	12301
- 707 0184 0100      		.word	1
- 708 0186 0100      		.word	1
- 709 0188 0100      		.word	1
- 710 018a 0100      		.word	1
- 711 018c 0100      		.word	1
- 712 018e 0100      		.word	1
- 713 0190 0100      		.word	1
- 714 0192 0100      		.word	1
- 715 0194 0000      		.word	0
- 716 0196 0000      		.word	0
- 717 0198 0100      		.word	1
- 718 019a 0151      		.word	20737
- 719 019c 0000      		.word	0
- 720 019e 0000      		.word	0
- 721 01a0 0000      		.word	0
- 722 01a2 0000      		.word	0
- 723 01a4 0100      		.word	1
- 724 01a6 0100      		.word	1
- 725 01a8 0100      		.word	1
- 726 01aa 0100      		.word	1
- 727 01ac 0100      		.word	1
- 728 01ae 0100      		.word	1
- 729 01b0 0100      		.word	1
- 730 01b2 0100      		.word	1
- 731 01b4 1206      		.word	1554
- 732 01b6 4B00      		.word	75
- 733 01b8 0100      		.word	1
- 734 01ba 0100      		.word	1
- 735 01bc 0100      		.word	1
- 736 01be 0100      		.word	1
- 737 01c0 0100      		.word	1
- 738 01c2 4E00      		.word	78
- 739 01c4 0100      		.word	1
- 740 01c6 4A00      		.word	74
- 741 01c8 0100      		.word	1
- 742 01ca 0100      		.word	1
- 743 01cc 0100      		.word	1
- 744 01ce 0100      		.word	1
- 745 01d0 0100      		.word	1
- 746 01d2 0100      		.word	1
- 747 01d4 0100      		.word	1
- 748 01d6 0100      		.word	1
- 749 01d8 0100      		.word	1
- 750 01da 0100      		.word	1
- 751 01dc 0100      		.word	1
- 752 01de 0100      		.word	1
- 753 01e0 0100      		.word	1
- 754 01e2 0100      		.word	1
- 755 01e4 0100      		.word	1
- 756 01e6 0100      		.word	1
- 757 01e8 0000      		.word	0
- 758 01ea 0000      		.word	0
- 759 01ec 0100      		.word	1
- 760 01ee 0100      		.word	1
- 761 01f0 0000      		.word	0
- 762 01f2 0000      		.word	0
- 763 01f4 0000      		.word	0
- 764 01f6 0000      		.word	0
- 765 01f8 0100      		.word	1
- 766 01fa 0100      		.word	1
- 767 01fc 0100      		.word	1
- 768 01fe 0100      		.word	1
- 769 0200 0100      		.word	1
- 770 0202 0100      		.word	1
- 771 0204 0100      		.word	1
- 772 0206 0100      		.word	1
- 773 0208 0100      		.word	1
- 774 020a 0100      		.word	1
- 775 020c 0100      		.word	1
- 776 020e 0100      		.word	1
- 777 0210 0100      		.word	1
- 778 0212 0100      		.word	1
- 779 0214 0100      		.word	1
- 780 0216 0100      		.word	1
- 781 0218 0100      		.word	1
- 782 021a 0100      		.word	1
- 783 021c 0100      		.word	1
- 784 021e 0100      		.word	1
- 785 0220 0100      		.word	1
- 786 0222 0100      		.word	1
- 787 0224 0100      		.word	1
- 788 0226 0100      		.word	1
- 789 0228 0100      		.word	1
- 790 022a 0100      		.word	1
- 791 022c 0100      		.word	1
- 792 022e 0100      		.word	1
- 793 0230 0100      		.word	1
- 794 0232 0100      		.word	1
- 795 0234 0100      		.word	1
- 796 0236 0100      		.word	1
- 797 0238 0100      		.word	1
- 798 023a 0100      		.word	1
- 799 023c 0000      		.word	0
- 800 023e 0000      		.word	0
- 801 0240 0100      		.word	1
- 802 0242 0100      		.word	1
- 803 0244 0000      		.word	0
- 804 0246 0000      		.word	0
- 805 0248 0000      		.word	0
- 806 024a 0000      		.word	0
- 807 024c 0100      		.word	1
- 808 024e 0100      		.word	1
- 809 0250 0100      		.word	1
- 810 0252 0100      		.word	1
- 811 0254 0100      		.word	1
- 812 0256 0100      		.word	1
- 813 0258 0100      		.word	1
- 814 025a 0100      		.word	1
- 815 025c 0100      		.word	1
- 816 025e 0100      		.word	1
- 817 0260 0100      		.word	1
- 818 0262 0100      		.word	1
- 819 0264 0100      		.word	1
- 820 0266 0100      		.word	1
- 821 0268 0100      		.word	1
- 822 026a 0100      		.word	1
- 823 026c 0100      		.word	1
- 824 026e 0100      		.word	1
- 825 0270 0100      		.word	1
- 826 0272 0100      		.word	1
- 827 0274 0100      		.word	1
- 828 0276 0100      		.word	1
- 829 0278 0100      		.word	1
- 830 027a 0100      		.word	1
- 831 027c 0100      		.word	1
- 832 027e 0100      		.word	1
- 833 0280 0100      		.word	1
- 834 0282 0100      		.word	1
- 835 0284 0100      		.word	1
- 836 0286 0100      		.word	1
- 837 0288 0100      		.word	1
- 838 028a 0100      		.word	1
- 839 028c 0100      		.word	1
- 840 028e 0100      		.word	1
- 841 0290 0000      		.word	0
- 842 0292 0000      		.word	0
- 843 0294 0100      		.word	1
- 844 0296 0454      		.word	21508
- 845 0298 0000      		.word	0
- 846 029a 0000      		.word	0
- 847 029c 0000      		.word	0
- 848 029e 0000      		.word	0
- 849 02a0 0100      		.word	1
- 850 02a2 0100      		.word	1
- 851 02a4 0100      		.word	1
- 852 02a6 0100      		.word	1
- 853 02a8 0100      		.word	1
- 854 02aa 0100      		.word	1
- 855 02ac 0100      		.word	1
- 856 02ae 0100      		.word	1
- 857 02b0 0100      		.word	1
- 858 02b2 0100      		.word	1
- 859 02b4 0100      		.word	1
- 860 02b6 0100      		.word	1
- 861 02b8 0100      		.word	1
- 862 02ba 0100      		.word	1
- 863 02bc 0100      		.word	1
- 864 02be 0100      		.word	1
- 865 02c0 0100      		.word	1
- 866 02c2 0100      		.word	1
- 867 02c4 0651      		.word	20742
- 868 02c6 0100      		.word	1
- 869 02c8 0100      		.word	1
- 870 02ca 0100      		.word	1
- 871 02cc 0100      		.word	1
- 872 02ce 0100      		.word	1
- 873 02d0 0100      		.word	1
- 874 02d2 0100      		.word	1
- 875 02d4 0100      		.word	1
- 876 02d6 0651      		.word	20742
- 877 02d8 0100      		.word	1
- 878 02da 0100      		.word	1
- 879 02dc 0100      		.word	1
- 880 02de 0100      		.word	1
- 881 02e0 0100      		.word	1
- 882 02e2 0100      		.word	1
- 883 02e4 0000      		.word	0
- 884 02e6 0000      		.word	0
- 885 02e8 0100      		.word	1
- 886 02ea E245      		.word	17890
- 887 02ec 0000      		.word	0
- 888 02ee 0000      		.word	0
- 889 02f0 0000      		.word	0
- 890 02f2 0000      		.word	0
- 891 02f4 0100      		.word	1
- 892 02f6 0100      		.word	1
- 893 02f8 0100      		.word	1
- 894 02fa 0100      		.word	1
- 895 02fc 0100      		.word	1
- 896 02fe 0100      		.word	1
- 897 0300 0100      		.word	1
- 898 0302 0100      		.word	1
- 899 0304 0100      		.word	1
- 900 0306 0100      		.word	1
- 901 0308 0100      		.word	1
- 902 030a 0100      		.word	1
- 903 030c 0100      		.word	1
- 904 030e 0100      		.word	1
- 905 0310 0100      		.word	1
- 906 0312 0100      		.word	1
- 907 0314 0100      		.word	1
- 908 0316 0100      		.word	1
- 909 0318 0100      		.word	1
- 910 031a 0100      		.word	1
- 911 031c 0100      		.word	1
- 912 031e 0100      		.word	1
- 913 0320 0100      		.word	1
- 914 0322 0100      		.word	1
- 915 0324 0100      		.word	1
- 916 0326 0100      		.word	1
- 917 0328 0100      		.word	1
- 918 032a 0100      		.word	1
- 919 032c 0100      		.word	1
- 920 032e 0100      		.word	1
- 921 0330 0100      		.word	1
- 922 0332 0100      		.word	1
- 923 0334 0100      		.word	1
- 924 0336 0100      		.word	1
- 925 0338 0000      		.word	0
- 926 033a 0000      		.word	0
- 927 033c 0100      		.word	1
- 928 033e 0100      		.word	1
- 929 0340 0000      		.word	0
- 930 0342 0000      		.word	0
- 931 0344 0000      		.word	0
- 932 0346 0000      		.word	0
- 933 0348 0100      		.word	1
- 934 034a 0100      		.word	1
- 935 034c 0100      		.word	1
- 936 034e 0100      		.word	1
- 937 0350 0100      		.word	1
- 938 0352 0100      		.word	1
- 939 0354 0100      		.word	1
- 940 0356 0100      		.word	1
- 941 0358 0100      		.word	1
- 942 035a 0100      		.word	1
- 943 035c 0100      		.word	1
- 944 035e 0100      		.word	1
- 945 0360 0100      		.word	1
- 946 0362 0100      		.word	1
- 947 0364 0100      		.word	1
- 948 0366 0100      		.word	1
- 949 0368 0100      		.word	1
- 950 036a 0100      		.word	1
- 951 036c 0651      		.word	20742
- 952 036e 1D01      		.word	285
- 953 0370 1030      		.word	12304
- 954 0372 0F30      		.word	12303
- 955 0374 1901      		.word	281
- 956 0376 0100      		.word	1
- 957 0378 0100      		.word	1
- 958 037a 0100      		.word	1
- 959 037c 0100      		.word	1
- 960 037e 0651      		.word	20742
- 961 0380 0100      		.word	1
- 962 0382 0100      		.word	1
- 963 0384 0100      		.word	1
- 964 0386 0100      		.word	1
- 965 0388 0100      		.word	1
- 966 038a 0100      		.word	1
- 967 038c 0000      		.word	0
- 968 038e 0000      		.word	0
- 969 0390 0100      		.word	1
- 970 0392 E245      		.word	17890
- 971 0394 0000      		.word	0
- 972 0396 0000      		.word	0
- 973 0398 0000      		.word	0
- 974 039a 0000      		.word	0
- 975 039c 0100      		.word	1
- 976 039e 0100      		.word	1
- 977 03a0 0100      		.word	1
- 978 03a2 0100      		.word	1
- 979 03a4 0100      		.word	1
- 980 03a6 0100      		.word	1
- 981 03a8 0100      		.word	1
- 982 03aa 0100      		.word	1
- 983 03ac 0530      		.word	12293
- 984 03ae 0230      		.word	12290
- 985 03b0 0430      		.word	12292
- 986 03b2 0100      		.word	1
- 987 03b4 0100      		.word	1
- 988 03b6 0100      		.word	1
- 989 03b8 0130      		.word	12289
- 990 03ba 0330      		.word	12291
- 991 03bc 0030      		.word	12288
- 992 03be 0930      		.word	12297
- 993 03c0 0100      		.word	1
- 994 03c2 0100      		.word	1
- 995 03c4 0100      		.word	1
- 996 03c6 0100      		.word	1
- 997 03c8 0100      		.word	1
- 998 03ca 0100      		.word	1
- 999 03cc 0100      		.word	1
- 1000 03ce 0100      		.word	1
- 1001 03d0 0100      		.word	1
- 1002 03d2 0100      		.word	1
- 1003 03d4 0100      		.word	1
- 1004 03d6 0100      		.word	1
- 1005 03d8 0100      		.word	1
- 1006 03da 0100      		.word	1
- 1007 03dc 0100      		.word	1
- 1008 03de 0100      		.word	1
- 1009 03e0 0000      		.word	0
- 1010 03e2 0000      		.word	0
- 1011 03e4 0100      		.word	1
- 1012 03e6 0100      		.word	1
- 1013 03e8 0000      		.word	0
- 1014 03ea 0000      		.word	0
- 1015 03ec 0000      		.word	0
- 1016 03ee 0000      		.word	0
- 1017 03f0 0100      		.word	1
- 1018 03f2 0100      		.word	1
- 1019 03f4 0100      		.word	1
- 1020 03f6 0100      		.word	1
- 1021 03f8 0100      		.word	1
- 1022 03fa 0100      		.word	1
- 1023 03fc 0100      		.word	1
- 1024 03fe 0100      		.word	1
- 1025 0400 0100      		.word	1
- 1026 0402 0100      		.word	1
- 1027 0404 0100      		.word	1
- 1028 0406 0100      		.word	1
- 1029 0408 0100      		.word	1
- 1030 040a 0100      		.word	1
- 1031 040c 0100      		.word	1
- 1032 040e 0100      		.word	1
- 1033 0410 0100      		.word	1
- 1034 0412 0100      		.word	1
- 1035 0414 0100      		.word	1
- 1036 0416 0100      		.word	1
- 1037 0418 0100      		.word	1
- 1038 041a 0100      		.word	1
- 1039 041c 0100      		.word	1
- 1040 041e 0100      		.word	1
- 1041 0420 0100      		.word	1
- 1042 0422 0100      		.word	1
- 1043 0424 0100      		.word	1
- 1044 0426 0100      		.word	1
- 1045 0428 0100      		.word	1
- 1046 042a 0100      		.word	1
- 1047 042c 0100      		.word	1
- 1048 042e 0100      		.word	1
- 1049 0430 0100      		.word	1
- 1050 0432 0100      		.word	1
- 1051 0434 0000      		.word	0
- 1052 0436 0000      		.word	0
- 1053 0438 0100      		.word	1
- 1054 043a E245      		.word	17890
- 1055 043c 0000      		.word	0
- 1056 043e 0000      		.word	0
- 1057 0440 0000      		.word	0
- 1058 0442 0000      		.word	0
- 1059 0444 0100      		.word	1
- 1060 0446 0100      		.word	1
- 1061 0448 0100      		.word	1
- 1062 044a 0100      		.word	1
- 1063 044c 0100      		.word	1
- 1064 044e 0100      		.word	1
- 1065 0450 0100      		.word	1
- 1066 0452 0100      		.word	1
- 1067 0454 0100      		.word	1
- 1068 0456 0630      		.word	12294
- 1069 0458 0100      		.word	1
- 1070 045a 0100      		.word	1
- 1071 045c 0100      		.word	1
- 1072 045e 0100      		.word	1
- 1073 0460 0100      		.word	1
- 1074 0462 0730      		.word	12295
- 1075 0464 0100      		.word	1
- 1076 0466 0830      		.word	12296
- 1077 0468 0100      		.word	1
- 1078 046a 0100      		.word	1
- 1079 046c 0100      		.word	1
- 1080 046e 0100      		.word	1
- 1081 0470 0100      		.word	1
- 1082 0472 0100      		.word	1
- 1083 0474 0100      		.word	1
- 1084 0476 0100      		.word	1
- 1085 0478 0100      		.word	1
- 1086 047a 0100      		.word	1
- 1087 047c 0100      		.word	1
- 1088 047e 0100      		.word	1
- 1089 0480 0100      		.word	1
- 1090 0482 0100      		.word	1
- 1091 0484 0100      		.word	1
- 1092 0486 0100      		.word	1
- 1093 0488 0000      		.word	0
- 1094 048a 0000      		.word	0
- 1095 048c 0100      		.word	1
- 1096 048e 0100      		.word	1
- 1097 0490 0000      		.word	0
- 1098 0492 0000      		.word	0
- 1099 0494 0000      		.word	0
- 1100 0496 0000      		.word	0
- 1101 0498 4500      		.word	69
- 1102 049a 3A00      		.word	58
- 1103 049c 3B00      		.word	59
- 1104 049e 3C00      		.word	60
- 1105 04a0 3D00      		.word	61
- 1106 04a2 3E00      		.word	62
- 1107 04a4 0100      		.word	1
- 1108 04a6 2000      		.word	32
- 1109 04a8 2000      		.word	32
- 1110 04aa 2000      		.word	32
- 1111 04ac 2000      		.word	32
- 1112 04ae 2000      		.word	32
- 1113 04b0 0100      		.word	1
- 1114 04b2 0100      		.word	1
- 1115 04b4 5200      		.word	82
- 1116 04b6 0100      		.word	1
- 1117 04b8 0100      		.word	1
- 1118 04ba 0100      		.word	1
- 1119 04bc 005C      		.word	23552
- 1120 04be 135C      		.word	23571
- 1121 04c0 5100      		.word	81
- 1122 04c2 4F00      		.word	79
- 1123 04c4 0100      		.word	1
- 1124 04c6 0100      		.word	1
- 1125 04c8 2961      		.word	24873
- 1126 04ca E200      		.word	226
- 1127 04cc E300      		.word	227
- 1128 04ce 0357      		.word	22275
- 1129 04d0 0100      		.word	1
- 1130 04d2 2A00      		.word	42
- 1131 04d4 0100      		.word	1
- 1132 04d6 4600      		.word	70
- 1133 04d8 4E00      		.word	78
- 1134 04da 4B00      		.word	75
- 1135 04dc 0000      		.word	0
- 1136 04de 0000      		.word	0
- 1137 04e0 0100      		.word	1
- 1138 04e2 2A00      		.word	42
- 1139 04e4 0000      		.word	0
- 1140 04e6 0000      		.word	0
- 1141 04e8 0000      		.word	0
- 1142 04ea 0000      		.word	0
- 1143 04ec 4400      		.word	68
- 1144 04ee 4300      		.word	67
- 1145 04f0 4200      		.word	66
- 1146 04f2 4100      		.word	65
- 1147 04f4 4000      		.word	64
- 1148 04f6 3F00      		.word	63
- 1149 04f8 0100      		.word	1
- 1150 04fa 0100      		.word	1
- 1151 04fc 0100      		.word	1
- 1152 04fe 0100      		.word	1
- 1153 0500 0100      		.word	1
- 1154 0502 0100      		.word	1
- 1155 0504 0100      		.word	1
- 1156 0506 5200      		.word	82
- 1157 0508 0100      		.word	1
- 1158 050a 0100      		.word	1
- 1159 050c 0100      		.word	1
- 1160 050e 0100      		.word	1
- 1161 0510 4F00      		.word	79
- 1162 0512 5100      		.word	81
- 1163 0514 5000      		.word	80
- 1164 0516 0100      		.word	1
- 1165 0518 0100      		.word	1
- 1166 051a 0100      		.word	1
- 1167 051c 4F00      		.word	79
- 1168 051e 5100      		.word	81
- 1169 0520 5000      		.word	80
- 1170 0522 3400      		.word	52
- 1171 0524 5200      		.word	82
- 1172 0526 2C00      		.word	44
- 1173 0528 0100      		.word	1
- 1174 052a 4C00      		.word	76
- 1175 052c 4D00      		.word	77
- 1176 052e 4A00      		.word	74
- 1177 0530 0000      		.word	0
- 1178 0532 0000      		.word	0
- 1179 0534 2800      		.word	40
- 1180 0536 2C00      		.word	44
- 1181 0538 0000      		.word	0
- 1182 053a 0000      		.word	0
- 1183 053c 0000      		.word	0
- 1184 053e 0000      		.word	0
- 1185               		.text
- 1186               	.Letext0:
- 1187               		.file 3 "/usr/lib/avr/include/stdint.h"
- 1188               		.file 4 "./tmk_core/common/keyboard.h"
- 1189               		.file 5 "./tmk_core/common/keycode.h"
- 1190               		.file 6 "./tmk_core/common/action_code.h"
- 1191               		.file 7 "./tmk_core/common/action_macro.h"
- 1192               		.file 8 "./tmk_core/common/action.h"
- 1193               		.file 9 "./tmk_core/common/report.h"
- 1194               		.file 10 "./quantum/quantum_keycodes.h"
- 1195               		.file 11 "./quantum/process_keycode/process_tap_dance.h"
- 1196               		.file 12 "./tmk_core/common/action_util.h"
- 1197               		.file 13 "./tmk_core/common/eeconfig.h"
- 1198               		.file 14 "./tmk_core/common/action_layer.h"
- 1199               		.file 15 "./quantum/quantum.h"
+ 405:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 6: // select page up
+ 406:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 369               		.loc 2 406 0
+ 370 007a 8823      		tst r24
+ 371 007c 01F0      		breq .L47
+ 407:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_PGUP));
+ 372               		.loc 2 407 0
+ 373 007e 80E0      		ldi r24,lo8(__c.3367)
+ 374 0080 90E0      		ldi r25,hi8(__c.3367)
+ 375               	.LVL33:
+ 376 0082 00C0      		rjmp .L78
+ 377               	.LVL34:
+ 378               	.L47:
+ 408:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 409:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 410:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_PGUP) SS_UP(X_LSHIFT));
+ 379               		.loc 2 410 0
+ 380 0084 80E0      		ldi r24,lo8(__c.3369)
+ 381 0086 90E0      		ldi r25,hi8(__c.3369)
+ 382               	.LVL35:
+ 383 0088 00C0      		rjmp .L78
+ 384               	.LVL36:
+ 385               	.L23:
+ 411:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 412:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
+ 413:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 414:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 415:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 7: // select page down
+ 416:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 386               		.loc 2 416 0
+ 387 008a 8823      		tst r24
+ 388 008c 01F0      		breq .L48
+ 417:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_PGDOWN));
+ 389               		.loc 2 417 0
+ 390 008e 80E0      		ldi r24,lo8(__c.3372)
+ 391 0090 90E0      		ldi r25,hi8(__c.3372)
+ 392               	.LVL37:
+ 393 0092 00C0      		rjmp .L78
+ 394               	.LVL38:
+ 395               	.L48:
+ 418:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 419:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 420:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_PGDOWN) SS_UP(X_LSHIFT));
+ 396               		.loc 2 420 0
+ 397 0094 80E0      		ldi r24,lo8(__c.3374)
+ 398 0096 90E0      		ldi r25,hi8(__c.3374)
+ 399               	.LVL39:
+ 400 0098 00C0      		rjmp .L78
+ 401               	.LVL40:
+ 402               	.L24:
+ 421:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 422:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
+ 423:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 424:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 425:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 8: // select home
+ 426:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 403               		.loc 2 426 0
+ 404 009a 8823      		tst r24
+ 405 009c 01F0      		breq .L49
+ 427:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_HOME));
+ 406               		.loc 2 427 0
+ 407 009e 80E0      		ldi r24,lo8(__c.3377)
+ 408 00a0 90E0      		ldi r25,hi8(__c.3377)
+ 409               	.LVL41:
+ 410 00a2 00C0      		rjmp .L78
+ 411               	.LVL42:
+ 412               	.L49:
+ 428:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 429:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 430:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_HOME) SS_UP(X_LSHIFT));
+ 413               		.loc 2 430 0
+ 414 00a4 80E0      		ldi r24,lo8(__c.3379)
+ 415 00a6 90E0      		ldi r25,hi8(__c.3379)
+ 416               	.LVL43:
+ 417 00a8 00C0      		rjmp .L78
+ 418               	.LVL44:
+ 419               	.L25:
+ 431:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 432:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
+ 433:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 434:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 435:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 9: // select end
+ 436:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 420               		.loc 2 436 0
+ 421 00aa 8823      		tst r24
+ 422 00ac 01F0      		breq .L50
+ 437:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_END));
+ 423               		.loc 2 437 0
+ 424 00ae 80E0      		ldi r24,lo8(__c.3382)
+ 425 00b0 90E0      		ldi r25,hi8(__c.3382)
+ 426               	.LVL45:
+ 427 00b2 00C0      		rjmp .L78
+ 428               	.LVL46:
+ 429               	.L50:
+ 438:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 439:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 440:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_END) SS_UP(X_LSHIFT));
+ 430               		.loc 2 440 0
+ 431 00b4 80E0      		ldi r24,lo8(__c.3384)
+ 432 00b6 90E0      		ldi r25,hi8(__c.3384)
+ 433               	.LVL47:
+ 434 00b8 00C0      		rjmp .L78
+ 435               	.LVL48:
+ 436               	.L26:
+ 441:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 442:keyboards/Dactylv2/keymaps/Noah/keymap.c **** //            set_oneshot_layer(_SELECT, ONESHOT_START)
+ 443:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 444:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 445:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 10: // left word
+ 446:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    if (p) {
+ 437               		.loc 2 446 0
+ 438 00ba 8823      		tst r24
+ 439 00bc 01F0      		breq .L51
+ 447:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	      SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LEFT));
+ 440               		.loc 2 447 0
+ 441 00be 80E0      		ldi r24,lo8(__c.3387)
+ 442 00c0 90E0      		ldi r25,hi8(__c.3387)
+ 443               	.LVL49:
+ 444 00c2 00C0      		rjmp .L78
+ 445               	.LVL50:
+ 446               	.L51:
+ 448:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 449:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    else {
+ 450:keyboards/Dactylv2/keymaps/Noah/keymap.c ****       	      SEND_STRING(SS_UP(X_LEFT) SS_UP(MOVE));
+ 447               		.loc 2 450 0
+ 448 00c4 80E0      		ldi r24,lo8(__c.3389)
+ 449 00c6 90E0      		ldi r25,hi8(__c.3389)
+ 450               	.LVL51:
+ 451 00c8 00C0      		rjmp .L78
+ 452               	.LVL52:
+ 453               	.L27:
+ 451:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 452:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     		return MACRO_NONE;
+ 453:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 454:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	case 11: // right word
+ 455:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    if(p) {
+ 454               		.loc 2 455 0
+ 455 00ca 8823      		tst r24
+ 456 00cc 01F0      		breq .L52
+ 456:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_RIGHT));
+ 457               		.loc 2 456 0
+ 458 00ce 80E0      		ldi r24,lo8(__c.3392)
+ 459 00d0 90E0      		ldi r25,hi8(__c.3392)
+ 460               	.LVL53:
+ 461 00d2 00C0      		rjmp .L78
+ 462               	.LVL54:
+ 463               	.L52:
+ 457:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 458:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    else {
+ 459:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_RIGHT) SS_UP(MOVE));
+ 464               		.loc 2 459 0
+ 465 00d4 80E0      		ldi r24,lo8(__c.3394)
+ 466 00d6 90E0      		ldi r25,hi8(__c.3394)
+ 467               	.LVL55:
+ 468 00d8 00C0      		rjmp .L78
+ 469               	.LVL56:
+ 470               	.L28:
+ 460:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     	    }
+ 461:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
+ 462:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 463:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 12: // backspace left word
+ 464:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 471               		.loc 2 464 0
+ 472 00da 8823      		tst r24
+ 473 00dc 01F0      		breq .L53
+ 465:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_BSPACE));
+ 474               		.loc 2 465 0
+ 475 00de 80E0      		ldi r24,lo8(__c.3397)
+ 476 00e0 90E0      		ldi r25,hi8(__c.3397)
+ 477               	.LVL57:
+ 478 00e2 00C0      		rjmp .L78
+ 479               	.LVL58:
+ 480               	.L53:
+ 466:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 467:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 468:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_BSPACE) SS_UP(MOVE));
+ 481               		.loc 2 468 0
+ 482 00e4 80E0      		ldi r24,lo8(__c.3399)
+ 483 00e6 90E0      		ldi r25,hi8(__c.3399)
+ 484               	.LVL59:
+ 485 00e8 00C0      		rjmp .L78
+ 486               	.LVL60:
+ 487               	.L29:
+ 469:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 470:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
+ 471:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 472:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 13:
+ 473:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 488               		.loc 2 473 0
+ 489 00ea 8823      		tst r24
+ 490 00ec 01F0      		breq .L54
+ 474:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_LCTRL) SS_DOWN(X_Z));
+ 491               		.loc 2 474 0
+ 492 00ee 80E0      		ldi r24,lo8(__c.3402)
+ 493 00f0 90E0      		ldi r25,hi8(__c.3402)
+ 494               	.LVL61:
+ 495 00f2 00C0      		rjmp .L78
+ 496               	.LVL62:
+ 497               	.L54:
+ 475:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 476:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 477:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_Z) SS_UP(X_LSHIFT) SS_UP(X_LCTRL));
+ 498               		.loc 2 477 0
+ 499 00f4 80E0      		ldi r24,lo8(__c.3404)
+ 500 00f6 90E0      		ldi r25,hi8(__c.3404)
+ 501               	.LVL63:
+ 502 00f8 00C0      		rjmp .L78
+ 503               	.LVL64:
+ 504               	.L30:
+ 478:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 479:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 480:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 481:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 14: //format
+ 482:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 505               		.loc 2 482 0
+ 506 00fa 8823      		tst r24
+ 507 00fc 01F0      		breq .L55
+ 483:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LCTRL) SS_DOWN(X_L));
+ 508               		.loc 2 483 0
+ 509 00fe 80E0      		ldi r24,lo8(__c.3407)
+ 510 0100 90E0      		ldi r25,hi8(__c.3407)
+ 511               	.LVL65:
+ 512 0102 00C0      		rjmp .L78
+ 513               	.LVL66:
+ 514               	.L55:
+ 484:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 485:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 486:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_L) SS_UP(X_LCTRL) SS_UP(X_LALT));
+ 515               		.loc 2 486 0
+ 516 0104 80E0      		ldi r24,lo8(__c.3409)
+ 517 0106 90E0      		ldi r25,hi8(__c.3409)
+ 518               	.LVL67:
+ 519 0108 00C0      		rjmp .L78
+ 520               	.LVL68:
+ 521               	.L31:
+ 487:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 488:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 489:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 490:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 15: //scopy
+ 491:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 522               		.loc 2 491 0
+ 523 010a 8823      		tst r24
+ 524 010c 01F0      		breq .L56
+ 492:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_C));
+ 525               		.loc 2 492 0
+ 526 010e 80E0      		ldi r24,lo8(__c.3412)
+ 527 0110 90E0      		ldi r25,hi8(__c.3412)
+ 528               	.LVL69:
+ 529 0112 00C0      		rjmp .L78
+ 530               	.LVL70:
+ 531               	.L56:
+ 493:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 494:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 495:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_C) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+ 532               		.loc 2 495 0
+ 533 0114 80E0      		ldi r24,lo8(__c.3414)
+ 534 0116 90E0      		ldi r25,hi8(__c.3414)
+ 535               	.LVL71:
+ 536 0118 00C0      		rjmp .L80
+ 537               	.LVL72:
+ 538               	.L32:
+ 496:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               select_active=false;
+ 497:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_SELECT_ALT);
+ 498:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_on(_ALT);
+ 499:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 500:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
+ 501:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 502:keyboards/Dactylv2/keymaps/Noah/keymap.c ****         case 16: //scut
+ 503:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 539               		.loc 2 503 0
+ 540 011a 8823      		tst r24
+ 541 011c 01F0      		breq .L57
+ 504:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_X));
+ 542               		.loc 2 504 0
+ 543 011e 80E0      		ldi r24,lo8(__c.3417)
+ 544 0120 90E0      		ldi r25,hi8(__c.3417)
+ 545               	.LVL73:
+ 546 0122 00C0      		rjmp .L78
+ 547               	.LVL74:
+ 548               	.L57:
+ 505:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 506:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 507:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_X) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+ 549               		.loc 2 507 0
+ 550 0124 80E0      		ldi r24,lo8(__c.3419)
+ 551 0126 90E0      		ldi r25,hi8(__c.3419)
+ 552               	.LVL75:
+ 553               	.L80:
+ 554 0128 0E94 0000 		call send_string_P
+ 555               	.LVL76:
+ 508:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               select_active=false;
+ 556               		.loc 2 508 0
+ 557 012c 1092 0000 		sts select_active,__zero_reg__
+ 509:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_SELECT_ALT);
+ 558               		.loc 2 509 0
+ 559 0130 85E0      		ldi r24,lo8(5)
+ 560 0132 0E94 0000 		call layer_off
+ 561               	.LVL77:
+ 562 0136 00C0      		rjmp .L64
+ 563               	.LVL78:
+ 564               	.L33:
+ 510:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_on(_ALT);
+ 511:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 512:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
+ 513:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 514:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 17: // go to dir
+ 515:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 565               		.loc 2 515 0
+ 566 0138 8823      		tst r24
+ 567 013a 01F0      		breq .L58
+ 516:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_DOWN(X_D));
+ 568               		.loc 2 516 0
+ 569 013c 80E0      		ldi r24,lo8(__c.3422)
+ 570 013e 90E0      		ldi r25,hi8(__c.3422)
+ 571               	.LVL79:
+ 572 0140 00C0      		rjmp .L78
+ 573               	.LVL80:
+ 574               	.L58:
+ 517:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 518:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 519:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_D) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+ 575               		.loc 2 519 0
+ 576 0142 80E0      		ldi r24,lo8(__c.3424)
+ 577 0144 90E0      		ldi r25,hi8(__c.3424)
+ 578               	.LVL81:
+ 579 0146 00C0      		rjmp .L78
+ 580               	.LVL82:
+ 581               	.L34:
+ 520:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 521:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
+ 522:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 523:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 18: // open
+ 524:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if (p) {
+ 582               		.loc 2 524 0
+ 583 0148 8823      		tst r24
+ 584 014a 01F0      		breq .L59
+ 525:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_DOWN(X_O));
+ 585               		.loc 2 525 0
+ 586 014c 80E0      		ldi r24,lo8(__c.3427)
+ 587 014e 90E0      		ldi r25,hi8(__c.3427)
+ 588               	.LVL83:
+ 589 0150 00C0      		rjmp .L78
+ 590               	.LVL84:
+ 591               	.L59:
+ 526:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 527:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 528:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_O) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+ 592               		.loc 2 528 0
+ 593 0152 80E0      		ldi r24,lo8(__c.3429)
+ 594 0154 90E0      		ldi r25,hi8(__c.3429)
+ 595               	.LVL85:
+ 596 0156 00C0      		rjmp .L78
+ 597               	.LVL86:
+ 598               	.L35:
+ 529:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 530:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
+ 531:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 532:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 19: // find in all
+ 533:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 599               		.loc 2 533 0
+ 600 0158 8823      		tst r24
+ 601 015a 01F0      		breq .L60
+ 534:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSHIFT) SS_DOWN(X_F));
+ 602               		.loc 2 534 0
+ 603 015c 80E0      		ldi r24,lo8(__c.3432)
+ 604 015e 90E0      		ldi r25,hi8(__c.3432)
+ 605               	.LVL87:
+ 606 0160 00C0      		rjmp .L78
+ 607               	.LVL88:
+ 608               	.L60:
+ 535:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 536:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 537:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_F) SS_UP(X_LCTRL) SS_UP(X_LSHIFT));
+ 609               		.loc 2 537 0
+ 610 0162 80E0      		ldi r24,lo8(__c.3434)
+ 611 0164 90E0      		ldi r25,hi8(__c.3434)
+ 612               	.LVL89:
+ 613 0166 00C0      		rjmp .L78
+ 614               	.LVL90:
+ 615               	.L36:
+ 538:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 539:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return MACRO_NONE;
+ 540:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 541:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 20: // malt
+ 542:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 616               		.loc 2 542 0
+ 617 0168 8823      		tst r24
+ 618 016a 01F0      		breq .L61
+ 543:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               alt_down=true;
+ 619               		.loc 2 543 0
+ 620 016c 81E0      		ldi r24,lo8(1)
+ 621               	.LVL91:
+ 622 016e 8093 0000 		sts alt_down,r24
+ 544:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               if (select_active) {
+ 623               		.loc 2 544 0
+ 624 0172 9091 0000 		lds r25,select_active
+ 625 0176 8091 0000 		lds r24,shift_down
+ 626 017a 9923      		tst r25
+ 627 017c 01F0      		breq .L62
+ 545:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 if (shift_down) {
+ 628               		.loc 2 545 0
+ 629 017e 8823      		tst r24
+ 630 0180 01F0      		breq .L63
+ 546:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   SEND_STRING(SS_UP(X_LSHIFT));
+ 631               		.loc 2 546 0
+ 632 0182 80E0      		ldi r24,lo8(__c.3437)
+ 633 0184 90E0      		ldi r25,hi8(__c.3437)
+ 634 0186 0E94 0000 		call send_string_P
+ 635               	.LVL92:
+ 636 018a 00C0      		rjmp .L81
+ 637               	.LVL93:
+ 638               	.L63:
+ 547:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_SELECT_ALT_SHIFT);
+ 548:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 549:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 else {
+ 550:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_SELECT_ALT);
+ 639               		.loc 2 550 0
+ 640 018c 85E0      		ldi r24,lo8(5)
+ 641 018e 00C0      		rjmp .L79
+ 642               	.L62:
+ 551:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 552:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               }
+ 553:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               else {
+ 554:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 if (shift_down) {
+ 643               		.loc 2 554 0
+ 644 0190 8823      		tst r24
+ 645 0192 01F0      		breq .L64
+ 555:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   SEND_STRING(SS_UP(X_LSHIFT));
+ 646               		.loc 2 555 0
+ 647 0194 80E0      		ldi r24,lo8(__c.3439)
+ 648 0196 90E0      		ldi r25,hi8(__c.3439)
+ 649 0198 0E94 0000 		call send_string_P
+ 650               	.LVL94:
+ 651 019c 00C0      		rjmp .L67
+ 652               	.L64:
+ 556:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_ALTSH);
+ 557:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 558:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 else {
+ 559:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_ALT);
+ 653               		.loc 2 559 0
+ 654 019e 81E0      		ldi r24,lo8(1)
+ 655               	.L79:
+ 656 01a0 0E94 0000 		call layer_on
+ 657               	.LVL95:
+ 658 01a4 00C0      		rjmp .L14
+ 659               	.LVL96:
+ 660               	.L61:
+ 560:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 561:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               }
+ 562:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 563:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 564:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               alt_down=false;
+ 661               		.loc 2 564 0
+ 662 01a6 1092 0000 		sts alt_down,__zero_reg__
+ 565:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               select_active = false;
+ 663               		.loc 2 565 0
+ 664 01aa 1092 0000 		sts select_active,__zero_reg__
+ 566:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_ALT);
+ 665               		.loc 2 566 0
+ 666 01ae 81E0      		ldi r24,lo8(1)
+ 667               	.LVL97:
+ 668 01b0 0E94 0000 		call layer_off
+ 669               	.LVL98:
+ 567:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_ALTSH);
+ 670               		.loc 2 567 0
+ 671 01b4 82E0      		ldi r24,lo8(2)
+ 672 01b6 0E94 0000 		call layer_off
+ 673               	.LVL99:
+ 568:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_SELECT_ALT_SHIFT);
+ 674               		.loc 2 568 0
+ 675 01ba 86E0      		ldi r24,lo8(6)
+ 676 01bc 0E94 0000 		call layer_off
+ 677               	.LVL100:
+ 569:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_SELECT_ALT);
+ 678               		.loc 2 569 0
+ 679 01c0 85E0      		ldi r24,lo8(5)
+ 680 01c2 0E94 0000 		call layer_off
+ 681               	.LVL101:
+ 682 01c6 00C0      		rjmp .L14
+ 683               	.LVL102:
+ 684               	.L37:
+ 570:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 571:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 572:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 573:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 21: // mshift
+ 574:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 685               		.loc 2 574 0
+ 686 01c8 8823      		tst r24
+ 687 01ca 01F0      		breq .L65
+ 575:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               shift_down=true;
+ 688               		.loc 2 575 0
+ 689 01cc 81E0      		ldi r24,lo8(1)
+ 690               	.LVL103:
+ 691 01ce 8093 0000 		sts shift_down,r24
+ 576:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               if(alt_down) {
+ 692               		.loc 2 576 0
+ 693 01d2 8091 0000 		lds r24,alt_down
+ 694 01d6 8823      		tst r24
+ 695 01d8 01F0      		breq .L66
+ 577:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 if(select_active) {
+ 696               		.loc 2 577 0
+ 697 01da 8091 0000 		lds r24,select_active
+ 698 01de 8823      		tst r24
+ 699 01e0 01F0      		breq .L67
+ 700               	.LVL104:
+ 701               	.L81:
+ 578:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_SELECT_ALT_SHIFT);
+ 702               		.loc 2 578 0
+ 703 01e2 86E0      		ldi r24,lo8(6)
+ 704 01e4 00C0      		rjmp .L79
+ 705               	.L67:
+ 579:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 580:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 else {
+ 581:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_ALTSH);
+ 706               		.loc 2 581 0
+ 707 01e6 82E0      		ldi r24,lo8(2)
+ 708 01e8 00C0      		rjmp .L79
+ 709               	.LVL105:
+ 710               	.L66:
+ 582:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 583:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               }
+ 584:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               else {
+ 585:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 SEND_STRING(SS_DOWN(X_LSHIFT));
+ 711               		.loc 2 585 0
+ 712 01ea 80E0      		ldi r24,lo8(__c.3442)
+ 713 01ec 90E0      		ldi r25,hi8(__c.3442)
+ 714 01ee 00C0      		rjmp .L78
+ 715               	.LVL106:
+ 716               	.L65:
+ 586:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               }
+ 587:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 588:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 589:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               shift_down=false;
+ 717               		.loc 2 589 0
+ 718 01f0 1092 0000 		sts shift_down,__zero_reg__
+ 590:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_SELECT_ALT_SHIFT);
+ 719               		.loc 2 590 0
+ 720 01f4 86E0      		ldi r24,lo8(6)
+ 721               	.LVL107:
+ 722 01f6 0E94 0000 		call layer_off
+ 723               	.LVL108:
+ 591:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_ALTSH);
+ 724               		.loc 2 591 0
+ 725 01fa 82E0      		ldi r24,lo8(2)
+ 726 01fc 0E94 0000 		call layer_off
+ 727               	.LVL109:
+ 592:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               if (alt_down) {
+ 728               		.loc 2 592 0
+ 729 0200 8091 0000 		lds r24,alt_down
+ 730 0204 8823      		tst r24
+ 731 0206 01F0      		breq .L68
+ 593:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 if(select_active) {
+ 732               		.loc 2 593 0
+ 733 0208 8091 0000 		lds r24,select_active
+ 734 020c 8823      		tst r24
+ 735 020e 01F0      		breq .L69
+ 594:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_SELECT_ALT);
+ 736               		.loc 2 594 0
+ 737 0210 85E0      		ldi r24,lo8(5)
+ 738 0212 00C0      		rjmp .L77
+ 739               	.L69:
+ 595:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 596:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 else {
+ 597:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                   layer_on(_ALT);
+ 740               		.loc 2 597 0
+ 741 0214 81E0      		ldi r24,lo8(1)
+ 742               	.L77:
+ 743 0216 0E94 0000 		call layer_on
+ 744               	.LVL110:
+ 745               	.L68:
+ 598:keyboards/Dactylv2/keymaps/Noah/keymap.c ****                 }
+ 599:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               }
+ 600:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_LSHIFT));
+ 746               		.loc 2 600 0
+ 747 021a 80E0      		ldi r24,lo8(__c.3444)
+ 748 021c 90E0      		ldi r25,hi8(__c.3444)
+ 749 021e 00C0      		rjmp .L78
+ 750               	.LVL111:
+ 751               	.L38:
+ 601:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 602:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 603:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 22: // ctrl for ctrl+space
+ 604:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             if(p) {
+ 752               		.loc 2 604 0
+ 753 0220 8823      		tst r24
+ 754 0222 01F0      		breq .L70
+ 605:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_on(_CTR);
+ 755               		.loc 2 605 0
+ 756 0224 83E0      		ldi r24,lo8(3)
+ 757               	.LVL112:
+ 758 0226 0E94 0000 		call layer_on
+ 759               	.LVL113:
+ 606:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_DOWN(X_LCTRL));
+ 760               		.loc 2 606 0
+ 761 022a 80E0      		ldi r24,lo8(__c.3447)
+ 762 022c 90E0      		ldi r25,hi8(__c.3447)
+ 763 022e 00C0      		rjmp .L78
+ 764               	.LVL114:
+ 765               	.L70:
+ 607:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 608:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             else {
+ 609:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               layer_off(_CTR);
+ 766               		.loc 2 609 0
+ 767 0230 83E0      		ldi r24,lo8(3)
+ 768               	.LVL115:
+ 769 0232 0E94 0000 		call layer_off
+ 770               	.LVL116:
+ 610:keyboards/Dactylv2/keymaps/Noah/keymap.c ****               SEND_STRING(SS_UP(X_LCTRL));
+ 771               		.loc 2 610 0
+ 772 0236 80E0      		ldi r24,lo8(__c.3449)
+ 773 0238 90E0      		ldi r25,hi8(__c.3449)
+ 774 023a 00C0      		rjmp .L78
+ 775               	.LVL117:
+ 776               	.L39:
+ 611:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             }
+ 612:keyboards/Dactylv2/keymaps/Noah/keymap.c ****             return false;
+ 613:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 614:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 23:
+ 615:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            if(p) {
+ 777               		.loc 2 615 0
+ 778 023c 8823      		tst r24
+ 779 023e 01F0      		breq .L40
+ 616:keyboards/Dactylv2/keymaps/Noah/keymap.c ****              select_active = !select_active;
+ 780               		.loc 2 616 0
+ 781 0240 9091 0000 		lds r25,select_active
+ 782 0244 81E0      		ldi r24,lo8(1)
+ 783               	.LVL118:
+ 784 0246 8927      		eor r24,r25
+ 785 0248 8093 0000 		sts select_active,r24
+ 786               	.L40:
+ 617:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            }
+ 618:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 619:keyboards/Dactylv2/keymaps/Noah/keymap.c ****          case 24: // restl - reset all layers. In case something gets stuck.
+ 620:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            layer_off(1);
+ 787               		.loc 2 620 0
+ 788 024c 81E0      		ldi r24,lo8(1)
+ 789 024e 0E94 0000 		call layer_off
+ 790               	.LVL119:
+ 621:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            layer_off(2);
+ 791               		.loc 2 621 0
+ 792 0252 82E0      		ldi r24,lo8(2)
+ 793 0254 0E94 0000 		call layer_off
+ 794               	.LVL120:
+ 622:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            layer_off(3);
+ 795               		.loc 2 622 0
+ 796 0258 83E0      		ldi r24,lo8(3)
+ 797 025a 0E94 0000 		call layer_off
+ 798               	.LVL121:
+ 623:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            layer_off(4);
+ 799               		.loc 2 623 0
+ 800 025e 84E0      		ldi r24,lo8(4)
+ 801 0260 0E94 0000 		call layer_off
+ 802               	.LVL122:
+ 624:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            layer_off(5);
+ 803               		.loc 2 624 0
+ 804 0264 85E0      		ldi r24,lo8(5)
+ 805 0266 0E94 0000 		call layer_off
+ 806               	.LVL123:
+ 625:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            layer_off(6);
+ 807               		.loc 2 625 0
+ 808 026a 86E0      		ldi r24,lo8(6)
+ 809 026c 0E94 0000 		call layer_off
+ 810               	.LVL124:
+ 626:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            layer_off(7);
+ 811               		.loc 2 626 0
+ 812 0270 87E0      		ldi r24,lo8(7)
+ 813 0272 0E94 0000 		call layer_off
+ 814               	.LVL125:
+ 627:keyboards/Dactylv2/keymaps/Noah/keymap.c ****            SEND_STRING(SS_UP(X_LCTRL) SS_UP(X_LSHIFT) SS_UP(MOVE) SS_UP(X_LALT) SS_UP(X_LGUI));
+ 815               		.loc 2 627 0
+ 816 0276 80E0      		ldi r24,lo8(__c.3453)
+ 817 0278 90E0      		ldi r25,hi8(__c.3453)
+ 818               	.L78:
+ 819 027a 0E94 0000 		call send_string_P
+ 820               	.LVL126:
+ 821               	.L14:
+ 628:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 	}
+ 629:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 630:keyboards/Dactylv2/keymaps/Noah/keymap.c ****     return MACRO_NONE;
+ 631:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }
+ 822               		.loc 2 631 0
+ 823 027e 80E0      		ldi r24,0
+ 824 0280 90E0      		ldi r25,0
+ 825 0282 0895      		ret
+ 826               		.cfi_endproc
+ 827               	.LFE29:
+ 829               		.section	.text.cmd_commands,"ax",@progbits
+ 830               	.global	cmd_commands
+ 832               	cmd_commands:
+ 833               	.LFB33:
+ 834               		.cfi_startproc
+ 835               	/* prologue: function */
+ 836               	/* frame size = 0 */
+ 837               	/* stack size = 0 */
+ 838               	.L__stack_usage = 0
+ 839 0000 0895      		ret
+ 840               		.cfi_endproc
+ 841               	.LFE33:
+ 843               		.section	.text.cmd,"ax",@progbits
+ 844               	.global	cmd
+ 846               	cmd:
+ 847               	.LFB31:
+ 632:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 633:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void cmd_commands(qk_tap_dance_state_t *state, void *user_data) {
+ 634:keyboards/Dactylv2/keymaps/Noah/keymap.c **** }
+ 635:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 636:keyboards/Dactylv2/keymaps/Noah/keymap.c **** 
+ 637:keyboards/Dactylv2/keymaps/Noah/keymap.c **** void cmd(qk_tap_dance_state_t *state, void *user_data) {
+ 848               		.loc 2 637 0
+ 849               		.cfi_startproc
+ 850               	.LVL127:
+ 851               	/* prologue: function */
+ 852               	/* frame size = 0 */
+ 853               	/* stack size = 0 */
+ 854               	.L__stack_usage = 0
+ 855 0000 0895      		ret
+ 856               		.cfi_endproc
+ 857               	.LFE31:
+ 859               		.section	.progmem.data.__c.3453,"a",@progbits
+ 862               	__c.3453:
+ 863 0000 03E0 03E1 		.string	"\003\340\003\341\003\340\003\342\003\343"
+ 863      03E0 03E2 
+ 863      03E3 00
+ 864               		.section	.progmem.data.__c.3449,"a",@progbits
+ 867               	__c.3449:
+ 868 0000 03E0 00   		.string	"\003\340"
+ 869               		.section	.progmem.data.__c.3447,"a",@progbits
+ 872               	__c.3447:
+ 873 0000 02E0 00   		.string	"\002\340"
+ 874               		.section	.progmem.data.__c.3444,"a",@progbits
+ 877               	__c.3444:
+ 878 0000 03E1 00   		.string	"\003\341"
+ 879               		.section	.progmem.data.__c.3442,"a",@progbits
+ 882               	__c.3442:
+ 883 0000 02E1 00   		.string	"\002\341"
+ 884               		.section	.progmem.data.__c.3439,"a",@progbits
+ 887               	__c.3439:
+ 888 0000 03E1 00   		.string	"\003\341"
+ 889               		.section	.progmem.data.__c.3437,"a",@progbits
+ 892               	__c.3437:
+ 893 0000 03E1 00   		.string	"\003\341"
+ 894               		.section	.progmem.data.__c.3434,"a",@progbits
+ 897               	__c.3434:
+ 898 0000 0309 03E0 		.string	"\003\t\003\340\003\341"
+ 898      03E1 00
+ 899               		.section	.progmem.data.__c.3432,"a",@progbits
+ 902               	__c.3432:
+ 903 0000 02E0 02E1 		.string	"\002\340\002\341\002\t"
+ 903      0209 00
+ 904               		.section	.progmem.data.__c.3429,"a",@progbits
+ 907               	__c.3429:
+ 908 0000 0312 03E2 		.string	"\003\022\003\342\003\341"
+ 908      03E1 00
+ 909               		.section	.progmem.data.__c.3427,"a",@progbits
+ 912               	__c.3427:
+ 913 0000 02E2 02E1 		.string	"\002\342\002\341\002\022"
+ 913      0212 00
+ 914               		.section	.progmem.data.__c.3424,"a",@progbits
+ 917               	__c.3424:
+ 918 0000 0307 03E2 		.string	"\003\007\003\342\003\341"
+ 918      03E1 00
+ 919               		.section	.progmem.data.__c.3422,"a",@progbits
+ 922               	__c.3422:
+ 923 0000 02E2 02E1 		.string	"\002\342\002\341\002\007"
+ 923      0207 00
+ 924               		.section	.progmem.data.__c.3419,"a",@progbits
+ 927               	__c.3419:
+ 928 0000 031B 03E0 		.string	"\003\033\003\340\001)"
+ 928      0129 00
+ 929               		.section	.progmem.data.__c.3417,"a",@progbits
+ 932               	__c.3417:
+ 933 0000 02E0 021B 		.string	"\002\340\002\033"
+ 933      00
+ 934               		.section	.progmem.data.__c.3414,"a",@progbits
+ 937               	__c.3414:
+ 938 0000 0306 03E0 		.string	"\003\006\003\340\001)"
+ 938      0129 00
+ 939               		.section	.progmem.data.__c.3412,"a",@progbits
+ 942               	__c.3412:
+ 943 0000 02E0 0206 		.string	"\002\340\002\006"
+ 943      00
+ 944               		.section	.progmem.data.__c.3409,"a",@progbits
+ 947               	__c.3409:
+ 948 0000 030F 03E0 		.string	"\003\017\003\340\003\342"
+ 948      03E2 00
+ 949               		.section	.progmem.data.__c.3407,"a",@progbits
+ 952               	__c.3407:
+ 953 0000 02E2 02E0 		.string	"\002\342\002\340\002\017"
+ 953      020F 00
+ 954               		.section	.progmem.data.__c.3404,"a",@progbits
+ 957               	__c.3404:
+ 958 0000 031D 03E1 		.string	"\003\035\003\341\003\340"
+ 958      03E0 00
+ 959               		.section	.progmem.data.__c.3402,"a",@progbits
+ 962               	__c.3402:
+ 963 0000 02E1 02E0 		.string	"\002\341\002\340\002\035"
+ 963      021D 00
+ 964               		.section	.progmem.data.__c.3399,"a",@progbits
+ 967               	__c.3399:
+ 968 0000 032A 03E0 		.string	"\003*\003\340"
+ 968      00
+ 969               		.section	.progmem.data.__c.3397,"a",@progbits
+ 972               	__c.3397:
+ 973 0000 02E0 022A 		.string	"\002\340\002*"
+ 973      00
+ 974               		.section	.progmem.data.__c.3394,"a",@progbits
+ 977               	__c.3394:
+ 978 0000 034F 03E0 		.string	"\003O\003\340"
+ 978      00
+ 979               		.section	.progmem.data.__c.3392,"a",@progbits
+ 982               	__c.3392:
+ 983 0000 02E0 024F 		.string	"\002\340\002O"
+ 983      00
+ 984               		.section	.progmem.data.__c.3389,"a",@progbits
+ 987               	__c.3389:
+ 988 0000 0350 03E0 		.string	"\003P\003\340"
+ 988      00
+ 989               		.section	.progmem.data.__c.3387,"a",@progbits
+ 992               	__c.3387:
+ 993 0000 02E0 0250 		.string	"\002\340\002P"
+ 993      00
+ 994               		.section	.progmem.data.__c.3384,"a",@progbits
+ 997               	__c.3384:
+ 998 0000 034D 03E1 		.string	"\003M\003\341"
+ 998      00
+ 999               		.section	.progmem.data.__c.3382,"a",@progbits
+ 1002               	__c.3382:
+ 1003 0000 02E1 024D 		.string	"\002\341\002M"
+ 1003      00
+ 1004               		.section	.progmem.data.__c.3379,"a",@progbits
+ 1007               	__c.3379:
+ 1008 0000 034A 03E1 		.string	"\003J\003\341"
+ 1008      00
+ 1009               		.section	.progmem.data.__c.3377,"a",@progbits
+ 1012               	__c.3377:
+ 1013 0000 02E1 024A 		.string	"\002\341\002J"
+ 1013      00
+ 1014               		.section	.progmem.data.__c.3374,"a",@progbits
+ 1017               	__c.3374:
+ 1018 0000 034E 03E1 		.string	"\003N\003\341"
+ 1018      00
+ 1019               		.section	.progmem.data.__c.3372,"a",@progbits
+ 1022               	__c.3372:
+ 1023 0000 02E1 024E 		.string	"\002\341\002N"
+ 1023      00
+ 1024               		.section	.progmem.data.__c.3369,"a",@progbits
+ 1027               	__c.3369:
+ 1028 0000 034B 03E1 		.string	"\003K\003\341"
+ 1028      00
+ 1029               		.section	.progmem.data.__c.3367,"a",@progbits
+ 1032               	__c.3367:
+ 1033 0000 02E1 024B 		.string	"\002\341\002K"
+ 1033      00
+ 1034               		.section	.progmem.data.__c.3364,"a",@progbits
+ 1037               	__c.3364:
+ 1038 0000 034F 03E1 		.string	"\003O\003\341\003\340"
+ 1038      03E0 00
+ 1039               		.section	.progmem.data.__c.3362,"a",@progbits
+ 1042               	__c.3362:
+ 1043 0000 02E0 02E1 		.string	"\002\340\002\341\002O"
+ 1043      024F 00
+ 1044               		.section	.progmem.data.__c.3359,"a",@progbits
+ 1047               	__c.3359:
+ 1048 0000 0350 03E1 		.string	"\003P\003\341\003\340"
+ 1048      03E0 00
+ 1049               		.section	.progmem.data.__c.3357,"a",@progbits
+ 1052               	__c.3357:
+ 1053 0000 02E0 02E1 		.string	"\002\340\002\341\002P"
+ 1053      0250 00
+ 1054               		.section	.progmem.data.__c.3354,"a",@progbits
+ 1057               	__c.3354:
+ 1058 0000 0351 03E1 		.string	"\003Q\003\341"
+ 1058      00
+ 1059               		.section	.progmem.data.__c.3352,"a",@progbits
+ 1062               	__c.3352:
+ 1063 0000 02E1 0251 		.string	"\002\341\002Q"
+ 1063      00
+ 1064               		.section	.progmem.data.__c.3349,"a",@progbits
+ 1067               	__c.3349:
+ 1068 0000 0352 03E1 		.string	"\003R\003\341"
+ 1068      00
+ 1069               		.section	.progmem.data.__c.3347,"a",@progbits
+ 1072               	__c.3347:
+ 1073 0000 02E1 0252 		.string	"\002\341\002R"
+ 1073      00
+ 1074               		.section	.progmem.data.__c.3344,"a",@progbits
+ 1077               	__c.3344:
+ 1078 0000 034F 03E1 		.string	"\003O\003\341"
+ 1078      00
+ 1079               		.section	.progmem.data.__c.3342,"a",@progbits
+ 1082               	__c.3342:
+ 1083 0000 02E1 024F 		.string	"\002\341\002O"
+ 1083      00
+ 1084               		.section	.progmem.data.__c.3339,"a",@progbits
+ 1087               	__c.3339:
+ 1088 0000 0350 03E1 		.string	"\003P\003\341"
+ 1088      00
+ 1089               		.section	.progmem.data.__c.3337,"a",@progbits
+ 1092               	__c.3337:
+ 1093 0000 02E1 0250 		.string	"\002\341\002P\003\341"
+ 1093      03E1 00
+ 1094               	.global	tap_dance_actions
+ 1095               		.section	.bss.tap_dance_actions,"aw",@nobits
+ 1098               	tap_dance_actions:
+ 1099               	.global	select_active
+ 1100               		.section	.bss.select_active,"aw",@nobits
+ 1103               	select_active:
+ 1104 0000 00        		.zero	1
+ 1105               	.global	alt_down
+ 1106               		.section	.bss.alt_down,"aw",@nobits
+ 1109               	alt_down:
+ 1110 0000 00        		.zero	1
+ 1111               	.global	shift_down
+ 1112               		.section	.bss.shift_down,"aw",@nobits
+ 1115               	shift_down:
+ 1116 0000 00        		.zero	1
+ 1117               	.global	keymaps
+ 1118               		.section	.progmem.data.keymaps,"a",@progbits
+ 1121               	keymaps:
+ 1122 0000 3500      		.word	53
+ 1123 0002 1E00      		.word	30
+ 1124 0004 1F00      		.word	31
+ 1125 0006 2000      		.word	32
+ 1126 0008 2100      		.word	33
+ 1127 000a 2200      		.word	34
+ 1128 000c 2B00      		.word	43
+ 1129 000e 1400      		.word	20
+ 1130 0010 1A00      		.word	26
+ 1131 0012 0800      		.word	8
+ 1132 0014 1500      		.word	21
+ 1133 0016 1700      		.word	23
+ 1134 0018 1630      		.word	12310
+ 1135 001a 0400      		.word	4
+ 1136 001c 1600      		.word	22
+ 1137 001e 0700      		.word	7
+ 1138 0020 0900      		.word	9
+ 1139 0022 0A00      		.word	10
+ 1140 0024 1530      		.word	12309
+ 1141 0026 1D00      		.word	29
+ 1142 0028 1B00      		.word	27
+ 1143 002a 0600      		.word	6
+ 1144 002c 1900      		.word	25
+ 1145 002e 0500      		.word	5
+ 1146 0030 0751      		.word	20743
+ 1147 0032 E000      		.word	224
+ 1148 0034 E300      		.word	227
+ 1149 0036 1530      		.word	12309
+ 1150 0038 E200      		.word	226
+ 1151 003a 0100      		.word	1
+ 1152 003c 4D00      		.word	77
+ 1153 003e 4A00      		.word	74
+ 1154 0040 3F00      		.word	63
+ 1155 0042 2900      		.word	41
+ 1156 0044 0000      		.word	0
+ 1157 0046 0000      		.word	0
+ 1158 0048 2B78      		.word	30763
+ 1159 004a 1430      		.word	12308
+ 1160 004c 0000      		.word	0
+ 1161 004e 0000      		.word	0
+ 1162 0050 0000      		.word	0
+ 1163 0052 0000      		.word	0
+ 1164 0054 2E00      		.word	46
+ 1165 0056 2700      		.word	39
+ 1166 0058 2600      		.word	38
+ 1167 005a 2500      		.word	37
+ 1168 005c 2400      		.word	36
+ 1169 005e 2300      		.word	35
+ 1170 0060 2D00      		.word	45
+ 1171 0062 1300      		.word	19
+ 1172 0064 1200      		.word	18
+ 1173 0066 0C00      		.word	12
+ 1174 0068 1800      		.word	24
+ 1175 006a 1C00      		.word	28
+ 1176 006c 3400      		.word	52
+ 1177 006e 3300      		.word	51
+ 1178 0070 0F00      		.word	15
+ 1179 0072 0E00      		.word	14
+ 1180 0074 0D00      		.word	13
+ 1181 0076 0B00      		.word	11
+ 1182 0078 2800      		.word	40
+ 1183 007a 3800      		.word	56
+ 1184 007c 3700      		.word	55
+ 1185 007e 3600      		.word	54
+ 1186 0080 1000      		.word	16
+ 1187 0082 1100      		.word	17
+ 1188 0084 0100      		.word	1
+ 1189 0086 3100      		.word	49
+ 1190 0088 3900      		.word	57
+ 1191 008a 3000      		.word	48
+ 1192 008c 2F00      		.word	47
+ 1193 008e 0100      		.word	1
+ 1194 0090 4E00      		.word	78
+ 1195 0092 4B00      		.word	75
+ 1196 0094 0F06      		.word	1551
+ 1197 0096 4C00      		.word	76
+ 1198 0098 0000      		.word	0
+ 1199 009a 0000      		.word	0
+ 1200 009c 2A00      		.word	42
+ 1201 009e 2C00      		.word	44
+ 1202 00a0 0000      		.word	0
+ 1203 00a2 0000      		.word	0
+ 1204 00a4 0000      		.word	0
+ 1205 00a6 0000      		.word	0
+ 1206 00a8 0100      		.word	1
+ 1207 00aa 0100      		.word	1
+ 1208 00ac 0100      		.word	1
+ 1209 00ae 0100      		.word	1
+ 1210 00b0 0100      		.word	1
+ 1211 00b2 0100      		.word	1
+ 1212 00b4 0100      		.word	1
+ 1213 00b6 0100      		.word	1
+ 1214 00b8 1A01      		.word	282
+ 1215 00ba 0C30      		.word	12300
+ 1216 00bc 1501      		.word	277
+ 1217 00be 0100      		.word	1
+ 1218 00c0 0100      		.word	1
+ 1219 00c2 0401      		.word	260
+ 1220 00c4 1604      		.word	1046
+ 1221 00c6 0100      		.word	1
+ 1222 00c8 0901      		.word	265
+ 1223 00ca 0100      		.word	1
+ 1224 00cc 1530      		.word	12309
+ 1225 00ce 1D01      		.word	285
+ 1226 00d0 1B01      		.word	283
+ 1227 00d2 0601      		.word	262
+ 1228 00d4 1901      		.word	281
+ 1229 00d6 0100      		.word	1
+ 1230 00d8 0100      		.word	1
+ 1231 00da 0100      		.word	1
+ 1232 00dc 0100      		.word	1
+ 1233 00de 1530      		.word	12309
+ 1234 00e0 0100      		.word	1
+ 1235 00e2 0100      		.word	1
+ 1236 00e4 0100      		.word	1
+ 1237 00e6 0100      		.word	1
+ 1238 00e8 0100      		.word	1
+ 1239 00ea 0100      		.word	1
+ 1240 00ec 0000      		.word	0
+ 1241 00ee 0000      		.word	0
+ 1242 00f0 0100      		.word	1
+ 1243 00f2 0100      		.word	1
+ 1244 00f4 0000      		.word	0
+ 1245 00f6 0000      		.word	0
+ 1246 00f8 0000      		.word	0
+ 1247 00fa 0000      		.word	0
+ 1248 00fc 0100      		.word	1
+ 1249 00fe 0100      		.word	1
+ 1250 0100 0100      		.word	1
+ 1251 0102 0100      		.word	1
+ 1252 0104 0100      		.word	1
+ 1253 0106 0100      		.word	1
+ 1254 0108 0100      		.word	1
+ 1255 010a 0100      		.word	1
+ 1256 010c 0B30      		.word	12299
+ 1257 010e 5200      		.word	82
+ 1258 0110 0A30      		.word	12298
+ 1259 0112 0100      		.word	1
+ 1260 0114 0100      		.word	1
+ 1261 0116 0100      		.word	1
+ 1262 0118 4F00      		.word	79
+ 1263 011a 5100      		.word	81
+ 1264 011c 5000      		.word	80
+ 1265 011e 4D00      		.word	77
+ 1266 0120 2804      		.word	1064
+ 1267 0122 0100      		.word	1
+ 1268 0124 0100      		.word	1
+ 1269 0126 0100      		.word	1
+ 1270 0128 0100      		.word	1
+ 1271 012a 0100      		.word	1
+ 1272 012c 0100      		.word	1
+ 1273 012e 0100      		.word	1
+ 1274 0130 0100      		.word	1
+ 1275 0132 3004      		.word	1072
+ 1276 0134 2F04      		.word	1071
+ 1277 0136 0100      		.word	1
+ 1278 0138 0100      		.word	1
+ 1279 013a 0100      		.word	1
+ 1280 013c 0100      		.word	1
+ 1281 013e 0100      		.word	1
+ 1282 0140 0000      		.word	0
+ 1283 0142 0000      		.word	0
+ 1284 0144 4B01      		.word	331
+ 1285 0146 4E01      		.word	334
+ 1286 0148 0000      		.word	0
+ 1287 014a 0000      		.word	0
+ 1288 014c 0000      		.word	0
+ 1289 014e 0000      		.word	0
+ 1290 0150 0100      		.word	1
+ 1291 0152 0100      		.word	1
+ 1292 0154 0100      		.word	1
+ 1293 0156 0100      		.word	1
+ 1294 0158 2103      		.word	801
+ 1295 015a 0100      		.word	1
+ 1296 015c 0100      		.word	1
+ 1297 015e 0100      		.word	1
+ 1298 0160 0100      		.word	1
+ 1299 0162 0100      		.word	1
+ 1300 0164 1506      		.word	1557
+ 1301 0166 0100      		.word	1
+ 1302 0168 0100      		.word	1
+ 1303 016a 0100      		.word	1
+ 1304 016c 0100      		.word	1
+ 1305 016e 0706      		.word	1543
+ 1306 0170 0906      		.word	1545
+ 1307 0172 0100      		.word	1
+ 1308 0174 0100      		.word	1
+ 1309 0176 1D03      		.word	797
+ 1310 0178 0100      		.word	1
+ 1311 017a 0100      		.word	1
+ 1312 017c 0100      		.word	1
+ 1313 017e 0100      		.word	1
+ 1314 0180 0100      		.word	1
+ 1315 0182 0100      		.word	1
+ 1316 0184 0100      		.word	1
+ 1317 0186 0100      		.word	1
+ 1318 0188 0100      		.word	1
+ 1319 018a 0100      		.word	1
+ 1320 018c 0100      		.word	1
+ 1321 018e 0100      		.word	1
+ 1322 0190 0100      		.word	1
+ 1323 0192 0100      		.word	1
+ 1324 0194 0000      		.word	0
+ 1325 0196 0000      		.word	0
+ 1326 0198 0100      		.word	1
+ 1327 019a 1430      		.word	12308
+ 1328 019c 0000      		.word	0
+ 1329 019e 0000      		.word	0
+ 1330 01a0 0000      		.word	0
+ 1331 01a2 0000      		.word	0
+ 1332 01a4 0100      		.word	1
+ 1333 01a6 0100      		.word	1
+ 1334 01a8 0100      		.word	1
+ 1335 01aa 0100      		.word	1
+ 1336 01ac 0100      		.word	1
+ 1337 01ae 0100      		.word	1
+ 1338 01b0 0100      		.word	1
+ 1339 01b2 0100      		.word	1
+ 1340 01b4 1206      		.word	1554
+ 1341 01b6 4B00      		.word	75
+ 1342 01b8 0100      		.word	1
+ 1343 01ba 0100      		.word	1
+ 1344 01bc 0100      		.word	1
+ 1345 01be 0100      		.word	1
+ 1346 01c0 0100      		.word	1
+ 1347 01c2 4E00      		.word	78
+ 1348 01c4 0100      		.word	1
+ 1349 01c6 4A00      		.word	74
+ 1350 01c8 0100      		.word	1
+ 1351 01ca 0100      		.word	1
+ 1352 01cc 0100      		.word	1
+ 1353 01ce 0100      		.word	1
+ 1354 01d0 0100      		.word	1
+ 1355 01d2 0100      		.word	1
+ 1356 01d4 0100      		.word	1
+ 1357 01d6 0100      		.word	1
+ 1358 01d8 0100      		.word	1
+ 1359 01da 0100      		.word	1
+ 1360 01dc 0100      		.word	1
+ 1361 01de 0100      		.word	1
+ 1362 01e0 0100      		.word	1
+ 1363 01e2 0100      		.word	1
+ 1364 01e4 0100      		.word	1
+ 1365 01e6 0100      		.word	1
+ 1366 01e8 0000      		.word	0
+ 1367 01ea 0000      		.word	0
+ 1368 01ec 0100      		.word	1
+ 1369 01ee 0100      		.word	1
+ 1370 01f0 0000      		.word	0
+ 1371 01f2 0000      		.word	0
+ 1372 01f4 0000      		.word	0
+ 1373 01f6 0000      		.word	0
+ 1374 01f8 0100      		.word	1
+ 1375 01fa 0100      		.word	1
+ 1376 01fc 0100      		.word	1
+ 1377 01fe 0100      		.word	1
+ 1378 0200 0100      		.word	1
+ 1379 0202 0100      		.word	1
+ 1380 0204 0100      		.word	1
+ 1381 0206 0100      		.word	1
+ 1382 0208 0100      		.word	1
+ 1383 020a 0100      		.word	1
+ 1384 020c 0100      		.word	1
+ 1385 020e 0100      		.word	1
+ 1386 0210 0100      		.word	1
+ 1387 0212 0100      		.word	1
+ 1388 0214 0100      		.word	1
+ 1389 0216 0100      		.word	1
+ 1390 0218 0100      		.word	1
+ 1391 021a 0100      		.word	1
+ 1392 021c 0100      		.word	1
+ 1393 021e 0100      		.word	1
+ 1394 0220 0100      		.word	1
+ 1395 0222 0100      		.word	1
+ 1396 0224 0100      		.word	1
+ 1397 0226 0100      		.word	1
+ 1398 0228 0100      		.word	1
+ 1399 022a 0100      		.word	1
+ 1400 022c 0100      		.word	1
+ 1401 022e 0100      		.word	1
+ 1402 0230 0100      		.word	1
+ 1403 0232 0100      		.word	1
+ 1404 0234 0100      		.word	1
+ 1405 0236 0100      		.word	1
+ 1406 0238 0100      		.word	1
+ 1407 023a 0100      		.word	1
+ 1408 023c 0000      		.word	0
+ 1409 023e 0000      		.word	0
+ 1410 0240 0100      		.word	1
+ 1411 0242 0100      		.word	1
+ 1412 0244 0000      		.word	0
+ 1413 0246 0000      		.word	0
+ 1414 0248 0000      		.word	0
+ 1415 024a 0000      		.word	0
+ 1416 024c 0100      		.word	1
+ 1417 024e 0100      		.word	1
+ 1418 0250 0100      		.word	1
+ 1419 0252 0100      		.word	1
+ 1420 0254 0100      		.word	1
+ 1421 0256 0100      		.word	1
+ 1422 0258 0100      		.word	1
+ 1423 025a 0100      		.word	1
+ 1424 025c 0100      		.word	1
+ 1425 025e 0100      		.word	1
+ 1426 0260 0100      		.word	1
+ 1427 0262 0100      		.word	1
+ 1428 0264 0100      		.word	1
+ 1429 0266 0100      		.word	1
+ 1430 0268 0100      		.word	1
+ 1431 026a 0100      		.word	1
+ 1432 026c 0100      		.word	1
+ 1433 026e 0100      		.word	1
+ 1434 0270 0100      		.word	1
+ 1435 0272 0100      		.word	1
+ 1436 0274 0100      		.word	1
+ 1437 0276 0100      		.word	1
+ 1438 0278 0100      		.word	1
+ 1439 027a 0100      		.word	1
+ 1440 027c 0100      		.word	1
+ 1441 027e 0100      		.word	1
+ 1442 0280 0100      		.word	1
+ 1443 0282 0100      		.word	1
+ 1444 0284 0100      		.word	1
+ 1445 0286 0100      		.word	1
+ 1446 0288 0100      		.word	1
+ 1447 028a 0100      		.word	1
+ 1448 028c 0100      		.word	1
+ 1449 028e 0100      		.word	1
+ 1450 0290 0000      		.word	0
+ 1451 0292 0000      		.word	0
+ 1452 0294 0100      		.word	1
+ 1453 0296 1730      		.word	12311
+ 1454 0298 0000      		.word	0
+ 1455 029a 0000      		.word	0
+ 1456 029c 0000      		.word	0
+ 1457 029e 0000      		.word	0
+ 1458 02a0 0100      		.word	1
+ 1459 02a2 0100      		.word	1
+ 1460 02a4 0100      		.word	1
+ 1461 02a6 0100      		.word	1
+ 1462 02a8 0100      		.word	1
+ 1463 02aa 0100      		.word	1
+ 1464 02ac 0100      		.word	1
+ 1465 02ae 0100      		.word	1
+ 1466 02b0 0100      		.word	1
+ 1467 02b2 0100      		.word	1
+ 1468 02b4 0100      		.word	1
+ 1469 02b6 0100      		.word	1
+ 1470 02b8 0100      		.word	1
+ 1471 02ba 0100      		.word	1
+ 1472 02bc 0100      		.word	1
+ 1473 02be 0100      		.word	1
+ 1474 02c0 0100      		.word	1
+ 1475 02c2 0100      		.word	1
+ 1476 02c4 1530      		.word	12309
+ 1477 02c6 0100      		.word	1
+ 1478 02c8 0100      		.word	1
+ 1479 02ca 0100      		.word	1
+ 1480 02cc 0100      		.word	1
+ 1481 02ce 0100      		.word	1
+ 1482 02d0 0100      		.word	1
+ 1483 02d2 0100      		.word	1
+ 1484 02d4 0100      		.word	1
+ 1485 02d6 1530      		.word	12309
+ 1486 02d8 0100      		.word	1
+ 1487 02da 0100      		.word	1
+ 1488 02dc 0100      		.word	1
+ 1489 02de 0100      		.word	1
+ 1490 02e0 0100      		.word	1
+ 1491 02e2 0100      		.word	1
+ 1492 02e4 0000      		.word	0
+ 1493 02e6 0000      		.word	0
+ 1494 02e8 0100      		.word	1
+ 1495 02ea 1430      		.word	12308
+ 1496 02ec 0000      		.word	0
+ 1497 02ee 0000      		.word	0
+ 1498 02f0 0000      		.word	0
+ 1499 02f2 0000      		.word	0
+ 1500 02f4 0100      		.word	1
+ 1501 02f6 0100      		.word	1
+ 1502 02f8 0100      		.word	1
+ 1503 02fa 0100      		.word	1
+ 1504 02fc 0100      		.word	1
+ 1505 02fe 0100      		.word	1
+ 1506 0300 0100      		.word	1
+ 1507 0302 0100      		.word	1
+ 1508 0304 0100      		.word	1
+ 1509 0306 0100      		.word	1
+ 1510 0308 0100      		.word	1
+ 1511 030a 0100      		.word	1
+ 1512 030c 0100      		.word	1
+ 1513 030e 0100      		.word	1
+ 1514 0310 0100      		.word	1
+ 1515 0312 0100      		.word	1
+ 1516 0314 0100      		.word	1
+ 1517 0316 0100      		.word	1
+ 1518 0318 0100      		.word	1
+ 1519 031a 0100      		.word	1
+ 1520 031c 0100      		.word	1
+ 1521 031e 0100      		.word	1
+ 1522 0320 0100      		.word	1
+ 1523 0322 0100      		.word	1
+ 1524 0324 0100      		.word	1
+ 1525 0326 0100      		.word	1
+ 1526 0328 0100      		.word	1
+ 1527 032a 0100      		.word	1
+ 1528 032c 0100      		.word	1
+ 1529 032e 0100      		.word	1
+ 1530 0330 0100      		.word	1
+ 1531 0332 0100      		.word	1
+ 1532 0334 0100      		.word	1
+ 1533 0336 0100      		.word	1
+ 1534 0338 0000      		.word	0
+ 1535 033a 0000      		.word	0
+ 1536 033c 0100      		.word	1
+ 1537 033e 0100      		.word	1
+ 1538 0340 0000      		.word	0
+ 1539 0342 0000      		.word	0
+ 1540 0344 0000      		.word	0
+ 1541 0346 0000      		.word	0
+ 1542 0348 0100      		.word	1
+ 1543 034a 0100      		.word	1
+ 1544 034c 0100      		.word	1
+ 1545 034e 0100      		.word	1
+ 1546 0350 0100      		.word	1
+ 1547 0352 0100      		.word	1
+ 1548 0354 0100      		.word	1
+ 1549 0356 0100      		.word	1
+ 1550 0358 0100      		.word	1
+ 1551 035a 0100      		.word	1
+ 1552 035c 0100      		.word	1
+ 1553 035e 0100      		.word	1
+ 1554 0360 0100      		.word	1
+ 1555 0362 0100      		.word	1
+ 1556 0364 0100      		.word	1
+ 1557 0366 0100      		.word	1
+ 1558 0368 0100      		.word	1
+ 1559 036a 0100      		.word	1
+ 1560 036c 1530      		.word	12309
+ 1561 036e 1D01      		.word	285
+ 1562 0370 1030      		.word	12304
+ 1563 0372 0F30      		.word	12303
+ 1564 0374 1901      		.word	281
+ 1565 0376 0100      		.word	1
+ 1566 0378 0100      		.word	1
+ 1567 037a 0100      		.word	1
+ 1568 037c 0100      		.word	1
+ 1569 037e 0651      		.word	20742
+ 1570 0380 0100      		.word	1
+ 1571 0382 0100      		.word	1
+ 1572 0384 0100      		.word	1
+ 1573 0386 0100      		.word	1
+ 1574 0388 0100      		.word	1
+ 1575 038a 0100      		.word	1
+ 1576 038c 0000      		.word	0
+ 1577 038e 0000      		.word	0
+ 1578 0390 0100      		.word	1
+ 1579 0392 1430      		.word	12308
+ 1580 0394 0000      		.word	0
+ 1581 0396 0000      		.word	0
+ 1582 0398 0000      		.word	0
+ 1583 039a 0000      		.word	0
+ 1584 039c 0100      		.word	1
+ 1585 039e 0100      		.word	1
+ 1586 03a0 0100      		.word	1
+ 1587 03a2 0100      		.word	1
+ 1588 03a4 0100      		.word	1
+ 1589 03a6 0100      		.word	1
+ 1590 03a8 0100      		.word	1
+ 1591 03aa 0100      		.word	1
+ 1592 03ac 0530      		.word	12293
+ 1593 03ae 0230      		.word	12290
+ 1594 03b0 0430      		.word	12292
+ 1595 03b2 0100      		.word	1
+ 1596 03b4 0100      		.word	1
+ 1597 03b6 0100      		.word	1
+ 1598 03b8 0130      		.word	12289
+ 1599 03ba 0330      		.word	12291
+ 1600 03bc 0030      		.word	12288
+ 1601 03be 0930      		.word	12297
+ 1602 03c0 0100      		.word	1
+ 1603 03c2 0100      		.word	1
+ 1604 03c4 0100      		.word	1
+ 1605 03c6 0100      		.word	1
+ 1606 03c8 0100      		.word	1
+ 1607 03ca 0100      		.word	1
+ 1608 03cc 0100      		.word	1
+ 1609 03ce 0100      		.word	1
+ 1610 03d0 0100      		.word	1
+ 1611 03d2 0100      		.word	1
+ 1612 03d4 0100      		.word	1
+ 1613 03d6 0100      		.word	1
+ 1614 03d8 0100      		.word	1
+ 1615 03da 0100      		.word	1
+ 1616 03dc 0100      		.word	1
+ 1617 03de 0100      		.word	1
+ 1618 03e0 0000      		.word	0
+ 1619 03e2 0000      		.word	0
+ 1620 03e4 0100      		.word	1
+ 1621 03e6 0100      		.word	1
+ 1622 03e8 0000      		.word	0
+ 1623 03ea 0000      		.word	0
+ 1624 03ec 0000      		.word	0
+ 1625 03ee 0000      		.word	0
+ 1626 03f0 0100      		.word	1
+ 1627 03f2 0100      		.word	1
+ 1628 03f4 0100      		.word	1
+ 1629 03f6 0100      		.word	1
+ 1630 03f8 0100      		.word	1
+ 1631 03fa 0100      		.word	1
+ 1632 03fc 0100      		.word	1
+ 1633 03fe 0100      		.word	1
+ 1634 0400 0100      		.word	1
+ 1635 0402 0100      		.word	1
+ 1636 0404 0100      		.word	1
+ 1637 0406 0100      		.word	1
+ 1638 0408 0100      		.word	1
+ 1639 040a 0100      		.word	1
+ 1640 040c 0100      		.word	1
+ 1641 040e 0100      		.word	1
+ 1642 0410 0100      		.word	1
+ 1643 0412 0100      		.word	1
+ 1644 0414 0100      		.word	1
+ 1645 0416 0100      		.word	1
+ 1646 0418 0100      		.word	1
+ 1647 041a 0100      		.word	1
+ 1648 041c 0100      		.word	1
+ 1649 041e 0100      		.word	1
+ 1650 0420 0100      		.word	1
+ 1651 0422 0100      		.word	1
+ 1652 0424 0100      		.word	1
+ 1653 0426 0100      		.word	1
+ 1654 0428 0100      		.word	1
+ 1655 042a 0100      		.word	1
+ 1656 042c 0100      		.word	1
+ 1657 042e 0100      		.word	1
+ 1658 0430 0100      		.word	1
+ 1659 0432 0100      		.word	1
+ 1660 0434 0000      		.word	0
+ 1661 0436 0000      		.word	0
+ 1662 0438 0100      		.word	1
+ 1663 043a 1430      		.word	12308
+ 1664 043c 0000      		.word	0
+ 1665 043e 0000      		.word	0
+ 1666 0440 0000      		.word	0
+ 1667 0442 0000      		.word	0
+ 1668 0444 0100      		.word	1
+ 1669 0446 0100      		.word	1
+ 1670 0448 0100      		.word	1
+ 1671 044a 0100      		.word	1
+ 1672 044c 0100      		.word	1
+ 1673 044e 0100      		.word	1
+ 1674 0450 0100      		.word	1
+ 1675 0452 0100      		.word	1
+ 1676 0454 0100      		.word	1
+ 1677 0456 0630      		.word	12294
+ 1678 0458 0100      		.word	1
+ 1679 045a 0100      		.word	1
+ 1680 045c 0100      		.word	1
+ 1681 045e 0100      		.word	1
+ 1682 0460 0100      		.word	1
+ 1683 0462 0730      		.word	12295
+ 1684 0464 0100      		.word	1
+ 1685 0466 0830      		.word	12296
+ 1686 0468 0100      		.word	1
+ 1687 046a 0100      		.word	1
+ 1688 046c 0100      		.word	1
+ 1689 046e 0100      		.word	1
+ 1690 0470 0100      		.word	1
+ 1691 0472 0100      		.word	1
+ 1692 0474 0100      		.word	1
+ 1693 0476 0100      		.word	1
+ 1694 0478 0100      		.word	1
+ 1695 047a 0100      		.word	1
+ 1696 047c 0100      		.word	1
+ 1697 047e 0100      		.word	1
+ 1698 0480 0100      		.word	1
+ 1699 0482 0100      		.word	1
+ 1700 0484 0100      		.word	1
+ 1701 0486 0100      		.word	1
+ 1702 0488 0000      		.word	0
+ 1703 048a 0000      		.word	0
+ 1704 048c 0100      		.word	1
+ 1705 048e 0100      		.word	1
+ 1706 0490 0000      		.word	0
+ 1707 0492 0000      		.word	0
+ 1708 0494 0000      		.word	0
+ 1709 0496 0000      		.word	0
+ 1710 0498 4500      		.word	69
+ 1711 049a 3A00      		.word	58
+ 1712 049c 3B00      		.word	59
+ 1713 049e 3C00      		.word	60
+ 1714 04a0 3D00      		.word	61
+ 1715 04a2 3E00      		.word	62
+ 1716 04a4 0100      		.word	1
+ 1717 04a6 2000      		.word	32
+ 1718 04a8 2000      		.word	32
+ 1719 04aa 2000      		.word	32
+ 1720 04ac 2000      		.word	32
+ 1721 04ae 2000      		.word	32
+ 1722 04b0 0100      		.word	1
+ 1723 04b2 0100      		.word	1
+ 1724 04b4 5200      		.word	82
+ 1725 04b6 0100      		.word	1
+ 1726 04b8 0100      		.word	1
+ 1727 04ba 0100      		.word	1
+ 1728 04bc 005C      		.word	23552
+ 1729 04be 135C      		.word	23571
+ 1730 04c0 1830      		.word	12312
+ 1731 04c2 4F00      		.word	79
+ 1732 04c4 0100      		.word	1
+ 1733 04c6 0100      		.word	1
+ 1734 04c8 2961      		.word	24873
+ 1735 04ca E200      		.word	226
+ 1736 04cc E300      		.word	227
+ 1737 04ce 0357      		.word	22275
+ 1738 04d0 0100      		.word	1
+ 1739 04d2 2A00      		.word	42
+ 1740 04d4 0100      		.word	1
+ 1741 04d6 4600      		.word	70
+ 1742 04d8 4E00      		.word	78
+ 1743 04da 4B00      		.word	75
+ 1744 04dc 0000      		.word	0
+ 1745 04de 0000      		.word	0
+ 1746 04e0 0100      		.word	1
+ 1747 04e2 2A00      		.word	42
+ 1748 04e4 0000      		.word	0
+ 1749 04e6 0000      		.word	0
+ 1750 04e8 0000      		.word	0
+ 1751 04ea 0000      		.word	0
+ 1752 04ec 4400      		.word	68
+ 1753 04ee 4300      		.word	67
+ 1754 04f0 4200      		.word	66
+ 1755 04f2 4100      		.word	65
+ 1756 04f4 4000      		.word	64
+ 1757 04f6 3F00      		.word	63
+ 1758 04f8 0100      		.word	1
+ 1759 04fa 0100      		.word	1
+ 1760 04fc 0100      		.word	1
+ 1761 04fe 0100      		.word	1
+ 1762 0500 0100      		.word	1
+ 1763 0502 0100      		.word	1
+ 1764 0504 0100      		.word	1
+ 1765 0506 5200      		.word	82
+ 1766 0508 0100      		.word	1
+ 1767 050a 0100      		.word	1
+ 1768 050c 0100      		.word	1
+ 1769 050e 0100      		.word	1
+ 1770 0510 4F00      		.word	79
+ 1771 0512 5100      		.word	81
+ 1772 0514 5000      		.word	80
+ 1773 0516 0100      		.word	1
+ 1774 0518 0100      		.word	1
+ 1775 051a 0100      		.word	1
+ 1776 051c 4F00      		.word	79
+ 1777 051e 5100      		.word	81
+ 1778 0520 5000      		.word	80
+ 1779 0522 3400      		.word	52
+ 1780 0524 5200      		.word	82
+ 1781 0526 2C00      		.word	44
+ 1782 0528 0100      		.word	1
+ 1783 052a 4C00      		.word	76
+ 1784 052c 4D00      		.word	77
+ 1785 052e 4A00      		.word	74
+ 1786 0530 0000      		.word	0
+ 1787 0532 0000      		.word	0
+ 1788 0534 2800      		.word	40
+ 1789 0536 2C00      		.word	44
+ 1790 0538 0000      		.word	0
+ 1791 053a 0000      		.word	0
+ 1792 053c 0000      		.word	0
+ 1793 053e 0000      		.word	0
+ 1794               		.text
+ 1795               	.Letext0:
+ 1796               		.file 3 "/usr/lib/avr/include/stdint.h"
+ 1797               		.file 4 "./tmk_core/common/keyboard.h"
+ 1798               		.file 5 "./tmk_core/common/keycode.h"
+ 1799               		.file 6 "./tmk_core/common/action_code.h"
+ 1800               		.file 7 "./tmk_core/common/action_macro.h"
+ 1801               		.file 8 "./tmk_core/common/action.h"
+ 1802               		.file 9 "./tmk_core/common/report.h"
+ 1803               		.file 10 "./quantum/quantum_keycodes.h"
+ 1804               		.file 11 "./quantum/process_keycode/process_tap_dance.h"
+ 1805               		.file 12 "./tmk_core/common/action_util.h"
+ 1806               		.file 13 "./tmk_core/common/eeconfig.h"
+ 1807               		.file 14 "./tmk_core/common/action_layer.h"
+ 1808               		.file 15 "./quantum/quantum.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keymap.c
-     /tmp/ccoGNK42.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccoGNK42.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccoGNK42.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccoGNK42.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccoGNK42.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccoGNK42.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
-     /tmp/ccoGNK42.s:27     .text.rgblight_step:0000000000000000 rgblight_step
-     /tmp/ccoGNK42.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
-     /tmp/ccoGNK42.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
-     /tmp/ccoGNK42.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
-     /tmp/ccoGNK42.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
-     /tmp/ccoGNK42.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
-     /tmp/ccoGNK42.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
-     /tmp/ccoGNK42.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
-     /tmp/ccoGNK42.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
-     /tmp/ccoGNK42.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
-     /tmp/ccoGNK42.s:169    .text.persistent_default_layer_set:0000000000000000 persistent_default_layer_set
-     /tmp/ccoGNK42.s:210    .text.action_get_macro:0000000000000000 action_get_macro
-     /tmp/ccoGNK42.s:501    .progmem.data.__c.3333:0000000000000000 __c.3333
-     /tmp/ccoGNK42.s:496    .progmem.data.__c.3336:0000000000000000 __c.3336
-     /tmp/ccoGNK42.s:491    .progmem.data.__c.3339:0000000000000000 __c.3339
-     /tmp/ccoGNK42.s:486    .progmem.data.__c.3342:0000000000000000 __c.3342
-     /tmp/ccoGNK42.s:481    .progmem.data.__c.3345:0000000000000000 __c.3345
-     /tmp/ccoGNK42.s:476    .progmem.data.__c.3348:0000000000000000 __c.3348
-     /tmp/ccoGNK42.s:471    .progmem.data.__c.3351:0000000000000000 __c.3351
-     /tmp/ccoGNK42.s:466    .progmem.data.__c.3354:0000000000000000 __c.3354
-     /tmp/ccoGNK42.s:461    .progmem.data.__c.3357:0000000000000000 __c.3357
-     /tmp/ccoGNK42.s:456    .progmem.data.__c.3360:0000000000000000 __c.3360
-     /tmp/ccoGNK42.s:451    .progmem.data.__c.3363:0000000000000000 __c.3363
-     /tmp/ccoGNK42.s:446    .progmem.data.__c.3366:0000000000000000 __c.3366
-     /tmp/ccoGNK42.s:441    .progmem.data.__c.3369:0000000000000000 __c.3369
-     /tmp/ccoGNK42.s:436    .progmem.data.__c.3372:0000000000000000 __c.3372
-     /tmp/ccoGNK42.s:431    .progmem.data.__c.3375:0000000000000000 __c.3375
-     /tmp/ccoGNK42.s:426    .progmem.data.__c.3378:0000000000000000 __c.3378
-     /tmp/ccoGNK42.s:421    .progmem.data.__c.3381:0000000000000000 __c.3381
-     /tmp/ccoGNK42.s:416    .progmem.data.__c.3384:0000000000000000 __c.3384
-     /tmp/ccoGNK42.s:411    .progmem.data.__c.3387:0000000000000000 __c.3387
-     /tmp/ccoGNK42.s:406    .progmem.data.__c.3390:0000000000000000 __c.3390
-     /tmp/ccoGNK42.s:376    .text.cmd_commands:0000000000000000 cmd_commands
-     /tmp/ccoGNK42.s:390    .text.cmd:0000000000000000 cmd
-     /tmp/ccoGNK42.s:507    .bss.tap_dance_actions:0000000000000000 tap_dance_actions
-     /tmp/ccoGNK42.s:512    .progmem.data.keymaps:0000000000000000 keymaps
+     /tmp/ccRSaI4h.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccRSaI4h.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccRSaI4h.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccRSaI4h.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccRSaI4h.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccRSaI4h.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
+     /tmp/ccRSaI4h.s:27     .text.rgblight_step:0000000000000000 rgblight_step
+     /tmp/ccRSaI4h.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
+     /tmp/ccRSaI4h.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
+     /tmp/ccRSaI4h.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
+     /tmp/ccRSaI4h.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
+     /tmp/ccRSaI4h.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
+     /tmp/ccRSaI4h.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
+     /tmp/ccRSaI4h.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
+     /tmp/ccRSaI4h.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
+     /tmp/ccRSaI4h.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
+     /tmp/ccRSaI4h.s:169    .text.persistent_default_layer_set:0000000000000000 persistent_default_layer_set
+     /tmp/ccRSaI4h.s:210    .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/ccRSaI4h.s:1092   .progmem.data.__c.3337:0000000000000000 __c.3337
+     /tmp/ccRSaI4h.s:1087   .progmem.data.__c.3339:0000000000000000 __c.3339
+     /tmp/ccRSaI4h.s:1082   .progmem.data.__c.3342:0000000000000000 __c.3342
+     /tmp/ccRSaI4h.s:1077   .progmem.data.__c.3344:0000000000000000 __c.3344
+     /tmp/ccRSaI4h.s:1072   .progmem.data.__c.3347:0000000000000000 __c.3347
+     /tmp/ccRSaI4h.s:1067   .progmem.data.__c.3349:0000000000000000 __c.3349
+     /tmp/ccRSaI4h.s:1062   .progmem.data.__c.3352:0000000000000000 __c.3352
+     /tmp/ccRSaI4h.s:1057   .progmem.data.__c.3354:0000000000000000 __c.3354
+     /tmp/ccRSaI4h.s:1052   .progmem.data.__c.3357:0000000000000000 __c.3357
+     /tmp/ccRSaI4h.s:1047   .progmem.data.__c.3359:0000000000000000 __c.3359
+     /tmp/ccRSaI4h.s:1042   .progmem.data.__c.3362:0000000000000000 __c.3362
+     /tmp/ccRSaI4h.s:1037   .progmem.data.__c.3364:0000000000000000 __c.3364
+     /tmp/ccRSaI4h.s:1032   .progmem.data.__c.3367:0000000000000000 __c.3367
+     /tmp/ccRSaI4h.s:1027   .progmem.data.__c.3369:0000000000000000 __c.3369
+     /tmp/ccRSaI4h.s:1022   .progmem.data.__c.3372:0000000000000000 __c.3372
+     /tmp/ccRSaI4h.s:1017   .progmem.data.__c.3374:0000000000000000 __c.3374
+     /tmp/ccRSaI4h.s:1012   .progmem.data.__c.3377:0000000000000000 __c.3377
+     /tmp/ccRSaI4h.s:1007   .progmem.data.__c.3379:0000000000000000 __c.3379
+     /tmp/ccRSaI4h.s:1002   .progmem.data.__c.3382:0000000000000000 __c.3382
+     /tmp/ccRSaI4h.s:997    .progmem.data.__c.3384:0000000000000000 __c.3384
+     /tmp/ccRSaI4h.s:992    .progmem.data.__c.3387:0000000000000000 __c.3387
+     /tmp/ccRSaI4h.s:987    .progmem.data.__c.3389:0000000000000000 __c.3389
+     /tmp/ccRSaI4h.s:982    .progmem.data.__c.3392:0000000000000000 __c.3392
+     /tmp/ccRSaI4h.s:977    .progmem.data.__c.3394:0000000000000000 __c.3394
+     /tmp/ccRSaI4h.s:972    .progmem.data.__c.3397:0000000000000000 __c.3397
+     /tmp/ccRSaI4h.s:967    .progmem.data.__c.3399:0000000000000000 __c.3399
+     /tmp/ccRSaI4h.s:962    .progmem.data.__c.3402:0000000000000000 __c.3402
+     /tmp/ccRSaI4h.s:957    .progmem.data.__c.3404:0000000000000000 __c.3404
+     /tmp/ccRSaI4h.s:952    .progmem.data.__c.3407:0000000000000000 __c.3407
+     /tmp/ccRSaI4h.s:947    .progmem.data.__c.3409:0000000000000000 __c.3409
+     /tmp/ccRSaI4h.s:942    .progmem.data.__c.3412:0000000000000000 __c.3412
+     /tmp/ccRSaI4h.s:937    .progmem.data.__c.3414:0000000000000000 __c.3414
+     /tmp/ccRSaI4h.s:932    .progmem.data.__c.3417:0000000000000000 __c.3417
+     /tmp/ccRSaI4h.s:927    .progmem.data.__c.3419:0000000000000000 __c.3419
+     /tmp/ccRSaI4h.s:1103   .bss.select_active:0000000000000000 select_active
+     /tmp/ccRSaI4h.s:922    .progmem.data.__c.3422:0000000000000000 __c.3422
+     /tmp/ccRSaI4h.s:917    .progmem.data.__c.3424:0000000000000000 __c.3424
+     /tmp/ccRSaI4h.s:912    .progmem.data.__c.3427:0000000000000000 __c.3427
+     /tmp/ccRSaI4h.s:907    .progmem.data.__c.3429:0000000000000000 __c.3429
+     /tmp/ccRSaI4h.s:902    .progmem.data.__c.3432:0000000000000000 __c.3432
+     /tmp/ccRSaI4h.s:897    .progmem.data.__c.3434:0000000000000000 __c.3434
+     /tmp/ccRSaI4h.s:1109   .bss.alt_down:0000000000000000 alt_down
+     /tmp/ccRSaI4h.s:1115   .bss.shift_down:0000000000000000 shift_down
+     /tmp/ccRSaI4h.s:892    .progmem.data.__c.3437:0000000000000000 __c.3437
+     /tmp/ccRSaI4h.s:887    .progmem.data.__c.3439:0000000000000000 __c.3439
+     /tmp/ccRSaI4h.s:882    .progmem.data.__c.3442:0000000000000000 __c.3442
+     /tmp/ccRSaI4h.s:877    .progmem.data.__c.3444:0000000000000000 __c.3444
+     /tmp/ccRSaI4h.s:872    .progmem.data.__c.3447:0000000000000000 __c.3447
+     /tmp/ccRSaI4h.s:867    .progmem.data.__c.3449:0000000000000000 __c.3449
+     /tmp/ccRSaI4h.s:862    .progmem.data.__c.3453:0000000000000000 __c.3453
+     /tmp/ccRSaI4h.s:832    .text.cmd_commands:0000000000000000 cmd_commands
+     /tmp/ccRSaI4h.s:846    .text.cmd:0000000000000000 cmd
+     /tmp/ccRSaI4h.s:1098   .bss.tap_dance_actions:0000000000000000 tap_dance_actions
+     /tmp/ccRSaI4h.s:1121   .progmem.data.keymaps:0000000000000000 keymaps
 
 UNDEFINED SYMBOLS
 eeconfig_update_default_layer
 default_layer_set
 __tablejump2__
 send_string_P
+layer_off
+layer_on
 __do_clear_bss

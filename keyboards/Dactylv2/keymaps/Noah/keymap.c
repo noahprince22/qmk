@@ -2,6 +2,8 @@
 #include "action_layer.h"
 #include "eeconfig.h"
 
+#define PREVENT_STUCK_MODIFIERS
+
 extern keymap_config_t keymap_config;
 #define _QWERTY 0
 #define _ALT 1
@@ -40,14 +42,15 @@ enum custom_keycodes {
 #define KC_X0 MT(MOD_LCTL, KC_ESC)
 #define KC_TOGUP TG(4)
 #define KC_REST RESET
-#define KC_ALT_A MO(_ALT) // goes to alt layer when held, maybe behaves like regular alt
-#define KC_ALTSH MO(_ALTSH)
-#define KC_CTR_L LM(_CTR, MOD_LCTL) // goes to ctrl layer when held, maybe behaves like regular control
-#define KC_SEL_A OSL(_SELECT) // turns on the select oneshot, turns off when any key is pressed
+#define KC_MALT M(20) // MO(_ALT) // goes to alt layer when held, maybe behaves like regular alt
+#define KC_MSHIFT M(21) // MO(_ALTSH)
+#define KC_CTR_L M(22) // LM(_CTR, MOD_LCTL) // goes to ctrl layer when held, maybe behaves like regular control
+#define KC_SEL_A M(23) // OSL(_SELECT) // turns on the select oneshot, turns off when any key is pressed
 #define KC_SELALT LT(_SELECT_ALT, KC_LALT) // goes to the alt select layer, which can move around but keeps select layer active
 #define KC_SELALTSHIFT MO(_SELECT_ALT_SHIFT) // when shift + alt held down in select mode.
 #define KC_FN3_A MO(_FN3)
 #define KC_GUITAB RWIN_T(KC_TAB)
+#define KC_RESTL M(24)
 
 #define KC_X9 RGUI(KC_TAB)	//gui tab to switch desktops
 #define KC_X10 TD(TD_VRDSK)
@@ -59,12 +62,16 @@ enum custom_keycodes {
 #define KC_PASTE LCTL(KC_V)
 #define KC_UNDO LCTL(KC_Z)
 #define KC_ALTENT LALT(KC_ENT)
-#define KC_REDO M(13)
+#define KC_REDO LCTL(LSFT(KC_Z))
 #define KC_FORMAT LALT(LSFT(KC_L))
 #define KC_DIR LALT(LSFT(KC_D))
 #define KC_OPEN LALT(LSFT(KC_O))
 #define KC_FINDA LALT(LSFT(KC_F))
-#define KC_SAVE LCTL(KC_S)
+#define KC_OOG LCTL(LSFT(KC_4)) // Open in oposite group intellij
+#define KC_CLOSE LCTL(KC_W)
+#define KC_REP LCTL(KC_R)
+#define KC_REPA LALT(LSFT(KC_R))
+#define KC_OPG LALT(KC_S) // Move to the opposite group intellij
 #define KC_FIND LCTL(KC_F)
 #define KC_P_TAB LCTL(KC_PGUP)
 #define KC_N_TAB LCTL(KC_PGDN)
@@ -121,9 +128,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                         `--------------------'       `----------------------'
  
  
-  	
+
  */
- 
+
     //
 	[_QWERTY] = KC_KEYMAP(
 	//,----+----+----+----+----+----.										,----+----+----+----+----+----.
@@ -133,16 +140,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   									|----+----+----+----+----+----|
       CTR_L, A  , S  , D  , F  , G  ,								      H  , J  , K  , L  ,SCLN,QUOT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
-		LSFT , Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
+		MSHIFT, Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
-	  FN3_A,LCTRL,LWIN,LSFT,LALT,   ,										     ,LBRC,RBRC,CLCK,BSLS,   ,
+	  FN3_A,LCTRL,LWIN,MSHIFT,LALT,   ,										     ,LBRC,RBRC,CLCK,BSLS,   ,
 	//`----+----+----+----+----+----'   									 `----+----+----+----+----+----'
 	//							`----+----+----+'			`----+----+----'
 										ESC,F6,			 FORMAT, DEL,
 	//							`----+----+----+'			`----+----+----'
 											HOME,			PGUP,
 	//							`----+----+----+'			`----+----+----'
-							    ALT_A,GUITAB ,END,			    PGDN, BSPC, SPC
+							    MALT,GUITAB ,END,			    PGDN, BSPC, SPC
 	//							`----+----+----+'			`----+----+----'
 
 	),
@@ -151,13 +158,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		   ,    ,    ,B_WRD,    ,    ,   							      ,L_WRD,UP ,R_WRD,    ,    ,
+		   ,    ,CLOSE,B_WRD,REP,    ,   							      ,L_WRD,UP ,R_WRD,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	   ,SELALL,SAVE,    ,FIND,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
+	   ,SELALL,OPG,    ,FIND,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-  ALTSH , UNDO , CUT,COPY,PASTE,  ,							      ,    ,    ,    ,    ,   ,ALTENT
+  MSHIFT , UNDO , CUT,COPY,PASTE,  ,							      ,    ,    ,    ,    ,  ALTENT,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-      ,    ,    ,ALTSH,   ,   ,    						                  ,PTAB,NTAB,    ,    ,     ,
+      ,    ,    ,MSHIFT,   ,   ,    						                  ,PTAB,NTAB,    ,    ,     ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 										  ,    ,			     ,    ,
@@ -170,22 +177,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_ALTSH] = KC_KEYMAP(
 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
-		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
+		   ,    ,    ,    ,OOG ,    ,   							      ,    ,    ,     ,   ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		   ,    ,    ,    ,    ,    ,   							      ,    ,PGUP,OPEN,    ,    ,
+		   ,    ,    ,    ,REPA,    ,   							      ,    ,PGUP,OPEN,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,    ,DIR,FINDA,    ,     							  HOME,    ,PGDN,    ,     ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		  ,  ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
+		  ,REDO ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		    ,REDO,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
+		    ,,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 										  ,    ,			     ,    ,
 	//							`----+----+----+'			`----+----+----'
 											   ,			     ,
 	//							`----+----+----+'			`----+----+----'
-									ALT_A,     ,    ,			     ,    ,
+							     MALT,     ,    ,			     ,    ,
 	//							`----+----+----+'			`----+----+----'
 	),
 
@@ -218,16 +225,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 	       ,    ,    ,    ,    ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
- SELALTSHIFT,   , ,  ,  ,    ,   							       ,    ,    ,    ,    ,    ,
+     MSHIFT,   , ,  ,  ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
+	       ,    ,    ,MSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 									    ,    ,			         ,    ,
 	//							`----+----+----+'			`----+----+----'
 											    ,			     ,
 	//							`----+----+----+'			`----+----+----'
-							SELALT,     ,    ,			     ,    ,
+							      MALT,    ,    ,			     ,    ,
 	//							`----+----+----+'			`----+----+----'
 	),
 
@@ -239,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 	       ,    ,    ,    ,    ,    ,     							  SEL_END,SEL_L,SEL_D,SEL_R,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	    SELALTSHIFT   ,UNDO ,S_CUT ,S_COPY ,PASTE ,    ,   							       ,    ,    ,    ,    ,    ,
+	 MSHIFT,UNDO ,S_CUT ,S_COPY ,PASTE ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
@@ -248,7 +255,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//							`----+----+----+'			`----+----+----'
 											    ,			     ,
 	//							`----+----+----+'			`----+----+----'
-								   SELALT ,     ,    ,			     ,    ,
+								MALT,     ,    ,			     ,    ,
 	//							`----+----+----+'			`----+----+----'
 	),
 
@@ -269,7 +276,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//							`----+----+----+'			`----+----+----'
 											    ,			     ,
 	//							`----+----+----+'			`----+----+----'
-								  SELALT  ,     ,    ,			     ,    ,
+								 MALT,     ,    ,			     ,    ,
 	//							`----+----+----+'			`----+----+----'
 	),
 
@@ -283,7 +290,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
 			,    ,UP,    ,    ,    ,         ,    ,    ,    , UP ,    ,
 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
-		REST,AG_NORM,DOWN,RIGHT,    ,    ,          ,    ,    ,LEFT,DOWN,RIGHT,
+		REST,AG_NORM,RESTL,RIGHT,    ,    ,          ,    ,    ,LEFT,DOWN,RIGHT,
 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
 		X0 ,LALT,LGUI, X10,  ,BSPC,     SPC, UP ,QUOT,LEFT, DOWN ,RGHT,
 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
@@ -329,101 +336,297 @@ unregister_code(KC_TAB);
 unregister_code(KC_LGUI); 
 }*/
 
+bool shift_down=false;
+bool alt_down=false;
+bool select_active=false;
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-	if (record->event.pressed) {
+    bool p = record->event.pressed;
 	switch (id) {
     	case 0: // select left
-    	    SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_LEFT) SS_UP(X_LSHIFT));
+    	    if (p) {
+    	      SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_LEFT) SS_UP(X_LSHIFT));
+    	    }
+    	    else {
+    	      SEND_STRING(SS_UP(X_LEFT) SS_UP(X_LSHIFT));
+    	    }
 //    	    set_oneshot_layer(_SELECT, ONESHOT_START)
     	    return false;
 
     	case 1: // select right
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_RIGHT) SS_UP(X_LSHIFT));
+    	    if (p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_RIGHT));
+    	    }
+    	    else {
+    	      SEND_STRING(SS_UP(X_RIGHT) SS_UP(X_LSHIFT));
+    	    }
 //    	    set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 2: // select up
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_UP) SS_UP(X_LSHIFT));
+            if(p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_UP));
+            }
+            else {
+              SEND_STRING(SS_UP(X_UP) SS_UP(X_LSHIFT));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 3: // select down
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_DOWN) SS_UP(X_LSHIFT));
+            if (p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_DOWN));
+            }
+            else {
+              SEND_STRING(SS_UP(X_DOWN) SS_UP(X_LSHIFT));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 4: // select left word
-            SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_TAP(X_LEFT) SS_UP(X_LSHIFT) SS_UP(MOVE));
+            if (p) {
+              SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_DOWN(X_LEFT));
+            }
+            else {
+              SEND_STRING(SS_UP(X_LEFT) SS_UP(X_LSHIFT) SS_UP(MOVE));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 5: // select right word
-            SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_TAP(X_RIGHT) SS_UP(X_LSHIFT) SS_UP(MOVE));
+            if(p) {
+              SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_DOWN(X_RIGHT));
+            }
+            else {
+              SEND_STRING(SS_UP(X_RIGHT) SS_UP(X_LSHIFT) SS_UP(MOVE));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 6: // select page up
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_PGUP) SS_UP(X_LSHIFT));
+            if (p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_PGUP));
+            }
+            else {
+              SEND_STRING(SS_UP(X_PGUP) SS_UP(X_LSHIFT));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 7: // select page down
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_PGDOWN) SS_UP(X_LSHIFT));
+            if (p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_PGDOWN));
+            }
+            else {
+              SEND_STRING(SS_UP(X_PGDOWN) SS_UP(X_LSHIFT));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 8: // select home
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_HOME) SS_UP(X_LSHIFT));
+            if(p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_HOME));
+            }
+            else {
+              SEND_STRING(SS_UP(X_HOME) SS_UP(X_LSHIFT));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
         case 9: // select end
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_TAP(X_END) SS_UP(X_LSHIFT));
+            if(p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_END));
+            }
+            else {
+              SEND_STRING(SS_UP(X_END) SS_UP(X_LSHIFT));
+            }
 //            set_oneshot_layer(_SELECT, ONESHOT_START)
             return false;
 
     	case 10: // left word
-    	    SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_LEFT) SS_UP(MOVE));
+    	    if (p) {
+    	      SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LEFT));
+    	    }
+    	    else {
+      	      SEND_STRING(SS_UP(X_LEFT) SS_UP(MOVE));
+    	    }
     		return MACRO_NONE;
 
     	case 11: // right word
-            SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_RIGHT) SS_UP(MOVE));
+    	    if(p) {
+              SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_RIGHT));
+    	    }
+    	    else {
+              SEND_STRING(SS_UP(X_RIGHT) SS_UP(MOVE));
+    	    }
             return MACRO_NONE;
 
         case 12: // backspace left word
-            SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_LSHIFT) SS_TAP(X_LEFT) SS_UP(X_LSHIFT) SS_UP(MOVE) SS_TAP(X_BSPACE));
+            if (p) {
+              SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_BSPACE));
+            }
+            else {
+              SEND_STRING(SS_UP(X_BSPACE) SS_UP(MOVE));
+            }
             return MACRO_NONE;
 
         case 13:
-            SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_LCTRL) SS_TAP(X_Z) SS_UP(X_LSHIFT) SS_UP(X_LCTRL));
+            if(p) {
+              SEND_STRING(SS_DOWN(X_LSHIFT) SS_DOWN(X_LCTRL) SS_DOWN(X_Z));
+            }
+            else {
+              SEND_STRING(SS_UP(X_Z) SS_UP(X_LSHIFT) SS_UP(X_LCTRL));
+            }
             return false;
 
         case 14: //format
-            SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LCTRL) SS_TAP(X_L) SS_UP(X_LCTRL) SS_UP(X_LALT));
+            if (p) {
+              SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LCTRL) SS_DOWN(X_L));
+            }
+            else {
+              SEND_STRING(SS_UP(X_L) SS_UP(X_LCTRL) SS_UP(X_LALT));
+            }
             return false;
 
         case 15: //scopy
-            SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_C) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+            if (p) {
+              SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_C));
+            }
+            else {
+              SEND_STRING(SS_UP(X_C) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+              select_active=false;
+              layer_off(_SELECT_ALT);
+              layer_on(_ALT);
+            }
             return MACRO_NONE;
 
         case 16: //scut
-            SEND_STRING(SS_DOWN(MOVE) SS_TAP(X_X) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+            if (p) {
+              SEND_STRING(SS_DOWN(MOVE) SS_DOWN(X_X));
+            }
+            else {
+              SEND_STRING(SS_UP(X_X) SS_UP(MOVE) SS_TAP(X_ESCAPE));
+              select_active=false;
+              layer_off(_SELECT_ALT);
+              layer_on(_ALT);
+            }
             return MACRO_NONE;
 
          case 17: // go to dir
-            SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_TAP(X_D) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+            if (p) {
+              SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_DOWN(X_D));
+            }
+            else {
+              SEND_STRING(SS_UP(X_D) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+            }
             return MACRO_NONE;
 
          case 18: // open
-            SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_TAP(X_O) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+            if (p) {
+              SEND_STRING(SS_DOWN(X_LALT) SS_DOWN(X_LSHIFT) SS_DOWN(X_O));
+            }
+            else {
+              SEND_STRING(SS_UP(X_O) SS_UP(X_LALT) SS_UP(X_LSHIFT));
+            }
             return MACRO_NONE;
 
          case 19: // find in all
-            SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSHIFT) SS_TAP(X_F) SS_UP(X_LCTRL) SS_UP(X_LSHIFT));
+            if(p) {
+              SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSHIFT) SS_DOWN(X_F));
+            }
+            else {
+              SEND_STRING(SS_UP(X_F) SS_UP(X_LCTRL) SS_UP(X_LSHIFT));
+            }
             return MACRO_NONE;
+
+         case 20: // malt
+            if(p) {
+              alt_down=true;
+              if (select_active) {
+                if (shift_down) {
+                  SEND_STRING(SS_UP(X_LSHIFT));
+                  layer_on(_SELECT_ALT_SHIFT);
+                }
+                else {
+                  layer_on(_SELECT_ALT);
+                }
+              }
+              else {
+                if (shift_down) {
+                  SEND_STRING(SS_UP(X_LSHIFT));
+                  layer_on(_ALTSH);
+                }
+                else {
+                  layer_on(_ALT);
+                }
+              }
+            }
+            else {
+              alt_down=false;
+              select_active = false;
+              layer_off(_ALT);
+              layer_off(_ALTSH);
+              layer_off(_SELECT_ALT_SHIFT);
+              layer_off(_SELECT_ALT);
+            }
+            return false;
+
+         case 21: // mshift
+            if(p) {
+              shift_down=true;
+              if(alt_down) {
+                if(select_active) {
+                  layer_on(_SELECT_ALT_SHIFT);
+                }
+                else {
+                  layer_on(_ALTSH);
+                }
+              }
+              else {
+                SEND_STRING(SS_DOWN(X_LSHIFT));
+              }
+            }
+            else {
+              shift_down=false;
+              layer_off(_SELECT_ALT_SHIFT);
+              layer_off(_ALTSH);
+              if (alt_down) {
+                if(select_active) {
+                  layer_on(_SELECT_ALT);
+                }
+                else {
+                  layer_on(_ALT);
+                }
+              }
+              SEND_STRING(SS_UP(X_LSHIFT));
+            }
+            return false;
+         case 22: // ctrl for ctrl+space
+            if(p) {
+              layer_on(_CTR);
+              SEND_STRING(SS_DOWN(X_LCTRL));
+            }
+            else {
+              layer_off(_CTR);
+              SEND_STRING(SS_UP(X_LCTRL));
+            }
+            return false;
+
+         case 23:
+           if(p) {
+             select_active = !select_active;
+           }
+
+         case 24: // restl - reset all layers. In case something gets stuck.
+           layer_off(1);
+           layer_off(2);
+           layer_off(3);
+           layer_off(4);
+           layer_off(5);
+           layer_off(6);
+           layer_off(7);
+           SEND_STRING(SS_UP(X_LCTRL) SS_UP(X_LSHIFT) SS_UP(MOVE) SS_UP(X_LALT) SS_UP(X_LGUI));
 	}
 
-	}
     return MACRO_NONE;
 }
 
