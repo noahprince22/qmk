@@ -4,7 +4,6 @@
     <list default="true" id="0372ba0b-8e28-4b72-8c30-edf56ba68f19" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" afterDir="false" />
@@ -24,26 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="475" column="18" selection-start-line="475" selection-start-column="18" selection-end-line="475" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tmk_core/common/action_macro.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/keymap.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1320">
-              <caret line="88" column="104" selection-start-line="88" selection-start-column="104" selection-end-line="88" selection-end-column="104" />
+            <state relative-caret-position="364">
+              <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -51,18 +32,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/Makefile">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/readme.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="765">
-                <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -114,11 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SEL_A</find>
-      <find>SEL_L```</find>
-      <find>_SELECT_ALT</find>
-      <find>SELALTENT</find>
-      <find>ALT</find>
       <find>SEL_L</find>
       <find>SELECT_ALT</find>
       <find>SELALT</find>
@@ -144,6 +108,11 @@
       <find>ALTSH</find>
       <find>onoffoff</find>
       <find>S_COPY</find>
+      <find>OOG</find>
+      <find>intelli</find>
+      <find>RUN</find>
+      <find>LAL</find>
+      <find>REP</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -178,9 +147,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1080" />
-    <option name="y" value="17" />
+    <option name="y" value="161" />
     <option name="width" value="1920" />
-    <option name="height" value="1043" />
+    <option name="height" value="899" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -277,6 +246,9 @@
       <workItem from="1552328744505" duration="20549000" />
       <workItem from="1552488536080" duration="5308000" />
       <workItem from="1552592256200" duration="2423000" />
+      <workItem from="1557426838751" duration="478000" />
+      <workItem from="1557500549937" duration="2061000" />
+      <workItem from="1557518874213" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="before doinng key up stuff">
       <created>1552397114182</created>
@@ -289,10 +261,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40731000" />
+    <option name="totallyTimeSpent" value="43289000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1080" y="17" width="1920" height="1043" extended-state="0" />
+    <frame x="1080" y="161" width="1920" height="899" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.04893617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -358,13 +331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="475" column="18" selection-start-line="475" selection-start-column="18" selection-end-line="475" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tmk_core/common/action_macro.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -374,13 +340,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/keymap.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="88" column="104" selection-start-line="88" selection-start-column="104" selection-end-line="88" selection-end-column="104" />
+        <state relative-caret-position="383">
+          <caret line="164" column="52" selection-start-line="164" selection-start-column="52" selection-end-line="164" selection-end-column="52" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/Makefile">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/readme.md">
       <provider editor-type-id="text-editor">
@@ -390,12 +353,22 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="765">
-            <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+          <first_editor relative-caret-position="393">
+            <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/Makefile">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/rules.mk">
       <provider selected="true" editor-type-id="text-editor">

@@ -67,7 +67,11 @@ enum custom_keycodes {
 #define KC_DIR LALT(LSFT(KC_D))
 #define KC_OPEN LALT(LSFT(KC_O))
 #define KC_FINDA LALT(LSFT(KC_F))
-#define KC_OOG LCTL(LSFT(KC_4)) // Open in oposite group intellij
+#define KC_OOG LALT(LSFT(KC_4)) // Open in oposite group intellij
+#define KC_RUN LALT(LCTL(KC_R)) // Run on cursor intellij
+#define KC_DEBUG LALT(LCTL(KC_D)) // Debug on cursor intellij
+#define KC_MVRT LALT(KC_4) // Move window right (do a split) in intellij
+#define KC_MVGRP LALT(LSFT(KC_4)) // Alternate the group of the window in intellij
 #define KC_CLOSE LCTL(KC_W)
 #define KC_REP LCTL(KC_R)
 #define KC_REPA LALT(LSFT(KC_R))
@@ -153,10 +157,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//							`----+----+----+'			`----+----+----'
 
 	),
-
 	[_ALT] = KC_KEYMAP(
 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
-		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
+		   ,    ,    ,    ,MVRT,    ,   							      ,    ,    ,     ,   ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,CLOSE,B_WRD,REP,    ,   							      ,L_WRD,UP ,R_WRD,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
@@ -177,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_ALTSH] = KC_KEYMAP(
 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
-		   ,    ,    ,    ,OOG ,    ,   							      ,    ,    ,     ,   ,    ,
+		   ,    ,    ,    ,MVGRP ,    ,   							      ,    ,    ,     ,   ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,    ,    ,REPA,    ,   							      ,    ,PGUP,OPEN,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
