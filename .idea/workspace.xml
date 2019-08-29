@@ -4,6 +4,7 @@
     <list default="true" id="0372ba0b-8e28-4b72-8c30-edf56ba68f19" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" afterDir="false" />
@@ -23,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+            <state relative-caret-position="915">
+              <caret line="646" lean-forward="true" selection-start-line="646" selection-end-line="646" />
             </state>
           </provider>
         </entry>
@@ -37,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/rules.mk">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
+            <state relative-caret-position="1406">
               <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
             </state>
           </provider>
@@ -46,7 +47,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="190">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
@@ -55,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="570">
               <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
             </state>
           </provider>
@@ -64,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/config.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
+            <state relative-caret-position="513">
               <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
             </state>
           </provider>
@@ -73,7 +74,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Default/keymap.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6390">
+            <state relative-caret-position="8094">
               <caret line="426" selection-start-line="426" selection-end-line="426" />
             </state>
           </provider>
@@ -83,22 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SEL_L</find>
-      <find>SELECT_ALT</find>
-      <find>SELALT</find>
-      <find>KC_PASTE</find>
-      <find>PASTE</find>
-      <find>SELALTSHIFT</find>
-      <find>TO</find>
-      <find>COPY</find>
-      <find>QWERTY</find>
-      <find>_ADJUST</find>
-      <find>ADJUST</find>
-      <find>COP</find>
-      <find>MOVE</find>
-      <find>GUI_T</find>
-      <find>AG</find>
-      <find>S_COP</find>
       <find>#define MACRO_NONE</find>
       <find>MACRO_NONE</find>
       <find>SEL_HOME</find>
@@ -113,6 +98,22 @@
       <find>RUN</find>
       <find>LAL</find>
       <find>REP</find>
+      <find>shift_down</find>
+      <find>mshift</find>
+      <find>MSHIFT</find>
+      <find>2</find>
+      <find>22</find>
+      <find>SS_DOWN(X_L</find>
+      <find>SS_DOWN(X_LCT</find>
+      <find>layer_on</find>
+      <find>24</find>
+      <find>X0</find>
+      <find>LCTRL</find>
+      <find>FN3_A</find>
+      <find>ADJUST</find>
+      <find>PR</find>
+      <find>AG_NORM</find>
+      <find>SEND_STRING(SS_UP(X_LCT</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -146,21 +147,60 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1080" />
-    <option name="y" value="161" />
-    <option name="width" value="1920" />
-    <option name="height" value="899" />
+    <option name="y" value="308" />
+    <option name="width" value="2305" />
+    <option name="height" value="1181" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="qmk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qmk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qmk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qmk" type="462c0819:PsiDirectoryNode" />
+              <item name="keyboards" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qmk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qmk" type="462c0819:PsiDirectoryNode" />
+              <item name="keyboards" type="462c0819:PsiDirectoryNode" />
+              <item name="Dactylv2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qmk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qmk" type="462c0819:PsiDirectoryNode" />
+              <item name="keyboards" type="462c0819:PsiDirectoryNode" />
+              <item name="Dactylv2" type="462c0819:PsiDirectoryNode" />
+              <item name="keymaps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qmk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qmk" type="462c0819:PsiDirectoryNode" />
+              <item name="keyboards" type="462c0819:PsiDirectoryNode" />
+              <item name="Dactylv2" type="462c0819:PsiDirectoryNode" />
+              <item name="keymaps" type="462c0819:PsiDirectoryNode" />
+              <item name="Noah" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552484006453" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567093474732" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -206,6 +246,7 @@
       </method>
     </configuration>
     <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <properties />
       <listeners />
@@ -249,6 +290,7 @@
       <workItem from="1557426838751" duration="478000" />
       <workItem from="1557500549937" duration="2061000" />
       <workItem from="1557518874213" duration="19000" />
+      <workItem from="1567091825270" duration="1664000" />
     </task>
     <task id="LOCAL-00001" summary="before doinng key up stuff">
       <created>1552397114182</created>
@@ -261,13 +303,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43289000" />
+    <option name="totallyTimeSpent" value="44953000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1080" y="161" width="1920" height="899" extended-state="0" />
+    <frame x="0" y="308" width="2305" height="1181" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.04893617" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16230598" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -286,6 +328,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="right" id="PlantUML" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -346,11 +389,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/readme.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="174" column="57" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="57" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="393">
@@ -359,11 +397,16 @@
           <second_editor />
         </state>
       </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="174" column="57" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="57" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+        <state relative-caret-position="915">
+          <caret line="646" lean-forward="true" selection-start-line="646" selection-end-line="646" />
         </state>
       </provider>
     </entry>
@@ -372,35 +415,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/rules.mk">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
+        <state relative-caret-position="1406">
           <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="190">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="570">
           <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/config.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
+        <state relative-caret-position="513">
           <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Default/keymap.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6390">
+        <state relative-caret-position="8094">
           <caret line="426" selection-start-line="426" selection-end-line="426" />
         </state>
       </provider>

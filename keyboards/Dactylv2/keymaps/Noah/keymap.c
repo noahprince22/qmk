@@ -289,21 +289,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//,----+----+----+----+----+----.    ,----+----+----+----+----+----.
 		F12 , F1 , F2 , F3 , F4 , F5 ,      F6 , F7 , F8 , F9 ,F10 ,F11 ,
 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
-		, 3 , 3,  3, 3  , 3  ,         ,    ,    ,    ,    ,    ,
+	  ,    ,    ,    ,   ,     ,         ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
-			,    ,UP,    ,    ,    ,         ,    ,    ,    , UP ,    ,
+			,    ,   ,    ,    ,    ,         ,    ,    ,    ,     ,    ,
 	//|----+----+----+----+----+----|    |----+----+----+----+----+----|
-		REST,AG_NORM,RESTL,RIGHT,    ,    ,          ,    ,    ,LEFT,DOWN,RIGHT,
+		REST,AG_NORM,RESTL,    ,    ,    ,   ,    ,    ,   ,   ,      ,
 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
-		X0 ,LALT,LGUI, X10,  ,BSPC,     SPC, UP ,QUOT,LEFT, DOWN ,RGHT,
+		   ,    ,   ,     ,  ,   ,            ,    ,    ,    ,    ,    ,
 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
 //		X3  , 1  , 2  , 3  , 4  , 5  ,      6  , 7  , 8  , 9 , 0  ,MINS,
 	//							`----+----+----+'			`----+----+----'
-										PGUP,PGDN,			 END, HOME,
+										  ,    ,			     ,    ,
 	//							`----+----+----+'			`----+----+----'
-											PSCR,			DEL,
+											   ,			     ,
 	//							`----+----+----+'			`----+----+----'
-									BSPC, ,    ,			    , ENT, SPC
+									 ,    ,    ,			     , SPC, SPC
 	//							`----+----+----+'			`----+----+----'
 
 	//`----+----+----+----+----+----'    `----+----+----+----+----+----'
@@ -339,9 +339,9 @@ unregister_code(KC_TAB);
 unregister_code(KC_LGUI); 
 }*/
 
-bool shift_down=false;
-bool alt_down=false;
-bool select_active=false;
+bool volatile shift_down=false;
+bool volatile alt_down=false;
+bool volatile select_active=false;
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     bool p = record->event.pressed;
 	switch (id) {
@@ -627,11 +627,13 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
            layer_off(5);
            layer_off(6);
            layer_off(7);
+           layer_on(_QWERTY);
            SEND_STRING(SS_UP(X_LCTRL) SS_UP(X_LSHIFT) SS_UP(MOVE) SS_UP(X_LALT) SS_UP(X_LGUI));
 	}
 
     return MACRO_NONE;
 }
+
 
 void cmd_commands(qk_tap_dance_state_t *state, void *user_data) {
 }
