@@ -481,12 +481,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      }
      else {
         // press a key while shift is down
-        if (timer_elapsed(space_held_timer) > 20 && record->event.pressed && space_shift_down) {
+        if (timer_elapsed(space_held_timer) > 10 && record->event.pressed && space_shift_down) {
           enqueue(&last_key, keycode);
           return false; // we handled the keypress, swallow it and only hold down the shift once it's up
         }
         // release that key while shift is down
-        if (timer_elapsed(space_held_timer) > 20 && !record->event.pressed && space_shift_down && in(&last_key, keycode)) {
+        if (timer_elapsed(space_held_timer) > 10 && !record->event.pressed && space_shift_down && in(&last_key, keycode)) {
             register_code(keycode);
             remove(&last_key, keycode);
             pressed_something_else=true;

@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0372ba0b-8e28-4b72-8c30-edf56ba68f19" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dactylv2_rev2_Noah.hex" beforeDir="false" afterPath="$PROJECT_DIR$/Dactylv2_rev2_Noah.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quantum/version.h" beforeDir="false" afterPath="$PROJECT_DIR$/quantum/version.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
-              <caret line="489" selection-start-line="489" selection-end-line="489" />
+            <state relative-caret-position="1064">
+              <caret line="488" column="47" selection-start-line="488" selection-start-column="47" selection-end-line="488" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -159,9 +151,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="112" />
+    <option name="y" value="140" />
     <option name="width" value="2305" />
-    <option name="height" value="1377" />
+    <option name="height" value="1349" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -304,7 +296,7 @@
       <workItem from="1557518874213" duration="19000" />
       <workItem from="1567091825270" duration="1664000" />
       <workItem from="1567093589173" duration="7351000" />
-      <workItem from="1567105748732" duration="19248000" />
+      <workItem from="1567105748732" duration="20016000" />
     </task>
     <task id="LOCAL-00001" summary="before doinng key up stuff">
       <created>1552397114182</created>
@@ -317,10 +309,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71552000" />
+    <option name="totallyTimeSpent" value="72320000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="112" width="2305" height="1377" extended-state="0" />
+    <frame x="0" y="140" width="2305" height="1349" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13658537" />
@@ -461,8 +453,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="489" selection-start-line="489" selection-end-line="489" />
+        <state relative-caret-position="1064">
+          <caret line="488" column="47" selection-start-line="488" selection-start-column="47" selection-end-line="488" selection-end-column="47" />
         </state>
       </provider>
     </entry>
