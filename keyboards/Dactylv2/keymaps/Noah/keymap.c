@@ -2,13 +2,11 @@
 #include "action_layer.h"
 #include "eeconfig.h"
 
-#define PREVENT_STUCK_MODIFIERS
-
 extern keymap_config_t keymap_config;
 #define _QWERTY 0
 #define _ALT 1
 #define _ALTSH 2
-#define _CTR 3
+#define _FN 3
 #define _SELECT 4
 #define _SELECT_ALT 5
 #define _SELECT_ALT_SHIFT 6
@@ -31,6 +29,7 @@ enum custom_keycodes {
 	FN3,
 	ADJUST,
 	dance_cln_finished,
+	KC_SPACETHING = SAFE_RANGE
 };
 
 #define KC_ KC_TRNS
@@ -44,17 +43,19 @@ enum custom_keycodes {
 #define KC_REST RESET
 #define KC_MALT M(20) // MO(_ALT) // goes to alt layer when held, maybe behaves like regular alt
 #define KC_MSHIFT M(21) // MO(_ALTSH)
-#define KC_CTR_L M(22) // LM(_CTR, MOD_LCTL) // goes to ctrl layer when held, maybe behaves like regular control
+#define KC_FN_L M(22) // LM(_FN, MOD_LCTL) // goes to ctrl layer when held, maybe behaves like regular control
 #define KC_SEL_A M(23) // OSL(_SELECT) // turns on the select oneshot, turns off when any key is pressed
 #define KC_SELALT LT(_SELECT_ALT, KC_LALT) // goes to the alt select layer, which can move around but keeps select layer active
 #define KC_SELALTSHIFT MO(_SELECT_ALT_SHIFT) // when shift + alt held down in select mode.
 #define KC_FN3_A MO(_FN3)
 #define KC_GUITAB RWIN_T(KC_TAB)
+#define KC_SHIFTSPC M(25)
 #define KC_RESTL M(24)
 
 #define KC_X9 RGUI(KC_TAB)	//gui tab to switch desktops
 #define KC_X10 TD(TD_VRDSK)
 
+#define KC_SAVE LCTL(KC_S)
 #define KC_COPY LCTL(KC_C)
 #define KC_S_COPY M(15)
 #define KC_S_CUT M(16)
@@ -88,7 +89,6 @@ enum custom_keycodes {
 #define KC_SEL_R M(1)
 #define KC_SEL_U M(2)
 #define KC_SEL_D M(3)
-
 #define KC_SEL_L_WRD M(4)
 #define KC_SEL_R_WRD M(5)
 #define KC_SEL_PG_UP M(6)
@@ -130,8 +130,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                          |Backsp|GUI   |------|       |------|    1   |    2 |
  *                          |  acs |TAB   |   3  |       | 3    |        |      |
  *                         `--------------------'       `----------------------'
- 
- 
+
+
 
  */
 
@@ -142,18 +142,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//,----+----+----+----+----+----.										,----+----+----+----+----+----.
 		TAB , Q  , W  , E  , R  , T  ,    									  Y  , U  , I  , O , P  , MINS,
 	//|----+----+----+----+----+----|   									|----+----+----+----+----+----|
-      CTR_L, A  , S  , D  , F  , G  ,								      H  , J  , K  , L  ,SCLN,QUOT,
+      CLCK, A  , S  , D  , F  , G  ,								      H  , J  , K  , L  ,SCLN,QUOT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
 		MSHIFT, Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
-	  FN3_A,LCTRL,LWIN,MSHIFT,LALT,   ,										     ,LBRC,RBRC,CLCK,BSLS,   ,
+	  FN3_A,LCTRL,LWIN,MSHIFT,LALT,   ,										     ,LBRC,RBRC,LCTRL,BSLS,   ,
 	//`----+----+----+----+----+----'   									 `----+----+----+----+----+----'
 	//							`----+----+----+'			`----+----+----'
 										ESC,F6,			 FORMAT, DEL,
 	//							`----+----+----+'			`----+----+----'
 											HOME,			PGUP,
 	//							`----+----+----+'			`----+----+----'
-							    MALT,GUITAB ,END,			    PGDN, BSPC, SPC
+							    MALT, FN_L,END,			    PGDN, BSPC, SPACETHING
 	//							`----+----+----+'			`----+----+----'
 
 	),
@@ -163,18 +163,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,CLOSE,B_WRD,REP,    ,   							      ,L_WRD,UP ,R_WRD,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	   ,SELALL,OPG,    ,FIND,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
+	   ,SELALL,SAVE,    ,FIND,    ,     							  END ,LEFT,DOWN,RIGHT,     ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
   MSHIFT , UNDO , CUT,COPY,PASTE,  ,							      ,    ,    ,    ,    ,  ALTENT,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
       ,    ,    ,MSHIFT,   ,   ,    						                  ,PTAB,NTAB,    ,    ,     ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
-										  ,    ,			     ,    ,
+										  ,    ,			 RUN,DEBUG,
 	//							`----+----+----+'			`----+----+----'
 											   ,			     ,
 	//							`----+----+----+'			`----+----+----'
-									,     ,    ,			     ,P_TAB,N_TAB
+									,     ,    ,			     ,    ,SEL_A
 	//							`----+----+----+'			`----+----+----'
 	),
 
@@ -186,12 +186,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,    ,DIR,FINDA,    ,     							  HOME,    ,PGDN,    ,     ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		  ,REDO ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
+		  ,REDO ,  ,    ,   RUN,DEBUG,							         ,    ,    ,    ,    ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		    ,,    ,,   ,   ,    						          ,,   ,    ,    ,     ,
+		   ,    ,    ,    ,    ,    ,    						          ,,   ,    ,    ,     ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
-										  ,    ,			     ,    ,
+										  ,    ,			 RUN,DEBUG,
 	//							`----+----+----+'			`----+----+----'
 											   ,			     ,
 	//							`----+----+----+'			`----+----+----'
@@ -199,13 +199,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//							`----+----+----+'			`----+----+----'
 	),
 
-	[_CTR] = KC_KEYMAP(
+	[_FN] = KC_KEYMAP(
 	//,----+----+----+----+----+----.  								  ,----+----+----+----+----+----.
 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,     ,   ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		   ,    ,    ,    ,    ,    ,     							      ,    ,    ,    ,    ,   ,
+		   ,    ,    ,    ,    ,    ,     							      ,    ,    ,    , OPG ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		  ,  ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
@@ -216,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//							`----+----+----+'			`----+----+----'
 											   ,			     ,
 	//							`----+----+----+'			`----+----+----'
-									,     ,    ,			     ,    , SEL_A
+									,     ,    ,			     ,P_TAB,N_TAB
 	//							`----+----+----+'			`----+----+----'
 	),
 
@@ -336,12 +336,47 @@ void dance_cln_finished(void){
 register_code (KC_LGUI);
 register_code(KC_TAB);
 unregister_code(KC_TAB);
-unregister_code(KC_LGUI); 
+unregister_code(KC_LGUI);
 }*/
 
+
 bool volatile shift_down=false;
+bool volatile space_shift_down=false;
 bool volatile alt_down=false;
 bool volatile select_active=false;
+bool volatile pressed_something_else=false;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+     // This bit of code makes it so that if I hold down the spacebar, it becomes a shift key, assuming
+     // that I press another key after holding it down. If no other key is pressed, I clearly wasn't using it as
+     // a shift key, and so it comes through as a space. The only consequence of this is that space is applied on
+     // key up, and not key down. So I need to make sure the space has been released before typing another key
+     // realistically, if I'm light on my fingers, this shouldn't be a problem.
+     if (keycode == KC_SPACETHING) {
+           if (record->event.pressed) {
+                space_shift_down = true;
+                pressed_something_else=false;
+                SEND_STRING(SS_DOWN(X_LSHIFT));
+           }
+           else {
+                space_shift_down = false;
+                SEND_STRING(SS_UP(X_LSHIFT));
+                if (!pressed_something_else) {
+                   SEND_STRING(" ");
+                }
+                pressed_something_else=false;
+           }
+     }
+     else {
+        if (record->event.pressed && space_shift_down) {
+            pressed_something_else=true;
+        }
+     }
+
+  return true;
+}
+
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     bool p = record->event.pressed;
 	switch (id) {
@@ -603,21 +638,23 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
               SEND_STRING(SS_UP(X_LSHIFT));
             }
             return false;
-         case 22: // ctrl for ctrl+space
+         case 22: // the function key acts like a function key but also activates a layer
             if(p) {
-              layer_on(_CTR);
-              SEND_STRING(SS_DOWN(X_LCTRL));
+              layer_on(_FN);
+              SEND_STRING(SS_DOWN(X_LGUI));
             }
             else {
-              layer_off(_CTR);
-              SEND_STRING(SS_UP(X_LCTRL));
+              layer_off(_FN);
+              SEND_STRING(SS_UP(X_LGUI));
             }
             return false;
 
          case 23:
            if(p) {
              select_active = !select_active;
+             layer_on(_SELECT_ALT);
            }
+           return false;
 
          case 24: // restl - reset all layers. In case something gets stuck.
            layer_off(1);
@@ -629,6 +666,24 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
            layer_off(7);
            layer_on(_QWERTY);
            SEND_STRING(SS_UP(X_LCTRL) SS_UP(X_LSHIFT) SS_UP(MOVE) SS_UP(X_LALT) SS_UP(X_LGUI));
+
+         case 25:  // space key. when it's down, shift is down. but it still does a space
+           if (p) {
+                space_shift_down = true;
+                pressed_something_else=false;
+                SEND_STRING(SS_DOWN(X_LSHIFT));
+           }
+           else {
+                space_shift_down = false;
+                SEND_STRING(SS_UP(X_LSHIFT));
+                if (pressed_something_else) {
+                   SEND_STRING(" ");
+                }
+                pressed_something_else=false;
+           }
+
+           return false;
+
 	}
 
     return MACRO_NONE;

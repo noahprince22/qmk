@@ -738,7 +738,7 @@
  269               	.L35:
  270 008a 241B      		sub r18,r20
  271 008c 350B      		sbc r19,r21
- 272 008e 2639      		cpi r18,-106
+ 272 008e 283C      		cpi r18,-56
  273 0090 3105      		cpc r19,__zero_reg__
  274 0092 00F4      		brsh .L19
  370:./tmk_core/common/action_tapping.c ****             waiting_buffer[i].tap.count = 1;
@@ -944,7 +944,7 @@
  462 009a 9B1D      		adc r25,r11
  463               	.L157:
  464 009c 11E0      		ldi r17,lo8(1)
- 465 009e 8639      		cpi r24,-106
+ 465 009e 883C      		cpi r24,-56
  466 00a0 9105      		cpc r25,__zero_reg__
  467 00a2 00F0      		brlo .L107
  468 00a4 10E0      		ldi r17,0
@@ -1421,7 +1421,7 @@
  879 02ea 8A0D      		add r24,r10
  880 02ec 9B1D      		adc r25,r11
  881               	.L159:
- 882 02ee 8639      		cpi r24,-106
+ 882 02ee 883C      		cpi r24,-56
  883 02f0 9105      		cpc r25,__zero_reg__
  884 02f2 00F0      		brlo .L108
  885 02f4 10E0      		ldi r17,0
@@ -1923,21 +1923,21 @@
  1341               		.file 7 "./tmk_core/common/action_layer.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 action_tapping.c
-     /tmp/cc35j0Qm.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc35j0Qm.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc35j0Qm.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc35j0Qm.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc35j0Qm.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc35j0Qm.s:12     .text.debug_waiting_buffer:0000000000000000 debug_waiting_buffer
-     /tmp/cc35j0Qm.s:1318   .bss.waiting_buffer_tail:0000000000000000 waiting_buffer_tail
-     /tmp/cc35j0Qm.s:1323   .bss.waiting_buffer_head:0000000000000000 waiting_buffer_head
-     /tmp/cc35j0Qm.s:1328   .bss.waiting_buffer:0000000000000000 waiting_buffer
-     /tmp/cc35j0Qm.s:82     .text.debug_tapping_key:0000000000000000 debug_tapping_key
-     /tmp/cc35j0Qm.s:1333   .bss.tapping_key:0000000000000000 tapping_key
-     /tmp/cc35j0Qm.s:104    .text.waiting_buffer_typed.isra.1:0000000000000000 waiting_buffer_typed.isra.1
-     /tmp/cc35j0Qm.s:167    .text.waiting_buffer_scan_tap:0000000000000000 waiting_buffer_scan_tap
-     /tmp/cc35j0Qm.s:324    .text.process_tapping:0000000000000000 process_tapping
-     /tmp/cc35j0Qm.s:1071   .text.action_tapping_process:0000000000000000 action_tapping_process
+     /tmp/ccChmrME.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccChmrME.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccChmrME.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccChmrME.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccChmrME.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccChmrME.s:12     .text.debug_waiting_buffer:0000000000000000 debug_waiting_buffer
+     /tmp/ccChmrME.s:1318   .bss.waiting_buffer_tail:0000000000000000 waiting_buffer_tail
+     /tmp/ccChmrME.s:1323   .bss.waiting_buffer_head:0000000000000000 waiting_buffer_head
+     /tmp/ccChmrME.s:1328   .bss.waiting_buffer:0000000000000000 waiting_buffer
+     /tmp/ccChmrME.s:82     .text.debug_tapping_key:0000000000000000 debug_tapping_key
+     /tmp/ccChmrME.s:1333   .bss.tapping_key:0000000000000000 tapping_key
+     /tmp/ccChmrME.s:104    .text.waiting_buffer_typed.isra.1:0000000000000000 waiting_buffer_typed.isra.1
+     /tmp/ccChmrME.s:167    .text.waiting_buffer_scan_tap:0000000000000000 waiting_buffer_scan_tap
+     /tmp/ccChmrME.s:324    .text.process_tapping:0000000000000000 process_tapping
+     /tmp/ccChmrME.s:1071   .text.action_tapping_process:0000000000000000 action_tapping_process
 
 UNDEFINED SYMBOLS
 debug_record

@@ -418,9 +418,9 @@
  170 004e 00C0      		rjmp .L7
  171               	.LVL10:
  172               	.L6:
- 173 0050 80E0      		ldi r24,lo8(matrix_prev.2836)
+ 173 0050 80E0      		ldi r24,lo8(matrix_prev.2842)
  174 0052 C82E      		mov r12,r24
- 175 0054 80E0      		ldi r24,hi8(matrix_prev.2836)
+ 175 0054 80E0      		ldi r24,hi8(matrix_prev.2842)
  176 0056 D82E      		mov r13,r24
  212:./tmk_core/common/keyboard.c ****     if (is_keyboard_master()) {
  177               		.loc 1 212 0
@@ -543,8 +543,8 @@
  240:./tmk_core/common/keyboard.c **** #ifdef QMK_KEYS_PER_SCAN
  281               		.loc 1 240 0
  282 00e0 F801      		movw r30,r16
- 283 00e2 E050      		subi r30,lo8(-(matrix_prev.2836))
- 284 00e4 F040      		sbci r31,hi8(-(matrix_prev.2836))
+ 283 00e2 E050      		subi r30,lo8(-(matrix_prev.2842))
+ 284 00e4 F040      		sbci r31,hi8(-(matrix_prev.2842))
  285 00e6 8081      		ld r24,Z
  286 00e8 8C25      		eor r24,r12
  287 00ea 8083      		st Z,r24
@@ -609,14 +609,14 @@
  306               		.loc 1 295 0
  307 00fc 0E94 0000 		call host_keyboard_leds
  308               	.LVL28:
- 309 0100 9091 0000 		lds r25,led_status.2837
+ 309 0100 9091 0000 		lds r25,led_status.2843
  310 0104 8917      		cp r24,r25
  311 0106 01F0      		breq .L5
  296:./tmk_core/common/keyboard.c ****         led_status = host_keyboard_leds();
  312               		.loc 1 296 0
  313 0108 0E94 0000 		call host_keyboard_leds
  314               	.LVL29:
- 315 010c 8093 0000 		sts led_status.2837,r24
+ 315 010c 8093 0000 		sts led_status.2843,r24
  316               	.LVL30:
  317               	/* epilogue start */
  297:./tmk_core/common/keyboard.c ****         keyboard_set_leds(led_status);
@@ -693,11 +693,11 @@
  377               	.LVL33:
  378               		.cfi_endproc
  379               	.LFE9:
- 381               		.section	.bss.led_status.2837,"aw",@nobits
- 384               	led_status.2837:
+ 381               		.section	.bss.led_status.2843,"aw",@nobits
+ 384               	led_status.2843:
  385 0000 00        		.zero	1
- 386               		.section	.bss.matrix_prev.2836,"aw",@nobits
- 389               	matrix_prev.2836:
+ 386               		.section	.bss.matrix_prev.2842,"aw",@nobits
+ 389               	matrix_prev.2842:
  390 0000 0000 0000 		.zero	14
  390      0000 0000 
  390      0000 0000 
@@ -716,19 +716,19 @@
  402               		.file 11 "./tmk_core/common/host.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keyboard.c
-     /tmp/cc3p8dh8.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc3p8dh8.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc3p8dh8.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc3p8dh8.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc3p8dh8.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc3p8dh8.s:13     .text.matrix_setup:0000000000000000 matrix_setup
-     /tmp/cc3p8dh8.s:29     .text.keyboard_setup:0000000000000000 keyboard_setup
-     /tmp/cc3p8dh8.s:46     .text.is_keyboard_master:0000000000000000 is_keyboard_master
-     /tmp/cc3p8dh8.s:63     .text.keyboard_init:0000000000000000 keyboard_init
-     /tmp/cc3p8dh8.s:86     .text.keyboard_task:0000000000000000 keyboard_task
-     /tmp/cc3p8dh8.s:389    .bss.matrix_prev.2836:0000000000000000 matrix_prev.2836
-     /tmp/cc3p8dh8.s:384    .bss.led_status.2837:0000000000000000 led_status.2837
-     /tmp/cc3p8dh8.s:366    .text.keyboard_set_leds:0000000000000000 keyboard_set_leds
+     /tmp/ccQ5R2Fq.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccQ5R2Fq.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccQ5R2Fq.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccQ5R2Fq.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccQ5R2Fq.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccQ5R2Fq.s:13     .text.matrix_setup:0000000000000000 matrix_setup
+     /tmp/ccQ5R2Fq.s:29     .text.keyboard_setup:0000000000000000 keyboard_setup
+     /tmp/ccQ5R2Fq.s:46     .text.is_keyboard_master:0000000000000000 is_keyboard_master
+     /tmp/ccQ5R2Fq.s:63     .text.keyboard_init:0000000000000000 keyboard_init
+     /tmp/ccQ5R2Fq.s:86     .text.keyboard_task:0000000000000000 keyboard_task
+     /tmp/ccQ5R2Fq.s:389    .bss.matrix_prev.2842:0000000000000000 matrix_prev.2842
+     /tmp/ccQ5R2Fq.s:384    .bss.led_status.2843:0000000000000000 led_status.2843
+     /tmp/ccQ5R2Fq.s:366    .text.keyboard_set_leds:0000000000000000 keyboard_set_leds
 
 UNDEFINED SYMBOLS
 timer_init

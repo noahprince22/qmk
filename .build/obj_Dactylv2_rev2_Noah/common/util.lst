@@ -695,19 +695,19 @@
  606               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 util.c
-     /tmp/ccj9YPWO.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccj9YPWO.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccj9YPWO.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccj9YPWO.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccj9YPWO.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccj9YPWO.s:13     .text.bitpop:0000000000000000 bitpop
-     /tmp/ccj9YPWO.s:50     .text.bitpop16:0000000000000000 bitpop16
-     /tmp/ccj9YPWO.s:88     .text.bitpop32:0000000000000000 bitpop32
-     /tmp/ccj9YPWO.s:156    .text.biton:0000000000000000 biton
-     /tmp/ccj9YPWO.s:210    .text.biton16:0000000000000000 biton16
-     /tmp/ccj9YPWO.s:289    .text.biton32:0000000000000000 biton32
-     /tmp/ccj9YPWO.s:431    .text.bitrev:0000000000000000 bitrev
-     /tmp/ccj9YPWO.s:474    .text.bitrev16:0000000000000000 bitrev16
-     /tmp/ccj9YPWO.s:519    .text.bitrev32:0000000000000000 bitrev32
+     /tmp/ccyEQdrV.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccyEQdrV.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccyEQdrV.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccyEQdrV.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccyEQdrV.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccyEQdrV.s:13     .text.bitpop:0000000000000000 bitpop
+     /tmp/ccyEQdrV.s:50     .text.bitpop16:0000000000000000 bitpop16
+     /tmp/ccyEQdrV.s:88     .text.bitpop32:0000000000000000 bitpop32
+     /tmp/ccyEQdrV.s:156    .text.biton:0000000000000000 biton
+     /tmp/ccyEQdrV.s:210    .text.biton16:0000000000000000 biton16
+     /tmp/ccyEQdrV.s:289    .text.biton32:0000000000000000 biton32
+     /tmp/ccyEQdrV.s:431    .text.bitrev:0000000000000000 bitrev
+     /tmp/ccyEQdrV.s:474    .text.bitrev16:0000000000000000 bitrev16
+     /tmp/ccyEQdrV.s:519    .text.bitrev32:0000000000000000 bitrev32
 
 NO UNDEFINED SYMBOLS

@@ -12,9 +12,9 @@
 
 //#define MASTER_LEFT
 // #define _MASTER_RIGHT
- #define EE_HANDS
+#define EE_HANDS
 
-#define TAPPING_TERM 150
+#define TAPPING_TERM 200
 
 #undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
@@ -24,6 +24,7 @@
 #define RGBLIGHT_VAL_STEP 8
 
 #define PERMISSIVE_HOLD
-
+// #define RETRO_TAPPING
+#define PREVENT_STUCK_MODIFIERS
 
 #endif

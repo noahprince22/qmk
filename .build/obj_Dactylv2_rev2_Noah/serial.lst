@@ -1248,25 +1248,25 @@
  748               		.file 3 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 serial.c
-     /tmp/cckeejru.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cckeejru.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cckeejru.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cckeejru.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cckeejru.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cckeejru.s:12     .text.serial_output:0000000000000000 serial_output
-     /tmp/cckeejru.s:29     .text.serial_input:0000000000000000 serial_input
-     /tmp/cckeejru.s:47     .text.serial_high:0000000000000000 serial_high
-     /tmp/cckeejru.s:63     .text.sync_recv:0000000000000000 sync_recv
-     /tmp/cckeejru.s:97     .text.serial_read_byte:0000000000000000 serial_read_byte
-     /tmp/cckeejru.s:160    .text.serial_write_byte:0000000000000000 serial_write_byte
-     /tmp/cckeejru.s:247    .text.sync_send:0000000000000000 sync_send
-     /tmp/cckeejru.s:285    .text.serial_master_init:0000000000000000 serial_master_init
-     /tmp/cckeejru.s:305    .text.serial_slave_init:0000000000000000 serial_slave_init
-     /tmp/cckeejru.s:331    .text.__vector_1:0000000000000000 __vector_1
-     /tmp/cckeejru.s:744    .bss.serial_slave_buffer:0000000000000000 serial_slave_buffer
-     /tmp/cckeejru.s:738    .bss.serial_master_buffer:0000000000000000 serial_master_buffer
-     /tmp/cckeejru.s:732    .bss.status:0000000000000000 status
-     /tmp/cckeejru.s:551    .text.serial_update_buffers:0000000000000000 serial_update_buffers
+     /tmp/ccCO4AUN.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccCO4AUN.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccCO4AUN.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccCO4AUN.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccCO4AUN.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccCO4AUN.s:12     .text.serial_output:0000000000000000 serial_output
+     /tmp/ccCO4AUN.s:29     .text.serial_input:0000000000000000 serial_input
+     /tmp/ccCO4AUN.s:47     .text.serial_high:0000000000000000 serial_high
+     /tmp/ccCO4AUN.s:63     .text.sync_recv:0000000000000000 sync_recv
+     /tmp/ccCO4AUN.s:97     .text.serial_read_byte:0000000000000000 serial_read_byte
+     /tmp/ccCO4AUN.s:160    .text.serial_write_byte:0000000000000000 serial_write_byte
+     /tmp/ccCO4AUN.s:247    .text.sync_send:0000000000000000 sync_send
+     /tmp/ccCO4AUN.s:285    .text.serial_master_init:0000000000000000 serial_master_init
+     /tmp/ccCO4AUN.s:305    .text.serial_slave_init:0000000000000000 serial_slave_init
+     /tmp/ccCO4AUN.s:331    .text.__vector_1:0000000000000000 __vector_1
+     /tmp/ccCO4AUN.s:744    .bss.serial_slave_buffer:0000000000000000 serial_slave_buffer
+     /tmp/ccCO4AUN.s:738    .bss.serial_master_buffer:0000000000000000 serial_master_buffer
+     /tmp/ccCO4AUN.s:732    .bss.status:0000000000000000 status
+     /tmp/ccCO4AUN.s:551    .text.serial_update_buffers:0000000000000000 serial_update_buffers
 
 UNDEFINED SYMBOLS
 __do_clear_bss

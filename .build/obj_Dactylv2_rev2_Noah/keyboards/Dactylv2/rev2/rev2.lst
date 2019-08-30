@@ -262,24 +262,24 @@
  204               		.file 6 "./quantum/quantum.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 rev2.c
-     /tmp/ccfhieUC.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccfhieUC.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccfhieUC.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccfhieUC.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccfhieUC.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccfhieUC.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
-     /tmp/ccfhieUC.s:27     .text.rgblight_step:0000000000000000 rgblight_step
-     /tmp/ccfhieUC.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
-     /tmp/ccfhieUC.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
-     /tmp/ccfhieUC.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
-     /tmp/ccfhieUC.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
-     /tmp/ccfhieUC.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
-     /tmp/ccfhieUC.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
-     /tmp/ccfhieUC.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
-     /tmp/ccfhieUC.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
-     /tmp/ccfhieUC.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
-     /tmp/ccfhieUC.s:169    .text.matrix_init_kb:0000000000000000 matrix_init_kb
-     /tmp/ccfhieUC.s:187    .text.shutdown_user:0000000000000000 shutdown_user
+     /tmp/ccq16r6L.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccq16r6L.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccq16r6L.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccq16r6L.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccq16r6L.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccq16r6L.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
+     /tmp/ccq16r6L.s:27     .text.rgblight_step:0000000000000000 rgblight_step
+     /tmp/ccq16r6L.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
+     /tmp/ccq16r6L.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
+     /tmp/ccq16r6L.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
+     /tmp/ccq16r6L.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
+     /tmp/ccq16r6L.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
+     /tmp/ccq16r6L.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
+     /tmp/ccq16r6L.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
+     /tmp/ccq16r6L.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
+     /tmp/ccq16r6L.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
+     /tmp/ccq16r6L.s:169    .text.matrix_init_kb:0000000000000000 matrix_init_kb
+     /tmp/ccq16r6L.s:187    .text.shutdown_user:0000000000000000 shutdown_user
 
 UNDEFINED SYMBOLS
 matrix_init_user

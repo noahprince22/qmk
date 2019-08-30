@@ -5,11 +5,63 @@
       <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" beforeDir="false" afterPath="$PROJECT_DIR$/.build/Dactylv2_rev2_Noah.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_layer.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_layer.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_macro.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_macro.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_tapping.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_tapping.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_tapping.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_tapping.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_util.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/action_util.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/avr/suspend.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/avr/suspend.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/avr/timer.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/avr/timer.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/command.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/debug.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/debug.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/eeconfig.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/eeconfig.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/host.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/host.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/keyboard.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/keyboard.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/keyboard.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/keyboard.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/magic.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/magic.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/mousekey.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/mousekey.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/print.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/print.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/report.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/report.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/util.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/common/util.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/i2c.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/i2c.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Class/Common/HIDParser.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Class/Common/HIDParser.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/ConfigDescriptors.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/Events.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/Events.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/HostStandardReq.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/HostStandardReq.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/USBTask.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lib/lufa/LUFA/Drivers/USB/Core/USBTask.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lufa.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/lufa.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/matrix.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/matrix.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/outputselect.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/outputselect.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/quantum.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/quantum.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/quantum.o" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/quantum/quantum.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/serial.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/serial.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/split_util.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/split_util.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/ssd1306.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/ssd1306.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/usb_descriptor.lst" beforeDir="false" afterPath="$PROJECT_DIR$/.build/obj_Dactylv2_rev2_Noah/usb_descriptor.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dactylv2_rev2_Noah.hex" beforeDir="false" afterPath="$PROJECT_DIR$/Dactylv2_rev2_Noah.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/config.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quantum/version.h" beforeDir="false" afterPath="$PROJECT_DIR$/quantum/version.h" afterDir="false" />
     </list>
@@ -24,8 +76,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="646" lean-forward="true" selection-start-line="646" selection-end-line="646" />
+            <state relative-caret-position="835">
+              <caret line="363" selection-start-line="363" selection-end-line="363" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/config.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
         </entry>
@@ -84,36 +145,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>#define MACRO_NONE</find>
-      <find>MACRO_NONE</find>
-      <find>SEL_HOME</find>
-      <find>ALTENT</find>
-      <find>ALT_A</find>
-      <find>CTR_L</find>
-      <find>ALTSH</find>
-      <find>onoffoff</find>
-      <find>S_COPY</find>
-      <find>OOG</find>
-      <find>intelli</find>
-      <find>RUN</find>
-      <find>LAL</find>
-      <find>REP</find>
-      <find>shift_down</find>
-      <find>mshift</find>
-      <find>MSHIFT</find>
-      <find>2</find>
-      <find>22</find>
-      <find>SS_DOWN(X_L</find>
-      <find>SS_DOWN(X_LCT</find>
-      <find>layer_on</find>
-      <find>24</find>
-      <find>X0</find>
-      <find>LCTRL</find>
       <find>FN3_A</find>
       <find>ADJUST</find>
       <find>PR</find>
       <find>AG_NORM</find>
       <find>SEND_STRING(SS_UP(X_LCT</find>
+      <find>space</find>
+      <find>fn</find>
+      <find>KC_SPC</find>
+      <find>ru</find>
+      <find>DEBUG</find>
+      <find>MSHIFT</find>
+      <find>21</find>
+      <find>X_</find>
+      <find>RUN</find>
+      <find>CTR_L</find>
+      <find>2</find>
+      <find>22</find>
+      <find>_CTR</find>
+      <find>X_LWIN</find>
+      <find>SEL_A</find>
+      <find>select_active</find>
+      <find>23</find>
+      <find>TAPPING_TERM</find>
+      <find>SHIFTSPC</find>
+      <find>space_ti</find>
+      <find>action_get_macro</find>
+      <find>i</find>
+      <find>SPACETHING</find>
+      <find>F</find>
+      <find>KC_SPACETHING</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -121,6 +182,8 @@
       <replace>(X_LSHIFT</replace>
       <replace>X_</replace>
       <replace>SELALT</replace>
+      <replace>_FN</replace>
+      <replace>keycode</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/keyboards/Dactylv2</dir>
@@ -136,6 +199,7 @@
         <option value="$PROJECT_DIR$/keyboards/Dactylv2/split_util.c" />
         <option value="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/keymap.c" />
         <option value="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Default/keymap.c" />
+        <option value="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/config.h" />
         <option value="$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c" />
       </list>
     </option>
@@ -147,16 +211,16 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="308" />
-    <option name="width" value="2305" />
-    <option name="height" value="1181" />
+    <option name="y" value="84" />
+    <option name="width" value="2304" />
+    <option name="height" value="1405" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,13 +258,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567093474732" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567167770283" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -291,6 +355,8 @@
       <workItem from="1557500549937" duration="2061000" />
       <workItem from="1557518874213" duration="19000" />
       <workItem from="1567091825270" duration="1664000" />
+      <workItem from="1567093589173" duration="7351000" />
+      <workItem from="1567105748732" duration="10361000" />
     </task>
     <task id="LOCAL-00001" summary="before doinng key up stuff">
       <created>1552397114182</created>
@@ -303,13 +369,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44953000" />
+    <option name="totallyTimeSpent" value="62665000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="308" width="2305" height="1181" extended-state="0" />
+    <frame x="0" y="84" width="2304" height="1405" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16230598" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13664596" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -328,7 +394,6 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="right" id="PlantUML" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -339,6 +404,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="SciView" order="8" />
       <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="right" id="PlantUML" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,9 +429,6 @@
           <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/config.h">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/config.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -400,13 +463,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="174" column="57" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="646" lean-forward="true" selection-start-line="646" selection-end-line="646" />
         </state>
       </provider>
     </entry>
@@ -445,6 +501,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8094">
           <caret line="426" selection-start-line="426" selection-end-line="426" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/config.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="835">
+          <caret line="363" selection-start-line="363" selection-end-line="363" />
         </state>
       </provider>
     </entry>

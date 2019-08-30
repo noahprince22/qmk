@@ -508,16 +508,16 @@
  155               		.file 7 "keyboards/Dactylv2/split_util.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 split_util.c
-     /tmp/ccdIIxds.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccdIIxds.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccdIIxds.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccdIIxds.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccdIIxds.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccdIIxds.s:13     .text.has_usb:0000000000000000 has_usb
-     /tmp/ccdIIxds.s:51     .text.split_keyboard_setup:0000000000000000 split_keyboard_setup
-     /tmp/ccdIIxds.s:97     .text.keyboard_slave_loop:0000000000000000 keyboard_slave_loop
-     /tmp/ccdIIxds.s:119    .text.matrix_setup:0000000000000000 matrix_setup
-     /tmp/ccdIIxds.s:147    .data.isLeftHand:0000000000000000 isLeftHand
+     /tmp/cclD9RuL.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cclD9RuL.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cclD9RuL.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cclD9RuL.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cclD9RuL.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cclD9RuL.s:13     .text.has_usb:0000000000000000 has_usb
+     /tmp/cclD9RuL.s:51     .text.split_keyboard_setup:0000000000000000 split_keyboard_setup
+     /tmp/cclD9RuL.s:97     .text.keyboard_slave_loop:0000000000000000 keyboard_slave_loop
+     /tmp/cclD9RuL.s:119    .text.matrix_setup:0000000000000000 matrix_setup
+     /tmp/cclD9RuL.s:147    .data.isLeftHand:0000000000000000 isLeftHand
 
 UNDEFINED SYMBOLS
 serial_master_init

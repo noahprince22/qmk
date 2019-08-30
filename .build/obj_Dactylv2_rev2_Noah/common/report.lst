@@ -475,17 +475,17 @@
  241               		.file 3 "./tmk_core/common/report.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 report.c
-     /tmp/ccyRnGiL.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccyRnGiL.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccyRnGiL.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccyRnGiL.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccyRnGiL.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccyRnGiL.s:13     .text.has_anykey:0000000000000000 has_anykey
-     /tmp/ccyRnGiL.s:55     .text.get_first_key:0000000000000000 get_first_key
-     /tmp/ccyRnGiL.s:75     .text.add_key_byte:0000000000000000 add_key_byte
-     /tmp/ccyRnGiL.s:133    .text.del_key_byte:0000000000000000 del_key_byte
-     /tmp/ccyRnGiL.s:173    .text.add_key_to_report:0000000000000000 add_key_to_report
-     /tmp/ccyRnGiL.s:191    .text.del_key_from_report:0000000000000000 del_key_from_report
-     /tmp/ccyRnGiL.s:209    .text.clear_keys_from_report:0000000000000000 clear_keys_from_report
+     /tmp/ccN5FxgZ.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccN5FxgZ.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccN5FxgZ.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccN5FxgZ.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccN5FxgZ.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccN5FxgZ.s:13     .text.has_anykey:0000000000000000 has_anykey
+     /tmp/ccN5FxgZ.s:55     .text.get_first_key:0000000000000000 get_first_key
+     /tmp/ccN5FxgZ.s:75     .text.add_key_byte:0000000000000000 add_key_byte
+     /tmp/ccN5FxgZ.s:133    .text.del_key_byte:0000000000000000 del_key_byte
+     /tmp/ccN5FxgZ.s:173    .text.add_key_to_report:0000000000000000 add_key_to_report
+     /tmp/ccN5FxgZ.s:191    .text.del_key_from_report:0000000000000000 del_key_from_report
+     /tmp/ccN5FxgZ.s:209    .text.clear_keys_from_report:0000000000000000 clear_keys_from_report
 
 NO UNDEFINED SYMBOLS

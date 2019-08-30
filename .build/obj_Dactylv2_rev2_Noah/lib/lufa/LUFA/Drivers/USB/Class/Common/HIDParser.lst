@@ -2220,15 +2220,15 @@
  1703               		.file 5 "/usr/lib/avr/include/string.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HIDParser.c
-     /tmp/ccSmc8zx.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccSmc8zx.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccSmc8zx.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccSmc8zx.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccSmc8zx.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccSmc8zx.s:13     .text.USB_ProcessHIDReport:0000000000000000 USB_ProcessHIDReport
-     /tmp/ccSmc8zx.s:1276   .text.USB_GetHIDReportItemInfo:0000000000000000 USB_GetHIDReportItemInfo
-     /tmp/ccSmc8zx.s:1446   .text.USB_SetHIDReportItemInfo:0000000000000000 USB_SetHIDReportItemInfo
-     /tmp/ccSmc8zx.s:1624   .text.USB_GetHIDReportSize:0000000000000000 USB_GetHIDReportSize
+     /tmp/cch1NUGJ.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cch1NUGJ.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cch1NUGJ.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cch1NUGJ.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cch1NUGJ.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cch1NUGJ.s:13     .text.USB_ProcessHIDReport:0000000000000000 USB_ProcessHIDReport
+     /tmp/cch1NUGJ.s:1276   .text.USB_GetHIDReportItemInfo:0000000000000000 USB_GetHIDReportItemInfo
+     /tmp/cch1NUGJ.s:1446   .text.USB_SetHIDReportItemInfo:0000000000000000 USB_SetHIDReportItemInfo
+     /tmp/cch1NUGJ.s:1624   .text.USB_GetHIDReportSize:0000000000000000 USB_GetHIDReportSize
 
 UNDEFINED SYMBOLS
 memmove

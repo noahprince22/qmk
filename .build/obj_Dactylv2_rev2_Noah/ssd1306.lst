@@ -10,10 +10,10 @@
   10               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ssd1306.c
-     /tmp/ccnEnvvz.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccnEnvvz.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccnEnvvz.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccnEnvvz.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccnEnvvz.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccyiFDjU.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccyiFDjU.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccyiFDjU.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccyiFDjU.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccyiFDjU.s:6      *ABS*:0000000000000001 __zero_reg__
 
 NO UNDEFINED SYMBOLS

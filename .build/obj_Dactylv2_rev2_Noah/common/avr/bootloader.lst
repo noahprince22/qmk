@@ -840,13 +840,13 @@
  127               		.file 4 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bootloader.c
-     /tmp/cceliFzU.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cceliFzU.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cceliFzU.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cceliFzU.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cceliFzU.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cceliFzU.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
-     /tmp/cceliFzU.s:56     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
-     /tmp/cceliFzU.s:122    .noinit:0000000000000000 reset_key
+     /tmp/cc25TuPc.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc25TuPc.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc25TuPc.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc25TuPc.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc25TuPc.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc25TuPc.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
+     /tmp/cc25TuPc.s:56     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
+     /tmp/cc25TuPc.s:122    .noinit:0000000000000000 reset_key
 
 NO UNDEFINED SYMBOLS

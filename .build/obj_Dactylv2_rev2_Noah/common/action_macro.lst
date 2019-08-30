@@ -592,12 +592,12 @@
  303               		.file 8 "./tmk_core/common/action_util.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 action_macro.c
-     /tmp/ccKHIzEx.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccKHIzEx.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccKHIzEx.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccKHIzEx.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccKHIzEx.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccKHIzEx.s:13     .text.action_macro_play:0000000000000000 action_macro_play
+     /tmp/cc0RWzBM.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc0RWzBM.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc0RWzBM.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc0RWzBM.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc0RWzBM.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc0RWzBM.s:13     .text.action_macro_play:0000000000000000 action_macro_play
 
 UNDEFINED SYMBOLS
 unregister_code

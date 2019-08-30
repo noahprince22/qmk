@@ -1025,20 +1025,20 @@
  337               		.file 10 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../Device.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 suspend.c
-     /tmp/ccad2XXM.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccad2XXM.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccad2XXM.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccad2XXM.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccad2XXM.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccad2XXM.s:13     .text.suspend_idle:0000000000000000 suspend_idle
-     /tmp/ccad2XXM.s:60     .text.suspend_power_down:0000000000000000 suspend_power_down
-     /tmp/ccad2XXM.s:326    .bss.wdt_timeout:0000000000000000 wdt_timeout
-     /tmp/ccad2XXM.s:150    .text.matrix_power_down:0000000000000000 matrix_power_down
-     /tmp/ccad2XXM.s:150    .text.matrix_power_down:0000000000000000 matrix_power_down.localalias.0
-     /tmp/ccad2XXM.s:166    .text.matrix_power_up:0000000000000000 matrix_power_up
-     /tmp/ccad2XXM.s:180    .text.suspend_wakeup_condition:0000000000000000 suspend_wakeup_condition
-     /tmp/ccad2XXM.s:235    .text.suspend_wakeup_init:0000000000000000 suspend_wakeup_init
-     /tmp/ccad2XXM.s:257    .text.__vector_12:0000000000000000 __vector_12
+     /tmp/cc680Ci2.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc680Ci2.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc680Ci2.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc680Ci2.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc680Ci2.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc680Ci2.s:13     .text.suspend_idle:0000000000000000 suspend_idle
+     /tmp/cc680Ci2.s:60     .text.suspend_power_down:0000000000000000 suspend_power_down
+     /tmp/cc680Ci2.s:326    .bss.wdt_timeout:0000000000000000 wdt_timeout
+     /tmp/cc680Ci2.s:150    .text.matrix_power_down:0000000000000000 matrix_power_down
+     /tmp/cc680Ci2.s:150    .text.matrix_power_down:0000000000000000 matrix_power_down.localalias.0
+     /tmp/cc680Ci2.s:166    .text.matrix_power_up:0000000000000000 matrix_power_up
+     /tmp/cc680Ci2.s:180    .text.suspend_wakeup_condition:0000000000000000 suspend_wakeup_condition
+     /tmp/cc680Ci2.s:235    .text.suspend_wakeup_init:0000000000000000 suspend_wakeup_init
+     /tmp/cc680Ci2.s:257    .text.__vector_12:0000000000000000 __vector_12
 
 UNDEFINED SYMBOLS
 USB_DeviceState

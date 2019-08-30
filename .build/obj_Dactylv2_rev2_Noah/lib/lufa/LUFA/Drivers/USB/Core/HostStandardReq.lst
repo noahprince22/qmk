@@ -10,10 +10,10 @@
   10               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HostStandardReq.c
-     /tmp/ccgb0n7t.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccgb0n7t.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccgb0n7t.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccgb0n7t.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccgb0n7t.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccZJC7hC.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccZJC7hC.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccZJC7hC.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccZJC7hC.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccZJC7hC.s:6      *ABS*:0000000000000001 __zero_reg__
 
 NO UNDEFINED SYMBOLS

@@ -116,21 +116,21 @@
   76               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Events.c
-     /tmp/ccNXVfYr.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccNXVfYr.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccNXVfYr.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccNXVfYr.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccNXVfYr.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 USB_Event_Stub
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_StartOfFrame
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Reset
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_WakeUp
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Suspend
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ConfigurationChanged
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ControlRequest
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Disconnect
-     /tmp/ccNXVfYr.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Connect
-     /tmp/ccNXVfYr.s:45     .text.USB_Event_Stub_2:0000000000000000 USB_Event_Stub_2
-     /tmp/ccNXVfYr.s:61     .text.USB_Event_Stub_3:0000000000000000 USB_Event_Stub_3
+     /tmp/ccU9QtBz.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccU9QtBz.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccU9QtBz.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccU9QtBz.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccU9QtBz.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 USB_Event_Stub
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_StartOfFrame
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Reset
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_WakeUp
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Suspend
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ConfigurationChanged
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ControlRequest
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Disconnect
+     /tmp/ccU9QtBz.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Connect
+     /tmp/ccU9QtBz.s:45     .text.USB_Event_Stub_2:0000000000000000 USB_Event_Stub_2
+     /tmp/ccU9QtBz.s:61     .text.USB_Event_Stub_3:0000000000000000 USB_Event_Stub_3
 
 NO UNDEFINED SYMBOLS

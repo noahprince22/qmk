@@ -1243,28 +1243,28 @@
  950               		.file 13 "quantum/keycode_config.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keymap_common.c
-     /tmp/cc24paQN.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc24paQN.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc24paQN.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc24paQN.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc24paQN.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc24paQN.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
-     /tmp/cc24paQN.s:27     .text.rgblight_step:0000000000000000 rgblight_step
-     /tmp/cc24paQN.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
-     /tmp/cc24paQN.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
-     /tmp/cc24paQN.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
-     /tmp/cc24paQN.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
-     /tmp/cc24paQN.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
-     /tmp/cc24paQN.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
-     /tmp/cc24paQN.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
-     /tmp/cc24paQN.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
-     /tmp/cc24paQN.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
-     /tmp/cc24paQN.s:169    .text.action_get_macro:0000000000000000 action_get_macro
-     /tmp/cc24paQN.s:190    .text.action_function:0000000000000000 action_function
-     /tmp/cc24paQN.s:206    .text.keymap_key_to_keycode:0000000000000000 keymap_key_to_keycode
-     /tmp/cc24paQN.s:252    .text.keymap_function_id_to_action:0000000000000000 keymap_function_id_to_action
-     /tmp/cc24paQN.s:937    .progmem.data.fn_actions:0000000000000000 fn_actions
-     /tmp/cc24paQN.s:287    .text.action_for_key:0000000000000000 action_for_key
+     /tmp/ccXEeF33.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccXEeF33.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccXEeF33.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccXEeF33.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccXEeF33.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccXEeF33.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
+     /tmp/ccXEeF33.s:27     .text.rgblight_step:0000000000000000 rgblight_step
+     /tmp/ccXEeF33.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
+     /tmp/ccXEeF33.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
+     /tmp/ccXEeF33.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
+     /tmp/ccXEeF33.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
+     /tmp/ccXEeF33.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
+     /tmp/ccXEeF33.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
+     /tmp/ccXEeF33.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
+     /tmp/ccXEeF33.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
+     /tmp/ccXEeF33.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
+     /tmp/ccXEeF33.s:169    .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/ccXEeF33.s:190    .text.action_function:0000000000000000 action_function
+     /tmp/ccXEeF33.s:206    .text.keymap_key_to_keycode:0000000000000000 keymap_key_to_keycode
+     /tmp/ccXEeF33.s:252    .text.keymap_function_id_to_action:0000000000000000 keymap_function_id_to_action
+     /tmp/ccXEeF33.s:937    .progmem.data.fn_actions:0000000000000000 fn_actions
+     /tmp/ccXEeF33.s:287    .text.action_for_key:0000000000000000 action_for_key
 
 UNDEFINED SYMBOLS
 keymaps

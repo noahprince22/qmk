@@ -1275,7 +1275,7 @@
  988 0048 01F4      		brne .L70
  180:quantum/process_keycode/process_tap_dance.c ****     }
  989               		.loc 1 180 0
- 990 004a 86E9      		ldi r24,lo8(-106)
+ 990 004a 88EC      		ldi r24,lo8(-56)
  991 004c C82E      		mov r12,r24
  992 004e D12C      		mov r13,__zero_reg__
  993               	.L70:
@@ -1370,35 +1370,35 @@
  1081               		.file 12 "./quantum/quantum_keycodes.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 process_tap_dance.c
-     /tmp/ccsbEHe0.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccsbEHe0.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccsbEHe0.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccsbEHe0.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccsbEHe0.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccsbEHe0.s:12     .text.process_tap_dance_action_on_dance_finished.part.0:0000000000000000 process_tap_dance_action_on_dance_finished.part.0
-     /tmp/ccsbEHe0.s:87     .text.rgblight_toggle:0000000000000000 rgblight_toggle
-     /tmp/ccsbEHe0.s:101    .text.rgblight_step:0000000000000000 rgblight_step
-     /tmp/ccsbEHe0.s:115    .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
-     /tmp/ccsbEHe0.s:129    .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
-     /tmp/ccsbEHe0.s:143    .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
-     /tmp/ccsbEHe0.s:157    .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
-     /tmp/ccsbEHe0.s:171    .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
-     /tmp/ccsbEHe0.s:185    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
-     /tmp/ccsbEHe0.s:199    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
-     /tmp/ccsbEHe0.s:213    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
-     /tmp/ccsbEHe0.s:227    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
-     /tmp/ccsbEHe0.s:243    .text.qk_tap_dance_pair_on_each_tap:0000000000000000 qk_tap_dance_pair_on_each_tap
-     /tmp/ccsbEHe0.s:291    .text.qk_tap_dance_pair_finished:0000000000000000 qk_tap_dance_pair_finished
-     /tmp/ccsbEHe0.s:333    .text.qk_tap_dance_pair_reset:0000000000000000 qk_tap_dance_pair_reset
-     /tmp/ccsbEHe0.s:375    .text.qk_tap_dance_dual_role_on_each_tap:0000000000000000 qk_tap_dance_dual_role_on_each_tap
-     /tmp/ccsbEHe0.s:421    .text.qk_tap_dance_dual_role_finished:0000000000000000 qk_tap_dance_dual_role_finished
-     /tmp/ccsbEHe0.s:461    .text.qk_tap_dance_dual_role_reset:0000000000000000 qk_tap_dance_dual_role_reset
-     /tmp/ccsbEHe0.s:491    .text.reset_tap_dance:0000000000000000 reset_tap_dance
-     /tmp/ccsbEHe0.s:1068   .bss.last_td:0000000000000000 last_td
-     /tmp/ccsbEHe0.s:620    .text.preprocess_tap_dance:0000000000000000 preprocess_tap_dance
-     /tmp/ccsbEHe0.s:1063   .data.highest_td:0000000000000000 highest_td
-     /tmp/ccsbEHe0.s:750    .text.process_tap_dance:0000000000000000 process_tap_dance
-     /tmp/ccsbEHe0.s:911    .text.matrix_scan_tap_dance:0000000000000000 matrix_scan_tap_dance
+     /tmp/cceVXAJg.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cceVXAJg.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cceVXAJg.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cceVXAJg.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cceVXAJg.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cceVXAJg.s:12     .text.process_tap_dance_action_on_dance_finished.part.0:0000000000000000 process_tap_dance_action_on_dance_finished.part.0
+     /tmp/cceVXAJg.s:87     .text.rgblight_toggle:0000000000000000 rgblight_toggle
+     /tmp/cceVXAJg.s:101    .text.rgblight_step:0000000000000000 rgblight_step
+     /tmp/cceVXAJg.s:115    .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
+     /tmp/cceVXAJg.s:129    .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
+     /tmp/cceVXAJg.s:143    .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
+     /tmp/cceVXAJg.s:157    .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
+     /tmp/cceVXAJg.s:171    .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
+     /tmp/cceVXAJg.s:185    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
+     /tmp/cceVXAJg.s:199    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
+     /tmp/cceVXAJg.s:213    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
+     /tmp/cceVXAJg.s:227    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
+     /tmp/cceVXAJg.s:243    .text.qk_tap_dance_pair_on_each_tap:0000000000000000 qk_tap_dance_pair_on_each_tap
+     /tmp/cceVXAJg.s:291    .text.qk_tap_dance_pair_finished:0000000000000000 qk_tap_dance_pair_finished
+     /tmp/cceVXAJg.s:333    .text.qk_tap_dance_pair_reset:0000000000000000 qk_tap_dance_pair_reset
+     /tmp/cceVXAJg.s:375    .text.qk_tap_dance_dual_role_on_each_tap:0000000000000000 qk_tap_dance_dual_role_on_each_tap
+     /tmp/cceVXAJg.s:421    .text.qk_tap_dance_dual_role_finished:0000000000000000 qk_tap_dance_dual_role_finished
+     /tmp/cceVXAJg.s:461    .text.qk_tap_dance_dual_role_reset:0000000000000000 qk_tap_dance_dual_role_reset
+     /tmp/cceVXAJg.s:491    .text.reset_tap_dance:0000000000000000 reset_tap_dance
+     /tmp/cceVXAJg.s:1068   .bss.last_td:0000000000000000 last_td
+     /tmp/cceVXAJg.s:620    .text.preprocess_tap_dance:0000000000000000 preprocess_tap_dance
+     /tmp/cceVXAJg.s:1063   .data.highest_td:0000000000000000 highest_td
+     /tmp/cceVXAJg.s:750    .text.process_tap_dance:0000000000000000 process_tap_dance
+     /tmp/cceVXAJg.s:911    .text.matrix_scan_tap_dance:0000000000000000 matrix_scan_tap_dance
 
 UNDEFINED SYMBOLS
 add_mods

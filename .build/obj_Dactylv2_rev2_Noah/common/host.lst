@@ -331,23 +331,23 @@
  263               		.file 5 "./tmk_core/common/debug.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 host.c
-     /tmp/cc1AN4A7.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc1AN4A7.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc1AN4A7.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc1AN4A7.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc1AN4A7.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc1AN4A7.s:13     .text.host_set_driver:0000000000000000 host_set_driver
-     /tmp/cc1AN4A7.s:256    .bss.driver:0000000000000000 driver
-     /tmp/cc1AN4A7.s:33     .text.host_get_driver:0000000000000000 host_get_driver
-     /tmp/cc1AN4A7.s:51     .text.host_keyboard_leds:0000000000000000 host_keyboard_leds
-     /tmp/cc1AN4A7.s:80     .text.host_keyboard_send:0000000000000000 host_keyboard_send
-     /tmp/cc1AN4A7.s:108    .text.host_mouse_send:0000000000000000 host_mouse_send
-     /tmp/cc1AN4A7.s:136    .text.host_system_send:0000000000000000 host_system_send
-     /tmp/cc1AN4A7.s:251    .bss.last_system_report:0000000000000000 last_system_report
-     /tmp/cc1AN4A7.s:173    .text.host_consumer_send:0000000000000000 host_consumer_send
-     /tmp/cc1AN4A7.s:246    .bss.last_consumer_report:0000000000000000 last_consumer_report
-     /tmp/cc1AN4A7.s:210    .text.host_last_system_report:0000000000000000 host_last_system_report
-     /tmp/cc1AN4A7.s:228    .text.host_last_consumer_report:0000000000000000 host_last_consumer_report
+     /tmp/ccT1nfin.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccT1nfin.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccT1nfin.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccT1nfin.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccT1nfin.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccT1nfin.s:13     .text.host_set_driver:0000000000000000 host_set_driver
+     /tmp/ccT1nfin.s:256    .bss.driver:0000000000000000 driver
+     /tmp/ccT1nfin.s:33     .text.host_get_driver:0000000000000000 host_get_driver
+     /tmp/ccT1nfin.s:51     .text.host_keyboard_leds:0000000000000000 host_keyboard_leds
+     /tmp/ccT1nfin.s:80     .text.host_keyboard_send:0000000000000000 host_keyboard_send
+     /tmp/ccT1nfin.s:108    .text.host_mouse_send:0000000000000000 host_mouse_send
+     /tmp/ccT1nfin.s:136    .text.host_system_send:0000000000000000 host_system_send
+     /tmp/ccT1nfin.s:251    .bss.last_system_report:0000000000000000 last_system_report
+     /tmp/ccT1nfin.s:173    .text.host_consumer_send:0000000000000000 host_consumer_send
+     /tmp/ccT1nfin.s:246    .bss.last_consumer_report:0000000000000000 last_consumer_report
+     /tmp/ccT1nfin.s:210    .text.host_last_system_report:0000000000000000 host_last_system_report
+     /tmp/ccT1nfin.s:228    .text.host_last_consumer_report:0000000000000000 host_last_consumer_report
 
 UNDEFINED SYMBOLS
 __do_clear_bss

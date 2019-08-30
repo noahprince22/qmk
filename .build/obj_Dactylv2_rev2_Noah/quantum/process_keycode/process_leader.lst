@@ -382,29 +382,29 @@
  340               		.file 8 "./quantum/quantum_keycodes.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 process_leader.c
-     /tmp/ccH4ibuU.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccH4ibuU.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccH4ibuU.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccH4ibuU.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccH4ibuU.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccH4ibuU.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
-     /tmp/ccH4ibuU.s:27     .text.rgblight_step:0000000000000000 rgblight_step
-     /tmp/ccH4ibuU.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
-     /tmp/ccH4ibuU.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
-     /tmp/ccH4ibuU.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
-     /tmp/ccH4ibuU.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
-     /tmp/ccH4ibuU.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
-     /tmp/ccH4ibuU.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
-     /tmp/ccH4ibuU.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
-     /tmp/ccH4ibuU.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
-     /tmp/ccH4ibuU.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
-     /tmp/ccH4ibuU.s:167    .text.leader_start:0000000000000000 leader_start
-     /tmp/ccH4ibuU.s:181    .text.leader_end:0000000000000000 leader_end
-     /tmp/ccH4ibuU.s:197    .text.process_leader:0000000000000000 process_leader
-     /tmp/ccH4ibuU.s:330    .bss.leading:0000000000000000 leading
-     /tmp/ccH4ibuU.s:324    .bss.leader_time:0000000000000000 leader_time
-     /tmp/ccH4ibuU.s:312    .bss.leader_sequence_size:0000000000000000 leader_sequence_size
-     /tmp/ccH4ibuU.s:318    .bss.leader_sequence:0000000000000000 leader_sequence
+     /tmp/cchZEstf.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cchZEstf.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cchZEstf.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cchZEstf.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cchZEstf.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cchZEstf.s:13     .text.rgblight_toggle:0000000000000000 rgblight_toggle
+     /tmp/cchZEstf.s:27     .text.rgblight_step:0000000000000000 rgblight_step
+     /tmp/cchZEstf.s:41     .text.rgblight_step_reverse:0000000000000000 rgblight_step_reverse
+     /tmp/cchZEstf.s:55     .text.rgblight_increase_hue:0000000000000000 rgblight_increase_hue
+     /tmp/cchZEstf.s:69     .text.rgblight_decrease_hue:0000000000000000 rgblight_decrease_hue
+     /tmp/cchZEstf.s:83     .text.rgblight_increase_sat:0000000000000000 rgblight_increase_sat
+     /tmp/cchZEstf.s:97     .text.rgblight_decrease_sat:0000000000000000 rgblight_decrease_sat
+     /tmp/cchZEstf.s:111    .text.rgblight_increase_val:0000000000000000 rgblight_increase_val
+     /tmp/cchZEstf.s:125    .text.rgblight_decrease_val:0000000000000000 rgblight_decrease_val
+     /tmp/cchZEstf.s:139    .text.rgblight_increase_speed:0000000000000000 rgblight_increase_speed
+     /tmp/cchZEstf.s:153    .text.rgblight_decrease_speed:0000000000000000 rgblight_decrease_speed
+     /tmp/cchZEstf.s:167    .text.leader_start:0000000000000000 leader_start
+     /tmp/cchZEstf.s:181    .text.leader_end:0000000000000000 leader_end
+     /tmp/cchZEstf.s:197    .text.process_leader:0000000000000000 process_leader
+     /tmp/cchZEstf.s:330    .bss.leading:0000000000000000 leading
+     /tmp/cchZEstf.s:324    .bss.leader_time:0000000000000000 leader_time
+     /tmp/cchZEstf.s:312    .bss.leader_sequence_size:0000000000000000 leader_sequence_size
+     /tmp/cchZEstf.s:318    .bss.leader_sequence:0000000000000000 leader_sequence
 
 UNDEFINED SYMBOLS
 timer_read
