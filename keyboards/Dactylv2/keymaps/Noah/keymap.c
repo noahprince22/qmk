@@ -154,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//							`----+----+----+'			`----+----+----'
 											HOME,			PGUP,
 	//							`----+----+----+'			`----+----+----'
-							    MALT, FN_L,END,			    PGDN, BSPC, SPACETHING
+							    MALT, GUITAB,END,			    PGDN, BSPC, SPACETHING
 	//							`----+----+----+'			`----+----+----'
 
 	),
@@ -356,6 +356,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      // a shift key, and so it comes through as a space. The only consequence of this is that space is applied on
      // key up, and not key down. So I need to make sure the space has been released before typing another key
      // realistically, if I'm light on my fingers, this shouldn't be a problem.
+     // It's a similar thing with the fn/gui/windows key. It should be a tab when I tap it, but if I use it as a
+     // modifier, it's a modifier.
      if (keycode == KC_SPACETHING) {
            if (record->event.pressed) {
                 space_shift_down = true;
@@ -375,7 +377,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
           gui_down = true;
           pressed_something_else_gui=false;
-          SEND_STRING(SS_DOWN(X_LGUI))
+          SEND_STRING(SS_DOWN(X_LGUI));
         }
         else{
           gui_down = false;
@@ -389,6 +391,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      else {
         if (record->event.pressed && space_shift_down) {
             pressed_something_else=true;
+        }
+        else if (record->event.pressed && gui_down) {
+            pressed_something_else_gui  =true;
         }
      }
 
