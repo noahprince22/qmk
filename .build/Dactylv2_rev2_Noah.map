@@ -969,7 +969,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x55e6
+.text           0x0000000000000000     0x55da
  *(.vectors)
  .vectors       0x0000000000000000       0xac /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
                 0x0000000000000000                __vectors
@@ -977,207 +977,201 @@ END GROUP
  *(.vectors)
  *(.progmem.gcc*)
  .progmem.gcc_sw_table.action_get_macro
-                0x00000000000000ac       0x34 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000000ac       0x32 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.gcc_sw_table.process_record_quantum
-                0x00000000000000e0       0x24 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x00000000000000de       0x24 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
  .progmem.gcc_sw_table.process_action
-                0x0000000000000104       0x4a .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x0000000000000102       0x4a .build/obj_Dactylv2_rev2_Noah/common/action.o
  .progmem.gcc_sw_table.is_tap_key
-                0x000000000000014e       0x1c .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x000000000000014c       0x1c .build/obj_Dactylv2_rev2_Noah/common/action.o
  .progmem.gcc_sw_table.USB_Device_ProcessControlRequest
-                0x000000000000016a       0x14 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
-                0x000000000000017e                . = ALIGN (0x2)
-                0x000000000000017e                __trampolines_start = .
+                0x0000000000000168       0x14 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x000000000000017c                . = ALIGN (0x2)
+                0x000000000000017c                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x000000000000017e        0x0 linker stubs
+ .trampolines   0x000000000000017c        0x0 linker stubs
  *(.trampolines*)
-                0x000000000000017e                __trampolines_end = .
+                0x000000000000017c                __trampolines_end = .
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
- .progmem.data.__c.3525
-                0x000000000000017e        0x2 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3523
-                0x0000000000000180        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3521
-                0x0000000000000183        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3518
-                0x0000000000000186        0xb .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3514
-                0x0000000000000191        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3526
+                0x000000000000017c        0xb .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3522
+                0x0000000000000187        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3520
+                0x000000000000018a        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3517
+                0x000000000000018d        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3515
+                0x0000000000000190        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3512
-                0x0000000000000194        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3509
-                0x0000000000000197        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000000193        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3510
+                0x0000000000000196        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3507
-                0x000000000000019a        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3504
-                0x000000000000019d        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000000199        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3505
+                0x00000000000001a0        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3502
-                0x00000000000001a0        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3499
-                0x00000000000001a3        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000001a7        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3500
+                0x00000000000001ae        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3497
-                0x00000000000001aa        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3494
-                0x00000000000001b1        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000001b5        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3495
+                0x00000000000001bc        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3492
-                0x00000000000001b8        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3489
-                0x00000000000001bf        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000001c3        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3490
+                0x00000000000001ca        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3487
-                0x00000000000001c6        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3484
-                0x00000000000001cd        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000001cf        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3485
+                0x00000000000001d6        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3482
-                0x00000000000001d4        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3479
-                0x00000000000001d9        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000001db        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3480
+                0x00000000000001e2        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3477
-                0x00000000000001e0        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3474
-                0x00000000000001e5        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000001e9        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3475
+                0x00000000000001f0        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3472
-                0x00000000000001ec        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3469
-                0x00000000000001f3        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000001f7        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3470
+                0x00000000000001fc        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3467
-                0x00000000000001fa        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3464
                 0x0000000000000201        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3462
+ .progmem.data.__c.3465
                 0x0000000000000206        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3459
+ .progmem.data.__c.3462
                 0x000000000000020b        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3457
+ .progmem.data.__c.3460
                 0x0000000000000210        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3454
+ .progmem.data.__c.3457
                 0x0000000000000215        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3452
+ .progmem.data.__c.3455
                 0x000000000000021a        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3449
+ .progmem.data.__c.3452
                 0x000000000000021f        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3447
+ .progmem.data.__c.3450
                 0x0000000000000224        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3444
+ .progmem.data.__c.3447
                 0x0000000000000229        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3442
+ .progmem.data.__c.3445
                 0x000000000000022e        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3439
+ .progmem.data.__c.3442
                 0x0000000000000233        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3437
+ .progmem.data.__c.3440
                 0x0000000000000238        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3434
-                0x000000000000023d        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3437
+                0x000000000000023d        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3435
+                0x0000000000000244        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3432
-                0x0000000000000242        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3429
-                0x0000000000000247        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x000000000000024b        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3430
+                0x0000000000000252        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3427
-                0x000000000000024e        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3424
-                0x0000000000000255        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000000259        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3425
+                0x000000000000025e        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3422
-                0x000000000000025c        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3419
                 0x0000000000000263        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3417
+ .progmem.data.__c.3420
                 0x0000000000000268        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3414
+ .progmem.data.__c.3417
                 0x000000000000026d        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3412
+ .progmem.data.__c.3415
                 0x0000000000000272        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3409
+ .progmem.data.__c.3412
                 0x0000000000000277        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3407
-                0x000000000000027c        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3404
-                0x0000000000000281        0x5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3402
-                0x0000000000000286        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3410
+                0x000000000000027c        0x7 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3397
+                0x0000000000000283        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3395
+                0x0000000000000286        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3393
+                0x0000000000000289        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3391
+                0x000000000000028c        0x2 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.__c.3389
-                0x000000000000028d        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3387
-                0x0000000000000290        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3385
-                0x0000000000000293        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3383
-                0x0000000000000296        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3381
-                0x0000000000000299        0x2 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .progmem.data.__c.3379
-                0x000000000000029b        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x000000000000028e        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .progmem.data.__c.3384
+                0x0000000000000291        0x3 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .progmem.data.keymaps
-                0x000000000000029e      0x540 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
-                0x000000000000029e                keymaps
+                0x0000000000000294      0x540 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000000294                keymaps
  .progmem.data.ascii_to_keycode_lut
-                0x00000000000007de       0x80 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x00000000000007de                ascii_to_keycode_lut
+                0x00000000000007d4       0x80 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x00000000000007d4                ascii_to_keycode_lut
  .progmem.data.ascii_to_shift_lut
-                0x000000000000085e       0x80 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x000000000000085e                ascii_to_shift_lut
+                0x0000000000000854       0x80 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x0000000000000854                ascii_to_shift_lut
  .progmem.data.fn_actions
-                0x00000000000008de        0x0 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
-                0x00000000000008de                fn_actions
+                0x00000000000008d4        0x0 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+                0x00000000000008d4                fn_actions
  .progmem.data.SerialNumberString
-                0x00000000000008de        0x6 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x00000000000008de                SerialNumberString
+                0x00000000000008d4        0x6 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x00000000000008d4                SerialNumberString
  .progmem.data.ProductString
-                0x00000000000008e4       0x10 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x00000000000008e4                ProductString
+                0x00000000000008da       0x10 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x00000000000008da                ProductString
  .progmem.data.ManufacturerString
-                0x00000000000008f4       0x18 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x00000000000008f4                ManufacturerString
+                0x00000000000008ea       0x18 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x00000000000008ea                ManufacturerString
  .progmem.data.LanguageString
-                0x000000000000090c        0x4 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x000000000000090c                LanguageString
+                0x0000000000000902        0x4 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x0000000000000902                LanguageString
  .progmem.data.ConfigurationDescriptor
-                0x0000000000000910       0x54 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x0000000000000910                ConfigurationDescriptor
+                0x0000000000000906       0x54 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x0000000000000906                ConfigurationDescriptor
  .progmem.data.DeviceDescriptor
-                0x0000000000000964       0x12 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x0000000000000964                DeviceDescriptor
+                0x000000000000095a       0x12 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x000000000000095a                DeviceDescriptor
  .progmem.data.ExtrakeyReport
-                0x0000000000000976       0x36 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x0000000000000976                ExtrakeyReport
+                0x000000000000096c       0x36 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x000000000000096c                ExtrakeyReport
  .progmem.data.MouseReport
-                0x00000000000009ac       0x4d .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x00000000000009ac                MouseReport
+                0x00000000000009a2       0x4d .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x00000000000009a2                MouseReport
  .progmem.data.KeyboardReport
-                0x00000000000009f9       0x40 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x00000000000009f9                KeyboardReport
-                0x0000000000000a3a                . = ALIGN (0x2)
- *fill*         0x0000000000000a39        0x1 
+                0x00000000000009ef       0x40 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x00000000000009ef                KeyboardReport
+                0x0000000000000a30                . = ALIGN (0x2)
+ *fill*         0x0000000000000a2f        0x1 
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000000000000a3a                __ctors_start = .
+                0x0000000000000a30                __ctors_start = .
  *(.ctors)
-                0x0000000000000a3a                __ctors_end = .
-                0x0000000000000a3a                __dtors_start = .
+                0x0000000000000a30                __ctors_end = .
+                0x0000000000000a30                __dtors_start = .
  *(.dtors)
-                0x0000000000000a3a                __dtors_end = .
+                0x0000000000000a30                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000000000000a3a        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
-                0x0000000000000a3a                __init
+ .init0         0x0000000000000a30        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
+                0x0000000000000a30                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000000000000a3a        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
+ .init2         0x0000000000000a30        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
  *(.init2)
  *(.init3)
- .init3         0x0000000000000a46       0x54 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
-                0x0000000000000a46                bootloader_jump_after_watchdog_reset
+ .init3         0x0000000000000a3c       0x54 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+                0x0000000000000a3c                bootloader_jump_after_watchdog_reset
  *(.init3)
  *(.init4)
- .init4         0x0000000000000a9a       0x16 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
-                0x0000000000000a9a                __do_copy_data
- .init4         0x0000000000000ab0       0x10 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
-                0x0000000000000ab0                __do_clear_bss
+ .init4         0x0000000000000a90       0x16 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x0000000000000a90                __do_copy_data
+ .init4         0x0000000000000aa6       0x10 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x0000000000000aa6                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -1188,670 +1182,672 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000000000000ac0        0x8 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
+ .init9         0x0000000000000ab6        0x8 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
  *(.init9)
  *(.text)
- .text          0x0000000000000ac8        0x4 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
-                0x0000000000000ac8                __vector_38
-                0x0000000000000ac8                __vector_22
-                0x0000000000000ac8                __vector_28
-                0x0000000000000ac8                __vector_32
-                0x0000000000000ac8                __vector_34
-                0x0000000000000ac8                __vector_24
-                0x0000000000000ac8                __bad_interrupt
-                0x0000000000000ac8                __vector_6
-                0x0000000000000ac8                __vector_31
-                0x0000000000000ac8                __vector_35
-                0x0000000000000ac8                __vector_39
-                0x0000000000000ac8                __vector_3
-                0x0000000000000ac8                __vector_23
-                0x0000000000000ac8                __vector_30
-                0x0000000000000ac8                __vector_25
-                0x0000000000000ac8                __vector_13
-                0x0000000000000ac8                __vector_17
-                0x0000000000000ac8                __vector_19
-                0x0000000000000ac8                __vector_7
-                0x0000000000000ac8                __vector_41
-                0x0000000000000ac8                __vector_27
-                0x0000000000000ac8                __vector_5
-                0x0000000000000ac8                __vector_33
-                0x0000000000000ac8                __vector_37
-                0x0000000000000ac8                __vector_4
-                0x0000000000000ac8                __vector_9
-                0x0000000000000ac8                __vector_2
-                0x0000000000000ac8                __vector_15
-                0x0000000000000ac8                __vector_36
-                0x0000000000000ac8                __vector_29
-                0x0000000000000ac8                __vector_40
-                0x0000000000000ac8                __vector_8
-                0x0000000000000ac8                __vector_26
-                0x0000000000000ac8                __vector_14
-                0x0000000000000ac8                __vector_16
-                0x0000000000000ac8                __vector_18
-                0x0000000000000ac8                __vector_20
-                0x0000000000000ac8                __vector_42
-                0x0000000000000acc                . = ALIGN (0x2)
+ .text          0x0000000000000abe        0x4 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
+                0x0000000000000abe                __vector_38
+                0x0000000000000abe                __vector_22
+                0x0000000000000abe                __vector_28
+                0x0000000000000abe                __vector_32
+                0x0000000000000abe                __vector_34
+                0x0000000000000abe                __vector_24
+                0x0000000000000abe                __bad_interrupt
+                0x0000000000000abe                __vector_6
+                0x0000000000000abe                __vector_31
+                0x0000000000000abe                __vector_35
+                0x0000000000000abe                __vector_39
+                0x0000000000000abe                __vector_3
+                0x0000000000000abe                __vector_23
+                0x0000000000000abe                __vector_30
+                0x0000000000000abe                __vector_25
+                0x0000000000000abe                __vector_13
+                0x0000000000000abe                __vector_17
+                0x0000000000000abe                __vector_19
+                0x0000000000000abe                __vector_7
+                0x0000000000000abe                __vector_41
+                0x0000000000000abe                __vector_27
+                0x0000000000000abe                __vector_5
+                0x0000000000000abe                __vector_33
+                0x0000000000000abe                __vector_37
+                0x0000000000000abe                __vector_4
+                0x0000000000000abe                __vector_9
+                0x0000000000000abe                __vector_2
+                0x0000000000000abe                __vector_15
+                0x0000000000000abe                __vector_36
+                0x0000000000000abe                __vector_29
+                0x0000000000000abe                __vector_40
+                0x0000000000000abe                __vector_8
+                0x0000000000000abe                __vector_26
+                0x0000000000000abe                __vector_14
+                0x0000000000000abe                __vector_16
+                0x0000000000000abe                __vector_18
+                0x0000000000000abe                __vector_20
+                0x0000000000000abe                __vector_42
+                0x0000000000000ac2                . = ALIGN (0x2)
  *(.text.*)
  .text.matrix_scan_user
-                0x0000000000000acc        0x2 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000acc                matrix_scan_user
+                0x0000000000000ac2        0x2 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000ac2                matrix_scan_user
  .text.matrix_init_user
-                0x0000000000000ace        0x4 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000ace                matrix_init_user
+                0x0000000000000ac4        0x4 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000ac4                matrix_init_user
  .text.matrix_scan_kb
-                0x0000000000000ad2        0x4 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000ad2                matrix_scan_kb
+                0x0000000000000ac8        0x4 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000ac8                matrix_scan_kb
  .text.matrix_init
-                0x0000000000000ad6       0xaa .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000ad6                matrix_init
+                0x0000000000000acc       0xaa .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000acc                matrix_init
  .text._matrix_scan
-                0x0000000000000b80      0x1a0 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000b80                _matrix_scan
+                0x0000000000000b76      0x1a0 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000b76                _matrix_scan
  .text.serial_transaction
-                0x0000000000000d20       0x46 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000d20                serial_transaction
+                0x0000000000000d16       0x46 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000d16                serial_transaction
  .text.matrix_scan
-                0x0000000000000d66       0x56 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000d66                matrix_scan
+                0x0000000000000d5c       0x56 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000d5c                matrix_scan
  .text.matrix_slave_scan
-                0x0000000000000dbc       0x32 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000dbc                matrix_slave_scan
+                0x0000000000000db2       0x32 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000db2                matrix_slave_scan
  .text.matrix_get_row
-                0x0000000000000dee        0xc .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000dee                matrix_get_row
+                0x0000000000000de4        0xc .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000de4                matrix_get_row
  .text.matrix_print
-                0x0000000000000dfa        0x2 .build/obj_Dactylv2_rev2_Noah/matrix.o
-                0x0000000000000dfa                matrix_print
- .text.has_usb  0x0000000000000dfc       0x1a .build/obj_Dactylv2_rev2_Noah/split_util.o
-                0x0000000000000dfc                has_usb
+                0x0000000000000df0        0x2 .build/obj_Dactylv2_rev2_Noah/matrix.o
+                0x0000000000000df0                matrix_print
+ .text.has_usb  0x0000000000000df2       0x1a .build/obj_Dactylv2_rev2_Noah/split_util.o
+                0x0000000000000df2                has_usb
  .text.split_keyboard_setup
-                0x0000000000000e16       0x1a .build/obj_Dactylv2_rev2_Noah/split_util.o
-                0x0000000000000e16                split_keyboard_setup
+                0x0000000000000e0c       0x1a .build/obj_Dactylv2_rev2_Noah/split_util.o
+                0x0000000000000e0c                split_keyboard_setup
  .text.keyboard_slave_loop
-                0x0000000000000e30        0xa .build/obj_Dactylv2_rev2_Noah/split_util.o
-                0x0000000000000e30                keyboard_slave_loop
+                0x0000000000000e26        0xa .build/obj_Dactylv2_rev2_Noah/split_util.o
+                0x0000000000000e26                keyboard_slave_loop
  .text.matrix_setup
-                0x0000000000000e3a       0x12 .build/obj_Dactylv2_rev2_Noah/split_util.o
-                0x0000000000000e3a                matrix_setup
+                0x0000000000000e30       0x12 .build/obj_Dactylv2_rev2_Noah/split_util.o
+                0x0000000000000e30                matrix_setup
  .text.serial_output
-                0x0000000000000e4c        0x4 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000e42        0x4 .build/obj_Dactylv2_rev2_Noah/serial.o
  .text.serial_input
-                0x0000000000000e50        0x6 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000e46        0x6 .build/obj_Dactylv2_rev2_Noah/serial.o
  .text.serial_high
-                0x0000000000000e56        0x4 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000e4c        0x4 .build/obj_Dactylv2_rev2_Noah/serial.o
  .text.sync_recv
-                0x0000000000000e5a       0x10 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000e50       0x10 .build/obj_Dactylv2_rev2_Noah/serial.o
  .text.serial_read_byte
-                0x0000000000000e6a       0x24 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000e60       0x24 .build/obj_Dactylv2_rev2_Noah/serial.o
  .text.serial_write_byte
-                0x0000000000000e8e       0x3e .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000e84       0x3e .build/obj_Dactylv2_rev2_Noah/serial.o
  .text.sync_send
-                0x0000000000000ecc       0x10 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000ec2       0x10 .build/obj_Dactylv2_rev2_Noah/serial.o
  .text.serial_master_init
-                0x0000000000000edc        0x8 .build/obj_Dactylv2_rev2_Noah/serial.o
-                0x0000000000000edc                serial_master_init
+                0x0000000000000ed2        0x8 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000ed2                serial_master_init
  .text.serial_slave_init
-                0x0000000000000ee4       0x12 .build/obj_Dactylv2_rev2_Noah/serial.o
-                0x0000000000000ee4                serial_slave_init
+                0x0000000000000eda       0x12 .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000eda                serial_slave_init
  .text.__vector_1
-                0x0000000000000ef6       0xca .build/obj_Dactylv2_rev2_Noah/serial.o
-                0x0000000000000ef6                __vector_1
+                0x0000000000000eec       0xca .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000eec                __vector_1
  .text.serial_update_buffers
-                0x0000000000000fc0       0x9e .build/obj_Dactylv2_rev2_Noah/serial.o
-                0x0000000000000fc0                serial_update_buffers
+                0x0000000000000fb6       0x9e .build/obj_Dactylv2_rev2_Noah/serial.o
+                0x0000000000000fb6                serial_update_buffers
  .text.matrix_init_kb
-                0x000000000000105e        0x4 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
-                0x000000000000105e                matrix_init_kb
- .text.enqueue  0x0000000000001062       0x34 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
-                0x0000000000001062                enqueue
- .text.dequeue  0x0000000000001096       0x60 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
-                0x0000000000001096                dequeue
- .text.remove   0x00000000000010f6       0x6e .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
-                0x00000000000010f6                remove
+                0x0000000000001054        0x4 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
+                0x0000000000001054                matrix_init_kb
+ .text.enqueue  0x0000000000001058       0x34 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000001058                enqueue
+ .text.dequeue  0x000000000000108c       0x60 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x000000000000108c                dequeue
+ .text.remove   0x00000000000010ec       0x72 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x00000000000010ec                remove
+ .text.in       0x000000000000115e       0x28 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x000000000000115e                in
  .text.process_record_user
-                0x0000000000001164      0x172 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
-                0x0000000000001164                process_record_user
+                0x0000000000001186      0x180 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000001186                process_record_user
  .text.action_get_macro
-                0x00000000000012d6      0x2ca .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
-                0x00000000000012d6                action_get_macro
+                0x0000000000001306      0x28e .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000001306                action_get_macro
  .text.process_action_kb
-                0x00000000000015a0        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x00000000000015a0                process_action_kb
+                0x0000000000001594        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x0000000000001594                process_action_kb
  .text.process_record_kb
-                0x00000000000015a4        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x00000000000015a4                process_record_kb
+                0x0000000000001598        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x0000000000001598                process_record_kb
  .text.reset_keyboard
-                0x00000000000015a8       0x26 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x00000000000015a8                reset_keyboard
+                0x000000000000159c       0x26 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x000000000000159c                reset_keyboard
  .text.process_record_quantum
-                0x00000000000015ce      0x302 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x00000000000015ce                process_record_quantum
+                0x00000000000015c2      0x302 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x00000000000015c2                process_record_quantum
  .text.send_char
-                0x00000000000018d0       0x3c .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x00000000000018d0                send_char
+                0x00000000000018c4       0x3c .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x00000000000018c4                send_char
  .text.send_string_with_delay_P
-                0x000000000000190c       0x74 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x000000000000190c                send_string_with_delay_P
+                0x0000000000001900       0x74 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x0000000000001900                send_string_with_delay_P
  .text.send_string_P
-                0x0000000000001980        0x6 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x0000000000001980                send_string_P
+                0x0000000000001974        0x6 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x0000000000001974                send_string_P
  .text.matrix_init_quantum
-                0x0000000000001986        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x0000000000001986                matrix_init_quantum
+                0x000000000000197a        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x000000000000197a                matrix_init_quantum
  .text.matrix_scan_quantum
-                0x000000000000198a        0x8 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x000000000000198a                matrix_scan_quantum
+                0x000000000000197e        0x8 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x000000000000197e                matrix_scan_quantum
  .text.led_set_user
-                0x0000000000001992        0x2 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x0000000000001992                led_set_user
+                0x0000000000001986        0x2 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x0000000000001986                led_set_user
  .text.led_set_kb
-                0x0000000000001994        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x0000000000001994                led_set_kb
- .text.led_set  0x0000000000001998        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
-                0x0000000000001998                led_set
+                0x0000000000001988        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x0000000000001988                led_set_kb
+ .text.led_set  0x000000000000198c        0x4 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x000000000000198c                led_set
  .text.action_function
-                0x000000000000199c        0x2 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
-                0x000000000000199c                action_function
+                0x0000000000001990        0x2 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+                0x0000000000001990                action_function
  .text.keymap_key_to_keycode
-                0x000000000000199e       0x26 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
-                0x000000000000199e                keymap_key_to_keycode
+                0x0000000000001992       0x26 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+                0x0000000000001992                keymap_key_to_keycode
  .text.keymap_function_id_to_action
-                0x00000000000019c4       0x10 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
-                0x00000000000019c4                keymap_function_id_to_action
+                0x00000000000019b8       0x10 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+                0x00000000000019b8                keymap_function_id_to_action
  .text.action_for_key
-                0x00000000000019d4      0x348 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
-                0x00000000000019d4                action_for_key
+                0x00000000000019c8      0x348 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+                0x00000000000019c8                action_for_key
  .text.keycode_config
-                0x0000000000001d1c       0xf8 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
-                0x0000000000001d1c                keycode_config
+                0x0000000000001d10       0xf8 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+                0x0000000000001d10                keycode_config
  .text.mod_config
-                0x0000000000001e14       0x46 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
-                0x0000000000001e14                mod_config
+                0x0000000000001e08       0x46 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+                0x0000000000001e08                mod_config
  .text.leader_start
-                0x0000000000001e5a        0x2 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
-                0x0000000000001e5a                leader_start
+                0x0000000000001e4e        0x2 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+                0x0000000000001e4e                leader_start
  .text.process_leader
-                0x0000000000001e5c       0x9e .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
-                0x0000000000001e5c                process_leader
+                0x0000000000001e50       0x9e .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+                0x0000000000001e50                process_leader
  .text.process_tap_dance_action_on_dance_finished.part.0
-                0x0000000000001efa       0x36 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+                0x0000000000001eee       0x36 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
  .text.reset_tap_dance
-                0x0000000000001f30       0x8a .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
-                0x0000000000001f30                reset_tap_dance
+                0x0000000000001f24       0x8a .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+                0x0000000000001f24                reset_tap_dance
  .text.preprocess_tap_dance
-                0x0000000000001fba       0x8a .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
-                0x0000000000001fba                preprocess_tap_dance
+                0x0000000000001fae       0x8a .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+                0x0000000000001fae                preprocess_tap_dance
  .text.process_tap_dance
-                0x0000000000002044       0xb8 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
-                0x0000000000002044                process_tap_dance
+                0x0000000000002038       0xb8 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+                0x0000000000002038                process_tap_dance
  .text.matrix_scan_tap_dance
-                0x00000000000020fc       0xa6 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
-                0x00000000000020fc                matrix_scan_tap_dance
+                0x00000000000020f0       0xa6 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+                0x00000000000020f0                matrix_scan_tap_dance
  .text.host_set_driver
-                0x00000000000021a2        0xa .build/obj_Dactylv2_rev2_Noah/common/host.o
-                0x00000000000021a2                host_set_driver
+                0x0000000000002196        0xa .build/obj_Dactylv2_rev2_Noah/common/host.o
+                0x0000000000002196                host_set_driver
  .text.host_keyboard_leds
-                0x00000000000021ac       0x18 .build/obj_Dactylv2_rev2_Noah/common/host.o
-                0x00000000000021ac                host_keyboard_leds
+                0x00000000000021a0       0x18 .build/obj_Dactylv2_rev2_Noah/common/host.o
+                0x00000000000021a0                host_keyboard_leds
  .text.host_keyboard_send
-                0x00000000000021c4       0x16 .build/obj_Dactylv2_rev2_Noah/common/host.o
-                0x00000000000021c4                host_keyboard_send
+                0x00000000000021b8       0x16 .build/obj_Dactylv2_rev2_Noah/common/host.o
+                0x00000000000021b8                host_keyboard_send
  .text.host_mouse_send
-                0x00000000000021da       0x16 .build/obj_Dactylv2_rev2_Noah/common/host.o
-                0x00000000000021da                host_mouse_send
+                0x00000000000021ce       0x16 .build/obj_Dactylv2_rev2_Noah/common/host.o
+                0x00000000000021ce                host_mouse_send
  .text.host_system_send
-                0x00000000000021f0       0x2c .build/obj_Dactylv2_rev2_Noah/common/host.o
-                0x00000000000021f0                host_system_send
+                0x00000000000021e4       0x2c .build/obj_Dactylv2_rev2_Noah/common/host.o
+                0x00000000000021e4                host_system_send
  .text.host_consumer_send
-                0x000000000000221c       0x2c .build/obj_Dactylv2_rev2_Noah/common/host.o
-                0x000000000000221c                host_consumer_send
+                0x0000000000002210       0x2c .build/obj_Dactylv2_rev2_Noah/common/host.o
+                0x0000000000002210                host_consumer_send
  .text.keyboard_setup
-                0x0000000000002248        0x4 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
-                0x0000000000002248                keyboard_setup
+                0x000000000000223c        0x4 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+                0x000000000000223c                keyboard_setup
  .text.is_keyboard_master
-                0x000000000000224c        0x4 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
-                0x000000000000224c                is_keyboard_master
+                0x0000000000002240        0x4 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+                0x0000000000002240                is_keyboard_master
  .text.keyboard_init
-                0x0000000000002250        0xc .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
-                0x0000000000002250                keyboard_init
+                0x0000000000002244        0xc .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+                0x0000000000002244                keyboard_init
  .text.keyboard_task
-                0x000000000000225c      0x152 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
-                0x000000000000225c                keyboard_task
+                0x0000000000002250      0x152 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+                0x0000000000002250                keyboard_task
  .text.action_exec
-                0x00000000000023ae       0x5c .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x00000000000023ae                action_exec
+                0x00000000000023a2       0x5c .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x00000000000023a2                action_exec
  .text.process_record_tap_hint
-                0x000000000000240a        0xc .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x000000000000240a                process_record_tap_hint
+                0x00000000000023fe        0xc .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x00000000000023fe                process_record_tap_hint
  .text.register_code
-                0x0000000000002416      0x204 .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x0000000000002416                register_code
+                0x000000000000240a      0x204 .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x000000000000240a                register_code
  .text.unregister_code
-                0x000000000000261a       0xbe .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x000000000000261a                unregister_code
+                0x000000000000260e       0xbe .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x000000000000260e                unregister_code
  .text.register_mods
-                0x00000000000026d8        0xe .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x00000000000026d8                register_mods
+                0x00000000000026cc        0xe .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x00000000000026cc                register_mods
  .text.unregister_mods
-                0x00000000000026e6        0xe .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x00000000000026e6                unregister_mods
+                0x00000000000026da        0xe .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x00000000000026da                unregister_mods
  .text.process_action
-                0x00000000000026f4      0x4c0 .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x00000000000026f4                process_action
+                0x00000000000026e8      0x4c0 .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x00000000000026e8                process_action
  .text.process_record
-                0x0000000000002bb4       0x5c .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x0000000000002bb4                process_record
+                0x0000000000002ba8       0x5c .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x0000000000002ba8                process_record
  .text.clear_keyboard_but_mods
-                0x0000000000002c10       0x30 .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x0000000000002c10                clear_keyboard_but_mods
+                0x0000000000002c04       0x30 .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x0000000000002c04                clear_keyboard_but_mods
  .text.clear_keyboard
-                0x0000000000002c40        0x8 .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x0000000000002c40                clear_keyboard
+                0x0000000000002c34        0x8 .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x0000000000002c34                clear_keyboard
  .text.is_tap_key
-                0x0000000000002c48       0x4c .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x0000000000002c48                is_tap_key
+                0x0000000000002c3c       0x4c .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x0000000000002c3c                is_tap_key
  .text.debug_event
-                0x0000000000002c94       0x1e .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x0000000000002c94                debug_event
+                0x0000000000002c88       0x1e .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x0000000000002c88                debug_event
  .text.debug_record
-                0x0000000000002cb2       0x20 .build/obj_Dactylv2_rev2_Noah/common/action.o
-                0x0000000000002cb2                debug_record
+                0x0000000000002ca6       0x20 .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x0000000000002ca6                debug_record
  .text.debug_waiting_buffer
-                0x0000000000002cd2       0x42 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+                0x0000000000002cc6       0x42 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
  .text.debug_tapping_key
-                0x0000000000002d14       0x1c .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+                0x0000000000002d08       0x1c .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
  .text.waiting_buffer_typed.isra.1
-                0x0000000000002d30       0x40 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+                0x0000000000002d24       0x40 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
  .text.waiting_buffer_scan_tap
-                0x0000000000002d70       0xd0 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+                0x0000000000002d64       0xd0 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
  .text.process_tapping
-                0x0000000000002e40      0x40e .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+                0x0000000000002e34      0x40e .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
  .text.action_tapping_process
-                0x000000000000324e      0x15c .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
-                0x000000000000324e                action_tapping_process
+                0x0000000000003242      0x15c .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+                0x0000000000003242                action_tapping_process
  .text.action_macro_play
-                0x00000000000033aa       0xfa .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
-                0x00000000000033aa                action_macro_play
+                0x000000000000339e       0xfa .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+                0x000000000000339e                action_macro_play
  .text.default_layer_debug
-                0x00000000000034a4        0x2 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000034a4                default_layer_debug
+                0x0000000000003498        0x2 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003498                default_layer_debug
  .text.layer_state_set_user
-                0x00000000000034a6        0x2 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000034a6                layer_state_set_user
+                0x000000000000349a        0x2 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x000000000000349a                layer_state_set_user
  .text.default_layer_state_set_kb
-                0x00000000000034a8        0x4 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000034a8                default_layer_state_set_kb
+                0x000000000000349c        0x4 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x000000000000349c                default_layer_state_set_kb
  .text.default_layer_state_set
-                0x00000000000034ac       0x18 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000034a0       0x18 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
  .text.default_layer_set
-                0x00000000000034c4        0x4 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000034c4                default_layer_set
+                0x00000000000034b8        0x4 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000034b8                default_layer_set
  .text.default_layer_or
-                0x00000000000034c8       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000034c8                default_layer_or
+                0x00000000000034bc       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000034bc                default_layer_or
  .text.default_layer_and
-                0x00000000000034ec       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000034ec                default_layer_and
+                0x00000000000034e0       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000034e0                default_layer_and
  .text.default_layer_xor
-                0x0000000000003510       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003510                default_layer_xor
+                0x0000000000003504       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003504                default_layer_xor
  .text.layer_state_set_kb
-                0x0000000000003534        0x4 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003534                layer_state_set_kb
+                0x0000000000003528        0x4 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003528                layer_state_set_kb
  .text.layer_state_set
-                0x0000000000003538       0x18 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003538                layer_state_set
+                0x000000000000352c       0x18 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x000000000000352c                layer_state_set
  .text.layer_clear
-                0x0000000000003550        0xa .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003550                layer_clear
+                0x0000000000003544        0xa .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003544                layer_clear
  .text.layer_move
-                0x000000000000355a       0x2a .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x000000000000355a                layer_move
+                0x000000000000354e       0x2a .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x000000000000354e                layer_move
  .text.layer_on
-                0x0000000000003584       0x42 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003584                layer_on
+                0x0000000000003578       0x42 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003578                layer_on
  .text.layer_off
-                0x00000000000035c6       0x4a .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000035c6                layer_off
+                0x00000000000035ba       0x4a .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000035ba                layer_off
  .text.layer_invert
-                0x0000000000003610       0x42 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003610                layer_invert
+                0x0000000000003604       0x42 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003604                layer_invert
  .text.layer_or
-                0x0000000000003652       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003652                layer_or
+                0x0000000000003646       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003646                layer_or
  .text.layer_and
-                0x0000000000003676       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003676                layer_and
+                0x000000000000366a       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x000000000000366a                layer_and
  .text.layer_xor
-                0x000000000000369a       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x000000000000369a                layer_xor
+                0x000000000000368e       0x24 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x000000000000368e                layer_xor
  .text.layer_debug
-                0x00000000000036be        0x2 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000036be                layer_debug
+                0x00000000000036b2        0x2 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000036b2                layer_debug
  .text.update_source_layers_cache
-                0x00000000000036c0       0x58 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000036c0                update_source_layers_cache
+                0x00000000000036b4       0x58 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000036b4                update_source_layers_cache
  .text.read_source_layers_cache
-                0x0000000000003718       0x5a .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003718                read_source_layers_cache
+                0x000000000000370c       0x5a .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x000000000000370c                read_source_layers_cache
  .text.layer_switch_get_layer
-                0x0000000000003772       0x7e .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003772                layer_switch_get_layer
+                0x0000000000003766       0x7e .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x0000000000003766                layer_switch_get_layer
  .text.layer_switch_get_action
-                0x00000000000037f0       0x16 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x00000000000037f0                layer_switch_get_action
+                0x00000000000037e4       0x16 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000037e4                layer_switch_get_action
  .text.store_or_get_action
-                0x0000000000003806       0x46 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
-                0x0000000000003806                store_or_get_action
+                0x00000000000037fa       0x46 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000037fa                store_or_get_action
  .text.get_oneshot_layer
-                0x000000000000384c        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000384c                get_oneshot_layer
+                0x0000000000003840        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003840                get_oneshot_layer
  .text.get_oneshot_layer_state
-                0x0000000000003858        0x8 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003858                get_oneshot_layer_state
+                0x000000000000384c        0x8 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x000000000000384c                get_oneshot_layer_state
  .text.set_oneshot_layer
-                0x0000000000003860       0x12 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003860                set_oneshot_layer
+                0x0000000000003854       0x12 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003854                set_oneshot_layer
  .text.clear_oneshot_layer_state
-                0x0000000000003872       0x2e .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003872                clear_oneshot_layer_state
+                0x0000000000003866       0x2e .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003866                clear_oneshot_layer_state
  .text.is_oneshot_layer_active
-                0x00000000000038a0        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x00000000000038a0                is_oneshot_layer_active
+                0x0000000000003894        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003894                is_oneshot_layer_active
  .text.send_keyboard_report
-                0x00000000000038ae       0x66 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x00000000000038ae                send_keyboard_report
+                0x00000000000038a2       0x66 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x00000000000038a2                send_keyboard_report
  .text.get_mods
-                0x0000000000003914        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003914                get_mods
+                0x0000000000003908        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003908                get_mods
  .text.add_mods
-                0x000000000000391a        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000391a                add_mods
+                0x000000000000390e        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x000000000000390e                add_mods
  .text.del_mods
-                0x0000000000003926        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003926                del_mods
+                0x000000000000391a        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x000000000000391a                del_mods
  .text.clear_mods
-                0x0000000000003934        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003934                clear_mods
+                0x0000000000003928        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003928                clear_mods
  .text.get_weak_mods
-                0x000000000000393a        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000393a                get_weak_mods
+                0x000000000000392e        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x000000000000392e                get_weak_mods
  .text.add_weak_mods
-                0x0000000000003940        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003940                add_weak_mods
+                0x0000000000003934        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003934                add_weak_mods
  .text.del_weak_mods
-                0x000000000000394c        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000394c                del_weak_mods
+                0x0000000000003940        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003940                del_weak_mods
  .text.clear_weak_mods
-                0x000000000000395a        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000395a                clear_weak_mods
+                0x000000000000394e        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x000000000000394e                clear_weak_mods
  .text.add_macro_mods
-                0x0000000000003960        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003960                add_macro_mods
+                0x0000000000003954        0xc .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003954                add_macro_mods
  .text.del_macro_mods
-                0x000000000000396c        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000396c                del_macro_mods
+                0x0000000000003960        0xe .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003960                del_macro_mods
  .text.clear_macro_mods
-                0x000000000000397a        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000397a                clear_macro_mods
+                0x000000000000396e        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x000000000000396e                clear_macro_mods
  .text.set_oneshot_mods
-                0x0000000000003980        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003980                set_oneshot_mods
+                0x0000000000003974        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003974                set_oneshot_mods
  .text.clear_oneshot_mods
-                0x0000000000003986        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x0000000000003986                clear_oneshot_mods
+                0x000000000000397a        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x000000000000397a                clear_oneshot_mods
  .text.get_oneshot_mods
-                0x000000000000398c        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
-                0x000000000000398c                get_oneshot_mods
+                0x0000000000003980        0x6 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000003980                get_oneshot_mods
  .text.eeconfig_init
-                0x0000000000003992       0x34 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
-                0x0000000000003992                eeconfig_init
+                0x0000000000003986       0x34 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+                0x0000000000003986                eeconfig_init
  .text.eeconfig_is_enabled
-                0x00000000000039c6       0x16 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
-                0x00000000000039c6                eeconfig_is_enabled
+                0x00000000000039ba       0x16 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+                0x00000000000039ba                eeconfig_is_enabled
  .text.eeconfig_read_debug
-                0x00000000000039dc        0x8 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
-                0x00000000000039dc                eeconfig_read_debug
+                0x00000000000039d0        0x8 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+                0x00000000000039d0                eeconfig_read_debug
  .text.eeconfig_read_default_layer
-                0x00000000000039e4        0x8 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
-                0x00000000000039e4                eeconfig_read_default_layer
+                0x00000000000039d8        0x8 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+                0x00000000000039d8                eeconfig_read_default_layer
  .text.eeconfig_read_keymap
-                0x00000000000039ec        0x8 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
-                0x00000000000039ec                eeconfig_read_keymap
+                0x00000000000039e0        0x8 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+                0x00000000000039e0                eeconfig_read_keymap
  .text.eeconfig_update_keymap
-                0x00000000000039f4        0xa .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
-                0x00000000000039f4                eeconfig_update_keymap
+                0x00000000000039e8        0xa .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+                0x00000000000039e8                eeconfig_update_keymap
  .text.has_anykey
-                0x00000000000039fe       0x1a .build/obj_Dactylv2_rev2_Noah/common/report.o
-                0x00000000000039fe                has_anykey
+                0x00000000000039f2       0x1a .build/obj_Dactylv2_rev2_Noah/common/report.o
+                0x00000000000039f2                has_anykey
  .text.add_key_byte
-                0x0000000000003a18       0x34 .build/obj_Dactylv2_rev2_Noah/common/report.o
-                0x0000000000003a18                add_key_byte
+                0x0000000000003a0c       0x34 .build/obj_Dactylv2_rev2_Noah/common/report.o
+                0x0000000000003a0c                add_key_byte
  .text.del_key_byte
-                0x0000000000003a4c       0x1a .build/obj_Dactylv2_rev2_Noah/common/report.o
-                0x0000000000003a4c                del_key_byte
+                0x0000000000003a40       0x1a .build/obj_Dactylv2_rev2_Noah/common/report.o
+                0x0000000000003a40                del_key_byte
  .text.add_key_to_report
-                0x0000000000003a66        0x4 .build/obj_Dactylv2_rev2_Noah/common/report.o
-                0x0000000000003a66                add_key_to_report
+                0x0000000000003a5a        0x4 .build/obj_Dactylv2_rev2_Noah/common/report.o
+                0x0000000000003a5a                add_key_to_report
  .text.del_key_from_report
-                0x0000000000003a6a        0x4 .build/obj_Dactylv2_rev2_Noah/common/report.o
-                0x0000000000003a6a                del_key_from_report
+                0x0000000000003a5e        0x4 .build/obj_Dactylv2_rev2_Noah/common/report.o
+                0x0000000000003a5e                del_key_from_report
  .text.clear_keys_from_report
-                0x0000000000003a6e       0x10 .build/obj_Dactylv2_rev2_Noah/common/report.o
-                0x0000000000003a6e                clear_keys_from_report
+                0x0000000000003a62       0x10 .build/obj_Dactylv2_rev2_Noah/common/report.o
+                0x0000000000003a62                clear_keys_from_report
  .text.suspend_power_down
-                0x0000000000003a7e       0x58 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
-                0x0000000000003a7e                suspend_power_down
+                0x0000000000003a72       0x58 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+                0x0000000000003a72                suspend_power_down
  .text.matrix_power_down
-                0x0000000000003ad6        0x2 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
-                0x0000000000003ad6                matrix_power_down
+                0x0000000000003aca        0x2 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+                0x0000000000003aca                matrix_power_down
  .text.matrix_power_up
-                0x0000000000003ad8        0x4 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
-                0x0000000000003ad8                matrix_power_up
+                0x0000000000003acc        0x4 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+                0x0000000000003acc                matrix_power_up
  .text.suspend_wakeup_condition
-                0x0000000000003adc       0x28 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
-                0x0000000000003adc                suspend_wakeup_condition
+                0x0000000000003ad0       0x28 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+                0x0000000000003ad0                suspend_wakeup_condition
  .text.suspend_wakeup_init
-                0x0000000000003b04        0xc .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
-                0x0000000000003b04                suspend_wakeup_init
+                0x0000000000003af8        0xc .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+                0x0000000000003af8                suspend_wakeup_init
  .text.__vector_12
-                0x0000000000003b10       0x52 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
-                0x0000000000003b10                __vector_12
+                0x0000000000003b04       0x52 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+                0x0000000000003b04                __vector_12
  .text.timer_init
-                0x0000000000003b62       0x12 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
-                0x0000000000003b62                timer_init
+                0x0000000000003b56       0x12 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+                0x0000000000003b56                timer_init
  .text.timer_read
-                0x0000000000003b74       0x18 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
-                0x0000000000003b74                timer_read
+                0x0000000000003b68       0x18 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+                0x0000000000003b68                timer_read
  .text.timer_elapsed
-                0x0000000000003b8c       0x54 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
-                0x0000000000003b8c                timer_elapsed
+                0x0000000000003b80       0x54 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+                0x0000000000003b80                timer_elapsed
  .text.__vector_21
-                0x0000000000003be0       0x4c .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
-                0x0000000000003be0                __vector_21
+                0x0000000000003bd4       0x4c .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+                0x0000000000003bd4                __vector_21
  .text.bootloader_jump
-                0x0000000000003c2c       0x22 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
-                0x0000000000003c2c                bootloader_jump
- .text.magic    0x0000000000003c4e       0x32 .build/obj_Dactylv2_rev2_Noah/common/magic.o
-                0x0000000000003c4e                magic
+                0x0000000000003c20       0x22 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+                0x0000000000003c20                bootloader_jump
+ .text.magic    0x0000000000003c42       0x32 .build/obj_Dactylv2_rev2_Noah/common/magic.o
+                0x0000000000003c42                magic
  .text.move_unit
-                0x0000000000003c80       0x92 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000003c74       0x92 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
  .text.wheel_unit
-                0x0000000000003d12       0x72 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000003d06       0x72 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
  .text.mousekey_on
-                0x0000000000003d84       0xd0 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
-                0x0000000000003d84                mousekey_on
+                0x0000000000003d78       0xd0 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000003d78                mousekey_on
  .text.mousekey_off
-                0x0000000000003e54      0x10a .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
-                0x0000000000003e54                mousekey_off
+                0x0000000000003e48      0x10a .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000003e48                mousekey_off
  .text.mousekey_send
-                0x0000000000003f5e       0x16 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
-                0x0000000000003f5e                mousekey_send
+                0x0000000000003f52       0x16 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000003f52                mousekey_send
  .text.mousekey_task
-                0x0000000000003f74      0x11c .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
-                0x0000000000003f74                mousekey_task
+                0x0000000000003f68      0x11c .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000003f68                mousekey_task
  .text.mousekey_clear
-                0x0000000000004090       0x18 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
-                0x0000000000004090                mousekey_clear
+                0x0000000000004084       0x18 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000004084                mousekey_clear
  .text.mousekey_param_inc
-                0x00000000000040a8       0xec .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x000000000000409c       0xec .build/obj_Dactylv2_rev2_Noah/common/command.o
  .text.mousekey_param_dec
-                0x0000000000004194       0xa0 .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x0000000000004188       0xa0 .build/obj_Dactylv2_rev2_Noah/common/command.o
  .text.switch_default_layer
-                0x0000000000004234       0x2e .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x0000000000004228       0x2e .build/obj_Dactylv2_rev2_Noah/common/command.o
  .text.command_common
-                0x0000000000004262      0x116 .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x0000000000004256      0x116 .build/obj_Dactylv2_rev2_Noah/common/command.o
  .text.command_console_extra
-                0x0000000000004378        0x4 .build/obj_Dactylv2_rev2_Noah/common/command.o
-                0x0000000000004378                command_console_extra
+                0x000000000000436c        0x4 .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x000000000000436c                command_console_extra
  .text.command_extra
-                0x000000000000437c        0x4 .build/obj_Dactylv2_rev2_Noah/common/command.o
-                0x000000000000437c                command_extra
+                0x0000000000004370        0x4 .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x0000000000004370                command_extra
  .text.numkey2num
-                0x0000000000004380       0x16 .build/obj_Dactylv2_rev2_Noah/common/command.o
-                0x0000000000004380                numkey2num
+                0x0000000000004374       0x16 .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x0000000000004374                numkey2num
  .text.command_proc
-                0x0000000000004396      0x12e .build/obj_Dactylv2_rev2_Noah/common/command.o
-                0x0000000000004396                command_proc
+                0x000000000000438a      0x12e .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x000000000000438a                command_proc
  .text.keyboard_leds
-                0x00000000000044c4        0x6 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x00000000000044b8        0x6 .build/obj_Dactylv2_rev2_Noah/lufa.o
  .text.send_consumer
-                0x00000000000044ca       0x74 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x00000000000044be       0x74 .build/obj_Dactylv2_rev2_Noah/lufa.o
  .text.send_system
-                0x000000000000453e       0x6c .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x0000000000004532       0x6c .build/obj_Dactylv2_rev2_Noah/lufa.o
  .text.send_mouse
-                0x00000000000045aa       0x56 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x000000000000459e       0x56 .build/obj_Dactylv2_rev2_Noah/lufa.o
  .text.send_keyboard
-                0x0000000000004600       0x66 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x00000000000045f4       0x66 .build/obj_Dactylv2_rev2_Noah/lufa.o
  .text.EVENT_USB_Device_Connect
-                0x0000000000004666       0x1c .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x0000000000004666                EVENT_USB_Device_Connect
+                0x000000000000465a       0x1c .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x000000000000465a                EVENT_USB_Device_Connect
  .text.EVENT_USB_Device_Disconnect
-                0x0000000000004682        0x6 .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x0000000000004682                EVENT_USB_Device_Disconnect
+                0x0000000000004676        0x6 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x0000000000004676                EVENT_USB_Device_Disconnect
  .text.EVENT_USB_Device_Reset
-                0x0000000000004688        0x2 .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x0000000000004688                EVENT_USB_Device_Reset
+                0x000000000000467c        0x2 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x000000000000467c                EVENT_USB_Device_Reset
  .text.EVENT_USB_Device_Suspend
-                0x000000000000468a        0x2 .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x000000000000468a                EVENT_USB_Device_Suspend
+                0x000000000000467e        0x2 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x000000000000467e                EVENT_USB_Device_Suspend
  .text.EVENT_USB_Device_WakeUp
-                0x000000000000468c        0x4 .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x000000000000468c                EVENT_USB_Device_WakeUp
+                0x0000000000004680        0x4 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x0000000000004680                EVENT_USB_Device_WakeUp
  .text.EVENT_USB_Device_ConfigurationChanged
-                0x0000000000004690       0x1e .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x0000000000004690                EVENT_USB_Device_ConfigurationChanged
+                0x0000000000004684       0x1e .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x0000000000004684                EVENT_USB_Device_ConfigurationChanged
  .text.EVENT_USB_Device_ControlRequest
-                0x00000000000046ae      0x160 .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x00000000000046ae                EVENT_USB_Device_ControlRequest
+                0x00000000000046a2      0x160 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x00000000000046a2                EVENT_USB_Device_ControlRequest
  .text.startup.main
-                0x000000000000480e       0x76 .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x000000000000480e                main
+                0x0000000000004802       0x76 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x0000000000004802                main
  .text.CALLBACK_USB_GetDescriptor
-                0x0000000000004884        0x4 .build/obj_Dactylv2_rev2_Noah/lufa.o
-                0x0000000000004884                CALLBACK_USB_GetDescriptor
+                0x0000000000004878        0x4 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x0000000000004878                CALLBACK_USB_GetDescriptor
  .text.get_usb_descriptor
-                0x0000000000004888       0xb8 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
-                0x0000000000004888                get_usb_descriptor
+                0x000000000000487c       0xb8 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x000000000000487c                get_usb_descriptor
  .text.set_output_user
-                0x0000000000004940        0x2 .build/obj_Dactylv2_rev2_Noah/outputselect.o
-                0x0000000000004940                set_output_user
+                0x0000000000004934        0x2 .build/obj_Dactylv2_rev2_Noah/outputselect.o
+                0x0000000000004934                set_output_user
  .text.set_output
-                0x0000000000004942       0x10 .build/obj_Dactylv2_rev2_Noah/outputselect.o
-                0x0000000000004942                set_output
+                0x0000000000004936       0x10 .build/obj_Dactylv2_rev2_Noah/outputselect.o
+                0x0000000000004936                set_output
  .text.auto_detect_output
-                0x0000000000004952       0x10 .build/obj_Dactylv2_rev2_Noah/outputselect.o
-                0x0000000000004952                auto_detect_output
+                0x0000000000004946       0x10 .build/obj_Dactylv2_rev2_Noah/outputselect.o
+                0x0000000000004946                auto_detect_output
  .text.where_to_send
-                0x0000000000004962        0xe .build/obj_Dactylv2_rev2_Noah/outputselect.o
-                0x0000000000004962                where_to_send
+                0x0000000000004956        0xe .build/obj_Dactylv2_rev2_Noah/outputselect.o
+                0x0000000000004956                where_to_send
  .text.USB_Device_SendRemoteWakeup
-                0x0000000000004970       0x2c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
-                0x0000000000004970                USB_Device_SendRemoteWakeup
+                0x0000000000004964       0x2c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+                0x0000000000004964                USB_Device_SendRemoteWakeup
  .text.Endpoint_Write_Stream_LE
-                0x000000000000499c       0x96 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x000000000000499c                Endpoint_Write_Stream_LE
+                0x0000000000004990       0x96 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000004990                Endpoint_Write_Stream_LE
  .text.Endpoint_Write_Control_Stream_LE
-                0x0000000000004a32       0xbc .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x0000000000004a32                Endpoint_Write_Control_Stream_LE
+                0x0000000000004a26       0xbc .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000004a26                Endpoint_Write_Control_Stream_LE
  .text.Endpoint_Write_Control_PStream_LE
-                0x0000000000004aee       0xc2 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x0000000000004aee                Endpoint_Write_Control_PStream_LE
+                0x0000000000004ae2       0xc2 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000004ae2                Endpoint_Write_Control_PStream_LE
  .text.Endpoint_ConfigureEndpoint_Prv
-                0x0000000000004bb0       0x6a .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x0000000000004bb0                Endpoint_ConfigureEndpoint_Prv
+                0x0000000000004ba4       0x6a .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000004ba4                Endpoint_ConfigureEndpoint_Prv
  .text.Endpoint_ClearStatusStage
-                0x0000000000004c1a       0x3e .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x0000000000004c1a                Endpoint_ClearStatusStage
+                0x0000000000004c0e       0x3e .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000004c0e                Endpoint_ClearStatusStage
  .text.Endpoint_WaitUntilReady
-                0x0000000000004c58       0x66 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x0000000000004c58                Endpoint_WaitUntilReady
+                0x0000000000004c4c       0x66 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000004c4c                Endpoint_WaitUntilReady
  .text.USB_Disable
-                0x0000000000004cbe       0x34 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x0000000000004cbe                USB_Disable
+                0x0000000000004cb2       0x34 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000004cb2                USB_Disable
  .text.USB_ResetInterface
-                0x0000000000004cf2       0x86 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x0000000000004cf2                USB_ResetInterface
+                0x0000000000004ce6       0x86 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000004ce6                USB_ResetInterface
  .text.USB_Init
-                0x0000000000004d78       0x22 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x0000000000004d78                USB_Init
+                0x0000000000004d6c       0x22 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000004d6c                USB_Init
  .text.USB_INT_DisableAllInterrupts
-                0x0000000000004d9a       0x10 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x0000000000004d9a                USB_INT_DisableAllInterrupts
+                0x0000000000004d8e       0x10 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000004d8e                USB_INT_DisableAllInterrupts
  .text.USB_INT_ClearAllInterrupts
-                0x0000000000004daa        0xa .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x0000000000004daa                USB_INT_ClearAllInterrupts
+                0x0000000000004d9e        0xa .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000004d9e                USB_INT_ClearAllInterrupts
  .text.__vector_10
-                0x0000000000004db4      0x1a4 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x0000000000004db4                __vector_10
+                0x0000000000004da8      0x1a4 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000004da8                __vector_10
  .text.__vector_11
-                0x0000000000004f58       0x88 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x0000000000004f58                __vector_11
+                0x0000000000004f4c       0x88 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000004f4c                __vector_11
  .text.USB_Device_ProcessControlRequest
-                0x0000000000004fe0      0x2c0 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
-                0x0000000000004fe0                USB_Device_ProcessControlRequest
+                0x0000000000004fd4      0x2c0 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x0000000000004fd4                USB_Device_ProcessControlRequest
  .text.USB_Event_Stub
-                0x00000000000052a0        0x2 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
-                0x00000000000052a0                USB_Event_Stub
-                0x00000000000052a0                EVENT_USB_Device_StartOfFrame
+                0x0000000000005294        0x2 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+                0x0000000000005294                USB_Event_Stub
+                0x0000000000005294                EVENT_USB_Device_StartOfFrame
  .text.USB_USBTask
-                0x00000000000052a2       0x36 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
-                0x00000000000052a2                USB_USBTask
+                0x0000000000005296       0x36 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+                0x0000000000005296                USB_USBTask
  .text.libgcc.div
-                0x00000000000052d8       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
-                0x00000000000052d8                __divmodhi4
-                0x00000000000052d8                _div
- .text.libgcc   0x0000000000005300        0xc /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
-                0x0000000000005300                __tablejump2__
+                0x00000000000052cc       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_divmodhi4.o)
+                0x00000000000052cc                __divmodhi4
+                0x00000000000052cc                _div
+ .text.libgcc   0x00000000000052f4        0xc /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_tablejump2.o)
+                0x00000000000052f4                __tablejump2__
  .text.libgcc.div
-                0x000000000000530c       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
-                0x000000000000530c                __udivmodhi4
+                0x0000000000005300       0x28 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000005300                __udivmodhi4
  .text.avr-libc
-                0x0000000000005334      0x242 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(malloc.o)
-                0x0000000000005334                malloc
-                0x0000000000005464                free
+                0x0000000000005328      0x242 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(malloc.o)
+                0x0000000000005328                malloc
+                0x0000000000005458                free
  .text.avr-libc
-                0x0000000000005576       0x10 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eerd_byte.o)
-                0x0000000000005576                eeprom_read_byte
+                0x000000000000556a       0x10 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eerd_byte.o)
+                0x000000000000556a                eeprom_read_byte
  .text.avr-libc
-                0x0000000000005586        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eerd_word.o)
-                0x0000000000005586                eeprom_read_word
+                0x000000000000557a        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eerd_word.o)
+                0x000000000000557a                eeprom_read_word
  .text.avr-libc
-                0x0000000000005592       0x24 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eeupd_byte.o)
-                0x0000000000005592                eeprom_update_byte
-                0x0000000000005594                eeprom_update_r18
+                0x0000000000005586       0x24 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eeupd_byte.o)
+                0x0000000000005586                eeprom_update_byte
+                0x0000000000005588                eeprom_update_r18
  .text.avr-libc
-                0x00000000000055b6        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eeupd_word.o)
-                0x00000000000055b6                eeprom_update_word
+                0x00000000000055aa        0xc /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eeupd_word.o)
+                0x00000000000055aa                eeprom_update_word
  .text.avr-libc
-                0x00000000000055c2       0x20 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eerd_block.o)
-                0x00000000000055c2                eeprom_read_block
-                0x00000000000055c6                eeprom_read_blraw
-                0x00000000000055e2                . = ALIGN (0x2)
+                0x00000000000055b6       0x20 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libatmega32u4.a(eerd_block.o)
+                0x00000000000055b6                eeprom_read_block
+                0x00000000000055ba                eeprom_read_blraw
+                0x00000000000055d6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000055e2        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
-                0x00000000000055e2                exit
-                0x00000000000055e2                _exit
+ .fini9         0x00000000000055d6        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000055d6                exit
+                0x00000000000055d6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1870,11 +1866,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000055e2        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .fini0         0x00000000000055d6        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000055e6                _etext = .
+                0x00000000000055da                _etext = .
 
-.data           0x0000000000800100       0x48 load address 0x00000000000055e6
+.data           0x0000000000800100       0x48 load address 0x00000000000055da
                 0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800100        0x6 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/libc.a(malloc.o)
@@ -1954,9 +1950,9 @@ END GROUP
  .bss.serial_slave_buffer
                 0x000000000080016a        0x7 .build/obj_Dactylv2_rev2_Noah/serial.o
                 0x000000000080016a                serial_slave_buffer
- .bss.last_key.3375
+ .bss.last_key.3383
                 0x0000000000800171        0x2 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .bss.space_held_timer.3374
+ .bss.space_held_timer.3382
                 0x0000000000800173        0x2 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .bss.tap_dance_actions
                 0x0000000000800175        0x0 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
@@ -2086,8 +2082,8 @@ END GROUP
                 0x000000000080025a                __brkval
                 0x000000000080025c                __flp
                 0x000000000080025e                PROVIDE (__bss_end, .)
-                0x00000000000055e6                __data_load_start = LOADADDR (.data)
-                0x000000000000562e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000000000055da                __data_load_start = LOADADDR (.data)
+                0x0000000000005622                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x000000000080025e        0x4
                 [!provide]                        PROVIDE (__noinit_start, .)
@@ -2198,7 +2194,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0xcd0
+.debug_aranges  0x0000000000000000      0xcd8
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0xa0 .build/obj_Dactylv2_rev2_Noah/matrix.o
@@ -2209,236 +2205,236 @@ END GROUP
  .debug_aranges
                 0x0000000000000148       0x30 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
  .debug_aranges
-                0x0000000000000178       0x58 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+                0x0000000000000178       0x60 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
  .debug_aranges
-                0x00000000000001d0      0x110 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+                0x00000000000001d8      0x110 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
  .debug_aranges
-                0x00000000000002e0       0x48 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+                0x00000000000002e8       0x48 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
  .debug_aranges
-                0x0000000000000328       0x28 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+                0x0000000000000330       0x28 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
  .debug_aranges
-                0x0000000000000350       0x28 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+                0x0000000000000358       0x28 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
  .debug_aranges
-                0x0000000000000378       0x78 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+                0x0000000000000380       0x78 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
  .debug_aranges
-                0x00000000000003f0       0x60 .build/obj_Dactylv2_rev2_Noah/common/host.o
+                0x00000000000003f8       0x60 .build/obj_Dactylv2_rev2_Noah/common/host.o
  .debug_aranges
-                0x0000000000000450       0x48 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+                0x0000000000000458       0x48 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
  .debug_aranges
-                0x0000000000000498       0x98 .build/obj_Dactylv2_rev2_Noah/common/action.o
+                0x00000000000004a0       0x98 .build/obj_Dactylv2_rev2_Noah/common/action.o
  .debug_aranges
-                0x0000000000000530       0x48 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+                0x0000000000000538       0x48 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
  .debug_aranges
-                0x0000000000000578       0x20 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+                0x0000000000000580       0x20 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
  .debug_aranges
-                0x0000000000000598       0xd8 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+                0x00000000000005a0       0xd8 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
  .debug_aranges
-                0x0000000000000670      0x120 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+                0x0000000000000678      0x120 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
  .debug_aranges
-                0x0000000000000790       0x18 .build/obj_Dactylv2_rev2_Noah/common/debug.o
+                0x0000000000000798       0x18 .build/obj_Dactylv2_rev2_Noah/common/debug.o
  .debug_aranges
-                0x00000000000007a8       0x68 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+                0x00000000000007b0       0x68 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
  .debug_aranges
-                0x0000000000000810       0x50 .build/obj_Dactylv2_rev2_Noah/common/report.o
+                0x0000000000000818       0x50 .build/obj_Dactylv2_rev2_Noah/common/report.o
  .debug_aranges
-                0x0000000000000860       0x48 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+                0x0000000000000868       0x48 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
  .debug_aranges
-                0x00000000000008a8       0x50 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+                0x00000000000008b0       0x50 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
  .debug_aranges
-                0x00000000000008f8       0x28 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+                0x0000000000000900       0x28 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
  .debug_aranges
-                0x0000000000000920       0x20 .build/obj_Dactylv2_rev2_Noah/common/magic.o
+                0x0000000000000928       0x20 .build/obj_Dactylv2_rev2_Noah/common/magic.o
  .debug_aranges
-                0x0000000000000940       0x50 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+                0x0000000000000948       0x50 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
  .debug_aranges
-                0x0000000000000990       0x58 .build/obj_Dactylv2_rev2_Noah/common/command.o
+                0x0000000000000998       0x58 .build/obj_Dactylv2_rev2_Noah/common/command.o
  .debug_aranges
-                0x00000000000009e8       0x90 .build/obj_Dactylv2_rev2_Noah/lufa.o
+                0x00000000000009f0       0x90 .build/obj_Dactylv2_rev2_Noah/lufa.o
  .debug_aranges
-                0x0000000000000a78       0x20 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+                0x0000000000000a80       0x20 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
  .debug_aranges
-                0x0000000000000a98       0x38 .build/obj_Dactylv2_rev2_Noah/outputselect.o
+                0x0000000000000aa0       0x38 .build/obj_Dactylv2_rev2_Noah/outputselect.o
  .debug_aranges
-                0x0000000000000ad0       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+                0x0000000000000ad8       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
  .debug_aranges
-                0x0000000000000af0       0xc8 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000000af8       0xc8 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
  .debug_aranges
-                0x0000000000000bb8       0x40 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000000bc0       0x40 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
  .debug_aranges
-                0x0000000000000bf8       0x30 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000000c00       0x30 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
  .debug_aranges
-                0x0000000000000c28       0x38 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000000c30       0x38 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
  .debug_aranges
-                0x0000000000000c60       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x0000000000000c68       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
  .debug_aranges
-                0x0000000000000c80       0x30 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+                0x0000000000000c88       0x30 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
  .debug_aranges
-                0x0000000000000cb0       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+                0x0000000000000cb8       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000    0x1558f
+.debug_info     0x0000000000000000    0x155c2
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x9f4 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
  .debug_info    0x00000000000009f4      0x983 .build/obj_Dactylv2_rev2_Noah/matrix.o
  .debug_info    0x0000000000001377      0x24b .build/obj_Dactylv2_rev2_Noah/split_util.o
  .debug_info    0x00000000000015c2      0x724 .build/obj_Dactylv2_rev2_Noah/serial.o
  .debug_info    0x0000000000001ce6      0x169 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
- .debug_info    0x0000000000001e4f     0x181f .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .debug_info    0x000000000000366e     0x2300 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
- .debug_info    0x000000000000596e     0x1724 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
- .debug_info    0x0000000000007092      0x5fd .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
- .debug_info    0x000000000000768f      0xb42 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
- .debug_info    0x00000000000081d1     0x1282 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
- .debug_info    0x0000000000009453      0x450 .build/obj_Dactylv2_rev2_Noah/common/host.o
- .debug_info    0x00000000000098a3      0x436 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
- .debug_info    0x0000000000009cd9     0x1bc5 .build/obj_Dactylv2_rev2_Noah/common/action.o
- .debug_info    0x000000000000b89e      0xea6 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
- .debug_info    0x000000000000c744      0x7fd .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
- .debug_info    0x000000000000cf41      0xb35 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
- .debug_info    0x000000000000da76      0x6eb .build/obj_Dactylv2_rev2_Noah/common/action_util.o
- .debug_info    0x000000000000e161       0xfc .build/obj_Dactylv2_rev2_Noah/common/debug.o
- .debug_info    0x000000000000e25d      0x37b .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
- .debug_info    0x000000000000e5d8      0x311 .build/obj_Dactylv2_rev2_Noah/common/report.o
- .debug_info    0x000000000000e8e9      0x2cd .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
- .debug_info    0x000000000000ebb6      0x3a2 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
- .debug_info    0x000000000000ef58      0x197 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
- .debug_info    0x000000000000f0ef      0x296 .build/obj_Dactylv2_rev2_Noah/common/magic.o
- .debug_info    0x000000000000f385      0x5e9 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
- .debug_info    0x000000000000f96e      0x987 .build/obj_Dactylv2_rev2_Noah/common/command.o
- .debug_info    0x00000000000102f5     0x1017 .build/obj_Dactylv2_rev2_Noah/lufa.o
- .debug_info    0x000000000001130c      0x7b0 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
- .debug_info    0x0000000000011abc      0x1af .build/obj_Dactylv2_rev2_Noah/outputselect.o
- .debug_info    0x0000000000011c6b       0xd2 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_info    0x0000000000011d3d     0x17c8 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_info    0x0000000000013505      0x620 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_info    0x0000000000013b25      0x4e7 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_info    0x000000000001400c      0x7e7 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_info    0x00000000000147f3      0xa4c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_info    0x000000000001523f       0xde .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_info    0x000000000001531d      0x272 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_info    0x0000000000001e4f     0x1852 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .debug_info    0x00000000000036a1     0x2300 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+ .debug_info    0x00000000000059a1     0x1724 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+ .debug_info    0x00000000000070c5      0x5fd .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+ .debug_info    0x00000000000076c2      0xb42 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+ .debug_info    0x0000000000008204     0x1282 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+ .debug_info    0x0000000000009486      0x450 .build/obj_Dactylv2_rev2_Noah/common/host.o
+ .debug_info    0x00000000000098d6      0x436 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+ .debug_info    0x0000000000009d0c     0x1bc5 .build/obj_Dactylv2_rev2_Noah/common/action.o
+ .debug_info    0x000000000000b8d1      0xea6 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+ .debug_info    0x000000000000c777      0x7fd .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+ .debug_info    0x000000000000cf74      0xb35 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+ .debug_info    0x000000000000daa9      0x6eb .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+ .debug_info    0x000000000000e194       0xfc .build/obj_Dactylv2_rev2_Noah/common/debug.o
+ .debug_info    0x000000000000e290      0x37b .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+ .debug_info    0x000000000000e60b      0x311 .build/obj_Dactylv2_rev2_Noah/common/report.o
+ .debug_info    0x000000000000e91c      0x2cd .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+ .debug_info    0x000000000000ebe9      0x3a2 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+ .debug_info    0x000000000000ef8b      0x197 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+ .debug_info    0x000000000000f122      0x296 .build/obj_Dactylv2_rev2_Noah/common/magic.o
+ .debug_info    0x000000000000f3b8      0x5e9 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+ .debug_info    0x000000000000f9a1      0x987 .build/obj_Dactylv2_rev2_Noah/common/command.o
+ .debug_info    0x0000000000010328     0x1017 .build/obj_Dactylv2_rev2_Noah/lufa.o
+ .debug_info    0x000000000001133f      0x7b0 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+ .debug_info    0x0000000000011aef      0x1af .build/obj_Dactylv2_rev2_Noah/outputselect.o
+ .debug_info    0x0000000000011c9e       0xd2 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_info    0x0000000000011d70     0x17c8 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_info    0x0000000000013538      0x620 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_info    0x0000000000013b58      0x4e7 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_info    0x000000000001403f      0x7e7 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_info    0x0000000000014826      0xa4c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_info    0x0000000000015272       0xde .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_info    0x0000000000015350      0x272 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_abbrev   0x0000000000000000     0x4fb1
+.debug_abbrev   0x0000000000000000     0x4ff8
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x96a /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
  .debug_abbrev  0x000000000000096a      0x3a1 .build/obj_Dactylv2_rev2_Noah/matrix.o
  .debug_abbrev  0x0000000000000d0b      0x147 .build/obj_Dactylv2_rev2_Noah/split_util.o
  .debug_abbrev  0x0000000000000e52      0x22c .build/obj_Dactylv2_rev2_Noah/serial.o
  .debug_abbrev  0x000000000000107e      0x115 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
- .debug_abbrev  0x0000000000001193      0x2b6 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .debug_abbrev  0x0000000000001449      0x42b .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
- .debug_abbrev  0x0000000000001874      0x26c .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
- .debug_abbrev  0x0000000000001ae0       0xe1 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
- .debug_abbrev  0x0000000000001bc1      0x16c .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
- .debug_abbrev  0x0000000000001d2d      0x2b5 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
- .debug_abbrev  0x0000000000001fe2      0x16f .build/obj_Dactylv2_rev2_Noah/common/host.o
- .debug_abbrev  0x0000000000002151      0x20f .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
- .debug_abbrev  0x0000000000002360      0x37a .build/obj_Dactylv2_rev2_Noah/common/action.o
- .debug_abbrev  0x00000000000026da      0x2d5 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
- .debug_abbrev  0x00000000000029af      0x1aa .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
- .debug_abbrev  0x0000000000002b59      0x289 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
- .debug_abbrev  0x0000000000002de2      0x20f .build/obj_Dactylv2_rev2_Noah/common/action_util.o
- .debug_abbrev  0x0000000000002ff1       0x87 .build/obj_Dactylv2_rev2_Noah/common/debug.o
- .debug_abbrev  0x0000000000003078       0xc2 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
- .debug_abbrev  0x000000000000313a      0x14d .build/obj_Dactylv2_rev2_Noah/common/report.o
- .debug_abbrev  0x0000000000003287      0x1ce .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
- .debug_abbrev  0x0000000000003455      0x175 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
- .debug_abbrev  0x00000000000035ca      0x12d .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
- .debug_abbrev  0x00000000000036f7       0xf2 .build/obj_Dactylv2_rev2_Noah/common/magic.o
- .debug_abbrev  0x00000000000037e9      0x1cf .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
- .debug_abbrev  0x00000000000039b8      0x2dd .build/obj_Dactylv2_rev2_Noah/common/command.o
- .debug_abbrev  0x0000000000003c95      0x39b .build/obj_Dactylv2_rev2_Noah/lufa.o
- .debug_abbrev  0x0000000000004030      0x184 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
- .debug_abbrev  0x00000000000041b4      0x129 .build/obj_Dactylv2_rev2_Noah/outputselect.o
- .debug_abbrev  0x00000000000042dd       0x80 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_abbrev  0x000000000000435d      0x1ea .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_abbrev  0x0000000000004547      0x226 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_abbrev  0x000000000000476d      0x191 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_abbrev  0x00000000000048fe      0x213 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_abbrev  0x0000000000004b11      0x29c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_abbrev  0x0000000000004dad       0x99 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_abbrev  0x0000000000004e46      0x16b .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_abbrev  0x0000000000001193      0x2fd .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .debug_abbrev  0x0000000000001490      0x42b .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+ .debug_abbrev  0x00000000000018bb      0x26c .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+ .debug_abbrev  0x0000000000001b27       0xe1 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+ .debug_abbrev  0x0000000000001c08      0x16c .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+ .debug_abbrev  0x0000000000001d74      0x2b5 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+ .debug_abbrev  0x0000000000002029      0x16f .build/obj_Dactylv2_rev2_Noah/common/host.o
+ .debug_abbrev  0x0000000000002198      0x20f .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+ .debug_abbrev  0x00000000000023a7      0x37a .build/obj_Dactylv2_rev2_Noah/common/action.o
+ .debug_abbrev  0x0000000000002721      0x2d5 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+ .debug_abbrev  0x00000000000029f6      0x1aa .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+ .debug_abbrev  0x0000000000002ba0      0x289 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+ .debug_abbrev  0x0000000000002e29      0x20f .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+ .debug_abbrev  0x0000000000003038       0x87 .build/obj_Dactylv2_rev2_Noah/common/debug.o
+ .debug_abbrev  0x00000000000030bf       0xc2 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+ .debug_abbrev  0x0000000000003181      0x14d .build/obj_Dactylv2_rev2_Noah/common/report.o
+ .debug_abbrev  0x00000000000032ce      0x1ce .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+ .debug_abbrev  0x000000000000349c      0x175 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+ .debug_abbrev  0x0000000000003611      0x12d .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+ .debug_abbrev  0x000000000000373e       0xf2 .build/obj_Dactylv2_rev2_Noah/common/magic.o
+ .debug_abbrev  0x0000000000003830      0x1cf .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+ .debug_abbrev  0x00000000000039ff      0x2dd .build/obj_Dactylv2_rev2_Noah/common/command.o
+ .debug_abbrev  0x0000000000003cdc      0x39b .build/obj_Dactylv2_rev2_Noah/lufa.o
+ .debug_abbrev  0x0000000000004077      0x184 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+ .debug_abbrev  0x00000000000041fb      0x129 .build/obj_Dactylv2_rev2_Noah/outputselect.o
+ .debug_abbrev  0x0000000000004324       0x80 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_abbrev  0x00000000000043a4      0x1ea .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_abbrev  0x000000000000458e      0x226 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_abbrev  0x00000000000047b4      0x191 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_abbrev  0x0000000000004945      0x213 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_abbrev  0x0000000000004b58      0x29c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_abbrev  0x0000000000004df4       0x99 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_abbrev  0x0000000000004e8d      0x16b .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_line     0x0000000000000000     0x8925
+.debug_line     0x0000000000000000     0x893e
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000       0x1a /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32u4.o
  .debug_line    0x000000000000001a      0x48d .build/obj_Dactylv2_rev2_Noah/matrix.o
  .debug_line    0x00000000000004a7      0x168 .build/obj_Dactylv2_rev2_Noah/split_util.o
  .debug_line    0x000000000000060f      0x3a7 .build/obj_Dactylv2_rev2_Noah/serial.o
  .debug_line    0x00000000000009b6       0xe6 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
- .debug_line    0x0000000000000a9c      0x6bc .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .debug_line    0x0000000000001158      0xa56 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
- .debug_line    0x0000000000001bae      0x39c .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
- .debug_line    0x0000000000001f4a      0x1c4 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
- .debug_line    0x000000000000210e      0x17d .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
- .debug_line    0x000000000000228b      0x43a .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
- .debug_line    0x00000000000026c5      0x185 .build/obj_Dactylv2_rev2_Noah/common/host.o
- .debug_line    0x000000000000284a      0x1f3 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
- .debug_line    0x0000000000002a3d      0x992 .build/obj_Dactylv2_rev2_Noah/common/action.o
- .debug_line    0x00000000000033cf      0x575 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
- .debug_line    0x0000000000003944      0x182 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
- .debug_line    0x0000000000003ac6      0x406 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
- .debug_line    0x0000000000003ecc      0x423 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
- .debug_line    0x00000000000042ef       0x63 .build/obj_Dactylv2_rev2_Noah/common/debug.o
- .debug_line    0x0000000000004352      0x17f .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
- .debug_line    0x00000000000044d1      0x186 .build/obj_Dactylv2_rev2_Noah/common/report.o
- .debug_line    0x0000000000004657      0x24b .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
- .debug_line    0x00000000000048a2      0x22c .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
- .debug_line    0x0000000000004ace      0x119 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
- .debug_line    0x0000000000004be7       0xd5 .build/obj_Dactylv2_rev2_Noah/common/magic.o
- .debug_line    0x0000000000004cbc      0x5a6 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
- .debug_line    0x0000000000005262      0x444 .build/obj_Dactylv2_rev2_Noah/common/command.o
- .debug_line    0x00000000000056a6      0x7c1 .build/obj_Dactylv2_rev2_Noah/lufa.o
- .debug_line    0x0000000000005e67      0x1ca .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
- .debug_line    0x0000000000006031      0x15e .build/obj_Dactylv2_rev2_Noah/outputselect.o
- .debug_line    0x000000000000618f      0x10a .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_line    0x0000000000006299     0x13d7 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_line    0x0000000000007670      0x475 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_line    0x0000000000007ae5      0x2da .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_line    0x0000000000007dbf      0x50a .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_line    0x00000000000082c9      0x469 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_line    0x0000000000008732       0x96 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_line    0x00000000000087c8      0x15d .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_line    0x0000000000000a9c      0x6d5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .debug_line    0x0000000000001171      0xa56 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+ .debug_line    0x0000000000001bc7      0x39c .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+ .debug_line    0x0000000000001f63      0x1c4 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+ .debug_line    0x0000000000002127      0x17d .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+ .debug_line    0x00000000000022a4      0x43a .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+ .debug_line    0x00000000000026de      0x185 .build/obj_Dactylv2_rev2_Noah/common/host.o
+ .debug_line    0x0000000000002863      0x1f3 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+ .debug_line    0x0000000000002a56      0x992 .build/obj_Dactylv2_rev2_Noah/common/action.o
+ .debug_line    0x00000000000033e8      0x575 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+ .debug_line    0x000000000000395d      0x182 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+ .debug_line    0x0000000000003adf      0x406 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+ .debug_line    0x0000000000003ee5      0x423 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+ .debug_line    0x0000000000004308       0x63 .build/obj_Dactylv2_rev2_Noah/common/debug.o
+ .debug_line    0x000000000000436b      0x17f .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+ .debug_line    0x00000000000044ea      0x186 .build/obj_Dactylv2_rev2_Noah/common/report.o
+ .debug_line    0x0000000000004670      0x24b .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+ .debug_line    0x00000000000048bb      0x22c .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+ .debug_line    0x0000000000004ae7      0x119 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+ .debug_line    0x0000000000004c00       0xd5 .build/obj_Dactylv2_rev2_Noah/common/magic.o
+ .debug_line    0x0000000000004cd5      0x5a6 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+ .debug_line    0x000000000000527b      0x444 .build/obj_Dactylv2_rev2_Noah/common/command.o
+ .debug_line    0x00000000000056bf      0x7c1 .build/obj_Dactylv2_rev2_Noah/lufa.o
+ .debug_line    0x0000000000005e80      0x1ca .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+ .debug_line    0x000000000000604a      0x15e .build/obj_Dactylv2_rev2_Noah/outputselect.o
+ .debug_line    0x00000000000061a8      0x10a .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_line    0x00000000000062b2     0x13d7 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_line    0x0000000000007689      0x475 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_line    0x0000000000007afe      0x2da .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_line    0x0000000000007dd8      0x50a .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_line    0x00000000000082e2      0x469 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_line    0x000000000000874b       0x96 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_line    0x00000000000087e1      0x15d .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_frame    0x0000000000000000     0x2680
+.debug_frame    0x0000000000000000     0x2688
  *(.debug_frame)
  .debug_frame   0x0000000000000000      0x1dc .build/obj_Dactylv2_rev2_Noah/matrix.o
  .debug_frame   0x00000000000001dc       0x54 .build/obj_Dactylv2_rev2_Noah/split_util.o
  .debug_frame   0x0000000000000230      0x16c .build/obj_Dactylv2_rev2_Noah/serial.o
  .debug_frame   0x000000000000039c       0xe4 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
- .debug_frame   0x0000000000000480      0x1dc .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .debug_frame   0x000000000000065c      0x430 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
- .debug_frame   0x0000000000000a8c      0x120 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
- .debug_frame   0x0000000000000bac       0x34 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
- .debug_frame   0x0000000000000be0      0x108 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
- .debug_frame   0x0000000000000ce8      0x23c .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
- .debug_frame   0x0000000000000f24       0xa4 .build/obj_Dactylv2_rev2_Noah/common/host.o
- .debug_frame   0x0000000000000fc8       0xb0 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
- .debug_frame   0x0000000000001078      0x1b4 .build/obj_Dactylv2_rev2_Noah/common/action.o
- .debug_frame   0x000000000000122c       0xf0 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
- .debug_frame   0x000000000000131c       0x48 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
- .debug_frame   0x0000000000001364      0x27c .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
- .debug_frame   0x00000000000015e0      0x224 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
- .debug_frame   0x0000000000001804       0xb4 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
- .debug_frame   0x00000000000018b8       0x84 .build/obj_Dactylv2_rev2_Noah/common/report.o
- .debug_frame   0x000000000000193c       0xb0 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
- .debug_frame   0x00000000000019ec       0xf0 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
- .debug_frame   0x0000000000001adc       0x34 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
- .debug_frame   0x0000000000001b10       0x24 .build/obj_Dactylv2_rev2_Noah/common/magic.o
- .debug_frame   0x0000000000001b34       0x98 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
- .debug_frame   0x0000000000001bcc      0x158 .build/obj_Dactylv2_rev2_Noah/common/command.o
- .debug_frame   0x0000000000001d24      0x200 .build/obj_Dactylv2_rev2_Noah/lufa.o
- .debug_frame   0x0000000000001f24       0x24 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
- .debug_frame   0x0000000000001f48       0x5c .build/obj_Dactylv2_rev2_Noah/outputselect.o
- .debug_frame   0x0000000000001fa4       0x24 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_frame   0x0000000000001fc8      0x42c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_frame   0x00000000000023f4       0x7c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_frame   0x0000000000002470       0x5c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_frame   0x00000000000024cc      0x108 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_frame   0x00000000000025d4       0x3c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_frame   0x0000000000002610       0x44 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_frame   0x0000000000002654       0x2c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_frame   0x0000000000000480      0x1e4 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .debug_frame   0x0000000000000664      0x430 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+ .debug_frame   0x0000000000000a94      0x120 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+ .debug_frame   0x0000000000000bb4       0x34 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+ .debug_frame   0x0000000000000be8      0x108 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+ .debug_frame   0x0000000000000cf0      0x23c .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+ .debug_frame   0x0000000000000f2c       0xa4 .build/obj_Dactylv2_rev2_Noah/common/host.o
+ .debug_frame   0x0000000000000fd0       0xb0 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+ .debug_frame   0x0000000000001080      0x1b4 .build/obj_Dactylv2_rev2_Noah/common/action.o
+ .debug_frame   0x0000000000001234       0xf0 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+ .debug_frame   0x0000000000001324       0x48 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+ .debug_frame   0x000000000000136c      0x27c .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+ .debug_frame   0x00000000000015e8      0x224 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+ .debug_frame   0x000000000000180c       0xb4 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+ .debug_frame   0x00000000000018c0       0x84 .build/obj_Dactylv2_rev2_Noah/common/report.o
+ .debug_frame   0x0000000000001944       0xb0 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+ .debug_frame   0x00000000000019f4       0xf0 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+ .debug_frame   0x0000000000001ae4       0x34 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+ .debug_frame   0x0000000000001b18       0x24 .build/obj_Dactylv2_rev2_Noah/common/magic.o
+ .debug_frame   0x0000000000001b3c       0x98 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+ .debug_frame   0x0000000000001bd4      0x158 .build/obj_Dactylv2_rev2_Noah/common/command.o
+ .debug_frame   0x0000000000001d2c      0x200 .build/obj_Dactylv2_rev2_Noah/lufa.o
+ .debug_frame   0x0000000000001f2c       0x24 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+ .debug_frame   0x0000000000001f50       0x5c .build/obj_Dactylv2_rev2_Noah/outputselect.o
+ .debug_frame   0x0000000000001fac       0x24 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_frame   0x0000000000001fd0      0x42c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_frame   0x00000000000023fc       0x7c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_frame   0x0000000000002478       0x5c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_frame   0x00000000000024d4      0x108 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_frame   0x00000000000025dc       0x3c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_frame   0x0000000000002618       0x44 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_frame   0x000000000000265c       0x2c .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_str      0x0000000000000000     0x562e
  *(.debug_str)
@@ -2518,40 +2514,40 @@ END GROUP
  .debug_str     0x00000000000055e9       0x45 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
                                         0x372 (size before relaxing)
 
-.debug_loc      0x0000000000000000     0x9a88
+.debug_loc      0x0000000000000000     0x9e91
  *(.debug_loc)
  .debug_loc     0x0000000000000000      0x60a .build/obj_Dactylv2_rev2_Noah/matrix.o
  .debug_loc     0x000000000000060a       0x45 .build/obj_Dactylv2_rev2_Noah/split_util.o
  .debug_loc     0x000000000000064f      0x62b .build/obj_Dactylv2_rev2_Noah/serial.o
- .debug_loc     0x0000000000000c7a      0x6f5 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .debug_loc     0x000000000000136f     0x1057 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
- .debug_loc     0x00000000000023c6      0x794 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
- .debug_loc     0x0000000000002b5a      0x14f .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
- .debug_loc     0x0000000000002ca9       0xf2 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
- .debug_loc     0x0000000000002d9b      0x9b4 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
- .debug_loc     0x000000000000374f       0xd8 .build/obj_Dactylv2_rev2_Noah/common/host.o
- .debug_loc     0x0000000000003827      0x18e .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
- .debug_loc     0x00000000000039b5      0x9cf .build/obj_Dactylv2_rev2_Noah/common/action.o
- .debug_loc     0x0000000000004384      0x53a .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
- .debug_loc     0x00000000000048be      0x48c .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
- .debug_loc     0x0000000000004d4a      0x806 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
- .debug_loc     0x0000000000005550      0x1d7 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
- .debug_loc     0x0000000000005727       0x84 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
- .debug_loc     0x00000000000057ab      0x265 .build/obj_Dactylv2_rev2_Noah/common/report.o
- .debug_loc     0x0000000000005a10       0xd9 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
- .debug_loc     0x0000000000005ae9      0x2ea .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
- .debug_loc     0x0000000000005dd3       0x2a .build/obj_Dactylv2_rev2_Noah/common/magic.o
- .debug_loc     0x0000000000005dfd      0x3ea .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
- .debug_loc     0x00000000000061e7      0x44c .build/obj_Dactylv2_rev2_Noah/common/command.o
- .debug_loc     0x0000000000006633      0x68c .build/obj_Dactylv2_rev2_Noah/lufa.o
- .debug_loc     0x0000000000006cbf      0x24e .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
- .debug_loc     0x0000000000006f0d       0x4f .build/obj_Dactylv2_rev2_Noah/outputselect.o
- .debug_loc     0x0000000000006f5c     0x1f97 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_loc     0x0000000000008ef3      0x38d .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_loc     0x0000000000009280       0xd5 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_loc     0x0000000000009355      0x3f4 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_loc     0x0000000000009749      0x2f6 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_loc     0x0000000000009a3f       0x49 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_loc     0x0000000000000c7a      0xafe .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .debug_loc     0x0000000000001778     0x1057 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+ .debug_loc     0x00000000000027cf      0x794 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+ .debug_loc     0x0000000000002f63      0x14f .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+ .debug_loc     0x00000000000030b2       0xf2 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+ .debug_loc     0x00000000000031a4      0x9b4 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+ .debug_loc     0x0000000000003b58       0xd8 .build/obj_Dactylv2_rev2_Noah/common/host.o
+ .debug_loc     0x0000000000003c30      0x18e .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+ .debug_loc     0x0000000000003dbe      0x9cf .build/obj_Dactylv2_rev2_Noah/common/action.o
+ .debug_loc     0x000000000000478d      0x53a .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+ .debug_loc     0x0000000000004cc7      0x48c .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+ .debug_loc     0x0000000000005153      0x806 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+ .debug_loc     0x0000000000005959      0x1d7 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+ .debug_loc     0x0000000000005b30       0x84 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+ .debug_loc     0x0000000000005bb4      0x265 .build/obj_Dactylv2_rev2_Noah/common/report.o
+ .debug_loc     0x0000000000005e19       0xd9 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+ .debug_loc     0x0000000000005ef2      0x2ea .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+ .debug_loc     0x00000000000061dc       0x2a .build/obj_Dactylv2_rev2_Noah/common/magic.o
+ .debug_loc     0x0000000000006206      0x3ea .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+ .debug_loc     0x00000000000065f0      0x44c .build/obj_Dactylv2_rev2_Noah/common/command.o
+ .debug_loc     0x0000000000006a3c      0x68c .build/obj_Dactylv2_rev2_Noah/lufa.o
+ .debug_loc     0x00000000000070c8      0x24e .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+ .debug_loc     0x0000000000007316       0x4f .build/obj_Dactylv2_rev2_Noah/outputselect.o
+ .debug_loc     0x0000000000007365     0x1f97 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_loc     0x00000000000092fc      0x38d .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_loc     0x0000000000009689       0xd5 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_loc     0x000000000000975e      0x3f4 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_loc     0x0000000000009b52      0x2f6 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_loc     0x0000000000009e48       0x49 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -2571,44 +2567,44 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000      0xd50
+.debug_ranges   0x0000000000000000      0xd58
  *(.debug_ranges)
  .debug_ranges  0x0000000000000000       0xc0 .build/obj_Dactylv2_rev2_Noah/matrix.o
  .debug_ranges  0x00000000000000c0       0x28 .build/obj_Dactylv2_rev2_Noah/split_util.o
  .debug_ranges  0x00000000000000e8       0x90 .build/obj_Dactylv2_rev2_Noah/serial.o
  .debug_ranges  0x0000000000000178       0x20 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/rev2/rev2.o
- .debug_ranges  0x0000000000000198       0x48 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
- .debug_ranges  0x00000000000001e0      0x100 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
- .debug_ranges  0x00000000000002e0       0x38 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
- .debug_ranges  0x0000000000000318       0x18 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
- .debug_ranges  0x0000000000000330       0x18 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
- .debug_ranges  0x0000000000000348       0x98 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
- .debug_ranges  0x00000000000003e0       0x50 .build/obj_Dactylv2_rev2_Noah/common/host.o
- .debug_ranges  0x0000000000000430       0x50 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
- .debug_ranges  0x0000000000000480       0x88 .build/obj_Dactylv2_rev2_Noah/common/action.o
- .debug_ranges  0x0000000000000508       0x80 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
- .debug_ranges  0x0000000000000588       0x28 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
- .debug_ranges  0x00000000000005b0       0xe0 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
- .debug_ranges  0x0000000000000690      0x110 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
- .debug_ranges  0x00000000000007a0       0x58 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
- .debug_ranges  0x00000000000007f8       0x40 .build/obj_Dactylv2_rev2_Noah/common/report.o
- .debug_ranges  0x0000000000000838       0x38 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
- .debug_ranges  0x0000000000000870       0x40 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
- .debug_ranges  0x00000000000008b0       0x18 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
- .debug_ranges  0x00000000000008c8       0x10 .build/obj_Dactylv2_rev2_Noah/common/magic.o
- .debug_ranges  0x00000000000008d8       0x40 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
- .debug_ranges  0x0000000000000918       0x48 .build/obj_Dactylv2_rev2_Noah/common/command.o
- .debug_ranges  0x0000000000000960       0x80 .build/obj_Dactylv2_rev2_Noah/lufa.o
- .debug_ranges  0x00000000000009e0       0x28 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
- .debug_ranges  0x0000000000000a08       0x28 .build/obj_Dactylv2_rev2_Noah/outputselect.o
- .debug_ranges  0x0000000000000a30       0x10 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_ranges  0x0000000000000a40      0x1f8 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_ranges  0x0000000000000c38       0x78 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_ranges  0x0000000000000cb0       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_ranges  0x0000000000000cd0       0x28 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_ranges  0x0000000000000cf8       0x28 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_ranges  0x0000000000000d20       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_ranges  0x0000000000000d40       0x10 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_ranges  0x0000000000000198       0x50 .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
+ .debug_ranges  0x00000000000001e8      0x100 .build/obj_Dactylv2_rev2_Noah/quantum/quantum.o
+ .debug_ranges  0x00000000000002e8       0x38 .build/obj_Dactylv2_rev2_Noah/quantum/keymap_common.o
+ .debug_ranges  0x0000000000000320       0x18 .build/obj_Dactylv2_rev2_Noah/quantum/keycode_config.o
+ .debug_ranges  0x0000000000000338       0x18 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_leader.o
+ .debug_ranges  0x0000000000000350       0x98 .build/obj_Dactylv2_rev2_Noah/quantum/process_keycode/process_tap_dance.o
+ .debug_ranges  0x00000000000003e8       0x50 .build/obj_Dactylv2_rev2_Noah/common/host.o
+ .debug_ranges  0x0000000000000438       0x50 .build/obj_Dactylv2_rev2_Noah/common/keyboard.o
+ .debug_ranges  0x0000000000000488       0x88 .build/obj_Dactylv2_rev2_Noah/common/action.o
+ .debug_ranges  0x0000000000000510       0x80 .build/obj_Dactylv2_rev2_Noah/common/action_tapping.o
+ .debug_ranges  0x0000000000000590       0x28 .build/obj_Dactylv2_rev2_Noah/common/action_macro.o
+ .debug_ranges  0x00000000000005b8       0xe0 .build/obj_Dactylv2_rev2_Noah/common/action_layer.o
+ .debug_ranges  0x0000000000000698      0x110 .build/obj_Dactylv2_rev2_Noah/common/action_util.o
+ .debug_ranges  0x00000000000007a8       0x58 .build/obj_Dactylv2_rev2_Noah/common/eeconfig.o
+ .debug_ranges  0x0000000000000800       0x40 .build/obj_Dactylv2_rev2_Noah/common/report.o
+ .debug_ranges  0x0000000000000840       0x38 .build/obj_Dactylv2_rev2_Noah/common/avr/suspend.o
+ .debug_ranges  0x0000000000000878       0x40 .build/obj_Dactylv2_rev2_Noah/common/avr/timer.o
+ .debug_ranges  0x00000000000008b8       0x18 .build/obj_Dactylv2_rev2_Noah/common/avr/bootloader.o
+ .debug_ranges  0x00000000000008d0       0x10 .build/obj_Dactylv2_rev2_Noah/common/magic.o
+ .debug_ranges  0x00000000000008e0       0x40 .build/obj_Dactylv2_rev2_Noah/common/mousekey.o
+ .debug_ranges  0x0000000000000920       0x48 .build/obj_Dactylv2_rev2_Noah/common/command.o
+ .debug_ranges  0x0000000000000968       0x80 .build/obj_Dactylv2_rev2_Noah/lufa.o
+ .debug_ranges  0x00000000000009e8       0x28 .build/obj_Dactylv2_rev2_Noah/usb_descriptor.o
+ .debug_ranges  0x0000000000000a10       0x28 .build/obj_Dactylv2_rev2_Noah/outputselect.o
+ .debug_ranges  0x0000000000000a38       0x10 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_ranges  0x0000000000000a48      0x1f8 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_ranges  0x0000000000000c40       0x78 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_ranges  0x0000000000000cb8       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_ranges  0x0000000000000cd8       0x28 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_ranges  0x0000000000000d00       0x28 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_ranges  0x0000000000000d28       0x20 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_ranges  0x0000000000000d48       0x10 .build/obj_Dactylv2_rev2_Noah/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_macro
  *(.debug_macro)
@@ -3057,6 +3053,7 @@ host_set_driver                                   .build/obj_Dactylv2_rev2_Noah/
                                                   .build/obj_Dactylv2_rev2_Noah/lufa.o
 host_system_send                                  .build/obj_Dactylv2_rev2_Noah/common/host.o
                                                   .build/obj_Dactylv2_rev2_Noah/common/action.o
+in                                                .build/obj_Dactylv2_rev2_Noah/keyboards/Dactylv2/keymaps/Noah/keymap.o
 isLeftHand                                        .build/obj_Dactylv2_rev2_Noah/split_util.o
                                                   .build/obj_Dactylv2_rev2_Noah/matrix.o
 is_keyboard_master                                .build/obj_Dactylv2_rev2_Noah/common/keyboard.o

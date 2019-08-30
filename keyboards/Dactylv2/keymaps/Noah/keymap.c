@@ -387,9 +387,13 @@ uint16_t remove(node_t **head, uint16_t keycode) {
    if (*head == NULL) return -1;
 
    current = *head;
-   while (current->keycode != keycode) {
+   while (current != NULL && current->keycode != keycode) {
       prev = current;
       current = current->next;
+   }
+
+   if (current == NULL) {
+     return -1;
    }
 
    retval = current->keycode;
@@ -401,6 +405,19 @@ uint16_t remove(node_t **head, uint16_t keycode) {
       *head = NULL;
 
    return retval;
+}
+
+bool in(node_t **head, uint16_t keycode) {
+   node_t *current = NULL;
+
+   if (*head == NULL) return false;
+
+   current = *head;
+   while (current != NULL && current->keycode != keycode) {
+      current = current->next;
+   }
+
+   return current != NULL;
 }
 
 bool volatile shift_down=false;
@@ -432,6 +449,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 space_held_timer = timer_read();
                 space_shift_down = true;
                 pressed_something_else=false;
+                SEND_STRING(SS_DOWN(X_LSHIFT));
                 while(dequeue(&last_key) != -1) {};
                 last_key = NULL;
            }
@@ -463,13 +481,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      }
      else {
         // press a key while shift is down
-        if (timer_elapsed(space_held_timer) > 25 && record->event.pressed && space_shift_down) {
+        if (timer_elapsed(space_held_timer) > 20 && record->event.pressed && space_shift_down) {
           enqueue(&last_key, keycode);
           return false; // we handled the keypress, swallow it and only hold down the shift once it's up
         }
         // release that key while shift is down
-        if (timer_elapsed(space_held_timer) > 25 && !record->event.pressed && space_shift_down) {
-            SEND_STRING(SS_DOWN(X_LSHIFT));
+        if (timer_elapsed(space_held_timer) > 20 && !record->event.pressed && space_shift_down && in(&last_key, keycode)) {
             register_code(keycode);
             remove(&last_key, keycode);
             pressed_something_else=true;
@@ -781,24 +798,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
            layer_off(7);
            layer_on(_QWERTY);
            SEND_STRING(SS_UP(X_LCTRL) SS_UP(X_LSHIFT) SS_UP(MOVE) SS_UP(X_LALT) SS_UP(X_LGUI));
-
-         case 25:  // space key. when it's down, shift is down. but it still does a space
-           if (p) {
-                space_shift_down = true;
-                pressed_something_else=false;
-                SEND_STRING(SS_DOWN(X_LSHIFT));
-           }
-           else {
-                space_shift_down = false;
-                SEND_STRING(SS_UP(X_LSHIFT));
-                if (pressed_something_else) {
-                   SEND_STRING(" ");
-                }
-                pressed_something_else=false;
-           }
-
-           return false;
-
 	}
 
     return MACRO_NONE;
