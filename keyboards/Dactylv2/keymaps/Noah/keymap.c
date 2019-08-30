@@ -29,7 +29,8 @@ enum custom_keycodes {
 	FN3,
 	ADJUST,
 	dance_cln_finished,
-	KC_SPACETHING = SAFE_RANGE
+	KC_SPACETHING = SAFE_RANGE,
+	KC_GUITAB
 };
 
 #define KC_ KC_TRNS
@@ -48,7 +49,7 @@ enum custom_keycodes {
 #define KC_SELALT LT(_SELECT_ALT, KC_LALT) // goes to the alt select layer, which can move around but keeps select layer active
 #define KC_SELALTSHIFT MO(_SELECT_ALT_SHIFT) // when shift + alt held down in select mode.
 #define KC_FN3_A MO(_FN3)
-#define KC_GUITAB RWIN_T(KC_TAB)
+//#define KC_GUITAB RWIN_T(KC_TAB)
 #define KC_SHIFTSPC M(25)
 #define KC_RESTL M(24)
 
@@ -342,9 +343,11 @@ unregister_code(KC_LGUI);
 
 bool volatile shift_down=false;
 bool volatile space_shift_down=false;
+bool volatile gui_down=false;
 bool volatile alt_down=false;
 bool volatile select_active=false;
 bool volatile pressed_something_else=false;
+bool volatile pressed_something_else_gui=false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -367,6 +370,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 pressed_something_else=false;
            }
+     }
+     else if (keycode == KC_GUITAB) {
+        if (record->event.pressed) {
+          gui_down = true;
+          pressed_something_else_gui=false;
+          SEND_STRING(SS_DOWN(X_LGUI))
+        }
+        else{
+          gui_down = false;
+          SEND_STRING(SS_UP(X_LGUI));
+          if(!pressed_something_else_gui) {
+            SEND_STRING(SS_TAP(X_TAB));
+          }
+          pressed_something_else_gui=false;
+        }
      }
      else {
         if (record->event.pressed && space_shift_down) {
