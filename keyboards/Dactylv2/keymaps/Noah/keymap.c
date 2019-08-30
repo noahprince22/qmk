@@ -72,6 +72,8 @@ enum custom_keycodes {
 #define KC_OOG LALT(LSFT(KC_4)) // Open in oposite group intellij
 #define KC_RUN LALT(LCTL(KC_R)) // Run on cursor intellij
 #define KC_DEBUG LALT(LCTL(KC_D)) // Debug on cursor intellij
+#define KC_SRUN LSFT(LALT(LCTL(KC_R))) // Run on cursor intellij
+#define KC_SDEBUG LSFT(LALT(LCTL(KC_D))) // Debug on cursor intellij
 #define KC_MVRT LALT(KC_4) // Move window right (do a split) in intellij
 #define KC_MVGRP LALT(LSFT(KC_4)) // Alternate the group of the window in intellij
 #define KC_CLOSE LCTL(KC_W)
@@ -143,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//,----+----+----+----+----+----.										,----+----+----+----+----+----.
 		TAB , Q  , W  , E  , R  , T  ,    									  Y  , U  , I  , O , P  , MINS,
 	//|----+----+----+----+----+----|   									|----+----+----+----+----+----|
-      CLCK, A  , S  , D  , F  , G  ,								      H  , J  , K  , L  ,SCLN,QUOT,
+      CLCK, A  , S  , D  , F  , G  ,								          H  , J  , K  , L  ,SCLN,QUOT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
 		MSHIFT, Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
@@ -192,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   ,    ,    ,    ,    ,    ,    						          ,,   ,    ,    ,     ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
-										  ,    ,			 RUN,DEBUG,
+										  ,    ,			 SRUN,SDEBUG,
 	//							`----+----+----+'			`----+----+----'
 											   ,			     ,
 	//							`----+----+----+'			`----+----+----'
@@ -206,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		   ,    ,    ,    ,    ,    ,   							      ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-		   ,    ,    ,    ,    ,    ,     							      ,    ,    ,    , OPG ,   ,
+		   ,    ,    ,    ,    ,    ,     							      ,    ,    ,    , OPG,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 		  ,  ,  ,    ,    ,    ,							         ,    ,    ,    ,    ,   ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
@@ -340,6 +342,66 @@ unregister_code(KC_TAB);
 unregister_code(KC_LGUI);
 }*/
 
+typedef struct node {
+   uint16_t keycode;
+   struct node *next;
+} node_t;
+
+void enqueue(node_t **head, uint16_t keycode) {
+   node_t *new_node = malloc(sizeof(node_t));
+   if (!new_node) return;
+
+   new_node->keycode = keycode;
+   new_node->next = *head;
+
+   *head = new_node;
+}
+
+uint16_t dequeue(node_t **head) {
+   node_t *current, *prev = NULL;
+   int retval = -1;
+
+   if (*head == NULL) return -1;
+
+   current = *head;
+   while (current->next != NULL) {
+      prev = current;
+      current = current->next;
+   }
+
+   retval = current->keycode;
+   free(current);
+
+   if (prev)
+      prev->next = NULL;
+   else
+      *head = NULL;
+
+   return retval;
+}
+
+uint16_t remove(node_t **head, uint16_t keycode) {
+   node_t *current, *prev = NULL;
+   int retval = -1;
+
+   if (*head == NULL) return -1;
+
+   current = *head;
+   while (current->keycode != keycode) {
+      prev = current;
+      current = current->next;
+   }
+
+   retval = current->keycode;
+   free(current);
+
+   if (prev)
+      prev->next = current->next;
+   else
+      *head = NULL;
+
+   return retval;
+}
 
 bool volatile shift_down=false;
 bool volatile space_shift_down=false;
@@ -350,19 +412,28 @@ bool volatile pressed_something_else=false;
 bool volatile pressed_something_else_gui=false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+     static uint16_t space_held_timer;
+     static node_t *last_key = NULL;
 
      // This bit of code makes it so that if I hold down the spacebar, it becomes a shift key, assuming
      // that I press another key after holding it down. If no other key is pressed, I clearly wasn't using it as
      // a shift key, and so it comes through as a space. The only consequence of this is that space is applied on
      // key up, and not key down. So I need to make sure the space has been released before typing another key
      // realistically, if I'm light on my fingers, this shouldn't be a problem.
+     // I also make use of a timer, so I can hold on to space a little between keypresses for smoothness of use,
+     // and have it not be a shift.
+     // Later added a queue so that if you lift up space while some keys are still down, it acts as if this was a space
+     // followed by all the key down events in order, and NOT a Shift. Brilliant.
+     // We also wait until the last key goes up. It must go up before shift goes up.
      // It's a similar thing with the fn/gui/windows key. It should be a tab when I tap it, but if I use it as a
      // modifier, it's a modifier.
      if (keycode == KC_SPACETHING) {
            if (record->event.pressed) {
+                space_held_timer = timer_read();
                 space_shift_down = true;
                 pressed_something_else=false;
-                SEND_STRING(SS_DOWN(X_LSHIFT));
+                while(dequeue(&last_key) != -1) {};
+                last_key = NULL;
            }
            else {
                 space_shift_down = false;
@@ -378,10 +449,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           gui_down = true;
           pressed_something_else_gui=false;
           SEND_STRING(SS_DOWN(X_LGUI));
+          layer_on(_FN);
         }
         else{
           gui_down = false;
           SEND_STRING(SS_UP(X_LGUI));
+          layer_off(_FN);
           if(!pressed_something_else_gui) {
             SEND_STRING(SS_TAP(X_TAB));
           }
@@ -389,12 +462,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
      }
      else {
-        if (record->event.pressed && space_shift_down) {
+        // press a key while shift is down
+        if (timer_elapsed(space_held_timer) > 25 && record->event.pressed && space_shift_down) {
+          enqueue(&last_key, keycode);
+          return false; // we handled the keypress, swallow it and only hold down the shift once it's up
+        }
+        // release that key while shift is down
+        if (timer_elapsed(space_held_timer) > 25 && !record->event.pressed && space_shift_down) {
+            SEND_STRING(SS_DOWN(X_LSHIFT));
+            register_code(keycode);
+            remove(&last_key, keycode);
             pressed_something_else=true;
         }
         else if (record->event.pressed && gui_down) {
-            pressed_something_else_gui  =true;
+            pressed_something_else_gui =true;
         }
+     }
+
+     // They released space before releasing the last key, it doesn't count as a shift and we need to register that key
+     if (last_key != NULL && !space_shift_down) {
+       uint16_t unregistered_code = dequeue(&last_key);
+
+       while(unregistered_code != -1) {
+         register_code(unregistered_code);
+         unregistered_code = dequeue(&last_key);
+       }
      }
 
   return true;

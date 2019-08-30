@@ -24,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="359" column="34" selection-start-line="359" selection-start-column="34" selection-end-line="359" selection-end-column="34" />
+            <state relative-caret-position="418">
+              <caret line="425" column="81" selection-start-line="425" selection-start-column="81" selection-end-line="425" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -93,18 +93,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PR</find>
-      <find>AG_NORM</find>
-      <find>SEND_STRING(SS_UP(X_LCT</find>
-      <find>space</find>
-      <find>fn</find>
-      <find>KC_SPC</find>
-      <find>ru</find>
-      <find>DEBUG</find>
       <find>MSHIFT</find>
       <find>21</find>
       <find>X_</find>
-      <find>RUN</find>
       <find>CTR_L</find>
       <find>2</find>
       <find>22</find>
@@ -123,6 +114,15 @@
       <find>KC_SPACETHING</find>
       <find>KC_GUITAB</find>
       <find>FN_L</find>
+      <find>RUN</find>
+      <find>GUITAB</find>
+      <find>-&gt;val</find>
+      <find>keycode</find>
+      <find>val</find>
+      <find>enque</find>
+      <find>deque</find>
+      <find>null</find>
+      <find>dequeue</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -159,9 +159,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="84" />
+    <option name="y" value="112" />
     <option name="width" value="2304" />
-    <option name="height" value="1405" />
+    <option name="height" value="1377" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -304,7 +304,7 @@
       <workItem from="1557518874213" duration="19000" />
       <workItem from="1567091825270" duration="1664000" />
       <workItem from="1567093589173" duration="7351000" />
-      <workItem from="1567105748732" duration="11067000" />
+      <workItem from="1567105748732" duration="16885000" />
     </task>
     <task id="LOCAL-00001" summary="before doinng key up stuff">
       <created>1552397114182</created>
@@ -317,10 +317,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63371000" />
+    <option name="totallyTimeSpent" value="69189000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="84" width="2304" height="1405" extended-state="0" />
+    <frame x="0" y="112" width="2304" height="1377" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13664596" />
@@ -461,8 +461,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="359" column="34" selection-start-line="359" selection-start-column="34" selection-end-line="359" selection-end-column="34" />
+        <state relative-caret-position="418">
+          <caret line="425" column="81" selection-start-line="425" selection-start-column="81" selection-end-line="425" selection-end-column="81" />
         </state>
       </provider>
     </entry>
