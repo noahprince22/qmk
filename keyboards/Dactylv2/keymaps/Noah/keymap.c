@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
 		MSHIFT, Z  , X  , C  , V  , B  ,										    N  , M  ,COMM,DOT,SLSH,ENT,
 	//|----+----+----+----+----+----|										|----+----+----+----+----+----|
-	  FN3_A,LCTRL,LWIN,MSHIFT,LALT,   ,										     ,LBRC,RBRC,LCTRL,BSLS,   ,
+	  FN3_A,K,LWIN,MSHIFT,LALT,   ,										     ,LBRC,RBRC,LCTRL,BSLS,   ,
 	//`----+----+----+----+----+----'   									 `----+----+----+----+----+----'
 	//							`----+----+----+'			`----+----+----'
 										ESC,F6,			 FORMAT, DEL,
@@ -254,7 +254,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
 	 MSHIFT,UNDO ,S_CUT ,S_COPY ,PASTE ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|   							 |----+----+----+----+----+----|
-	       ,    ,    ,SELALTSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
+	       ,    ,    ,MSHIFT,    ,    ,   							       ,    ,    ,    ,    ,    ,
 	//|----+----+----+----+----+----|  								  |----+----+----+----+----+----|
 	//							`----+----+----+'			`----+----+----'
 									    ,    ,			         ,    ,
@@ -456,7 +456,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            else {
                 space_shift_down = false;
                 SEND_STRING(SS_UP(X_LSHIFT));
-                if (!pressed_something_else) {
+                // If the space was held for longer than 120 ms, consider it a cancelled shift
+                if (!pressed_something_else && timer_elapsed(space_held_timer) < 120) {
                    SEND_STRING(" ");
                 }
                 pressed_something_else=false;
@@ -466,7 +467,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
           gui_down = true;
           pressed_something_else_gui=false;
-          SEND_STRING(SS_DOWN(X_LGUI));
           layer_on(_FN);
         }
         else{
@@ -481,18 +481,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      }
      else {
         // press a key while shift is down
-        if (timer_elapsed(space_held_timer) > 10 && record->event.pressed && space_shift_down) {
+        // Timeout of 30 ms so I can quickly press space then the capital letter and space comes up first
+        // so we don't start swallowing unless it's really been held down
+        if (timer_elapsed(space_held_timer) > 30 && record->event.pressed && space_shift_down) {
           enqueue(&last_key, keycode);
           return false; // we handled the keypress, swallow it and only hold down the shift once it's up
         }
+        // part of the stickiness timeout
+        else if (record->event.pressed && space_shift_down) {
+          pressed_something_else=true;
+        }
+
+
         // release that key while shift is down
-        if (timer_elapsed(space_held_timer) > 10 && !record->event.pressed && space_shift_down && in(&last_key, keycode)) {
+        if (!record->event.pressed && space_shift_down && in(&last_key, keycode)) {
             register_code(keycode);
             remove(&last_key, keycode);
             pressed_something_else=true;
         }
         else if (record->event.pressed && gui_down) {
             pressed_something_else_gui =true;
+            if(keycode != KC_P_TAB && keycode != KC_N_TAB) {
+                SEND_STRING(SS_DOWN(X_LGUI));
+            }
         }
      }
 
