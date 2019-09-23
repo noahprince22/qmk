@@ -24,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="458" column="60" selection-start-line="458" selection-start-column="60" selection-end-line="458" selection-end-column="60" />
+            <state relative-caret-position="370">
+              <caret line="487" column="35" lean-forward="true" selection-start-line="487" selection-start-column="35" selection-end-line="487" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -44,57 +44,10 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/rules.mk">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1406">
-              <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/config.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Default/keymap.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8094">
-              <caret line="426" selection-start-line="426" selection-end-line="426" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>action_get_macro</find>
-      <find>i</find>
       <find>SPACETHING</find>
       <find>F</find>
       <find>KC_SPACETHING</find>
@@ -123,6 +76,8 @@
       <find>mshift</find>
       <find>timer</find>
       <find>space_held_time</find>
+      <find>MALT</find>
+      <find>== MALT</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -305,7 +260,7 @@
       <workItem from="1567091825270" duration="1664000" />
       <workItem from="1567093589173" duration="7351000" />
       <workItem from="1567105748732" duration="32447000" />
-      <workItem from="1568984897545" duration="1203000" />
+      <workItem from="1568984897545" duration="1893000" />
     </task>
     <task id="LOCAL-00001" summary="before doinng key up stuff">
       <created>1552397114182</created>
@@ -318,7 +273,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85954000" />
+    <option name="totallyTimeSpent" value="86644000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="280" width="2304" height="1209" extended-state="0" />
@@ -415,13 +370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="458" column="60" selection-start-line="458" selection-start-column="60" selection-end-line="458" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/config.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
@@ -429,27 +377,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/Makefile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/rules.mk">
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Default/keymap.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1406">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        <state relative-caret-position="991">
+          <caret line="426" selection-start-line="426" selection-end-line="426" />
         </state>
       </provider>
     </entry>
@@ -460,10 +391,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Default/keymap.c">
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8094">
-          <caret line="426" selection-start-line="426" selection-end-line="426" />
+        <state relative-caret-position="570">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/split_util.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/rules.mk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1019">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/NoahTest/Makefile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyboards/Dactylv2/keymaps/Noah/keymap.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="487" column="35" lean-forward="true" selection-start-line="487" selection-start-column="35" selection-end-line="487" selection-end-column="35" />
         </state>
       </provider>
     </entry>

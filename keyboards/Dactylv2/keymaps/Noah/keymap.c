@@ -1,3 +1,9 @@
+/**
+  Disclamer to anyone reading this on github:
+    This code is hack city. It's not intended to be clean or maintainable. It's just quick hacks
+    to get my keyboard to work the way I want it to work. Maybe I'll refactor it in the future.
+*/
+
 #include "Dactyl.h"
 #include "action_layer.h"
 #include "eeconfig.h"
@@ -478,6 +484,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           pressed_something_else_gui=false;
         }
+     }
+     else if (keycode == KC_MALT) {
+     // Do nothing. Just making sure we don't trigger that else.
      }
      else {
         // press a key while shift is down
